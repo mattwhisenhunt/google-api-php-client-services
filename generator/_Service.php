@@ -88,6 +88,7 @@ class Google_Service_<?=$CapCan?> extends Google_Service
        $parameters[$movedKey] = $method['parameters'][$movedKey];
        unset($method['parameters'][$movedKey]);
      }
+     ksort($method['parameters']);
      $method['parameters'] = array_merge($parameters, $method['parameters']);
    }
    if ($method['parameters']): ?>
