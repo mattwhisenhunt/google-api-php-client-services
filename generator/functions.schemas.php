@@ -51,6 +51,10 @@ function childSchema($keys) {
       $node = getNodeReference(array_merge($keys,['additionalProperties']));
     }
 
+    if (!is_dir(DEST. "$CapCan")) {
+      mkdir(DEST. "$CapCan", 0755, true);
+    }
+
     ob_start();
     include '_Model.php';
     file_put_contents(DEST. "$CapCan/$fn.php", ob_get_clean());
