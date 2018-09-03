@@ -26,7 +26,7 @@
 class Google_Service_Analytics_Resource_ManagementClientId extends Google_Service_Resource
 {
   /**
-   * Hashes the given Client ID. (clientId.hashClientId)
+   *  (clientId.hashClientId)
    *
    * @param Google_Service_Analytics_HashClientIdRequest $postBody
    * @param array $optParams Optional parameters.

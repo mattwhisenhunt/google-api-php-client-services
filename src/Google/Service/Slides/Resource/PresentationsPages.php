@@ -26,11 +26,8 @@
 class Google_Service_Slides_Resource_PresentationsPages extends Google_Service_Resource
 {
   /**
-   * Gets the latest version of the specified page in the presentation.
-   * (pages.get)
+   *  (pages.get)
    *
-   * @param string $presentationId The ID of the presentation to retrieve.
-   * @param string $pageObjectId The object ID of the page to retrieve.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Slides_Page
    */
@@ -41,26 +38,10 @@ class Google_Service_Slides_Resource_PresentationsPages extends Google_Service_R
     return $this->call('get', array($params), "Google_Service_Slides_Page");
   }
   /**
-   * Generates a thumbnail of the latest version of the specified page in the
-   * presentation and returns a URL to the thumbnail image.
+   *  (pages.getThumbnail)
    *
-   * This request counts as an [expensive read request](/slides/limits) for quota
-   * purposes. (pages.getThumbnail)
-   *
-   * @param string $presentationId The ID of the presentation to retrieve.
-   * @param string $pageObjectId The object ID of the page whose thumbnail to
-   * retrieve.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string thumbnailProperties.mimeType The optional mime type of the
-   * thumbnail image.
-   *
-   * If you don't specify the mime type, the default mime type will be PNG.
-   * @opt_param string thumbnailProperties.thumbnailSize The optional thumbnail
-   * image size.
-   *
-   * If you don't specify the size, the server chooses a default size of the
-   * image.
    * @return Google_Service_Slides_Thumbnail
    */
   public function getThumbnail($presentationId, $pageObjectId, $optParams = array())

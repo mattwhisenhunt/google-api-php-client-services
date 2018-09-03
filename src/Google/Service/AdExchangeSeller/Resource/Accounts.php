@@ -26,10 +26,8 @@
 class Google_Service_AdExchangeSeller_Resource_Accounts extends Google_Service_Resource
 {
   /**
-   * Get information about the selected Ad Exchange account. (accounts.get)
+   *  (accounts.get)
    *
-   * @param string $accountId Account to get information about. Tip: 'myaccount'
-   * is a valid ID.
    * @param array $optParams Optional parameters.
    * @return Google_Service_AdExchangeSeller_Account
    */
@@ -40,16 +38,10 @@ class Google_Service_AdExchangeSeller_Resource_Accounts extends Google_Service_R
     return $this->call('get', array($params), "Google_Service_AdExchangeSeller_Account");
   }
   /**
-   * List all accounts available to this Ad Exchange account.
-   * (accounts.listAccounts)
+   *  (accounts.listAccounts)
    *
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int maxResults The maximum number of accounts to include in the
-   * response, used for paging.
-   * @opt_param string pageToken A continuation token, used to page through
-   * accounts. To retrieve the next page, set this parameter to the value of
-   * "nextPageToken" from the previous response.
    * @return Google_Service_AdExchangeSeller_Accounts
    */
   public function listAccounts($optParams = array())

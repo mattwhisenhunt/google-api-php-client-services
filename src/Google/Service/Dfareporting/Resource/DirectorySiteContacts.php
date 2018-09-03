@@ -26,10 +26,8 @@
 class Google_Service_Dfareporting_Resource_DirectorySiteContacts extends Google_Service_Resource
 {
   /**
-   * Gets one directory site contact by ID. (directorySiteContacts.get)
+   *  (directorySiteContacts.get)
    *
-   * @param string $profileId User profile ID associated with this request.
-   * @param string $id Directory site contact ID.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Dfareporting_DirectorySiteContact
    */
@@ -40,28 +38,10 @@ class Google_Service_Dfareporting_Resource_DirectorySiteContacts extends Google_
     return $this->call('get', array($params), "Google_Service_Dfareporting_DirectorySiteContact");
   }
   /**
-   * Retrieves a list of directory site contacts, possibly filtered. This method
-   * supports paging. (directorySiteContacts.listDirectorySiteContacts)
+   *  (directorySiteContacts.listDirectorySiteContacts)
    *
-   * @param string $profileId User profile ID associated with this request.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string directorySiteIds Select only directory site contacts with
-   * these directory site IDs. This is a required field.
-   * @opt_param string ids Select only directory site contacts with these IDs.
-   * @opt_param int maxResults Maximum number of results to return.
-   * @opt_param string pageToken Value of the nextPageToken from the previous
-   * result page.
-   * @opt_param string searchString Allows searching for objects by name, ID or
-   * email. Wildcards (*) are allowed. For example, "directory site contact*2015"
-   * will return objects with names like "directory site contact June 2015",
-   * "directory site contact April 2015", or simply "directory site contact 2015".
-   * Most of the searches also add wildcards implicitly at the start and the end
-   * of the search string. For example, a search string of "directory site
-   * contact" will match objects with name "my directory site contact", "directory
-   * site contact 2015", or simply "directory site contact".
-   * @opt_param string sortField Field by which to sort the list.
-   * @opt_param string sortOrder Order of sorted results.
    * @return Google_Service_Dfareporting_DirectorySiteContactsListResponse
    */
   public function listDirectorySiteContacts($profileId, $optParams = array())

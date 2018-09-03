@@ -26,11 +26,11 @@
 class Google_Service_Games_Resource_Pushtokens extends Google_Service_Resource
 {
   /**
-   * Removes a push token for the current user and application. Removing a non-
-   * existent push token will report success. (pushtokens.remove)
+   *  (pushtokens.remove)
    *
    * @param Google_Service_Games_PushTokenId $postBody
    * @param array $optParams Optional parameters.
+
    */
   public function remove(Google_Service_Games_PushTokenId $postBody, $optParams = array())
   {
@@ -39,11 +39,11 @@ class Google_Service_Games_Resource_Pushtokens extends Google_Service_Resource
     return $this->call('remove', array($params));
   }
   /**
-   * Registers a push token for the current user and application.
-   * (pushtokens.update)
+   *  (pushtokens.update)
    *
    * @param Google_Service_Games_PushToken $postBody
    * @param array $optParams Optional parameters.
+
    */
   public function update(Google_Service_Games_PushToken $postBody, $optParams = array())
   {

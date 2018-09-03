@@ -26,10 +26,10 @@
 class Google_Service_Mirror_Resource_Contacts extends Google_Service_Resource
 {
   /**
-   * Deletes a contact. (contacts.delete)
+   *  (contacts.delete)
    *
-   * @param string $id The ID of the contact.
    * @param array $optParams Optional parameters.
+
    */
   public function delete($id, $optParams = array())
   {
@@ -38,9 +38,8 @@ class Google_Service_Mirror_Resource_Contacts extends Google_Service_Resource
     return $this->call('delete', array($params));
   }
   /**
-   * Gets a single contact by ID. (contacts.get)
+   *  (contacts.get)
    *
-   * @param string $id The ID of the contact.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Mirror_Contact
    */
@@ -51,7 +50,7 @@ class Google_Service_Mirror_Resource_Contacts extends Google_Service_Resource
     return $this->call('get', array($params), "Google_Service_Mirror_Contact");
   }
   /**
-   * Inserts a new contact. (contacts.insert)
+   *  (contacts.insert)
    *
    * @param Google_Service_Mirror_Contact $postBody
    * @param array $optParams Optional parameters.
@@ -64,8 +63,7 @@ class Google_Service_Mirror_Resource_Contacts extends Google_Service_Resource
     return $this->call('insert', array($params), "Google_Service_Mirror_Contact");
   }
   /**
-   * Retrieves a list of contacts for the authenticated user.
-   * (contacts.listContacts)
+   *  (contacts.listContacts)
    *
    * @param array $optParams Optional parameters.
    * @return Google_Service_Mirror_ContactsListResponse
@@ -77,31 +75,28 @@ class Google_Service_Mirror_Resource_Contacts extends Google_Service_Resource
     return $this->call('list', array($params), "Google_Service_Mirror_ContactsListResponse");
   }
   /**
-   * Updates a contact in place. This method supports patch semantics.
-   * (contacts.patch)
+   *  (contacts.patch)
    *
-   * @param string $id The ID of the contact.
    * @param Google_Service_Mirror_Contact $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_Mirror_Contact
    */
   public function patch($id, Google_Service_Mirror_Contact $postBody, $optParams = array())
   {
-    $params = array('id' => $id, 'postBody' => $postBody);
+    $params = array('id' => $id ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('patch', array($params), "Google_Service_Mirror_Contact");
   }
   /**
-   * Updates a contact in place. (contacts.update)
+   *  (contacts.update)
    *
-   * @param string $id The ID of the contact.
    * @param Google_Service_Mirror_Contact $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_Mirror_Contact
    */
   public function update($id, Google_Service_Mirror_Contact $postBody, $optParams = array())
   {
-    $params = array('id' => $id, 'postBody' => $postBody);
+    $params = array('id' => $id ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('update', array($params), "Google_Service_Mirror_Contact");
   }

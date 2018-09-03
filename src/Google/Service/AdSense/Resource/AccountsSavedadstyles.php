@@ -26,10 +26,8 @@
 class Google_Service_AdSense_Resource_AccountsSavedadstyles extends Google_Service_Resource
 {
   /**
-   * List a specific saved ad style for the specified account. (savedadstyles.get)
+   *  (savedadstyles.get)
    *
-   * @param string $accountId Account for which to get the saved ad style.
-   * @param string $savedAdStyleId Saved ad style to retrieve.
    * @param array $optParams Optional parameters.
    * @return Google_Service_AdSense_SavedAdStyle
    */
@@ -40,17 +38,10 @@ class Google_Service_AdSense_Resource_AccountsSavedadstyles extends Google_Servi
     return $this->call('get', array($params), "Google_Service_AdSense_SavedAdStyle");
   }
   /**
-   * List all saved ad styles in the specified account.
-   * (savedadstyles.listAccountsSavedadstyles)
+   *  (savedadstyles.listAccountsSavedadstyles)
    *
-   * @param string $accountId Account for which to list saved ad styles.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int maxResults The maximum number of saved ad styles to include in
-   * the response, used for paging.
-   * @opt_param string pageToken A continuation token, used to page through saved
-   * ad styles. To retrieve the next page, set this parameter to the value of
-   * "nextPageToken" from the previous response.
    * @return Google_Service_AdSense_SavedAdStyles
    */
   public function listAccountsSavedadstyles($accountId, $optParams = array())

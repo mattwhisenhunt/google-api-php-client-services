@@ -26,7 +26,7 @@
 class Google_Service_Analytics_Resource_Provisioning extends Google_Service_Resource
 {
   /**
-   * Creates an account ticket. (provisioning.createAccountTicket)
+   *  (provisioning.createAccountTicket)
    *
    * @param Google_Service_Analytics_AccountTicket $postBody
    * @param array $optParams Optional parameters.
@@ -39,7 +39,7 @@ class Google_Service_Analytics_Resource_Provisioning extends Google_Service_Reso
     return $this->call('createAccountTicket', array($params), "Google_Service_Analytics_AccountTicket");
   }
   /**
-   * Provision account. (provisioning.createAccountTree)
+   *  (provisioning.createAccountTree)
    *
    * @param Google_Service_Analytics_AccountTreeRequest $postBody
    * @param array $optParams Optional parameters.

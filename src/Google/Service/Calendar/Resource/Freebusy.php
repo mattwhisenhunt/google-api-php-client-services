@@ -26,7 +26,7 @@
 class Google_Service_Calendar_Resource_Freebusy extends Google_Service_Resource
 {
   /**
-   * Returns free/busy information for a set of calendars. (freebusy.query)
+   *  (freebusy.query)
    *
    * @param Google_Service_Calendar_FreeBusyRequest $postBody
    * @param array $optParams Optional parameters.

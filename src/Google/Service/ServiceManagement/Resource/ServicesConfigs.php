@@ -26,38 +26,23 @@
 class Google_Service_ServiceManagement_Resource_ServicesConfigs extends Google_Service_Resource
 {
   /**
-   * Creates a new service configuration (version) for a managed service. This
-   * method only stores the service configuration. To roll out the service
-   * configuration to backend systems please call CreateServiceRollout.
+   *  (configs.create)
    *
-   * Only the 100 most recent service configurations and ones referenced by
-   * existing rollouts are kept for each service. The rest will be deleted
-   * eventually. (configs.create)
-   *
-   * @param string $serviceName The name of the service.  See the [overview
-   * ](/service-management/overview) for naming requirements.  For example:
-   * `example.googleapis.com`.
    * @param Google_Service_ServiceManagement_Service $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_ServiceManagement_Service
    */
   public function create($serviceName, Google_Service_ServiceManagement_Service $postBody, $optParams = array())
   {
-    $params = array('serviceName' => $serviceName, 'postBody' => $postBody);
+    $params = array('serviceName' => $serviceName ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('create', array($params), "Google_Service_ServiceManagement_Service");
   }
   /**
-   * Gets a service configuration (version) for a managed service. (configs.get)
+   *  (configs.get)
    *
-   * @param string $serviceName The name of the service.  See the [overview
-   * ](/service-management/overview) for naming requirements.  For example:
-   * `example.googleapis.com`.
-   * @param string $configId The id of the service configuration resource.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string view Specifies which parts of the Service Config should be
-   * returned in the response.
    * @return Google_Service_ServiceManagement_Service
    */
   public function get($serviceName, $configId, $optParams = array())
@@ -67,17 +52,10 @@ class Google_Service_ServiceManagement_Resource_ServicesConfigs extends Google_S
     return $this->call('get', array($params), "Google_Service_ServiceManagement_Service");
   }
   /**
-   * Lists the history of the service configuration for a managed service, from
-   * the newest to the oldest. (configs.listServicesConfigs)
+   *  (configs.listServicesConfigs)
    *
-   * @param string $serviceName The name of the service.  See the [overview
-   * ](/service-management/overview) for naming requirements.  For example:
-   * `example.googleapis.com`.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string pageToken The token of the page to retrieve.
-   * @opt_param int pageSize The max number of items to include in the response
-   * list.
    * @return Google_Service_ServiceManagement_ListServiceConfigsResponse
    */
   public function listServicesConfigs($serviceName, $optParams = array())
@@ -87,28 +65,15 @@ class Google_Service_ServiceManagement_Resource_ServicesConfigs extends Google_S
     return $this->call('list', array($params), "Google_Service_ServiceManagement_ListServiceConfigsResponse");
   }
   /**
-   * Creates a new service configuration (version) for a managed service based on
-   * user-supplied configuration source files (for example: OpenAPI
-   * Specification). This method stores the source configurations as well as the
-   * generated service configuration. To rollout the service configuration to
-   * other services, please call CreateServiceRollout.
+   *  (configs.submit)
    *
-   * Only the 100 most recent configuration sources and ones referenced by
-   * existing service configurtions are kept for each service. The rest will be
-   * deleted eventually.
-   *
-   * Operation (configs.submit)
-   *
-   * @param string $serviceName The name of the service.  See the [overview
-   * ](/service-management/overview) for naming requirements.  For example:
-   * `example.googleapis.com`.
    * @param Google_Service_ServiceManagement_SubmitConfigSourceRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_ServiceManagement_Operation
    */
   public function submit($serviceName, Google_Service_ServiceManagement_SubmitConfigSourceRequest $postBody, $optParams = array())
   {
-    $params = array('serviceName' => $serviceName, 'postBody' => $postBody);
+    $params = array('serviceName' => $serviceName ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('submit', array($params), "Google_Service_ServiceManagement_Operation");
   }

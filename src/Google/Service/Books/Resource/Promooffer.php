@@ -26,18 +26,11 @@
 class Google_Service_Books_Resource_Promooffer extends Google_Service_Resource
 {
   /**
-   * (promooffer.accept)
+   *  (promooffer.accept)
    *
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string androidId device android_id
-   * @opt_param string device device device
-   * @opt_param string manufacturer device manufacturer
-   * @opt_param string model device model
-   * @opt_param string offerId
-   * @opt_param string product device product
-   * @opt_param string serial device serial
-   * @opt_param string volumeId Volume id to exercise the offer
+
    */
   public function accept($optParams = array())
   {
@@ -46,17 +39,11 @@ class Google_Service_Books_Resource_Promooffer extends Google_Service_Resource
     return $this->call('accept', array($params));
   }
   /**
-   * (promooffer.dismiss)
+   *  (promooffer.dismiss)
    *
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string androidId device android_id
-   * @opt_param string device device device
-   * @opt_param string manufacturer device manufacturer
-   * @opt_param string model device model
-   * @opt_param string offerId Offer to dimiss
-   * @opt_param string product device product
-   * @opt_param string serial device serial
+
    */
   public function dismiss($optParams = array())
   {
@@ -65,16 +52,10 @@ class Google_Service_Books_Resource_Promooffer extends Google_Service_Resource
     return $this->call('dismiss', array($params));
   }
   /**
-   * Returns a list of promo offers available to the user (promooffer.get)
+   *  (promooffer.get)
    *
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string androidId device android_id
-   * @opt_param string device device device
-   * @opt_param string manufacturer device manufacturer
-   * @opt_param string model device model
-   * @opt_param string product device product
-   * @opt_param string serial device serial
    * @return Google_Service_Books_Offers
    */
   public function get($optParams = array())

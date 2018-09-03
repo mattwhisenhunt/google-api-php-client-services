@@ -26,10 +26,10 @@
 class Google_Service_GamesManagement_Resource_TurnBasedMatches extends Google_Service_Resource
 {
   /**
-   * Reset all turn-based match data for a user. This method is only accessible to
-   * whitelisted tester accounts for your application. (turnBasedMatches.reset)
+   *  (turnBasedMatches.reset)
    *
    * @param array $optParams Optional parameters.
+
    */
   public function reset($optParams = array())
   {
@@ -38,12 +38,10 @@ class Google_Service_GamesManagement_Resource_TurnBasedMatches extends Google_Se
     return $this->call('reset', array($params));
   }
   /**
-   * Deletes turn-based matches where the only match participants are from
-   * whitelisted tester accounts for your application. This method is only
-   * available to user accounts for your developer console.
-   * (turnBasedMatches.resetForAllPlayers)
+   *  (turnBasedMatches.resetForAllPlayers)
    *
    * @param array $optParams Optional parameters.
+
    */
   public function resetForAllPlayers($optParams = array())
   {

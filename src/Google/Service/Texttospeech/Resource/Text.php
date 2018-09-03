@@ -26,8 +26,7 @@
 class Google_Service_Texttospeech_Resource_Text extends Google_Service_Resource
 {
   /**
-   * Synthesizes speech synchronously: receive results after all text input has
-   * been processed. (text.synthesize)
+   *  (text.synthesize)
    *
    * @param Google_Service_Texttospeech_SynthesizeSpeechRequest $postBody
    * @param array $optParams Optional parameters.

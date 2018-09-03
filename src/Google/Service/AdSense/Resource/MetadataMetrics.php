@@ -26,8 +26,7 @@
 class Google_Service_AdSense_Resource_MetadataMetrics extends Google_Service_Resource
 {
   /**
-   * List the metadata for the metrics available to this AdSense account.
-   * (metrics.listMetadataMetrics)
+   *  (metrics.listMetadataMetrics)
    *
    * @param array $optParams Optional parameters.
    * @return Google_Service_AdSense_Metadata

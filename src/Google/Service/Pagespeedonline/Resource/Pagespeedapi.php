@@ -26,26 +26,10 @@
 class Google_Service_Pagespeedonline_Resource_Pagespeedapi extends Google_Service_Resource
 {
   /**
-   * Runs PageSpeed analysis on the page at the specified URL, and returns
-   * PageSpeed scores, a list of suggestions to make that page faster, and other
-   * information. (pagespeedapi.runpagespeed)
+   *  (pagespeedapi.runpagespeed)
    *
-   * @param string $url The URL to fetch and analyze
    * @param array $optParams Optional parameters.
    *
-   * @opt_param bool filter_third_party_resources Indicates if third party
-   * resources should be filtered out before PageSpeed analysis.
-   * @opt_param string locale The locale used to localize formatted results
-   * @opt_param string rule A PageSpeed rule to run; if none are given, all rules
-   * are run
-   * @opt_param bool screenshot Indicates if binary data containing a screenshot
-   * should be included
-   * @opt_param bool snapshots Indicates if binary data containing snapshot images
-   * should be included
-   * @opt_param string strategy The analysis strategy (desktop or mobile) to use,
-   * and desktop is the default
-   * @opt_param string utm_campaign Campaign name for analytics.
-   * @opt_param string utm_source Campaign source for analytics.
    * @return Google_Service_Pagespeedonline_PagespeedApiPagespeedResponseV4
    */
   public function runpagespeed($url, $optParams = array())

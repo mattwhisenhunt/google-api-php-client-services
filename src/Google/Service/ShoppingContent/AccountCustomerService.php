@@ -15,16 +15,34 @@
  * the License.
  */
 
-class Google_Service_CloudTasks_AcknowledgeTaskRequest extends Google_Model
+class Google_Service_ShoppingContent_AccountCustomerService extends Google_Model
 {
-  public $scheduleTime;
+  public $email;
+  public $phoneNumber;
+  public $url;
 
-  public function setScheduleTime($scheduleTime)
+  public function setEmail($email)
   {
-    $this->scheduleTime = $scheduleTime;
+    $this->email = $email;
   }
-  public function getScheduleTime()
+  public function getEmail()
   {
-    return $this->scheduleTime;
+    return $this->email;
+  }
+  public function setPhoneNumber($phoneNumber)
+  {
+    $this->phoneNumber = $phoneNumber;
+  }
+  public function getPhoneNumber()
+  {
+    return $this->phoneNumber;
+  }
+  public function setUrl($url)
+  {
+    $this->url = $url;
+  }
+  public function getUrl()
+  {
+    return $this->url;
   }
 }

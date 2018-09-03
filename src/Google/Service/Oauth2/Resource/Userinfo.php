@@ -26,7 +26,7 @@
 class Google_Service_Oauth2_Resource_Userinfo extends Google_Service_Resource
 {
   /**
-   * (userinfo.get)
+   *  (userinfo.get)
    *
    * @param array $optParams Optional parameters.
    * @return Google_Service_Oauth2_Userinfoplus

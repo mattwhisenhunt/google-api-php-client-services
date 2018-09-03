@@ -26,10 +26,8 @@
 class Google_Service_Dfareporting_Resource_PostalCodes extends Google_Service_Resource
 {
   /**
-   * Gets one postal code by ID. (postalCodes.get)
+   *  (postalCodes.get)
    *
-   * @param string $profileId User profile ID associated with this request.
-   * @param string $code Postal code ID.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Dfareporting_PostalCode
    */
@@ -40,9 +38,8 @@ class Google_Service_Dfareporting_Resource_PostalCodes extends Google_Service_Re
     return $this->call('get', array($params), "Google_Service_Dfareporting_PostalCode");
   }
   /**
-   * Retrieves a list of postal codes. (postalCodes.listPostalCodes)
+   *  (postalCodes.listPostalCodes)
    *
-   * @param string $profileId User profile ID associated with this request.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Dfareporting_PostalCodesListResponse
    */

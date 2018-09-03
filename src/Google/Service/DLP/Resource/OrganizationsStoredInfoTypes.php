@@ -26,29 +26,21 @@
 class Google_Service_DLP_Resource_OrganizationsStoredInfoTypes extends Google_Service_Resource
 {
   /**
-   * Creates a pre-built stored infoType to be used for inspection. See
-   * https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
-   * (storedInfoTypes.create)
+   *  (storedInfoTypes.create)
    *
-   * @param string $parent The parent resource name, for example projects/my-
-   * project-id or organizations/my-org-id.
    * @param Google_Service_DLP_GooglePrivacyDlpV2CreateStoredInfoTypeRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_DLP_GooglePrivacyDlpV2StoredInfoType
    */
   public function create($parent, Google_Service_DLP_GooglePrivacyDlpV2CreateStoredInfoTypeRequest $postBody, $optParams = array())
   {
-    $params = array('parent' => $parent, 'postBody' => $postBody);
+    $params = array('parent' => $parent ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('create', array($params), "Google_Service_DLP_GooglePrivacyDlpV2StoredInfoType");
   }
   /**
-   * Deletes a stored infoType. See https://cloud.google.com/dlp/docs/creating-
-   * stored-infotypes to learn more. (storedInfoTypes.delete)
+   *  (storedInfoTypes.delete)
    *
-   * @param string $name Resource name of the organization and storedInfoType to
-   * be deleted, for example `organizations/433245324/storedInfoTypes/432452342`
-   * or projects/project-id/storedInfoTypes/432452342.
    * @param array $optParams Optional parameters.
    * @return Google_Service_DLP_GoogleProtobufEmpty
    */
@@ -59,12 +51,8 @@ class Google_Service_DLP_Resource_OrganizationsStoredInfoTypes extends Google_Se
     return $this->call('delete', array($params), "Google_Service_DLP_GoogleProtobufEmpty");
   }
   /**
-   * Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-
-   * stored-infotypes to learn more. (storedInfoTypes.get)
+   *  (storedInfoTypes.get)
    *
-   * @param string $name Resource name of the organization and storedInfoType to
-   * be read, for example `organizations/433245324/storedInfoTypes/432452342` or
-   * projects/project-id/storedInfoTypes/432452342.
    * @param array $optParams Optional parameters.
    * @return Google_Service_DLP_GooglePrivacyDlpV2StoredInfoType
    */
@@ -75,18 +63,10 @@ class Google_Service_DLP_Resource_OrganizationsStoredInfoTypes extends Google_Se
     return $this->call('get', array($params), "Google_Service_DLP_GooglePrivacyDlpV2StoredInfoType");
   }
   /**
-   * Lists stored infoTypes. See https://cloud.google.com/dlp/docs/creating-
-   * stored-infotypes to learn more.
-   * (storedInfoTypes.listOrganizationsStoredInfoTypes)
+   *  (storedInfoTypes.listOrganizationsStoredInfoTypes)
    *
-   * @param string $parent The parent resource name, for example projects/my-
-   * project-id or organizations/my-org-id.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int pageSize Optional size of the page, can be limited by server.
-   * If zero server returns a page of max size 100.
-   * @opt_param string pageToken Optional page token to continue retrieval. Comes
-   * from previous call to `ListStoredInfoTypes`.
    * @return Google_Service_DLP_GooglePrivacyDlpV2ListStoredInfoTypesResponse
    */
   public function listOrganizationsStoredInfoTypes($parent, $optParams = array())
@@ -96,21 +76,15 @@ class Google_Service_DLP_Resource_OrganizationsStoredInfoTypes extends Google_Se
     return $this->call('list', array($params), "Google_Service_DLP_GooglePrivacyDlpV2ListStoredInfoTypesResponse");
   }
   /**
-   * Updates the stored infoType by creating a new version. The existing version
-   * will continue to be used until the new version is ready. See
-   * https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
-   * (storedInfoTypes.patch)
+   *  (storedInfoTypes.patch)
    *
-   * @param string $name Resource name of organization and storedInfoType to be
-   * updated, for example `organizations/433245324/storedInfoTypes/432452342` or
-   * projects/project-id/storedInfoTypes/432452342.
    * @param Google_Service_DLP_GooglePrivacyDlpV2UpdateStoredInfoTypeRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_DLP_GooglePrivacyDlpV2StoredInfoType
    */
   public function patch($name, Google_Service_DLP_GooglePrivacyDlpV2UpdateStoredInfoTypeRequest $postBody, $optParams = array())
   {
-    $params = array('name' => $name, 'postBody' => $postBody);
+    $params = array('name' => $name ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('patch', array($params), "Google_Service_DLP_GooglePrivacyDlpV2StoredInfoType");
   }

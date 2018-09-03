@@ -26,10 +26,8 @@
 class Google_Service_Dfareporting_Resource_ConnectionTypes extends Google_Service_Resource
 {
   /**
-   * Gets one connection type by ID. (connectionTypes.get)
+   *  (connectionTypes.get)
    *
-   * @param string $profileId User profile ID associated with this request.
-   * @param string $id Connection type ID.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Dfareporting_ConnectionType
    */
@@ -40,9 +38,8 @@ class Google_Service_Dfareporting_Resource_ConnectionTypes extends Google_Servic
     return $this->call('get', array($params), "Google_Service_Dfareporting_ConnectionType");
   }
   /**
-   * Retrieves a list of connection types. (connectionTypes.listConnectionTypes)
+   *  (connectionTypes.listConnectionTypes)
    *
-   * @param string $profileId User profile ID associated with this request.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Dfareporting_ConnectionTypesListResponse
    */

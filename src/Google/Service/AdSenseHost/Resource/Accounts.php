@@ -26,9 +26,8 @@
 class Google_Service_AdSenseHost_Resource_Accounts extends Google_Service_Resource
 {
   /**
-   * Get information about the selected associated AdSense account. (accounts.get)
+   *  (accounts.get)
    *
-   * @param string $accountId Account to get information about.
    * @param array $optParams Optional parameters.
    * @return Google_Service_AdSenseHost_Account
    */
@@ -39,10 +38,8 @@ class Google_Service_AdSenseHost_Resource_Accounts extends Google_Service_Resour
     return $this->call('get', array($params), "Google_Service_AdSenseHost_Account");
   }
   /**
-   * List hosted accounts associated with this AdSense account by ad client id.
-   * (accounts.listAccounts)
+   *  (accounts.listAccounts)
    *
-   * @param string|array $filterAdClientId Ad clients to list accounts for.
    * @param array $optParams Optional parameters.
    * @return Google_Service_AdSenseHost_Accounts
    */

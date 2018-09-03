@@ -26,11 +26,8 @@
 class Google_Service_Dfareporting_Resource_InventoryItems extends Google_Service_Resource
 {
   /**
-   * Gets one inventory item by ID. (inventoryItems.get)
+   *  (inventoryItems.get)
    *
-   * @param string $profileId User profile ID associated with this request.
-   * @param string $projectId Project ID for order documents.
-   * @param string $id Inventory item ID.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Dfareporting_InventoryItem
    */
@@ -41,25 +38,10 @@ class Google_Service_Dfareporting_Resource_InventoryItems extends Google_Service
     return $this->call('get', array($params), "Google_Service_Dfareporting_InventoryItem");
   }
   /**
-   * Retrieves a list of inventory items, possibly filtered. This method supports
-   * paging. (inventoryItems.listInventoryItems)
+   *  (inventoryItems.listInventoryItems)
    *
-   * @param string $profileId User profile ID associated with this request.
-   * @param string $projectId Project ID for order documents.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string ids Select only inventory items with these IDs.
-   * @opt_param bool inPlan Select only inventory items that are in plan.
-   * @opt_param int maxResults Maximum number of results to return.
-   * @opt_param string orderId Select only inventory items that belong to
-   * specified orders.
-   * @opt_param string pageToken Value of the nextPageToken from the previous
-   * result page.
-   * @opt_param string siteId Select only inventory items that are associated with
-   * these sites.
-   * @opt_param string sortField Field by which to sort the list.
-   * @opt_param string sortOrder Order of sorted results.
-   * @opt_param string type Select only inventory items with this type.
    * @return Google_Service_Dfareporting_InventoryItemsListResponse
    */
   public function listInventoryItems($profileId, $projectId, $optParams = array())

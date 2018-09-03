@@ -26,8 +26,7 @@
 class Google_Service_IdentityToolkit_Resource_Relyingparty extends Google_Service_Resource
 {
   /**
-   * Creates the URI used by the IdP to authenticate the user.
-   * (relyingparty.createAuthUri)
+   *  (relyingparty.createAuthUri)
    *
    * @param Google_Service_IdentityToolkit_IdentitytoolkitRelyingpartyCreateAuthUriRequest $postBody
    * @param array $optParams Optional parameters.
@@ -40,7 +39,7 @@ class Google_Service_IdentityToolkit_Resource_Relyingparty extends Google_Servic
     return $this->call('createAuthUri', array($params), "Google_Service_IdentityToolkit_CreateAuthUriResponse");
   }
   /**
-   * Delete user account. (relyingparty.deleteAccount)
+   *  (relyingparty.deleteAccount)
    *
    * @param Google_Service_IdentityToolkit_IdentitytoolkitRelyingpartyDeleteAccountRequest $postBody
    * @param array $optParams Optional parameters.
@@ -53,7 +52,7 @@ class Google_Service_IdentityToolkit_Resource_Relyingparty extends Google_Servic
     return $this->call('deleteAccount', array($params), "Google_Service_IdentityToolkit_DeleteAccountResponse");
   }
   /**
-   * Batch download user accounts. (relyingparty.downloadAccount)
+   *  (relyingparty.downloadAccount)
    *
    * @param Google_Service_IdentityToolkit_IdentitytoolkitRelyingpartyDownloadAccountRequest $postBody
    * @param array $optParams Optional parameters.
@@ -66,7 +65,7 @@ class Google_Service_IdentityToolkit_Resource_Relyingparty extends Google_Servic
     return $this->call('downloadAccount', array($params), "Google_Service_IdentityToolkit_DownloadAccountResponse");
   }
   /**
-   * Reset password for a user. (relyingparty.emailLinkSignin)
+   *  (relyingparty.emailLinkSignin)
    *
    * @param Google_Service_IdentityToolkit_IdentitytoolkitRelyingpartyEmailLinkSigninRequest $postBody
    * @param array $optParams Optional parameters.
@@ -79,7 +78,7 @@ class Google_Service_IdentityToolkit_Resource_Relyingparty extends Google_Servic
     return $this->call('emailLinkSignin', array($params), "Google_Service_IdentityToolkit_EmailLinkSigninResponse");
   }
   /**
-   * Returns the account info. (relyingparty.getAccountInfo)
+   *  (relyingparty.getAccountInfo)
    *
    * @param Google_Service_IdentityToolkit_IdentitytoolkitRelyingpartyGetAccountInfoRequest $postBody
    * @param array $optParams Optional parameters.
@@ -92,8 +91,7 @@ class Google_Service_IdentityToolkit_Resource_Relyingparty extends Google_Servic
     return $this->call('getAccountInfo', array($params), "Google_Service_IdentityToolkit_GetAccountInfoResponse");
   }
   /**
-   * Get a code for user action confirmation.
-   * (relyingparty.getOobConfirmationCode)
+   *  (relyingparty.getOobConfirmationCode)
    *
    * @param Google_Service_IdentityToolkit_Relyingparty $postBody
    * @param array $optParams Optional parameters.
@@ -106,13 +104,10 @@ class Google_Service_IdentityToolkit_Resource_Relyingparty extends Google_Servic
     return $this->call('getOobConfirmationCode', array($params), "Google_Service_IdentityToolkit_GetOobConfirmationCodeResponse");
   }
   /**
-   * Get project configuration. (relyingparty.getProjectConfig)
+   *  (relyingparty.getProjectConfig)
    *
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string delegatedProjectNumber Delegated GCP project number of the
-   * request.
-   * @opt_param string projectNumber GCP project number of the request.
    * @return Google_Service_IdentityToolkit_IdentitytoolkitRelyingpartyGetProjectConfigResponse
    */
   public function getProjectConfig($optParams = array())
@@ -122,7 +117,7 @@ class Google_Service_IdentityToolkit_Resource_Relyingparty extends Google_Servic
     return $this->call('getProjectConfig', array($params), "Google_Service_IdentityToolkit_IdentitytoolkitRelyingpartyGetProjectConfigResponse");
   }
   /**
-   * Get token signing public key. (relyingparty.getPublicKeys)
+   *  (relyingparty.getPublicKeys)
    *
    * @param array $optParams Optional parameters.
    * @return Google_Service_IdentityToolkit_IdentitytoolkitRelyingpartyGetPublicKeysResponse
@@ -134,7 +129,7 @@ class Google_Service_IdentityToolkit_Resource_Relyingparty extends Google_Servic
     return $this->call('getPublicKeys', array($params), "Google_Service_IdentityToolkit_IdentitytoolkitRelyingpartyGetPublicKeysResponse");
   }
   /**
-   * Get recaptcha secure param. (relyingparty.getRecaptchaParam)
+   *  (relyingparty.getRecaptchaParam)
    *
    * @param array $optParams Optional parameters.
    * @return Google_Service_IdentityToolkit_GetRecaptchaParamResponse
@@ -146,7 +141,7 @@ class Google_Service_IdentityToolkit_Resource_Relyingparty extends Google_Servic
     return $this->call('getRecaptchaParam', array($params), "Google_Service_IdentityToolkit_GetRecaptchaParamResponse");
   }
   /**
-   * Reset password for a user. (relyingparty.resetPassword)
+   *  (relyingparty.resetPassword)
    *
    * @param Google_Service_IdentityToolkit_IdentitytoolkitRelyingpartyResetPasswordRequest $postBody
    * @param array $optParams Optional parameters.
@@ -159,7 +154,7 @@ class Google_Service_IdentityToolkit_Resource_Relyingparty extends Google_Servic
     return $this->call('resetPassword', array($params), "Google_Service_IdentityToolkit_ResetPasswordResponse");
   }
   /**
-   * Send SMS verification code. (relyingparty.sendVerificationCode)
+   *  (relyingparty.sendVerificationCode)
    *
    * @param Google_Service_IdentityToolkit_IdentitytoolkitRelyingpartySendVerificationCodeRequest $postBody
    * @param array $optParams Optional parameters.
@@ -172,7 +167,7 @@ class Google_Service_IdentityToolkit_Resource_Relyingparty extends Google_Servic
     return $this->call('sendVerificationCode', array($params), "Google_Service_IdentityToolkit_IdentitytoolkitRelyingpartySendVerificationCodeResponse");
   }
   /**
-   * Set account info for a user. (relyingparty.setAccountInfo)
+   *  (relyingparty.setAccountInfo)
    *
    * @param Google_Service_IdentityToolkit_IdentitytoolkitRelyingpartySetAccountInfoRequest $postBody
    * @param array $optParams Optional parameters.
@@ -185,7 +180,7 @@ class Google_Service_IdentityToolkit_Resource_Relyingparty extends Google_Servic
     return $this->call('setAccountInfo', array($params), "Google_Service_IdentityToolkit_SetAccountInfoResponse");
   }
   /**
-   * Set project configuration. (relyingparty.setProjectConfig)
+   *  (relyingparty.setProjectConfig)
    *
    * @param Google_Service_IdentityToolkit_IdentitytoolkitRelyingpartySetProjectConfigRequest $postBody
    * @param array $optParams Optional parameters.
@@ -198,7 +193,7 @@ class Google_Service_IdentityToolkit_Resource_Relyingparty extends Google_Servic
     return $this->call('setProjectConfig', array($params), "Google_Service_IdentityToolkit_IdentitytoolkitRelyingpartySetProjectConfigResponse");
   }
   /**
-   * Sign out user. (relyingparty.signOutUser)
+   *  (relyingparty.signOutUser)
    *
    * @param Google_Service_IdentityToolkit_IdentitytoolkitRelyingpartySignOutUserRequest $postBody
    * @param array $optParams Optional parameters.
@@ -211,7 +206,7 @@ class Google_Service_IdentityToolkit_Resource_Relyingparty extends Google_Servic
     return $this->call('signOutUser', array($params), "Google_Service_IdentityToolkit_IdentitytoolkitRelyingpartySignOutUserResponse");
   }
   /**
-   * Signup new user. (relyingparty.signupNewUser)
+   *  (relyingparty.signupNewUser)
    *
    * @param Google_Service_IdentityToolkit_IdentitytoolkitRelyingpartySignupNewUserRequest $postBody
    * @param array $optParams Optional parameters.
@@ -224,7 +219,7 @@ class Google_Service_IdentityToolkit_Resource_Relyingparty extends Google_Servic
     return $this->call('signupNewUser', array($params), "Google_Service_IdentityToolkit_SignupNewUserResponse");
   }
   /**
-   * Batch upload existing user accounts. (relyingparty.uploadAccount)
+   *  (relyingparty.uploadAccount)
    *
    * @param Google_Service_IdentityToolkit_IdentitytoolkitRelyingpartyUploadAccountRequest $postBody
    * @param array $optParams Optional parameters.
@@ -237,7 +232,7 @@ class Google_Service_IdentityToolkit_Resource_Relyingparty extends Google_Servic
     return $this->call('uploadAccount', array($params), "Google_Service_IdentityToolkit_UploadAccountResponse");
   }
   /**
-   * Verifies the assertion returned by the IdP. (relyingparty.verifyAssertion)
+   *  (relyingparty.verifyAssertion)
    *
    * @param Google_Service_IdentityToolkit_IdentitytoolkitRelyingpartyVerifyAssertionRequest $postBody
    * @param array $optParams Optional parameters.
@@ -250,7 +245,7 @@ class Google_Service_IdentityToolkit_Resource_Relyingparty extends Google_Servic
     return $this->call('verifyAssertion', array($params), "Google_Service_IdentityToolkit_VerifyAssertionResponse");
   }
   /**
-   * Verifies the developer asserted ID token. (relyingparty.verifyCustomToken)
+   *  (relyingparty.verifyCustomToken)
    *
    * @param Google_Service_IdentityToolkit_IdentitytoolkitRelyingpartyVerifyCustomTokenRequest $postBody
    * @param array $optParams Optional parameters.
@@ -263,7 +258,7 @@ class Google_Service_IdentityToolkit_Resource_Relyingparty extends Google_Servic
     return $this->call('verifyCustomToken', array($params), "Google_Service_IdentityToolkit_VerifyCustomTokenResponse");
   }
   /**
-   * Verifies the user entered password. (relyingparty.verifyPassword)
+   *  (relyingparty.verifyPassword)
    *
    * @param Google_Service_IdentityToolkit_IdentitytoolkitRelyingpartyVerifyPasswordRequest $postBody
    * @param array $optParams Optional parameters.
@@ -276,8 +271,7 @@ class Google_Service_IdentityToolkit_Resource_Relyingparty extends Google_Servic
     return $this->call('verifyPassword', array($params), "Google_Service_IdentityToolkit_VerifyPasswordResponse");
   }
   /**
-   * Verifies ownership of a phone number and creates/updates the user account
-   * accordingly. (relyingparty.verifyPhoneNumber)
+   *  (relyingparty.verifyPhoneNumber)
    *
    * @param Google_Service_IdentityToolkit_IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest $postBody
    * @param array $optParams Optional parameters.

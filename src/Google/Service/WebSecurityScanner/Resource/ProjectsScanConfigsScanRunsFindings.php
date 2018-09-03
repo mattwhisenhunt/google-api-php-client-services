@@ -26,11 +26,8 @@
 class Google_Service_WebSecurityScanner_Resource_ProjectsScanConfigsScanRunsFindings extends Google_Service_Resource
 {
   /**
-   * Gets a Finding. (findings.get)
+   *  (findings.get)
    *
-   * @param string $name Required. The resource name of the Finding to be
-   * returned. The name follows the format of 'projects/{projectId}/scanConfigs/{s
-   * canConfigId}/scanRuns/{scanRunId}/findings/{findingId}'.
    * @param array $optParams Optional parameters.
    * @return Google_Service_WebSecurityScanner_Finding
    */
@@ -41,22 +38,10 @@ class Google_Service_WebSecurityScanner_Resource_ProjectsScanConfigsScanRunsFind
     return $this->call('get', array($params), "Google_Service_WebSecurityScanner_Finding");
   }
   /**
-   * List Findings under a given ScanRun.
-   * (findings.listProjectsScanConfigsScanRunsFindings)
+   *  (findings.listProjectsScanConfigsScanRunsFindings)
    *
-   * @param string $parent Required. The parent resource name, which should be a
-   * scan run resource name in the format
-   * 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string pageToken A token identifying a page of results to be
-   * returned. This should be a `next_page_token` value returned from a previous
-   * List request. If unspecified, the first page of results is returned.
-   * @opt_param int pageSize The maximum number of Findings to return, can be
-   * limited by server. If not specified or not positive, the implementation will
-   * select a reasonable value.
-   * @opt_param string filter The filter expression. The expression must be in the
-   * format:  . Supported field: 'finding_type'. Supported operator: '='.
    * @return Google_Service_WebSecurityScanner_ListFindingsResponse
    */
   public function listProjectsScanConfigsScanRunsFindings($parent, $optParams = array())

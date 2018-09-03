@@ -26,26 +26,23 @@
 class Google_Service_TagManager_Resource_AccountsContainers extends Google_Service_Resource
 {
   /**
-   * Creates a Container. (containers.create)
+   *  (containers.create)
    *
-   * @param string $parent GTM Account's API relative path. Example:
-   * accounts/{account_id}.
    * @param Google_Service_TagManager_Container $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_TagManager_Container
    */
   public function create($parent, Google_Service_TagManager_Container $postBody, $optParams = array())
   {
-    $params = array('parent' => $parent, 'postBody' => $postBody);
+    $params = array('parent' => $parent ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('create', array($params), "Google_Service_TagManager_Container");
   }
   /**
-   * Deletes a Container. (containers.delete)
+   *  (containers.delete)
    *
-   * @param string $path GTM Container's API relative path. Example:
-   * accounts/{account_id}/containers/{container_id}
    * @param array $optParams Optional parameters.
+
    */
   public function delete($path, $optParams = array())
   {
@@ -54,10 +51,8 @@ class Google_Service_TagManager_Resource_AccountsContainers extends Google_Servi
     return $this->call('delete', array($params));
   }
   /**
-   * Gets a Container. (containers.get)
+   *  (containers.get)
    *
-   * @param string $path GTM Container's API relative path. Example:
-   * accounts/{account_id}/containers/{container_id}
    * @param array $optParams Optional parameters.
    * @return Google_Service_TagManager_Container
    */
@@ -68,15 +63,10 @@ class Google_Service_TagManager_Resource_AccountsContainers extends Google_Servi
     return $this->call('get', array($params), "Google_Service_TagManager_Container");
   }
   /**
-   * Lists all Containers that belongs to a GTM Account.
-   * (containers.listAccountsContainers)
+   *  (containers.listAccountsContainers)
    *
-   * @param string $parent GTM Accounts's API relative path. Example:
-   * accounts/{account_id}.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string pageToken Continuation token for fetching the next page of
-   * results.
    * @return Google_Service_TagManager_ListContainersResponse
    */
   public function listAccountsContainers($parent, $optParams = array())
@@ -86,20 +76,16 @@ class Google_Service_TagManager_Resource_AccountsContainers extends Google_Servi
     return $this->call('list', array($params), "Google_Service_TagManager_ListContainersResponse");
   }
   /**
-   * Updates a Container. (containers.update)
+   *  (containers.update)
    *
-   * @param string $path GTM Container's API relative path. Example:
-   * accounts/{account_id}/containers/{container_id}
    * @param Google_Service_TagManager_Container $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string fingerprint When provided, this fingerprint must match the
-   * fingerprint of the container in storage.
    * @return Google_Service_TagManager_Container
    */
   public function update($path, Google_Service_TagManager_Container $postBody, $optParams = array())
   {
-    $params = array('path' => $path, 'postBody' => $postBody);
+    $params = array('path' => $path ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('update', array($params), "Google_Service_TagManager_Container");
   }

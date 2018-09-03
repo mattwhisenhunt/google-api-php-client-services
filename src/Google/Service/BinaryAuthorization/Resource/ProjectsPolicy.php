@@ -26,12 +26,8 @@
 class Google_Service_BinaryAuthorization_Resource_ProjectsPolicy extends Google_Service_Resource
 {
   /**
-   * Gets the access control policy for a resource. Returns an empty policy if the
-   * resource exists and does not have a policy set. (policy.getIamPolicy)
+   *  (policy.getIamPolicy)
    *
-   * @param string $resource REQUIRED: The resource for which the policy is being
-   * requested. See the operation documentation for the appropriate value for this
-   * field.
    * @param array $optParams Optional parameters.
    * @return Google_Service_BinaryAuthorization_IamPolicy
    */
@@ -42,41 +38,28 @@ class Google_Service_BinaryAuthorization_Resource_ProjectsPolicy extends Google_
     return $this->call('getIamPolicy', array($params), "Google_Service_BinaryAuthorization_IamPolicy");
   }
   /**
-   * Sets the access control policy on the specified resource. Replaces any
-   * existing policy. (policy.setIamPolicy)
+   *  (policy.setIamPolicy)
    *
-   * @param string $resource REQUIRED: The resource for which the policy is being
-   * specified. See the operation documentation for the appropriate value for this
-   * field.
    * @param Google_Service_BinaryAuthorization_SetIamPolicyRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_BinaryAuthorization_IamPolicy
    */
   public function setIamPolicy($resource, Google_Service_BinaryAuthorization_SetIamPolicyRequest $postBody, $optParams = array())
   {
-    $params = array('resource' => $resource, 'postBody' => $postBody);
+    $params = array('resource' => $resource ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('setIamPolicy', array($params), "Google_Service_BinaryAuthorization_IamPolicy");
   }
   /**
-   * Returns permissions that a caller has on the specified resource. If the
-   * resource does not exist, this will return an empty set of permissions, not a
-   * NOT_FOUND error.
+   *  (policy.testIamPermissions)
    *
-   * Note: This operation is designed to be used for building permission-aware UIs
-   * and command-line tools, not for authorization checking. This operation may
-   * "fail open" without warning. (policy.testIamPermissions)
-   *
-   * @param string $resource REQUIRED: The resource for which the policy detail is
-   * being requested. See the operation documentation for the appropriate value
-   * for this field.
    * @param Google_Service_BinaryAuthorization_TestIamPermissionsRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_BinaryAuthorization_TestIamPermissionsResponse
    */
   public function testIamPermissions($resource, Google_Service_BinaryAuthorization_TestIamPermissionsRequest $postBody, $optParams = array())
   {
-    $params = array('resource' => $resource, 'postBody' => $postBody);
+    $params = array('resource' => $resource ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('testIamPermissions', array($params), "Google_Service_BinaryAuthorization_TestIamPermissionsResponse");
   }

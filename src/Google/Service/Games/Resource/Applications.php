@@ -26,18 +26,10 @@
 class Google_Service_Games_Resource_Applications extends Google_Service_Resource
 {
   /**
-   * Retrieves the metadata of the application with the given ID. If the requested
-   * application is not available for the specified platformType, the returned
-   * response will not include any instance data. (applications.get)
+   *  (applications.get)
    *
-   * @param string $applicationId The application ID from the Google Play
-   * developer console.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string language The preferred language to use for strings returned
-   * by this method.
-   * @opt_param string platformType Restrict application details returned to the
-   * specific platform.
    * @return Google_Service_Games_Application
    */
   public function get($applicationId, $optParams = array())
@@ -47,10 +39,10 @@ class Google_Service_Games_Resource_Applications extends Google_Service_Resource
     return $this->call('get', array($params), "Google_Service_Games_Application");
   }
   /**
-   * Indicate that the the currently authenticated user is playing your
-   * application. (applications.played)
+   *  (applications.played)
    *
    * @param array $optParams Optional parameters.
+
    */
   public function played($optParams = array())
   {
@@ -59,12 +51,8 @@ class Google_Service_Games_Resource_Applications extends Google_Service_Resource
     return $this->call('played', array($params));
   }
   /**
-   * Verifies the auth token provided with this request is for the application
-   * with the specified ID, and returns the ID of the player it was granted for.
-   * (applications.verify)
+   *  (applications.verify)
    *
-   * @param string $applicationId The application ID from the Google Play
-   * developer console.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Games_ApplicationVerifyResponse
    */

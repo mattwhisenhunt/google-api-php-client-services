@@ -26,11 +26,8 @@
 class Google_Service_CloudOSLogin_Resource_UsersSshPublicKeys extends Google_Service_Resource
 {
   /**
-   * Deletes an SSH public key. (sshPublicKeys.delete)
+   *  (sshPublicKeys.delete)
    *
-   * @param string $name The fingerprint of the public key to update. Public keys
-   * are identified by their SHA-256 fingerprint. The fingerprint of the public
-   * key is in format `users/{user}/sshPublicKeys/{fingerprint}`.
    * @param array $optParams Optional parameters.
    * @return Google_Service_CloudOSLogin_OsloginEmpty
    */
@@ -41,11 +38,8 @@ class Google_Service_CloudOSLogin_Resource_UsersSshPublicKeys extends Google_Ser
     return $this->call('delete', array($params), "Google_Service_CloudOSLogin_OsloginEmpty");
   }
   /**
-   * Retrieves an SSH public key. (sshPublicKeys.get)
+   *  (sshPublicKeys.get)
    *
-   * @param string $name The fingerprint of the public key to retrieve. Public
-   * keys are identified by their SHA-256 fingerprint. The fingerprint of the
-   * public key is in format `users/{user}/sshPublicKeys/{fingerprint}`.
    * @param array $optParams Optional parameters.
    * @return Google_Service_CloudOSLogin_SshPublicKey
    */
@@ -56,22 +50,16 @@ class Google_Service_CloudOSLogin_Resource_UsersSshPublicKeys extends Google_Ser
     return $this->call('get', array($params), "Google_Service_CloudOSLogin_SshPublicKey");
   }
   /**
-   * Updates an SSH public key and returns the profile information. This method
-   * supports patch semantics. (sshPublicKeys.patch)
+   *  (sshPublicKeys.patch)
    *
-   * @param string $name The fingerprint of the public key to update. Public keys
-   * are identified by their SHA-256 fingerprint. The fingerprint of the public
-   * key is in format `users/{user}/sshPublicKeys/{fingerprint}`.
    * @param Google_Service_CloudOSLogin_SshPublicKey $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string updateMask Mask to control which fields get updated.
-   * Updates all if not present.
    * @return Google_Service_CloudOSLogin_SshPublicKey
    */
   public function patch($name, Google_Service_CloudOSLogin_SshPublicKey $postBody, $optParams = array())
   {
-    $params = array('name' => $name, 'postBody' => $postBody);
+    $params = array('name' => $name ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('patch', array($params), "Google_Service_CloudOSLogin_SshPublicKey");
   }

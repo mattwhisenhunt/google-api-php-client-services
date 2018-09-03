@@ -26,10 +26,8 @@
 class Google_Service_AdExchangeBuyer_Resource_BillingInfo extends Google_Service_Resource
 {
   /**
-   * Returns the billing information for one account specified by account ID.
-   * (billingInfo.get)
+   *  (billingInfo.get)
    *
-   * @param int $accountId The account id.
    * @param array $optParams Optional parameters.
    * @return Google_Service_AdExchangeBuyer_BillingInfo
    */
@@ -40,8 +38,7 @@ class Google_Service_AdExchangeBuyer_Resource_BillingInfo extends Google_Service
     return $this->call('get', array($params), "Google_Service_AdExchangeBuyer_BillingInfo");
   }
   /**
-   * Retrieves a list of billing information for all accounts of the authenticated
-   * user. (billingInfo.listBillingInfo)
+   *  (billingInfo.listBillingInfo)
    *
    * @param array $optParams Optional parameters.
    * @return Google_Service_AdExchangeBuyer_BillingInfoList

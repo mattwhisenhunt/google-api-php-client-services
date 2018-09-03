@@ -26,8 +26,7 @@
 class Google_Service_Safebrowsing_Resource_FullHashes extends Google_Service_Resource
 {
   /**
-   * Finds the full hashes that match the requested hash prefixes.
-   * (fullHashes.find)
+   *  (fullHashes.find)
    *
    * @param Google_Service_Safebrowsing_FindFullHashesRequest $postBody
    * @param array $optParams Optional parameters.

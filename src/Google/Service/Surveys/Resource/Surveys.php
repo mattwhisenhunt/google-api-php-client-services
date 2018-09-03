@@ -26,9 +26,8 @@
 class Google_Service_Surveys_Resource_Surveys extends Google_Service_Resource
 {
   /**
-   * Removes a survey from view in all user GET requests. (surveys.delete)
+   *  (surveys.delete)
    *
-   * @param string $surveyUrlId External URL ID for the survey.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Surveys_SurveysDeleteResponse
    */
@@ -39,9 +38,8 @@ class Google_Service_Surveys_Resource_Surveys extends Google_Service_Resource
     return $this->call('delete', array($params), "Google_Service_Surveys_SurveysDeleteResponse");
   }
   /**
-   * Retrieves information about the specified survey. (surveys.get)
+   *  (surveys.get)
    *
-   * @param string $surveyUrlId External URL ID for the survey.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Surveys_Survey
    */
@@ -52,7 +50,7 @@ class Google_Service_Surveys_Resource_Surveys extends Google_Service_Resource
     return $this->call('get', array($params), "Google_Service_Surveys_Survey");
   }
   /**
-   * Creates a survey. (surveys.insert)
+   *  (surveys.insert)
    *
    * @param Google_Service_Surveys_Survey $postBody
    * @param array $optParams Optional parameters.
@@ -65,13 +63,10 @@ class Google_Service_Surveys_Resource_Surveys extends Google_Service_Resource
     return $this->call('insert', array($params), "Google_Service_Surveys_Survey");
   }
   /**
-   * Lists the surveys owned by the authenticated user. (surveys.listSurveys)
+   *  (surveys.listSurveys)
    *
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string maxResults
-   * @opt_param string startIndex
-   * @opt_param string token
    * @return Google_Service_Surveys_SurveysListResponse
    */
   public function listSurveys($optParams = array())
@@ -81,23 +76,21 @@ class Google_Service_Surveys_Resource_Surveys extends Google_Service_Resource
     return $this->call('list', array($params), "Google_Service_Surveys_SurveysListResponse");
   }
   /**
-   * Begins running a survey. (surveys.start)
+   *  (surveys.start)
    *
-   * @param string $resourceId
    * @param Google_Service_Surveys_SurveysStartRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_Surveys_SurveysStartResponse
    */
   public function start($resourceId, Google_Service_Surveys_SurveysStartRequest $postBody, $optParams = array())
   {
-    $params = array('resourceId' => $resourceId, 'postBody' => $postBody);
+    $params = array('resourceId' => $resourceId ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('start', array($params), "Google_Service_Surveys_SurveysStartResponse");
   }
   /**
-   * Stops a running survey. (surveys.stop)
+   *  (surveys.stop)
    *
-   * @param string $resourceId
    * @param array $optParams Optional parameters.
    * @return Google_Service_Surveys_SurveysStopResponse
    */
@@ -108,17 +101,15 @@ class Google_Service_Surveys_Resource_Surveys extends Google_Service_Resource
     return $this->call('stop', array($params), "Google_Service_Surveys_SurveysStopResponse");
   }
   /**
-   * Updates a survey. Currently the only property that can be updated is the
-   * owners property. (surveys.update)
+   *  (surveys.update)
    *
-   * @param string $surveyUrlId External URL ID for the survey.
    * @param Google_Service_Surveys_Survey $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_Surveys_Survey
    */
   public function update($surveyUrlId, Google_Service_Surveys_Survey $postBody, $optParams = array())
   {
-    $params = array('surveyUrlId' => $surveyUrlId, 'postBody' => $postBody);
+    $params = array('surveyUrlId' => $surveyUrlId ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('update', array($params), "Google_Service_Surveys_Survey");
   }

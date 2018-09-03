@@ -26,9 +26,8 @@
 class Google_Service_Dfareporting_Resource_Languages extends Google_Service_Resource
 {
   /**
-   * Retrieves a list of languages. (languages.listLanguages)
+   *  (languages.listLanguages)
    *
-   * @param string $profileId User profile ID associated with this request.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Dfareporting_LanguagesListResponse
    */

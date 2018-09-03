@@ -26,10 +26,8 @@
 class Google_Service_AdExchangeSeller_Resource_AccountsMetadataMetrics extends Google_Service_Resource
 {
   /**
-   * List the metadata for the metrics available to this AdExchange account.
-   * (metrics.listAccountsMetadataMetrics)
+   *  (metrics.listAccountsMetadataMetrics)
    *
-   * @param string $accountId Account with visibility to the metrics.
    * @param array $optParams Optional parameters.
    * @return Google_Service_AdExchangeSeller_Metadata
    */

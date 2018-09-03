@@ -26,11 +26,8 @@
 class Google_Service_AdExchangeBuyer_Resource_Budget extends Google_Service_Resource
 {
   /**
-   * Returns the budget information for the adgroup specified by the accountId and
-   * billingId. (budget.get)
+   *  (budget.get)
    *
-   * @param string $accountId The account id to get the budget information for.
-   * @param string $billingId The billing id to get the budget information for.
    * @param array $optParams Optional parameters.
    * @return Google_Service_AdExchangeBuyer_Budget
    */
@@ -41,40 +38,28 @@ class Google_Service_AdExchangeBuyer_Resource_Budget extends Google_Service_Reso
     return $this->call('get', array($params), "Google_Service_AdExchangeBuyer_Budget");
   }
   /**
-   * Updates the budget amount for the budget of the adgroup specified by the
-   * accountId and billingId, with the budget amount in the request. This method
-   * supports patch semantics. (budget.patch)
+   *  (budget.patch)
    *
-   * @param string $accountId The account id associated with the budget being
-   * updated.
-   * @param string $billingId The billing id associated with the budget being
-   * updated.
    * @param Google_Service_AdExchangeBuyer_Budget $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_AdExchangeBuyer_Budget
    */
   public function patch($accountId, $billingId, Google_Service_AdExchangeBuyer_Budget $postBody, $optParams = array())
   {
-    $params = array('accountId' => $accountId, 'billingId' => $billingId, 'postBody' => $postBody);
+    $params = array('accountId' => $accountId, 'billingId' => $billingId ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('patch', array($params), "Google_Service_AdExchangeBuyer_Budget");
   }
   /**
-   * Updates the budget amount for the budget of the adgroup specified by the
-   * accountId and billingId, with the budget amount in the request.
-   * (budget.update)
+   *  (budget.update)
    *
-   * @param string $accountId The account id associated with the budget being
-   * updated.
-   * @param string $billingId The billing id associated with the budget being
-   * updated.
    * @param Google_Service_AdExchangeBuyer_Budget $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_AdExchangeBuyer_Budget
    */
   public function update($accountId, $billingId, Google_Service_AdExchangeBuyer_Budget $postBody, $optParams = array())
   {
-    $params = array('accountId' => $accountId, 'billingId' => $billingId, 'postBody' => $postBody);
+    $params = array('accountId' => $accountId, 'billingId' => $billingId ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('update', array($params), "Google_Service_AdExchangeBuyer_Budget");
   }

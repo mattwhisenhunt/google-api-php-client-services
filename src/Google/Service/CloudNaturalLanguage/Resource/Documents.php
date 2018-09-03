@@ -26,9 +26,7 @@
 class Google_Service_CloudNaturalLanguage_Resource_Documents extends Google_Service_Resource
 {
   /**
-   * Finds named entities (currently proper names and common nouns) in the text
-   * along with entity types, salience, mentions for each entity, and other
-   * properties. (documents.analyzeEntities)
+   *  (documents.analyzeEntities)
    *
    * @param Google_Service_CloudNaturalLanguage_AnalyzeEntitiesRequest $postBody
    * @param array $optParams Optional parameters.
@@ -41,9 +39,7 @@ class Google_Service_CloudNaturalLanguage_Resource_Documents extends Google_Serv
     return $this->call('analyzeEntities', array($params), "Google_Service_CloudNaturalLanguage_AnalyzeEntitiesResponse");
   }
   /**
-   * Finds entities, similar to AnalyzeEntities in the text and analyzes sentiment
-   * associated with each entity and its mentions.
-   * (documents.analyzeEntitySentiment)
+   *  (documents.analyzeEntitySentiment)
    *
    * @param Google_Service_CloudNaturalLanguage_AnalyzeEntitySentimentRequest $postBody
    * @param array $optParams Optional parameters.
@@ -56,7 +52,7 @@ class Google_Service_CloudNaturalLanguage_Resource_Documents extends Google_Serv
     return $this->call('analyzeEntitySentiment', array($params), "Google_Service_CloudNaturalLanguage_AnalyzeEntitySentimentResponse");
   }
   /**
-   * Analyzes the sentiment of the provided text. (documents.analyzeSentiment)
+   *  (documents.analyzeSentiment)
    *
    * @param Google_Service_CloudNaturalLanguage_AnalyzeSentimentRequest $postBody
    * @param array $optParams Optional parameters.
@@ -69,9 +65,7 @@ class Google_Service_CloudNaturalLanguage_Resource_Documents extends Google_Serv
     return $this->call('analyzeSentiment', array($params), "Google_Service_CloudNaturalLanguage_AnalyzeSentimentResponse");
   }
   /**
-   * Analyzes the syntax of the text and provides sentence boundaries and
-   * tokenization along with part of speech tags, dependency trees, and other
-   * properties. (documents.analyzeSyntax)
+   *  (documents.analyzeSyntax)
    *
    * @param Google_Service_CloudNaturalLanguage_AnalyzeSyntaxRequest $postBody
    * @param array $optParams Optional parameters.
@@ -84,9 +78,7 @@ class Google_Service_CloudNaturalLanguage_Resource_Documents extends Google_Serv
     return $this->call('analyzeSyntax', array($params), "Google_Service_CloudNaturalLanguage_AnalyzeSyntaxResponse");
   }
   /**
-   * A convenience method that provides all the features that analyzeSentiment,
-   * analyzeEntities, and analyzeSyntax provide in one call.
-   * (documents.annotateText)
+   *  (documents.annotateText)
    *
    * @param Google_Service_CloudNaturalLanguage_AnnotateTextRequest $postBody
    * @param array $optParams Optional parameters.
@@ -99,7 +91,7 @@ class Google_Service_CloudNaturalLanguage_Resource_Documents extends Google_Serv
     return $this->call('annotateText', array($params), "Google_Service_CloudNaturalLanguage_AnnotateTextResponse");
   }
   /**
-   * Classifies a document into categories. (documents.classifyText)
+   *  (documents.classifyText)
    *
    * @param Google_Service_CloudNaturalLanguage_ClassifyTextRequest $postBody
    * @param array $optParams Optional parameters.

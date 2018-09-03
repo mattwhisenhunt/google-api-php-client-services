@@ -26,19 +26,8 @@
 class Google_Service_Webmasters_Resource_Urlcrawlerrorssamples extends Google_Service_Resource
 {
   /**
-   * Retrieves details about crawl errors for a site's sample URL.
-   * (urlcrawlerrorssamples.get)
+   *  (urlcrawlerrorssamples.get)
    *
-   * @param string $siteUrl The site's URL, including protocol. For example:
-   * http://www.example.com/
-   * @param string $url The relative path (without the site) of the sample URL. It
-   * must be one of the URLs returned by list(). For example, for the URL
-   * https://www.example.com/pagename on the site https://www.example.com/, the
-   * url value is pagename
-   * @param string $category The crawl error category. For example:
-   * authPermissions
-   * @param string $platform The user agent type (platform) that made the request.
-   * For example: web
    * @param array $optParams Optional parameters.
    * @return Google_Service_Webmasters_UrlCrawlErrorsSample
    */
@@ -49,15 +38,8 @@ class Google_Service_Webmasters_Resource_Urlcrawlerrorssamples extends Google_Se
     return $this->call('get', array($params), "Google_Service_Webmasters_UrlCrawlErrorsSample");
   }
   /**
-   * Lists a site's sample URLs for the specified crawl error category and
-   * platform. (urlcrawlerrorssamples.listUrlcrawlerrorssamples)
+   *  (urlcrawlerrorssamples.listUrlcrawlerrorssamples)
    *
-   * @param string $siteUrl The site's URL, including protocol. For example:
-   * http://www.example.com/
-   * @param string $category The crawl error category. For example:
-   * authPermissions
-   * @param string $platform The user agent type (platform) that made the request.
-   * For example: web
    * @param array $optParams Optional parameters.
    * @return Google_Service_Webmasters_UrlCrawlErrorsSamplesListResponse
    */
@@ -68,20 +50,10 @@ class Google_Service_Webmasters_Resource_Urlcrawlerrorssamples extends Google_Se
     return $this->call('list', array($params), "Google_Service_Webmasters_UrlCrawlErrorsSamplesListResponse");
   }
   /**
-   * Marks the provided site's sample URL as fixed, and removes it from the
-   * samples list. (urlcrawlerrorssamples.markAsFixed)
+   *  (urlcrawlerrorssamples.markAsFixed)
    *
-   * @param string $siteUrl The site's URL, including protocol. For example:
-   * http://www.example.com/
-   * @param string $url The relative path (without the site) of the sample URL. It
-   * must be one of the URLs returned by list(). For example, for the URL
-   * https://www.example.com/pagename on the site https://www.example.com/, the
-   * url value is pagename
-   * @param string $category The crawl error category. For example:
-   * authPermissions
-   * @param string $platform The user agent type (platform) that made the request.
-   * For example: web
    * @param array $optParams Optional parameters.
+
    */
   public function markAsFixed($siteUrl, $url, $category, $platform, $optParams = array())
   {

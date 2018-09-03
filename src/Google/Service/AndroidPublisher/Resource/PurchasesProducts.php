@@ -26,14 +26,8 @@
 class Google_Service_AndroidPublisher_Resource_PurchasesProducts extends Google_Service_Resource
 {
   /**
-   * Checks the purchase and consumption status of an inapp item. (products.get)
+   *  (products.get)
    *
-   * @param string $packageName The package name of the application the inapp
-   * product was sold in (for example, 'com.some.thing').
-   * @param string $productId The inapp product SKU (for example,
-   * 'com.some.thing.inapp1').
-   * @param string $token The token provided to the user's device when the inapp
-   * product was purchased.
    * @param array $optParams Optional parameters.
    * @return Google_Service_AndroidPublisher_ProductPurchase
    */

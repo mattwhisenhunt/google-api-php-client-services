@@ -26,13 +26,11 @@
 class Google_Service_ShoppingContent_Resource_Liasettings extends Google_Service_Resource
 {
   /**
-   * Retrieves and/or updates the LIA settings of multiple accounts in a single
-   * request. (liasettings.custombatch)
+   *  (liasettings.custombatch)
    *
    * @param Google_Service_ShoppingContent_LiasettingsCustomBatchRequest $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param bool dryRun Flag to run the request in dry-run mode.
    * @return Google_Service_ShoppingContent_LiasettingsCustomBatchResponse
    */
   public function custombatch(Google_Service_ShoppingContent_LiasettingsCustomBatchRequest $postBody, $optParams = array())
@@ -42,13 +40,8 @@ class Google_Service_ShoppingContent_Resource_Liasettings extends Google_Service
     return $this->call('custombatch', array($params), "Google_Service_ShoppingContent_LiasettingsCustomBatchResponse");
   }
   /**
-   * Retrieves the LIA settings of the account. (liasettings.get)
+   *  (liasettings.get)
    *
-   * @param string $merchantId The ID of the managing account. If this parameter
-   * is not the same as accountId, then this account must be a multi-client
-   * account and accountId must be the ID of a sub-account of this account.
-   * @param string $accountId The ID of the account for which to get or update LIA
-   * settings.
    * @param array $optParams Optional parameters.
    * @return Google_Service_ShoppingContent_LiaSettings
    */
@@ -59,14 +52,8 @@ class Google_Service_ShoppingContent_Resource_Liasettings extends Google_Service
     return $this->call('get', array($params), "Google_Service_ShoppingContent_LiaSettings");
   }
   /**
-   * Retrieves the list of accessible Google My Business accounts.
-   * (liasettings.getaccessiblegmbaccounts)
+   *  (liasettings.getaccessiblegmbaccounts)
    *
-   * @param string $merchantId The ID of the managing account. If this parameter
-   * is not the same as accountId, then this account must be a multi-client
-   * account and accountId must be the ID of a sub-account of this account.
-   * @param string $accountId The ID of the account for which to retrieve
-   * accessible Google My Business accounts.
    * @param array $optParams Optional parameters.
    * @return Google_Service_ShoppingContent_LiasettingsGetAccessibleGmbAccountsResponse
    */
@@ -77,16 +64,10 @@ class Google_Service_ShoppingContent_Resource_Liasettings extends Google_Service
     return $this->call('getaccessiblegmbaccounts', array($params), "Google_Service_ShoppingContent_LiasettingsGetAccessibleGmbAccountsResponse");
   }
   /**
-   * Lists the LIA settings of the sub-accounts in your Merchant Center account.
-   * (liasettings.listLiasettings)
+   *  (liasettings.listLiasettings)
    *
-   * @param string $merchantId The ID of the managing account. This must be a
-   * multi-client account.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string maxResults The maximum number of LIA settings to return in
-   * the response, used for paging.
-   * @opt_param string pageToken The token returned by the previous request.
    * @return Google_Service_ShoppingContent_LiasettingsListResponse
    */
   public function listLiasettings($merchantId, $optParams = array())
@@ -96,8 +77,7 @@ class Google_Service_ShoppingContent_Resource_Liasettings extends Google_Service
     return $this->call('list', array($params), "Google_Service_ShoppingContent_LiasettingsListResponse");
   }
   /**
-   * Retrieves the list of POS data providers that have active settings for the
-   * all eiligible countries. (liasettings.listposdataproviders)
+   *  (liasettings.listposdataproviders)
    *
    * @param array $optParams Optional parameters.
    * @return Google_Service_ShoppingContent_LiasettingsListPosDataProvidersResponse
@@ -109,38 +89,24 @@ class Google_Service_ShoppingContent_Resource_Liasettings extends Google_Service
     return $this->call('listposdataproviders', array($params), "Google_Service_ShoppingContent_LiasettingsListPosDataProvidersResponse");
   }
   /**
-   * Updates the LIA settings of the account. This method supports patch
-   * semantics. (liasettings.patch)
+   *  (liasettings.patch)
    *
-   * @param string $merchantId The ID of the managing account. If this parameter
-   * is not the same as accountId, then this account must be a multi-client
-   * account and accountId must be the ID of a sub-account of this account.
-   * @param string $accountId The ID of the account for which to get or update LIA
-   * settings.
    * @param Google_Service_ShoppingContent_LiaSettings $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param bool dryRun Flag to run the request in dry-run mode.
    * @return Google_Service_ShoppingContent_LiaSettings
    */
   public function patch($merchantId, $accountId, Google_Service_ShoppingContent_LiaSettings $postBody, $optParams = array())
   {
-    $params = array('merchantId' => $merchantId, 'accountId' => $accountId, 'postBody' => $postBody);
+    $params = array('merchantId' => $merchantId, 'accountId' => $accountId ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('patch', array($params), "Google_Service_ShoppingContent_LiaSettings");
   }
   /**
-   * Requests access to a specified Google My Business account.
-   * (liasettings.requestgmbaccess)
+   *  (liasettings.requestgmbaccess)
    *
-   * @param string $merchantId The ID of the managing account. If this parameter
-   * is not the same as accountId, then this account must be a multi-client
-   * account and accountId must be the ID of a sub-account of this account.
-   * @param string $accountId The ID of the account for which GMB access is
-   * requested.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string gmbEmail The email of the Google My Business account.
    * @return Google_Service_ShoppingContent_LiasettingsRequestGmbAccessResponse
    */
   public function requestgmbaccess($merchantId, $accountId, $optParams = array())
@@ -150,16 +116,8 @@ class Google_Service_ShoppingContent_Resource_Liasettings extends Google_Service
     return $this->call('requestgmbaccess', array($params), "Google_Service_ShoppingContent_LiasettingsRequestGmbAccessResponse");
   }
   /**
-   * Requests inventory validation for the specified country.
-   * (liasettings.requestinventoryverification)
+   *  (liasettings.requestinventoryverification)
    *
-   * @param string $merchantId The ID of the managing account. If this parameter
-   * is not the same as accountId, then this account must be a multi-client
-   * account and accountId must be the ID of a sub-account of this account.
-   * @param string $accountId The ID of the account that manages the order. This
-   * cannot be a multi-client account.
-   * @param string $country The country for which inventory validation is
-   * requested.
    * @param array $optParams Optional parameters.
    * @return Google_Service_ShoppingContent_LiasettingsRequestInventoryVerificationResponse
    */
@@ -170,23 +128,10 @@ class Google_Service_ShoppingContent_Resource_Liasettings extends Google_Service
     return $this->call('requestinventoryverification', array($params), "Google_Service_ShoppingContent_LiasettingsRequestInventoryVerificationResponse");
   }
   /**
-   * Sets the inventory verification contract for the specified country.
-   * (liasettings.setinventoryverificationcontact)
+   *  (liasettings.setinventoryverificationcontact)
    *
-   * @param string $merchantId The ID of the managing account. If this parameter
-   * is not the same as accountId, then this account must be a multi-client
-   * account and accountId must be the ID of a sub-account of this account.
-   * @param string $accountId The ID of the account that manages the order. This
-   * cannot be a multi-client account.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string contactEmail The email of the inventory verification
-   * contact.
-   * @opt_param string contactName The name of the inventory verification contact.
-   * @opt_param string country The country for which inventory verification is
-   * requested.
-   * @opt_param string language The language for which inventory verification is
-   * requested.
    * @return Google_Service_ShoppingContent_LiasettingsSetInventoryVerificationContactResponse
    */
   public function setinventoryverificationcontact($merchantId, $accountId, $optParams = array())
@@ -196,21 +141,10 @@ class Google_Service_ShoppingContent_Resource_Liasettings extends Google_Service
     return $this->call('setinventoryverificationcontact', array($params), "Google_Service_ShoppingContent_LiasettingsSetInventoryVerificationContactResponse");
   }
   /**
-   * Sets the POS data provider for the specified country.
-   * (liasettings.setposdataprovider)
+   *  (liasettings.setposdataprovider)
    *
-   * @param string $merchantId The ID of the managing account. If this parameter
-   * is not the same as accountId, then this account must be a multi-client
-   * account and accountId must be the ID of a sub-account of this account.
-   * @param string $accountId The ID of the account for which to retrieve
-   * accessible Google My Business accounts.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string country The country for which the POS data provider is
-   * selected.
-   * @opt_param string posDataProviderId The ID of POS data provider.
-   * @opt_param string posExternalAccountId The account ID by which this merchant
-   * is known to the POS data provider.
    * @return Google_Service_ShoppingContent_LiasettingsSetPosDataProviderResponse
    */
   public function setposdataprovider($merchantId, $accountId, $optParams = array())
@@ -220,22 +154,16 @@ class Google_Service_ShoppingContent_Resource_Liasettings extends Google_Service
     return $this->call('setposdataprovider', array($params), "Google_Service_ShoppingContent_LiasettingsSetPosDataProviderResponse");
   }
   /**
-   * Updates the LIA settings of the account. (liasettings.update)
+   *  (liasettings.update)
    *
-   * @param string $merchantId The ID of the managing account. If this parameter
-   * is not the same as accountId, then this account must be a multi-client
-   * account and accountId must be the ID of a sub-account of this account.
-   * @param string $accountId The ID of the account for which to get or update LIA
-   * settings.
    * @param Google_Service_ShoppingContent_LiaSettings $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param bool dryRun Flag to run the request in dry-run mode.
    * @return Google_Service_ShoppingContent_LiaSettings
    */
   public function update($merchantId, $accountId, Google_Service_ShoppingContent_LiaSettings $postBody, $optParams = array())
   {
-    $params = array('merchantId' => $merchantId, 'accountId' => $accountId, 'postBody' => $postBody);
+    $params = array('merchantId' => $merchantId, 'accountId' => $accountId ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('update', array($params), "Google_Service_ShoppingContent_LiaSettings");
   }

@@ -26,14 +26,10 @@
 class Google_Service_Indexing_Resource_UrlNotifications extends Google_Service_Resource
 {
   /**
-   * Gets metadata about a Web Document. This method can _only_ be used to query
-   * URLs that were previously seen in successful Indexing API notifications.
-   * Includes the latest `UrlNotification` received via this API.
-   * (urlNotifications.getMetadata)
+   *  (urlNotifications.getMetadata)
    *
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string url URL that is being queried.
    * @return Google_Service_Indexing_UrlNotificationMetadata
    */
   public function getMetadata($optParams = array())
@@ -43,7 +39,7 @@ class Google_Service_Indexing_Resource_UrlNotifications extends Google_Service_R
     return $this->call('getMetadata', array($params), "Google_Service_Indexing_UrlNotificationMetadata");
   }
   /**
-   * Notifies that a URL has been updated or deleted. (urlNotifications.publish)
+   *  (urlNotifications.publish)
    *
    * @param Google_Service_Indexing_UrlNotification $postBody
    * @param array $optParams Optional parameters.

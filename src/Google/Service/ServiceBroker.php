@@ -19,9 +19,11 @@
  * Service definition for ServiceBroker (v1).
  *
  * <p>
- * The Google Cloud Platform Service Broker API provides Google hosted
- * implementation of the Open Service Broker API
- * (https://www.openservicebrokerapi.org/).</p>
+ * The Google Cloud Platform Service Broker API provides Google
+ * hosted
+implementation of the Open Service Broker
+ * API
+(https://www.openservicebrokerapi.org/).</p>
  *
  * <p>
  * For more information about this service, see the API

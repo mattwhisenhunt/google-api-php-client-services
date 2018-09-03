@@ -15,25 +15,17 @@
  * the License.
  */
 
-class Google_Service_CloudTasks_PullMessage extends Google_Model
+class Google_Service_Compute_SecurityPolicyRuleMatcherConfig extends Google_Collection
 {
-  public $payload;
-  public $tag;
+  protected $collection_key = 'srcIpRanges';
+  public $srcIpRanges;
 
-  public function setPayload($payload)
+  public function setSrcIpRanges($srcIpRanges)
   {
-    $this->payload = $payload;
+    $this->srcIpRanges = $srcIpRanges;
   }
-  public function getPayload()
+  public function getSrcIpRanges()
   {
-    return $this->payload;
-  }
-  public function setTag($tag)
-  {
-    $this->tag = $tag;
-  }
-  public function getTag()
-  {
-    return $this->tag;
+    return $this->srcIpRanges;
   }
 }

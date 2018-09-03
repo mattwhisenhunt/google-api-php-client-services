@@ -26,11 +26,10 @@
 class Google_Service_GamesConfiguration_Resource_AchievementConfigurations extends Google_Service_Resource
 {
   /**
-   * Delete the achievement configuration with the given ID.
-   * (achievementConfigurations.delete)
+   *  (achievementConfigurations.delete)
    *
-   * @param string $achievementId The ID of the achievement used by this method.
    * @param array $optParams Optional parameters.
+
    */
   public function delete($achievementId, $optParams = array())
   {
@@ -39,10 +38,8 @@ class Google_Service_GamesConfiguration_Resource_AchievementConfigurations exten
     return $this->call('delete', array($params));
   }
   /**
-   * Retrieves the metadata of the achievement configuration with the given ID.
-   * (achievementConfigurations.get)
+   *  (achievementConfigurations.get)
    *
-   * @param string $achievementId The ID of the achievement used by this method.
    * @param array $optParams Optional parameters.
    * @return Google_Service_GamesConfiguration_AchievementConfiguration
    */
@@ -53,33 +50,23 @@ class Google_Service_GamesConfiguration_Resource_AchievementConfigurations exten
     return $this->call('get', array($params), "Google_Service_GamesConfiguration_AchievementConfiguration");
   }
   /**
-   * Insert a new achievement configuration in this application.
-   * (achievementConfigurations.insert)
+   *  (achievementConfigurations.insert)
    *
-   * @param string $applicationId The application ID from the Google Play
-   * developer console.
    * @param Google_Service_GamesConfiguration_AchievementConfiguration $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_GamesConfiguration_AchievementConfiguration
    */
   public function insert($applicationId, Google_Service_GamesConfiguration_AchievementConfiguration $postBody, $optParams = array())
   {
-    $params = array('applicationId' => $applicationId, 'postBody' => $postBody);
+    $params = array('applicationId' => $applicationId ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('insert', array($params), "Google_Service_GamesConfiguration_AchievementConfiguration");
   }
   /**
-   * Returns a list of the achievement configurations in this application.
-   * (achievementConfigurations.listAchievementConfigurations)
+   *  (achievementConfigurations.listAchievementConfigurations)
    *
-   * @param string $applicationId The application ID from the Google Play
-   * developer console.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int maxResults The maximum number of resource configurations to
-   * return in the response, used for paging. For any response, the actual number
-   * of resources returned may be less than the specified maxResults.
-   * @opt_param string pageToken The token returned by the previous request.
    * @return Google_Service_GamesConfiguration_AchievementConfigurationListResponse
    */
   public function listAchievementConfigurations($applicationId, $optParams = array())
@@ -89,32 +76,28 @@ class Google_Service_GamesConfiguration_Resource_AchievementConfigurations exten
     return $this->call('list', array($params), "Google_Service_GamesConfiguration_AchievementConfigurationListResponse");
   }
   /**
-   * Update the metadata of the achievement configuration with the given ID. This
-   * method supports patch semantics. (achievementConfigurations.patch)
+   *  (achievementConfigurations.patch)
    *
-   * @param string $achievementId The ID of the achievement used by this method.
    * @param Google_Service_GamesConfiguration_AchievementConfiguration $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_GamesConfiguration_AchievementConfiguration
    */
   public function patch($achievementId, Google_Service_GamesConfiguration_AchievementConfiguration $postBody, $optParams = array())
   {
-    $params = array('achievementId' => $achievementId, 'postBody' => $postBody);
+    $params = array('achievementId' => $achievementId ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('patch', array($params), "Google_Service_GamesConfiguration_AchievementConfiguration");
   }
   /**
-   * Update the metadata of the achievement configuration with the given ID.
-   * (achievementConfigurations.update)
+   *  (achievementConfigurations.update)
    *
-   * @param string $achievementId The ID of the achievement used by this method.
    * @param Google_Service_GamesConfiguration_AchievementConfiguration $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_GamesConfiguration_AchievementConfiguration
    */
   public function update($achievementId, Google_Service_GamesConfiguration_AchievementConfiguration $postBody, $optParams = array())
   {
-    $params = array('achievementId' => $achievementId, 'postBody' => $postBody);
+    $params = array('achievementId' => $achievementId ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('update', array($params), "Google_Service_GamesConfiguration_AchievementConfiguration");
   }

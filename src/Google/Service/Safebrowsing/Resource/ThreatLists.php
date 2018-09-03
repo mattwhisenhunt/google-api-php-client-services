@@ -26,8 +26,7 @@
 class Google_Service_Safebrowsing_Resource_ThreatLists extends Google_Service_Resource
 {
   /**
-   * Lists the Safe Browsing threat lists available for download.
-   * (threatLists.listThreatLists)
+   *  (threatLists.listThreatLists)
    *
    * @param array $optParams Optional parameters.
    * @return Google_Service_Safebrowsing_ListThreatListsResponse

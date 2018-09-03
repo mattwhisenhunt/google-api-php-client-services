@@ -26,26 +26,23 @@
 class Google_Service_TagManager_Resource_AccountsContainersWorkspacesProposal extends Google_Service_Resource
 {
   /**
-   * Creates a GTM Workspace Proposal. (proposal.create)
+   *  (proposal.create)
    *
-   * @param string $parent GTM Workspace's API relative path. Example:
-   * accounts/{aid}/containers/{cid}/workspace/{wid}
    * @param Google_Service_TagManager_CreateWorkspaceProposalRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_TagManager_WorkspaceProposal
    */
   public function create($parent, Google_Service_TagManager_CreateWorkspaceProposalRequest $postBody, $optParams = array())
   {
-    $params = array('parent' => $parent, 'postBody' => $postBody);
+    $params = array('parent' => $parent ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('create', array($params), "Google_Service_TagManager_WorkspaceProposal");
   }
   /**
-   * Deletes a GTM Workspace Proposal. (proposal.delete)
+   *  (proposal.delete)
    *
-   * @param string $path GTM workspace proposal's relative path: Example:
-   * accounts/{aid}/containers/{cid}/workspace/{wid}/workspace_proposal
    * @param array $optParams Optional parameters.
+
    */
   public function delete($path, $optParams = array())
   {

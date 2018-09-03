@@ -26,10 +26,10 @@
 class Google_Service_Webmasters_Resource_Sites extends Google_Service_Resource
 {
   /**
-   * Adds a site to the set of the user's sites in Search Console. (sites.add)
+   *  (sites.add)
    *
-   * @param string $siteUrl The URL of the site to add.
    * @param array $optParams Optional parameters.
+
    */
   public function add($siteUrl, $optParams = array())
   {
@@ -38,14 +38,10 @@ class Google_Service_Webmasters_Resource_Sites extends Google_Service_Resource
     return $this->call('add', array($params));
   }
   /**
-   * Removes a site from the set of the user's Search Console sites.
-   * (sites.delete)
+   *  (sites.delete)
    *
-   * @param string $siteUrl The URI of the property as defined in Search Console.
-   * Examples: http://www.example.com/ or android-app://com.example/ Note: for
-   * property-sets, use the URI that starts with sc-set: which is used in Search
-   * Console URLs.
    * @param array $optParams Optional parameters.
+
    */
   public function delete($siteUrl, $optParams = array())
   {
@@ -54,12 +50,8 @@ class Google_Service_Webmasters_Resource_Sites extends Google_Service_Resource
     return $this->call('delete', array($params));
   }
   /**
-   * Retrieves information about specific site. (sites.get)
+   *  (sites.get)
    *
-   * @param string $siteUrl The URI of the property as defined in Search Console.
-   * Examples: http://www.example.com/ or android-app://com.example/ Note: for
-   * property-sets, use the URI that starts with sc-set: which is used in Search
-   * Console URLs.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Webmasters_WmxSite
    */
@@ -70,7 +62,7 @@ class Google_Service_Webmasters_Resource_Sites extends Google_Service_Resource
     return $this->call('get', array($params), "Google_Service_Webmasters_WmxSite");
   }
   /**
-   * Lists the user's Search Console sites. (sites.listSites)
+   *  (sites.listSites)
    *
    * @param array $optParams Optional parameters.
    * @return Google_Service_Webmasters_SitesListResponse

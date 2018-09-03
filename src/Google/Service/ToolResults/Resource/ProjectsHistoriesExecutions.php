@@ -26,55 +26,22 @@
 class Google_Service_ToolResults_Resource_ProjectsHistoriesExecutions extends Google_Service_Resource
 {
   /**
-   * Creates an Execution.
+   *  (executions.create)
    *
-   * The returned Execution will have the id set.
-   *
-   * May return any of the following canonical error codes:
-   *
-   * - PERMISSION_DENIED - if the user is not authorized to write to project -
-   * INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the
-   * containing History does not exist (executions.create)
-   *
-   * @param string $projectId A Project id.
-   *
-   * Required.
-   * @param string $historyId A History id.
-   *
-   * Required.
    * @param Google_Service_ToolResults_Execution $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string requestId A unique request ID for server to detect
-   * duplicated requests. For example, a UUID.
-   *
-   * Optional, but strongly recommended.
    * @return Google_Service_ToolResults_Execution
    */
   public function create($projectId, $historyId, Google_Service_ToolResults_Execution $postBody, $optParams = array())
   {
-    $params = array('projectId' => $projectId, 'historyId' => $historyId, 'postBody' => $postBody);
+    $params = array('projectId' => $projectId, 'historyId' => $historyId ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('create', array($params), "Google_Service_ToolResults_Execution");
   }
   /**
-   * Gets an Execution.
+   *  (executions.get)
    *
-   * May return any of the following canonical error codes:
-   *
-   * - PERMISSION_DENIED - if the user is not authorized to write to project -
-   * INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Execution
-   * does not exist (executions.get)
-   *
-   * @param string $projectId A Project id.
-   *
-   * Required.
-   * @param string $historyId A History id.
-   *
-   * Required.
-   * @param string $executionId An Execution id.
-   *
-   * Required.
    * @param array $optParams Optional parameters.
    * @return Google_Service_ToolResults_Execution
    */
@@ -85,37 +52,10 @@ class Google_Service_ToolResults_Resource_ProjectsHistoriesExecutions extends Go
     return $this->call('get', array($params), "Google_Service_ToolResults_Execution");
   }
   /**
-   * Lists Histories for a given Project.
+   *  (executions.listProjectsHistoriesExecutions)
    *
-   * The executions are sorted by creation_time in descending order. The
-   * execution_id key will be used to order the executions with the same
-   * creation_time.
-   *
-   * May return any of the following canonical error codes:
-   *
-   * - PERMISSION_DENIED - if the user is not authorized to read project -
-   * INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the
-   * containing History does not exist
-   * (executions.listProjectsHistoriesExecutions)
-   *
-   * @param string $projectId A Project id.
-   *
-   * Required.
-   * @param string $historyId A History id.
-   *
-   * Required.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int pageSize The maximum number of Executions to fetch.
-   *
-   * Default value: 25. The server will use this default if the field is not set
-   * or has a value of 0.
-   *
-   * Optional.
-   * @opt_param string pageToken A continuation token to resume the query at the
-   * next item.
-   *
-   * Optional.
    * @return Google_Service_ToolResults_ListExecutionsResponse
    */
   public function listProjectsHistoriesExecutions($projectId, $historyId, $optParams = array())
@@ -125,30 +65,16 @@ class Google_Service_ToolResults_Resource_ProjectsHistoriesExecutions extends Go
     return $this->call('list', array($params), "Google_Service_ToolResults_ListExecutionsResponse");
   }
   /**
-   * Updates an existing Execution with the supplied partial entity.
+   *  (executions.patch)
    *
-   * May return any of the following canonical error codes:
-   *
-   * - PERMISSION_DENIED - if the user is not authorized to write to project -
-   * INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if the
-   * requested state transition is illegal - NOT_FOUND - if the containing History
-   * does not exist (executions.patch)
-   *
-   * @param string $projectId A Project id. Required.
-   * @param string $historyId Required.
-   * @param string $executionId Required.
    * @param Google_Service_ToolResults_Execution $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string requestId A unique request ID for server to detect
-   * duplicated requests. For example, a UUID.
-   *
-   * Optional, but strongly recommended.
    * @return Google_Service_ToolResults_Execution
    */
   public function patch($projectId, $historyId, $executionId, Google_Service_ToolResults_Execution $postBody, $optParams = array())
   {
-    $params = array('projectId' => $projectId, 'historyId' => $historyId, 'executionId' => $executionId, 'postBody' => $postBody);
+    $params = array('projectId' => $projectId, 'historyId' => $historyId, 'executionId' => $executionId ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('patch', array($params), "Google_Service_ToolResults_Execution");
   }

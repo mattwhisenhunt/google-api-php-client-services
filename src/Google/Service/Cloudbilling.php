@@ -20,7 +20,8 @@
  *
  * <p>
  * Allows developers to manage billing for their Google Cloud Platform projects
- * programmatically.</p>
+
+ *    programmatically.</p>
  *
  * <p>
  * For more information about this service, see the API
@@ -154,13 +155,13 @@ class Google_Service_Cloudbilling extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'pageToken' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
                 'pageSize' => array(
                   'location' => 'query',
                   'type' => 'integer',
+                ),
+                'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),
@@ -243,6 +244,10 @@ class Google_Service_Cloudbilling extends Google_Service
                   'location' => 'query',
                   'type' => 'string',
                 ),
+                'pageSize' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
+                ),
                 'pageToken' => array(
                   'location' => 'query',
                   'type' => 'string',
@@ -250,10 +255,6 @@ class Google_Service_Cloudbilling extends Google_Service
                 'startTime' => array(
                   'location' => 'query',
                   'type' => 'string',
-                ),
-                'pageSize' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
                 ),
               ),
             ),

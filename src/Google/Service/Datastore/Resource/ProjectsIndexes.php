@@ -26,10 +26,8 @@
 class Google_Service_Datastore_Resource_ProjectsIndexes extends Google_Service_Resource
 {
   /**
-   * Gets an index. (indexes.get)
+   *  (indexes.get)
    *
-   * @param string $projectId Project ID against which to make the request.
-   * @param string $indexId The resource ID of the index to get.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Datastore_GoogleDatastoreAdminV1Index
    */
@@ -40,18 +38,10 @@ class Google_Service_Datastore_Resource_ProjectsIndexes extends Google_Service_R
     return $this->call('get', array($params), "Google_Service_Datastore_GoogleDatastoreAdminV1Index");
   }
   /**
-   * Lists the indexes that match the specified filters.  Datastore uses an
-   * eventually consistent query to fetch the list of indexes and may occasionally
-   * return stale results. (indexes.listProjectsIndexes)
+   *  (indexes.listProjectsIndexes)
    *
-   * @param string $projectId Project ID against which to make the request.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string filter
-   * @opt_param string pageToken The next_page_token value returned from a
-   * previous List request, if any.
-   * @opt_param int pageSize The maximum number of items to return.  If zero, then
-   * all results will be returned.
    * @return Google_Service_Datastore_GoogleDatastoreAdminV1ListIndexesResponse
    */
   public function listProjectsIndexes($projectId, $optParams = array())

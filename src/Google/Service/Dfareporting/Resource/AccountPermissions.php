@@ -26,10 +26,8 @@
 class Google_Service_Dfareporting_Resource_AccountPermissions extends Google_Service_Resource
 {
   /**
-   * Gets one account permission by ID. (accountPermissions.get)
+   *  (accountPermissions.get)
    *
-   * @param string $profileId User profile ID associated with this request.
-   * @param string $id Account permission ID.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Dfareporting_AccountPermission
    */
@@ -40,10 +38,8 @@ class Google_Service_Dfareporting_Resource_AccountPermissions extends Google_Ser
     return $this->call('get', array($params), "Google_Service_Dfareporting_AccountPermission");
   }
   /**
-   * Retrieves the list of account permissions.
-   * (accountPermissions.listAccountPermissions)
+   *  (accountPermissions.listAccountPermissions)
    *
-   * @param string $profileId User profile ID associated with this request.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Dfareporting_AccountPermissionsListResponse
    */

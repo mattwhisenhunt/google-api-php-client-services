@@ -26,9 +26,8 @@
 class Google_Service_GroupsMigration_Resource_Archive extends Google_Service_Resource
 {
   /**
-   * Inserts a new mail into the archive of the Google group. (archive.insert)
+   *  (archive.insert)
    *
-   * @param string $groupId The group ID
    * @param array $optParams Optional parameters.
    * @return Google_Service_GroupsMigration_Groups
    */

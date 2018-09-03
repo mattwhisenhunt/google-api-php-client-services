@@ -124,17 +124,17 @@ class Google_Service_Iam extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'showDeleted' => array(
+                'pageSize' => array(
                   'location' => 'query',
-                  'type' => 'boolean',
+                  'type' => 'integer',
                 ),
                 'pageToken' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'pageSize' => array(
+                'showDeleted' => array(
                   'location' => 'query',
-                  'type' => 'integer',
+                  'type' => 'boolean',
                 ),
                 'view' => array(
                   'location' => 'query',
@@ -232,17 +232,17 @@ class Google_Service_Iam extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'showDeleted' => array(
+                'pageSize' => array(
                   'location' => 'query',
-                  'type' => 'boolean',
+                  'type' => 'integer',
                 ),
                 'pageToken' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'pageSize' => array(
+                'showDeleted' => array(
                   'location' => 'query',
-                  'type' => 'integer',
+                  'type' => 'boolean',
                 ),
                 'view' => array(
                   'location' => 'query',
@@ -332,13 +332,13 @@ class Google_Service_Iam extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'pageToken' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
                 'pageSize' => array(
                   'location' => 'query',
                   'type' => 'integer',
+                ),
+                'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),'setIamPolicy' => array(

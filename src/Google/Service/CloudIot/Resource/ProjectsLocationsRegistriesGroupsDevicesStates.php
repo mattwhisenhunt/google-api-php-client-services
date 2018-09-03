@@ -26,17 +26,10 @@
 class Google_Service_CloudIot_Resource_ProjectsLocationsRegistriesGroupsDevicesStates extends Google_Service_Resource
 {
   /**
-   * Lists the last few versions of the device state in descending order (i.e.:
-   * newest first). (states.listProjectsLocationsRegistriesGroupsDevicesStates)
+   *  (states.listProjectsLocationsRegistriesGroupsDevicesStates)
    *
-   * @param string $name The name of the device. For example,
-   * `projects/p0/locations/us-central1/registries/registry0/devices/device0` or
-   * `projects/p0/locations/us-central1/registries/registry0/devices/{num_id}`.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int numStates The number of states to list. States are listed in
-   * descending order of update time. The maximum number of states retained is 10.
-   * If this value is zero, it will return all the states available.
    * @return Google_Service_CloudIot_ListDeviceStatesResponse
    */
   public function listProjectsLocationsRegistriesGroupsDevicesStates($name, $optParams = array())

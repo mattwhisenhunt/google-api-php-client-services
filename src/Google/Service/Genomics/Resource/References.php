@@ -26,13 +26,8 @@
 class Google_Service_Genomics_Resource_References extends Google_Service_Resource
 {
   /**
-   * Gets a reference.
+   *  (references.get)
    *
-   * Implements [GlobalAllianceApi.getReference](https://github.com/ga4gh/schemas/
-   * blob/v0.5.1/src/main/resources/avro/referencemethods.avdl#L158).
-   * (references.get)
-   *
-   * @param string $referenceId The ID of the reference.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Genomics_Reference
    */
@@ -43,11 +38,7 @@ class Google_Service_Genomics_Resource_References extends Google_Service_Resourc
     return $this->call('get', array($params), "Google_Service_Genomics_Reference");
   }
   /**
-   * Searches for references which match the given criteria.
-   *
-   * Implements [GlobalAllianceApi.searchReferences](https://github.com/ga4gh/sche
-   * mas/blob/v0.5.1/src/main/resources/avro/referencemethods.avdl#L146).
-   * (references.search)
+   *  (references.search)
    *
    * @param Google_Service_Genomics_SearchReferencesRequest $postBody
    * @param array $optParams Optional parameters.

@@ -26,12 +26,8 @@
 class Google_Service_Iam_Resource_Roles extends Google_Service_Resource
 {
   /**
-   * Gets a Role definition. (roles.get)
+   *  (roles.get)
    *
-   * @param string $name The resource name of the role in one of the following
-   * formats: `roles/{ROLE_NAME}`
-   * `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`
-   * `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
    * @param array $optParams Optional parameters.
    * @return Google_Service_Iam_Role
    */
@@ -42,19 +38,10 @@ class Google_Service_Iam_Resource_Roles extends Google_Service_Resource
     return $this->call('get', array($params), "Google_Service_Iam_Role");
   }
   /**
-   * Lists the Roles defined on a resource. (roles.listRoles)
+   *  (roles.listRoles)
    *
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string pageToken Optional pagination token returned in an earlier
-   * ListRolesResponse.
-   * @opt_param int pageSize Optional limit on the number of roles to include in
-   * the response.
-   * @opt_param string view Optional view for the returned Role objects.
-   * @opt_param string parent The resource name of the parent resource in one of
-   * the following formats: `` (empty string) -- this refers to curated roles.
-   * `organizations/{ORGANIZATION_ID}` `projects/{PROJECT_ID}`
-   * @opt_param bool showDeleted Include Roles that have been deleted.
    * @return Google_Service_Iam_ListRolesResponse
    */
   public function listRoles($optParams = array())
@@ -64,9 +51,7 @@ class Google_Service_Iam_Resource_Roles extends Google_Service_Resource
     return $this->call('list', array($params), "Google_Service_Iam_ListRolesResponse");
   }
   /**
-   * Queries roles that can be granted on a particular resource. A role is
-   * grantable if it can be used as the role in a binding for a policy for that
-   * resource. (roles.queryGrantableRoles)
+   *  (roles.queryGrantableRoles)
    *
    * @param Google_Service_Iam_QueryGrantableRolesRequest $postBody
    * @param array $optParams Optional parameters.

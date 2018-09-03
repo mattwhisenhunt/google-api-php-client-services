@@ -26,9 +26,8 @@
 class Google_Service_AdExchangeBuyer_Resource_Products extends Google_Service_Resource
 {
   /**
-   * Gets the requested product by id. (products.get)
+   *  (products.get)
    *
-   * @param string $productId The id for the product to get the head revision for.
    * @param array $optParams Optional parameters.
    * @return Google_Service_AdExchangeBuyer_Product
    */
@@ -39,11 +38,10 @@ class Google_Service_AdExchangeBuyer_Resource_Products extends Google_Service_Re
     return $this->call('get', array($params), "Google_Service_AdExchangeBuyer_Product");
   }
   /**
-   * Gets the requested product. (products.search)
+   *  (products.search)
    *
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string pqlQuery The pql query used to query for products.
    * @return Google_Service_AdExchangeBuyer_GetOffersResponse
    */
   public function search($optParams = array())

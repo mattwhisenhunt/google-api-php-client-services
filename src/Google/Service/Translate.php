@@ -20,7 +20,8 @@
  *
  * <p>
  * The Google Cloud Translation API lets websites and programs integrate with
- * Google Translate programmatically.</p>
+  
+ *  Google Translate programmatically.</p>
  *
  * <p>
  * For more information about this service, see the API
@@ -124,20 +125,20 @@ class Google_Service_Translate extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'model' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'source' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
                 'cid' => array(
                   'location' => 'query',
                   'type' => 'string',
                   'repeated' => true,
                 ),
                 'format' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'model' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'source' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),

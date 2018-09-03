@@ -26,30 +26,28 @@
 class Google_Service_Dfareporting_Resource_Conversions extends Google_Service_Resource
 {
   /**
-   * Inserts conversions. (conversions.batchinsert)
+   *  (conversions.batchinsert)
    *
-   * @param string $profileId User profile ID associated with this request.
    * @param Google_Service_Dfareporting_ConversionsBatchInsertRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_Dfareporting_ConversionsBatchInsertResponse
    */
   public function batchinsert($profileId, Google_Service_Dfareporting_ConversionsBatchInsertRequest $postBody, $optParams = array())
   {
-    $params = array('profileId' => $profileId, 'postBody' => $postBody);
+    $params = array('profileId' => $profileId ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('batchinsert', array($params), "Google_Service_Dfareporting_ConversionsBatchInsertResponse");
   }
   /**
-   * Updates existing conversions. (conversions.batchupdate)
+   *  (conversions.batchupdate)
    *
-   * @param string $profileId User profile ID associated with this request.
    * @param Google_Service_Dfareporting_ConversionsBatchUpdateRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_Dfareporting_ConversionsBatchUpdateResponse
    */
   public function batchupdate($profileId, Google_Service_Dfareporting_ConversionsBatchUpdateRequest $postBody, $optParams = array())
   {
-    $params = array('profileId' => $profileId, 'postBody' => $postBody);
+    $params = array('profileId' => $profileId ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('batchupdate', array($params), "Google_Service_Dfareporting_ConversionsBatchUpdateResponse");
   }

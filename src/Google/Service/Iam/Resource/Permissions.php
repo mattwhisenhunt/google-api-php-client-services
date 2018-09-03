@@ -26,9 +26,7 @@
 class Google_Service_Iam_Resource_Permissions extends Google_Service_Resource
 {
   /**
-   * Lists the permissions testable on a resource. A permission is testable if it
-   * can be tested for an identity on a resource.
-   * (permissions.queryTestablePermissions)
+   *  (permissions.queryTestablePermissions)
    *
    * @param Google_Service_Iam_QueryTestablePermissionsRequest $postBody
    * @param array $optParams Optional parameters.

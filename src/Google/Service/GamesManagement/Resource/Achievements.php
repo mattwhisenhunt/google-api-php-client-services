@@ -26,11 +26,8 @@
 class Google_Service_GamesManagement_Resource_Achievements extends Google_Service_Resource
 {
   /**
-   * Resets the achievement with the given ID for the currently authenticated
-   * player. This method is only accessible to whitelisted tester accounts for
-   * your application. (achievements.reset)
+   *  (achievements.reset)
    *
-   * @param string $achievementId The ID of the achievement used by this method.
    * @param array $optParams Optional parameters.
    * @return Google_Service_GamesManagement_AchievementResetResponse
    */
@@ -41,9 +38,7 @@ class Google_Service_GamesManagement_Resource_Achievements extends Google_Servic
     return $this->call('reset', array($params), "Google_Service_GamesManagement_AchievementResetResponse");
   }
   /**
-   * Resets all achievements for the currently authenticated player for your
-   * application. This method is only accessible to whitelisted tester accounts
-   * for your application. (achievements.resetAll)
+   *  (achievements.resetAll)
    *
    * @param array $optParams Optional parameters.
    * @return Google_Service_GamesManagement_AchievementResetAllResponse
@@ -55,11 +50,10 @@ class Google_Service_GamesManagement_Resource_Achievements extends Google_Servic
     return $this->call('resetAll', array($params), "Google_Service_GamesManagement_AchievementResetAllResponse");
   }
   /**
-   * Resets all draft achievements for all players. This method is only available
-   * to user accounts for your developer console.
-   * (achievements.resetAllForAllPlayers)
+   *  (achievements.resetAllForAllPlayers)
    *
    * @param array $optParams Optional parameters.
+
    */
   public function resetAllForAllPlayers($optParams = array())
   {
@@ -68,12 +62,10 @@ class Google_Service_GamesManagement_Resource_Achievements extends Google_Servic
     return $this->call('resetAllForAllPlayers', array($params));
   }
   /**
-   * Resets the achievement with the given ID for all players. This method is only
-   * available to user accounts for your developer console. Only draft
-   * achievements can be reset. (achievements.resetForAllPlayers)
+   *  (achievements.resetForAllPlayers)
    *
-   * @param string $achievementId The ID of the achievement used by this method.
    * @param array $optParams Optional parameters.
+
    */
   public function resetForAllPlayers($achievementId, $optParams = array())
   {
@@ -82,12 +74,11 @@ class Google_Service_GamesManagement_Resource_Achievements extends Google_Servic
     return $this->call('resetForAllPlayers', array($params));
   }
   /**
-   * Resets achievements with the given IDs for all players. This method is only
-   * available to user accounts for your developer console. Only draft
-   * achievements may be reset. (achievements.resetMultipleForAllPlayers)
+   *  (achievements.resetMultipleForAllPlayers)
    *
    * @param Google_Service_GamesManagement_AchievementResetMultipleForAllRequest $postBody
    * @param array $optParams Optional parameters.
+
    */
   public function resetMultipleForAllPlayers(Google_Service_GamesManagement_AchievementResetMultipleForAllRequest $postBody, $optParams = array())
   {

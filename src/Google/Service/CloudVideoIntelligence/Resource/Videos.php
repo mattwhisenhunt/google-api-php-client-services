@@ -26,10 +26,7 @@
 class Google_Service_CloudVideoIntelligence_Resource_Videos extends Google_Service_Resource
 {
   /**
-   * Performs asynchronous video annotation. Progress and results can be retrieved
-   * through the `google.longrunning.Operations` interface. `Operation.metadata`
-   * contains `AnnotateVideoProgress` (progress). `Operation.response` contains
-   * `AnnotateVideoResponse` (results). (videos.annotate)
+   *  (videos.annotate)
    *
    * @param Google_Service_CloudVideoIntelligence_GoogleCloudVideointelligenceV1AnnotateVideoRequest $postBody
    * @param array $optParams Optional parameters.

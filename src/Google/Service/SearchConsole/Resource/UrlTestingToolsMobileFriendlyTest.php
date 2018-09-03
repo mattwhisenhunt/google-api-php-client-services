@@ -26,7 +26,7 @@
 class Google_Service_SearchConsole_Resource_UrlTestingToolsMobileFriendlyTest extends Google_Service_Resource
 {
   /**
-   * Runs Mobile-Friendly Test for a given URL. (mobileFriendlyTest.run)
+   *  (mobileFriendlyTest.run)
    *
    * @param Google_Service_SearchConsole_RunMobileFriendlyTestRequest $postBody
    * @param array $optParams Optional parameters.

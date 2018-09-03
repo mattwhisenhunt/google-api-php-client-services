@@ -26,9 +26,8 @@
 class Google_Service_Dfareporting_Resource_Metros extends Google_Service_Resource
 {
   /**
-   * Retrieves a list of metros. (metros.listMetros)
+   *  (metros.listMetros)
    *
-   * @param string $profileId User profile ID associated with this request.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Dfareporting_MetrosListResponse
    */

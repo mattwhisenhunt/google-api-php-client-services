@@ -26,10 +26,8 @@
 class Google_Service_Dialogflow_Resource_Projects extends Google_Service_Resource
 {
   /**
-   * Retrieves the specified agent. (projects.getAgent)
+   *  (projects.getAgent)
    *
-   * @param string $parent Required. The project that the agent to fetch is
-   * associated with. Format: `projects/`.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Dialogflow_GoogleCloudDialogflowV2Agent
    */

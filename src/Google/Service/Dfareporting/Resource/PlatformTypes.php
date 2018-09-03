@@ -26,10 +26,8 @@
 class Google_Service_Dfareporting_Resource_PlatformTypes extends Google_Service_Resource
 {
   /**
-   * Gets one platform type by ID. (platformTypes.get)
+   *  (platformTypes.get)
    *
-   * @param string $profileId User profile ID associated with this request.
-   * @param string $id Platform type ID.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Dfareporting_PlatformType
    */
@@ -40,9 +38,8 @@ class Google_Service_Dfareporting_Resource_PlatformTypes extends Google_Service_
     return $this->call('get', array($params), "Google_Service_Dfareporting_PlatformType");
   }
   /**
-   * Retrieves a list of platform types. (platformTypes.listPlatformTypes)
+   *  (platformTypes.listPlatformTypes)
    *
-   * @param string $profileId User profile ID associated with this request.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Dfareporting_PlatformTypesListResponse
    */

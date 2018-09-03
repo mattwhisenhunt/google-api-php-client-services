@@ -26,7 +26,7 @@
 class Google_Service_Partners_Resource_UserEvents extends Google_Service_Resource
 {
   /**
-   * Logs a user event. (userEvents.log)
+   *  (userEvents.log)
    *
    * @param Google_Service_Partners_LogUserEventRequest $postBody
    * @param array $optParams Optional parameters.

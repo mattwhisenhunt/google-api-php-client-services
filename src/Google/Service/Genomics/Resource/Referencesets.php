@@ -26,13 +26,8 @@
 class Google_Service_Genomics_Resource_Referencesets extends Google_Service_Resource
 {
   /**
-   * Gets a reference set.
+   *  (referencesets.get)
    *
-   * Implements [GlobalAllianceApi.getReferenceSet](https://github.com/ga4gh/schem
-   * as/blob/v0.5.1/src/main/resources/avro/referencemethods.avdl#L83).
-   * (referencesets.get)
-   *
-   * @param string $referenceSetId The ID of the reference set.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Genomics_ReferenceSet
    */
@@ -43,11 +38,7 @@ class Google_Service_Genomics_Resource_Referencesets extends Google_Service_Reso
     return $this->call('get', array($params), "Google_Service_Genomics_ReferenceSet");
   }
   /**
-   * Searches for reference sets which match the given criteria.
-   *
-   * Implements [GlobalAllianceApi.searchReferenceSets](https://github.com/ga4gh/s
-   * chemas/blob/v0.5.1/src/main/resources/avro/referencemethods.avdl#L71)
-   * (referencesets.search)
+   *  (referencesets.search)
    *
    * @param Google_Service_Genomics_SearchReferenceSetsRequest $postBody
    * @param array $optParams Optional parameters.

@@ -26,10 +26,8 @@
 class Google_Service_Dfareporting_Resource_MobileCarriers extends Google_Service_Resource
 {
   /**
-   * Gets one mobile carrier by ID. (mobileCarriers.get)
+   *  (mobileCarriers.get)
    *
-   * @param string $profileId User profile ID associated with this request.
-   * @param string $id Mobile carrier ID.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Dfareporting_MobileCarrier
    */
@@ -40,9 +38,8 @@ class Google_Service_Dfareporting_Resource_MobileCarriers extends Google_Service
     return $this->call('get', array($params), "Google_Service_Dfareporting_MobileCarrier");
   }
   /**
-   * Retrieves a list of mobile carriers. (mobileCarriers.listMobileCarriers)
+   *  (mobileCarriers.listMobileCarriers)
    *
-   * @param string $profileId User profile ID associated with this request.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Dfareporting_MobileCarriersListResponse
    */

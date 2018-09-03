@@ -26,10 +26,8 @@
 class Google_Service_Mirror_Resource_Locations extends Google_Service_Resource
 {
   /**
-   * Gets a single location by ID. (locations.get)
+   *  (locations.get)
    *
-   * @param string $id The ID of the location or latest for the last known
-   * location.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Mirror_Location
    */
@@ -40,7 +38,7 @@ class Google_Service_Mirror_Resource_Locations extends Google_Service_Resource
     return $this->call('get', array($params), "Google_Service_Mirror_Location");
   }
   /**
-   * Retrieves a list of locations for the user. (locations.listLocations)
+   *  (locations.listLocations)
    *
    * @param array $optParams Optional parameters.
    * @return Google_Service_Mirror_LocationsListResponse

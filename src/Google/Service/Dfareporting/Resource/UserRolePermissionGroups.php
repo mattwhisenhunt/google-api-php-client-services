@@ -26,10 +26,8 @@
 class Google_Service_Dfareporting_Resource_UserRolePermissionGroups extends Google_Service_Resource
 {
   /**
-   * Gets one user role permission group by ID. (userRolePermissionGroups.get)
+   *  (userRolePermissionGroups.get)
    *
-   * @param string $profileId User profile ID associated with this request.
-   * @param string $id User role permission group ID.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Dfareporting_UserRolePermissionGroup
    */
@@ -40,10 +38,8 @@ class Google_Service_Dfareporting_Resource_UserRolePermissionGroups extends Goog
     return $this->call('get', array($params), "Google_Service_Dfareporting_UserRolePermissionGroup");
   }
   /**
-   * Gets a list of all supported user role permission groups.
-   * (userRolePermissionGroups.listUserRolePermissionGroups)
+   *  (userRolePermissionGroups.listUserRolePermissionGroups)
    *
-   * @param string $profileId User profile ID associated with this request.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Dfareporting_UserRolePermissionGroupsListResponse
    */

@@ -26,8 +26,7 @@
 class Google_Service_Drive_Resource_About extends Google_Service_Resource
 {
   /**
-   * Gets information about the user, the user's Drive, and system capabilities.
-   * (about.get)
+   *  (about.get)
    *
    * @param array $optParams Optional parameters.
    * @return Google_Service_Drive_About

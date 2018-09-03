@@ -26,11 +26,8 @@
 class Google_Service_Dialogflow_Resource_ProjectsAgentSessions extends Google_Service_Resource
 {
   /**
-   * Deletes all active contexts in the specified session.
-   * (sessions.deleteContexts)
+   *  (sessions.deleteContexts)
    *
-   * @param string $parent Required. The name of the session to delete all
-   * contexts from. Format: `projects//agent/sessions/`.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Dialogflow_GoogleProtobufEmpty
    */
@@ -41,23 +38,15 @@ class Google_Service_Dialogflow_Resource_ProjectsAgentSessions extends Google_Se
     return $this->call('deleteContexts', array($params), "Google_Service_Dialogflow_GoogleProtobufEmpty");
   }
   /**
-   * Processes a natural language query and returns structured, actionable data as
-   * a result. This method is not idempotent, because it may cause contexts and
-   * session entity types to be updated, which in turn might affect results of
-   * future queries. (sessions.detectIntent)
+   *  (sessions.detectIntent)
    *
-   * @param string $session Required. The name of the session this query is sent
-   * to. Format: `projects//agent/sessions/`. It's up to the API caller to choose
-   * an appropriate session ID. It can be a random number or some type of user
-   * identifier (preferably hashed). The length of the session ID must not exceed
-   * 36 bytes.
    * @param Google_Service_Dialogflow_GoogleCloudDialogflowV2DetectIntentRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_Dialogflow_GoogleCloudDialogflowV2DetectIntentResponse
    */
   public function detectIntent($session, Google_Service_Dialogflow_GoogleCloudDialogflowV2DetectIntentRequest $postBody, $optParams = array())
   {
-    $params = array('session' => $session, 'postBody' => $postBody);
+    $params = array('session' => $session ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('detectIntent', array($params), "Google_Service_Dialogflow_GoogleCloudDialogflowV2DetectIntentResponse");
   }

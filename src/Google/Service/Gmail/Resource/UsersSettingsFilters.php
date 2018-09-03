@@ -26,27 +26,23 @@
 class Google_Service_Gmail_Resource_UsersSettingsFilters extends Google_Service_Resource
 {
   /**
-   * Creates a filter. (filters.create)
+   *  (filters.create)
    *
-   * @param string $userId User's email address. The special value "me" can be
-   * used to indicate the authenticated user.
    * @param Google_Service_Gmail_Filter $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_Gmail_Filter
    */
   public function create($userId, Google_Service_Gmail_Filter $postBody, $optParams = array())
   {
-    $params = array('userId' => $userId, 'postBody' => $postBody);
+    $params = array('userId' => $userId ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('create', array($params), "Google_Service_Gmail_Filter");
   }
   /**
-   * Deletes a filter. (filters.delete)
+   *  (filters.delete)
    *
-   * @param string $userId User's email address. The special value "me" can be
-   * used to indicate the authenticated user.
-   * @param string $id The ID of the filter to be deleted.
    * @param array $optParams Optional parameters.
+
    */
   public function delete($userId, $id, $optParams = array())
   {
@@ -55,11 +51,8 @@ class Google_Service_Gmail_Resource_UsersSettingsFilters extends Google_Service_
     return $this->call('delete', array($params));
   }
   /**
-   * Gets a filter. (filters.get)
+   *  (filters.get)
    *
-   * @param string $userId User's email address. The special value "me" can be
-   * used to indicate the authenticated user.
-   * @param string $id The ID of the filter to be fetched.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Gmail_Filter
    */
@@ -70,10 +63,8 @@ class Google_Service_Gmail_Resource_UsersSettingsFilters extends Google_Service_
     return $this->call('get', array($params), "Google_Service_Gmail_Filter");
   }
   /**
-   * Lists the message filters of a Gmail user. (filters.listUsersSettingsFilters)
+   *  (filters.listUsersSettingsFilters)
    *
-   * @param string $userId User's email address. The special value "me" can be
-   * used to indicate the authenticated user.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Gmail_ListFiltersResponse
    */

@@ -26,25 +26,21 @@
 class Google_Service_Script_Resource_ProjectsVersions extends Google_Service_Resource
 {
   /**
-   * Creates a new immutable version using the current code, with a unique version
-   * number. (versions.create)
+   *  (versions.create)
    *
-   * @param string $scriptId The script project's Drive ID.
    * @param Google_Service_Script_Version $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_Script_Version
    */
   public function create($scriptId, Google_Service_Script_Version $postBody, $optParams = array())
   {
-    $params = array('scriptId' => $scriptId, 'postBody' => $postBody);
+    $params = array('scriptId' => $scriptId ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('create', array($params), "Google_Service_Script_Version");
   }
   /**
-   * Gets a version of a script project. (versions.get)
+   *  (versions.get)
    *
-   * @param string $scriptId The script project's Drive ID.
-   * @param int $versionNumber The version number.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Script_Version
    */
@@ -55,16 +51,10 @@ class Google_Service_Script_Resource_ProjectsVersions extends Google_Service_Res
     return $this->call('get', array($params), "Google_Service_Script_Version");
   }
   /**
-   * List the versions of a script project. (versions.listProjectsVersions)
+   *  (versions.listProjectsVersions)
    *
-   * @param string $scriptId The script project's Drive ID.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string pageToken The token for continuing a previous list request
-   * on the next page. This should be set to the value of `nextPageToken` from a
-   * previous response.
-   * @opt_param int pageSize The maximum number of versions on each returned page.
-   * Defaults to 50.
    * @return Google_Service_Script_ListVersionsResponse
    */
   public function listProjectsVersions($scriptId, $optParams = array())

@@ -193,7 +193,7 @@ class Google_Service_CloudDebugger extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'waitToken' => array(
+                'action.value' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -201,21 +201,21 @@ class Google_Service_CloudDebugger extends Google_Service
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'action.value' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'includeInactive' => array(
+                'includeAllUsers' => array(
                   'location' => 'query',
                   'type' => 'boolean',
                 ),
-                'includeAllUsers' => array(
+                'includeInactive' => array(
                   'location' => 'query',
                   'type' => 'boolean',
                 ),
                 'stripResults' => array(
                   'location' => 'query',
                   'type' => 'boolean',
+                ),
+                'waitToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),'set' => array(

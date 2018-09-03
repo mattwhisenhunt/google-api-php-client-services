@@ -17,13 +17,17 @@
 
 class Google_Service_Safebrowsing_ThreatMatch extends Google_Model
 {
+  protected $internal_gapi_mappings = array(
+        "threatType" => "theRealThreatType",
+  );
   public $cacheDuration;
   public $platformType;
+  protected $threatType = 'Google_Service_Safebrowsing_ThreatEntry';
   protected $threatDataType = '';
   protected $threatEntryMetadataType = 'Google_Service_Safebrowsing_ThreatEntryMetadata';
   protected $threatEntryMetadataDataType = '';
   public $threatEntryType;
-  public $threatType;
+  public $theRealThreatType;
 
   public function setCacheDuration($cacheDuration)
   {
@@ -77,12 +81,12 @@ class Google_Service_Safebrowsing_ThreatMatch extends Google_Model
   {
     return $this->threatEntryType;
   }
-  public function setThreatType($threatType)
+  public function setThreatType($theRealThreatType)
   {
-    $this->threatType = $threatType;
+    $this->theRealThreatType = $theRealThreatType;
   }
   public function getThreatType()
   {
-    return $this->threatType;
+    return $this->theRealThreatType;
   }
 }

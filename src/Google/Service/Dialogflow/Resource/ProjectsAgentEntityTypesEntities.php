@@ -26,55 +26,41 @@
 class Google_Service_Dialogflow_Resource_ProjectsAgentEntityTypesEntities extends Google_Service_Resource
 {
   /**
-   * Creates multiple new entities in the specified entity type (extends the
-   * existing collection of entries).
+   *  (entities.batchCreate)
    *
-   * Operation  (entities.batchCreate)
-   *
-   * @param string $parent Required. The name of the entity type to create
-   * entities in. Format: `projects//agent/entityTypes/`.
    * @param Google_Service_Dialogflow_GoogleCloudDialogflowV2BatchCreateEntitiesRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_Dialogflow_GoogleLongrunningOperation
    */
   public function batchCreate($parent, Google_Service_Dialogflow_GoogleCloudDialogflowV2BatchCreateEntitiesRequest $postBody, $optParams = array())
   {
-    $params = array('parent' => $parent, 'postBody' => $postBody);
+    $params = array('parent' => $parent ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('batchCreate', array($params), "Google_Service_Dialogflow_GoogleLongrunningOperation");
   }
   /**
-   * Deletes entities in the specified entity type.
+   *  (entities.batchDelete)
    *
-   * Operation  (entities.batchDelete)
-   *
-   * @param string $parent Required. The name of the entity type to delete entries
-   * for. Format: `projects//agent/entityTypes/`.
    * @param Google_Service_Dialogflow_GoogleCloudDialogflowV2BatchDeleteEntitiesRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_Dialogflow_GoogleLongrunningOperation
    */
   public function batchDelete($parent, Google_Service_Dialogflow_GoogleCloudDialogflowV2BatchDeleteEntitiesRequest $postBody, $optParams = array())
   {
-    $params = array('parent' => $parent, 'postBody' => $postBody);
+    $params = array('parent' => $parent ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('batchDelete', array($params), "Google_Service_Dialogflow_GoogleLongrunningOperation");
   }
   /**
-   * Updates entities in the specified entity type (replaces the existing
-   * collection of entries).
+   *  (entities.batchUpdate)
    *
-   * Operation  (entities.batchUpdate)
-   *
-   * @param string $parent Required. The name of the entity type to update the
-   * entities in. Format: `projects//agent/entityTypes/`.
    * @param Google_Service_Dialogflow_GoogleCloudDialogflowV2BatchUpdateEntitiesRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_Dialogflow_GoogleLongrunningOperation
    */
   public function batchUpdate($parent, Google_Service_Dialogflow_GoogleCloudDialogflowV2BatchUpdateEntitiesRequest $postBody, $optParams = array())
   {
-    $params = array('parent' => $parent, 'postBody' => $postBody);
+    $params = array('parent' => $parent ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('batchUpdate', array($params), "Google_Service_Dialogflow_GoogleLongrunningOperation");
   }

@@ -26,8 +26,7 @@
 class Google_Service_Safebrowsing_Resource_ThreatMatches extends Google_Service_Resource
 {
   /**
-   * Finds the threat entries that match the Safe Browsing lists.
-   * (threatMatches.find)
+   *  (threatMatches.find)
    *
    * @param Google_Service_Safebrowsing_FindThreatMatchesRequest $postBody
    * @param array $optParams Optional parameters.

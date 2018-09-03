@@ -26,26 +26,21 @@
 class Google_Service_AndroidManagement_Resource_EnterprisesEnrollmentTokens extends Google_Service_Resource
 {
   /**
-   * Creates an enrollment token for a given enterprise. (enrollmentTokens.create)
+   *  (enrollmentTokens.create)
    *
-   * @param string $parent The name of the enterprise in the form
-   * enterprises/{enterpriseId}.
    * @param Google_Service_AndroidManagement_EnrollmentToken $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_AndroidManagement_EnrollmentToken
    */
   public function create($parent, Google_Service_AndroidManagement_EnrollmentToken $postBody, $optParams = array())
   {
-    $params = array('parent' => $parent, 'postBody' => $postBody);
+    $params = array('parent' => $parent ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('create', array($params), "Google_Service_AndroidManagement_EnrollmentToken");
   }
   /**
-   * Deletes an enrollment token. This operation invalidates the token, preventing
-   * its future use. (enrollmentTokens.delete)
+   *  (enrollmentTokens.delete)
    *
-   * @param string $name The name of the enrollment token in the form
-   * enterprises/{enterpriseId}/enrollmentTokens/{enrollmentTokenId}.
    * @param array $optParams Optional parameters.
    * @return Google_Service_AndroidManagement_AndroidmanagementEmpty
    */

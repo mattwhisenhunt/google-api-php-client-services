@@ -26,10 +26,8 @@
 class Google_Service_Books_Resource_Dictionary extends Google_Service_Resource
 {
   /**
-   * Returns a list of offline dictionary metadata available
-   * (dictionary.listOfflineMetadata)
+   *  (dictionary.listOfflineMetadata)
    *
-   * @param string $cpksver The device/version ID from which to request the data.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Books_Metadata
    */

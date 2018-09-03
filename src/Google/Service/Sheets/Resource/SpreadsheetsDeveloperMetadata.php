@@ -26,13 +26,8 @@
 class Google_Service_Sheets_Resource_SpreadsheetsDeveloperMetadata extends Google_Service_Resource
 {
   /**
-   * Returns the developer metadata with the specified ID. The caller must specify
-   * the spreadsheet ID and the developer metadata's unique metadataId.
-   * (developerMetadata.get)
+   *  (developerMetadata.get)
    *
-   * @param string $spreadsheetId The ID of the spreadsheet to retrieve metadata
-   * from.
-   * @param int $metadataId The ID of the developer metadata to retrieve.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Sheets_DeveloperMetadata
    */
@@ -43,22 +38,15 @@ class Google_Service_Sheets_Resource_SpreadsheetsDeveloperMetadata extends Googl
     return $this->call('get', array($params), "Google_Service_Sheets_DeveloperMetadata");
   }
   /**
-   * Returns all developer metadata matching the specified DataFilter. If the
-   * provided DataFilter represents a DeveloperMetadataLookup object, this will
-   * return all DeveloperMetadata entries selected by it. If the DataFilter
-   * represents a location in a spreadsheet, this will return all developer
-   * metadata associated with locations intersecting that region.
-   * (developerMetadata.search)
+   *  (developerMetadata.search)
    *
-   * @param string $spreadsheetId The ID of the spreadsheet to retrieve metadata
-   * from.
    * @param Google_Service_Sheets_SearchDeveloperMetadataRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_Sheets_SearchDeveloperMetadataResponse
    */
   public function search($spreadsheetId, Google_Service_Sheets_SearchDeveloperMetadataRequest $postBody, $optParams = array())
   {
-    $params = array('spreadsheetId' => $spreadsheetId, 'postBody' => $postBody);
+    $params = array('spreadsheetId' => $spreadsheetId ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('search', array($params), "Google_Service_Sheets_SearchDeveloperMetadataResponse");
   }

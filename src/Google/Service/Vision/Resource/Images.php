@@ -26,7 +26,7 @@
 class Google_Service_Vision_Resource_Images extends Google_Service_Resource
 {
   /**
-   * Run image detection and annotation for a batch of images. (images.annotate)
+   *  (images.annotate)
    *
    * @param Google_Service_Vision_BatchAnnotateImagesRequest $postBody
    * @param array $optParams Optional parameters.

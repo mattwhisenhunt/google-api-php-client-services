@@ -26,7 +26,7 @@
 class Google_Service_Genomics_Resource_Variants extends Google_Service_Resource
 {
   /**
-   * Creates a new variant. (variants.create)
+   *  (variants.create)
    *
    * @param Google_Service_Genomics_Variant $postBody
    * @param array $optParams Optional parameters.
@@ -39,9 +39,8 @@ class Google_Service_Genomics_Resource_Variants extends Google_Service_Resource
     return $this->call('create', array($params), "Google_Service_Genomics_Variant");
   }
   /**
-   * Deletes a variant. (variants.delete)
+   *  (variants.delete)
    *
-   * @param string $variantId The ID of the variant to be deleted.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Genomics_GenomicsEmpty
    */
@@ -52,9 +51,8 @@ class Google_Service_Genomics_Resource_Variants extends Google_Service_Resource
     return $this->call('delete', array($params), "Google_Service_Genomics_GenomicsEmpty");
   }
   /**
-   * Gets a variant by ID. (variants.get)
+   *  (variants.get)
    *
-   * @param string $variantId The ID of the variant.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Genomics_Variant
    */
@@ -65,18 +63,7 @@ class Google_Service_Genomics_Resource_Variants extends Google_Service_Resource
     return $this->call('get', array($params), "Google_Service_Genomics_Variant");
   }
   /**
-   * Creates variant data by asynchronously importing the provided information.
-   *
-   * The variants for import will be merged with any existing variant that matches
-   * its reference sequence, start, end, reference bases, and alternative bases.
-   * If no such variant exists, a new one will be created.
-   *
-   * When variants are merged, the call information from the new variant is added
-   * to the existing variant, and Variant info fields are merged as specified in
-   * infoMergeConfig. As a special case, for single-sample VCF files, QUAL and
-   * FILTER fields will be moved to the call level; these are sometimes
-   * interpreted in a call-specific context. Imported VCF headers are appended to
-   * the metadata already in a variant set. (variants.import)
+   *  (variants.import)
    *
    * @param Google_Service_Genomics_ImportVariantsRequest $postBody
    * @param array $optParams Optional parameters.
@@ -89,50 +76,7 @@ class Google_Service_Genomics_Resource_Variants extends Google_Service_Resource
     return $this->call('import', array($params), "Google_Service_Genomics_Operation");
   }
   /**
-   * Merges the given variants with existing variants.
-   *
-   * Each variant will be merged with an existing variant that matches its
-   * reference sequence, start, end, reference bases, and alternative bases. If no
-   * such variant exists, a new one will be created.
-   *
-   * When variants are merged, the call information from the new variant is added
-   * to the existing variant. Variant info fields are merged as specified in the
-   * infoMergeConfig field of the MergeVariantsRequest.
-   *
-   * Please exercise caution when using this method!  It is easy to introduce
-   * mistakes in existing variants and difficult to back out of them.  For
-   * example, suppose you were trying to merge a new variant with an existing one
-   * and both variants contain calls that belong to callsets with the same callset
-   * ID.
-   *
-   *     // Existing variant - irrelevant fields trimmed for clarity     {
-   * "variantSetId": "10473108253681171589",         "referenceName": "1",
-   * "start": "10582",         "referenceBases": "G",         "alternateBases": [
-   * "A"         ],         "calls": [             {                 "callSetId":
-   * "10473108253681171589-0",                 "callSetName": "CALLSET0",
-   * "genotype": [                     0,                     1                 ],
-   * }         ]     }
-   *
-   *     // New variant with conflicting call information     {
-   * "variantSetId": "10473108253681171589",         "referenceName": "1",
-   * "start": "10582",         "referenceBases": "G",         "alternateBases": [
-   * "A"         ],         "calls": [             {                 "callSetId":
-   * "10473108253681171589-0",                 "callSetName": "CALLSET0",
-   * "genotype": [                     1,                     1                 ],
-   * }         ]     }
-   *
-   * The resulting merged variant would overwrite the existing calls with those
-   * from the new variant:
-   *
-   *     {         "variantSetId": "10473108253681171589",
-   * "referenceName": "1",         "start": "10582",         "referenceBases":
-   * "G",         "alternateBases": [             "A"         ],         "calls":
-   * [             {                 "callSetId": "10473108253681171589-0",
-   * "callSetName": "CALLSET0",                 "genotype": [
-   * 1,                     1                 ],             }         ]     }
-   *
-   * This may be the desired outcome, but it is up to the user to determine if if
-   * that is indeed the case. (variants.merge)
+   *  (variants.merge)
    *
    * @param Google_Service_Genomics_MergeVariantsRequest $postBody
    * @param array $optParams Optional parameters.
@@ -145,32 +89,21 @@ class Google_Service_Genomics_Resource_Variants extends Google_Service_Resource
     return $this->call('merge', array($params), "Google_Service_Genomics_GenomicsEmpty");
   }
   /**
-   * Updates a variant.
+   *  (variants.patch)
    *
-   * This method supports patch semantics. Returns the modified variant without
-   * its calls. (variants.patch)
-   *
-   * @param string $variantId The ID of the variant to be updated.
    * @param Google_Service_Genomics_Variant $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string updateMask An optional mask specifying which fields to
-   * update. At this time, mutable fields are names and info. Acceptable values
-   * are "names" and "info". If unspecified, all mutable fields will be updated.
    * @return Google_Service_Genomics_Variant
    */
   public function patch($variantId, Google_Service_Genomics_Variant $postBody, $optParams = array())
   {
-    $params = array('variantId' => $variantId, 'postBody' => $postBody);
+    $params = array('variantId' => $variantId ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('patch', array($params), "Google_Service_Genomics_Variant");
   }
   /**
-   * Gets a list of variants matching the criteria.
-   *
-   * Implements [GlobalAllianceApi.searchVariants](https://github.com/ga4gh/schema
-   * s/blob/v0.5.1/src/main/resources/avro/variantmethods.avdl#L126).
-   * (variants.search)
+   *  (variants.search)
    *
    * @param Google_Service_Genomics_SearchVariantsRequest $postBody
    * @param array $optParams Optional parameters.

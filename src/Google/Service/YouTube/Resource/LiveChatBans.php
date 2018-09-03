@@ -26,11 +26,10 @@
 class Google_Service_YouTube_Resource_LiveChatBans extends Google_Service_Resource
 {
   /**
-   * Removes a chat ban. (liveChatBans.delete)
+   *  (liveChatBans.delete)
    *
-   * @param string $id The id parameter identifies the chat ban to remove. The
-   * value uniquely identifies both the ban and the chat.
    * @param array $optParams Optional parameters.
+
    */
   public function delete($id, $optParams = array())
   {
@@ -39,18 +38,15 @@ class Google_Service_YouTube_Resource_LiveChatBans extends Google_Service_Resour
     return $this->call('delete', array($params));
   }
   /**
-   * Adds a new ban to the chat. (liveChatBans.insert)
+   *  (liveChatBans.insert)
    *
-   * @param string $part The part parameter serves two purposes in this operation.
-   * It identifies the properties that the write operation will set as well as the
-   * properties that the API response returns. Set the parameter value to snippet.
    * @param Google_Service_YouTube_LiveChatBan $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_YouTube_LiveChatBan
    */
   public function insert($part, Google_Service_YouTube_LiveChatBan $postBody, $optParams = array())
   {
-    $params = array('part' => $part, 'postBody' => $postBody);
+    $params = array('part' => $part ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('insert', array($params), "Google_Service_YouTube_LiveChatBan");
   }

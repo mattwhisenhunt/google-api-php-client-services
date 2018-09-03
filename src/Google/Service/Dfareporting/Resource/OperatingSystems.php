@@ -26,10 +26,8 @@
 class Google_Service_Dfareporting_Resource_OperatingSystems extends Google_Service_Resource
 {
   /**
-   * Gets one operating system by DART ID. (operatingSystems.get)
+   *  (operatingSystems.get)
    *
-   * @param string $profileId User profile ID associated with this request.
-   * @param string $dartId Operating system DART ID.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Dfareporting_OperatingSystem
    */
@@ -40,10 +38,8 @@ class Google_Service_Dfareporting_Resource_OperatingSystems extends Google_Servi
     return $this->call('get', array($params), "Google_Service_Dfareporting_OperatingSystem");
   }
   /**
-   * Retrieves a list of operating systems.
-   * (operatingSystems.listOperatingSystems)
+   *  (operatingSystems.listOperatingSystems)
    *
-   * @param string $profileId User profile ID associated with this request.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Dfareporting_OperatingSystemsListResponse
    */

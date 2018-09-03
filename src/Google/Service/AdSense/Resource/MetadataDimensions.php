@@ -26,8 +26,7 @@
 class Google_Service_AdSense_Resource_MetadataDimensions extends Google_Service_Resource
 {
   /**
-   * List the metadata for the dimensions available to this AdSense account.
-   * (dimensions.listMetadataDimensions)
+   *  (dimensions.listMetadataDimensions)
    *
    * @param array $optParams Optional parameters.
    * @return Google_Service_AdSense_Metadata

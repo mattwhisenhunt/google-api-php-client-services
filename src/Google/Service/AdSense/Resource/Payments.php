@@ -26,7 +26,7 @@
 class Google_Service_AdSense_Resource_Payments extends Google_Service_Resource
 {
   /**
-   * List the payments for this AdSense account. (payments.listPayments)
+   *  (payments.listPayments)
    *
    * @param array $optParams Optional parameters.
    * @return Google_Service_AdSense_Payments

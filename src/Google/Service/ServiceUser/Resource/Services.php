@@ -26,17 +26,10 @@
 class Google_Service_ServiceUser_Resource_Services extends Google_Service_Resource
 {
   /**
-   * Search available services.
-   *
-   * When no filter is specified, returns all accessible services. For
-   * authenticated users, also returns all services the calling user has
-   * "servicemanagement.services.bind" permission for. (services.search)
+   *  (services.search)
    *
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string pageToken Token identifying which result to start with;
-   * returned by a previous list call.
-   * @opt_param int pageSize Requested size of the next page of data.
    * @return Google_Service_ServiceUser_SearchServicesResponse
    */
   public function search($optParams = array())

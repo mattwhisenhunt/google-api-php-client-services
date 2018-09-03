@@ -26,15 +26,10 @@
 class Google_Service_Books_Resource_SeriesMembership extends Google_Service_Resource
 {
   /**
-   * Returns Series membership data given the series id. (membership.get)
+   *  (membership.get)
    *
-   * @param string $seriesId String that identifies the series
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string page_size Number of maximum results per page to be included
-   * in the response.
-   * @opt_param string page_token The value of the nextToken from the previous
-   * page.
    * @return Google_Service_Books_Seriesmembership
    */
   public function get($seriesId, $optParams = array())

@@ -26,12 +26,10 @@
 class Google_Service_Books_Resource_Familysharing extends Google_Service_Resource
 {
   /**
-   * Gets information regarding the family that the user is part of.
-   * (familysharing.getFamilyInfo)
+   *  (familysharing.getFamilyInfo)
    *
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string source String to identify the originator of this request.
    * @return Google_Service_Books_FamilyInfo
    */
   public function getFamilyInfo($optParams = array())
@@ -41,14 +39,11 @@ class Google_Service_Books_Resource_Familysharing extends Google_Service_Resourc
     return $this->call('getFamilyInfo', array($params), "Google_Service_Books_FamilyInfo");
   }
   /**
-   * Initiates sharing of the content with the user's family. Empty response
-   * indicates success. (familysharing.share)
+   *  (familysharing.share)
    *
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string docId The docid to share.
-   * @opt_param string source String to identify the originator of this request.
-   * @opt_param string volumeId The volume to share.
+
    */
   public function share($optParams = array())
   {
@@ -57,14 +52,11 @@ class Google_Service_Books_Resource_Familysharing extends Google_Service_Resourc
     return $this->call('share', array($params));
   }
   /**
-   * Initiates revoking content that has already been shared with the user's
-   * family. Empty response indicates success. (familysharing.unshare)
+   *  (familysharing.unshare)
    *
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string docId The docid to unshare.
-   * @opt_param string source String to identify the originator of this request.
-   * @opt_param string volumeId The volume to unshare.
+
    */
   public function unshare($optParams = array())
   {

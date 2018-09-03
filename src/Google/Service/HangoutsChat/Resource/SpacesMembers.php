@@ -26,12 +26,8 @@
 class Google_Service_HangoutsChat_Resource_SpacesMembers extends Google_Service_Resource
 {
   /**
-   * Returns a membership. (members.get)
+   *  (members.get)
    *
-   * @param string $name Required. Resource name of the membership to be
-   * retrieved, in the form "spaces/members".
-   *
-   * Example: spaces/AAAAMpdlehY/members/105115627578887013105
    * @param array $optParams Optional parameters.
    * @return Google_Service_HangoutsChat_Membership
    */
@@ -42,19 +38,10 @@ class Google_Service_HangoutsChat_Resource_SpacesMembers extends Google_Service_
     return $this->call('get', array($params), "Google_Service_HangoutsChat_Membership");
   }
   /**
-   * Lists human memberships in a space. (members.listSpacesMembers)
+   *  (members.listSpacesMembers)
    *
-   * @param string $parent Required. The resource name of the space for which
-   * membership list is to be fetched, in the form "spaces".
-   *
-   * Example: spaces/AAAAMpdlehY
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string pageToken A token identifying a page of results the server
-   * should return.
-   * @opt_param int pageSize Requested page size. The value is capped at 1000.
-   * Server may return fewer results than requested. If unspecified, server will
-   * default to 100.
    * @return Google_Service_HangoutsChat_ListMembershipsResponse
    */
   public function listSpacesMembers($parent, $optParams = array())

@@ -26,8 +26,7 @@
 class Google_Service_Testing_Resource_ApplicationDetailService extends Google_Service_Resource
 {
   /**
-   * Request the details of an Android application APK.
-   * (applicationDetailService.getApkDetails)
+   *  (applicationDetailService.getApkDetails)
    *
    * @param Google_Service_Testing_FileReference $postBody
    * @param array $optParams Optional parameters.

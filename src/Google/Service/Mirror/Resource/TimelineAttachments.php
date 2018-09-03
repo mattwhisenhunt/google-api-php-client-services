@@ -26,11 +26,10 @@
 class Google_Service_Mirror_Resource_TimelineAttachments extends Google_Service_Resource
 {
   /**
-   * Deletes an attachment from a timeline item. (attachments.delete)
+   *  (attachments.delete)
    *
-   * @param string $itemId The ID of the timeline item the attachment belongs to.
-   * @param string $attachmentId The ID of the attachment.
    * @param array $optParams Optional parameters.
+
    */
   public function delete($itemId, $attachmentId, $optParams = array())
   {
@@ -39,11 +38,8 @@ class Google_Service_Mirror_Resource_TimelineAttachments extends Google_Service_
     return $this->call('delete', array($params));
   }
   /**
-   * Retrieves an attachment on a timeline item by item ID and attachment ID.
-   * (attachments.get)
+   *  (attachments.get)
    *
-   * @param string $itemId The ID of the timeline item the attachment belongs to.
-   * @param string $attachmentId The ID of the attachment.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Mirror_Attachment
    */
@@ -54,9 +50,8 @@ class Google_Service_Mirror_Resource_TimelineAttachments extends Google_Service_
     return $this->call('get', array($params), "Google_Service_Mirror_Attachment");
   }
   /**
-   * Adds a new attachment to a timeline item. (attachments.insert)
+   *  (attachments.insert)
    *
-   * @param string $itemId The ID of the timeline item the attachment belongs to.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Mirror_Attachment
    */
@@ -67,11 +62,8 @@ class Google_Service_Mirror_Resource_TimelineAttachments extends Google_Service_
     return $this->call('insert', array($params), "Google_Service_Mirror_Attachment");
   }
   /**
-   * Returns a list of attachments for a timeline item.
-   * (attachments.listTimelineAttachments)
+   *  (attachments.listTimelineAttachments)
    *
-   * @param string $itemId The ID of the timeline item whose attachments should be
-   * listed.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Mirror_AttachmentsListResponse
    */

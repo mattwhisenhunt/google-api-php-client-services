@@ -28,8 +28,7 @@ class Google_Service_YouTube_LiveChatMessageListResponse extends Google_Collecti
   protected $pageInfoType = 'Google_Service_YouTube_PageInfo';
   protected $pageInfoDataType = '';
   public $pollingIntervalMillis;
-  protected $tokenPaginationType = 'Google_Service_YouTube_TokenPagination';
-  protected $tokenPaginationDataType = '';
+  public $tokenPagination;
   public $visitorId;
 
   public function setEtag($etag)
@@ -108,16 +107,10 @@ class Google_Service_YouTube_LiveChatMessageListResponse extends Google_Collecti
   {
     return $this->pollingIntervalMillis;
   }
-  /**
-   * @param Google_Service_YouTube_TokenPagination
-   */
-  public function setTokenPagination(Google_Service_YouTube_TokenPagination $tokenPagination)
+  public function setTokenPagination($tokenPagination)
   {
     $this->tokenPagination = $tokenPagination;
   }
-  /**
-   * @return Google_Service_YouTube_TokenPagination
-   */
   public function getTokenPagination()
   {
     return $this->tokenPagination;

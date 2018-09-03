@@ -26,8 +26,7 @@
 class Google_Service_Safebrowsing_Resource_ThreatHits extends Google_Service_Resource
 {
   /**
-   * Reports a Safe Browsing threat list hit to Google. Only projects with
-   * TRUSTED_REPORTER visibility can use this method. (threatHits.create)
+   *  (threatHits.create)
    *
    * @param Google_Service_Safebrowsing_ThreatHit $postBody
    * @param array $optParams Optional parameters.

@@ -26,18 +26,10 @@
 class Google_Service_AndroidPublisher_Resource_EditsImages extends Google_Service_Resource
 {
   /**
-   * Deletes the image (specified by id) from the edit. (images.delete)
+   *  (images.delete)
    *
-   * @param string $packageName Unique identifier for the Android app that is
-   * being updated; for example, "com.spiffygame".
-   * @param string $editId Unique identifier for this edit.
-   * @param string $language The language code (a BCP-47 language tag) of the
-   * localized listing whose images are to read or modified. For example, to
-   * select Austrian German, pass "de-AT".
-   * @param string $imageType
-   * @param string $imageId Unique identifier an image within the set of images
-   * attached to this edit.
    * @param array $optParams Optional parameters.
+
    */
   public function delete($packageName, $editId, $language, $imageType, $imageId, $optParams = array())
   {
@@ -46,16 +38,8 @@ class Google_Service_AndroidPublisher_Resource_EditsImages extends Google_Servic
     return $this->call('delete', array($params));
   }
   /**
-   * Deletes all images for the specified language and image type.
-   * (images.deleteall)
+   *  (images.deleteall)
    *
-   * @param string $packageName Unique identifier for the Android app that is
-   * being updated; for example, "com.spiffygame".
-   * @param string $editId Unique identifier for this edit.
-   * @param string $language The language code (a BCP-47 language tag) of the
-   * localized listing whose images are to read or modified. For example, to
-   * select Austrian German, pass "de-AT".
-   * @param string $imageType
    * @param array $optParams Optional parameters.
    * @return Google_Service_AndroidPublisher_ImagesDeleteAllResponse
    */
@@ -66,16 +50,8 @@ class Google_Service_AndroidPublisher_Resource_EditsImages extends Google_Servic
     return $this->call('deleteall', array($params), "Google_Service_AndroidPublisher_ImagesDeleteAllResponse");
   }
   /**
-   * Lists all images for the specified language and image type.
-   * (images.listEditsImages)
+   *  (images.listEditsImages)
    *
-   * @param string $packageName Unique identifier for the Android app that is
-   * being updated; for example, "com.spiffygame".
-   * @param string $editId Unique identifier for this edit.
-   * @param string $language The language code (a BCP-47 language tag) of the
-   * localized listing whose images are to read or modified. For example, to
-   * select Austrian German, pass "de-AT".
-   * @param string $imageType
    * @param array $optParams Optional parameters.
    * @return Google_Service_AndroidPublisher_ImagesListResponse
    */
@@ -86,16 +62,8 @@ class Google_Service_AndroidPublisher_Resource_EditsImages extends Google_Servic
     return $this->call('list', array($params), "Google_Service_AndroidPublisher_ImagesListResponse");
   }
   /**
-   * Uploads a new image and adds it to the list of images for the specified
-   * language and image type. (images.upload)
+   *  (images.upload)
    *
-   * @param string $packageName Unique identifier for the Android app that is
-   * being updated; for example, "com.spiffygame".
-   * @param string $editId Unique identifier for this edit.
-   * @param string $language The language code (a BCP-47 language tag) of the
-   * localized listing whose images are to read or modified. For example, to
-   * select Austrian German, pass "de-AT".
-   * @param string $imageType
    * @param array $optParams Optional parameters.
    * @return Google_Service_AndroidPublisher_ImagesUploadResponse
    */

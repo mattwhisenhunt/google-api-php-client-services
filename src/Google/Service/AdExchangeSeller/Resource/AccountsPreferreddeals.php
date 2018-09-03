@@ -26,11 +26,8 @@
 class Google_Service_AdExchangeSeller_Resource_AccountsPreferreddeals extends Google_Service_Resource
 {
   /**
-   * Get information about the selected Ad Exchange Preferred Deal.
-   * (preferreddeals.get)
+   *  (preferreddeals.get)
    *
-   * @param string $accountId Account owning the deal.
-   * @param string $dealId Preferred deal to get information about.
    * @param array $optParams Optional parameters.
    * @return Google_Service_AdExchangeSeller_PreferredDeal
    */
@@ -41,10 +38,8 @@ class Google_Service_AdExchangeSeller_Resource_AccountsPreferreddeals extends Go
     return $this->call('get', array($params), "Google_Service_AdExchangeSeller_PreferredDeal");
   }
   /**
-   * List the preferred deals for this Ad Exchange account.
-   * (preferreddeals.listAccountsPreferreddeals)
+   *  (preferreddeals.listAccountsPreferreddeals)
    *
-   * @param string $accountId Account owning the deals.
    * @param array $optParams Optional parameters.
    * @return Google_Service_AdExchangeSeller_PreferredDeals
    */

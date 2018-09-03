@@ -26,11 +26,10 @@
 class Google_Service_GamesManagement_Resource_Rooms extends Google_Service_Resource
 {
   /**
-   * Reset all rooms for the currently authenticated player for your application.
-   * This method is only accessible to whitelisted tester accounts for your
-   * application. (rooms.reset)
+   *  (rooms.reset)
    *
    * @param array $optParams Optional parameters.
+
    */
   public function reset($optParams = array())
   {
@@ -39,11 +38,10 @@ class Google_Service_GamesManagement_Resource_Rooms extends Google_Service_Resou
     return $this->call('reset', array($params));
   }
   /**
-   * Deletes rooms where the only room participants are from whitelisted tester
-   * accounts for your application. This method is only available to user accounts
-   * for your developer console. (rooms.resetForAllPlayers)
+   *  (rooms.resetForAllPlayers)
    *
    * @param array $optParams Optional parameters.
+
    */
   public function resetForAllPlayers($optParams = array())
   {

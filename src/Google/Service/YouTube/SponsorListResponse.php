@@ -26,8 +26,7 @@ class Google_Service_YouTube_SponsorListResponse extends Google_Collection
   public $nextPageToken;
   protected $pageInfoType = 'Google_Service_YouTube_PageInfo';
   protected $pageInfoDataType = '';
-  protected $tokenPaginationType = 'Google_Service_YouTube_TokenPagination';
-  protected $tokenPaginationDataType = '';
+  public $tokenPagination;
   public $visitorId;
 
   public function setEtag($etag)
@@ -90,16 +89,10 @@ class Google_Service_YouTube_SponsorListResponse extends Google_Collection
   {
     return $this->pageInfo;
   }
-  /**
-   * @param Google_Service_YouTube_TokenPagination
-   */
-  public function setTokenPagination(Google_Service_YouTube_TokenPagination $tokenPagination)
+  public function setTokenPagination($tokenPagination)
   {
     $this->tokenPagination = $tokenPagination;
   }
-  /**
-   * @return Google_Service_YouTube_TokenPagination
-   */
   public function getTokenPagination()
   {
     return $this->tokenPagination;

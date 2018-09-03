@@ -15,23 +15,23 @@
  * the License.
  */
 
-class Google_Service_CloudTasks_AppEngineHttpTarget extends Google_Model
+class Google_Service_Dataproc_SetIamPolicyRequest extends Google_Model
 {
-  protected $appEngineRoutingOverrideType = 'Google_Service_CloudTasks_AppEngineRouting';
-  protected $appEngineRoutingOverrideDataType = '';
+  protected $policyType = 'Google_Service_Dataproc_Policy';
+  protected $policyDataType = '';
 
   /**
-   * @param Google_Service_CloudTasks_AppEngineRouting
+   * @param Google_Service_Dataproc_Policy
    */
-  public function setAppEngineRoutingOverride(Google_Service_CloudTasks_AppEngineRouting $appEngineRoutingOverride)
+  public function setPolicy(Google_Service_Dataproc_Policy $policy)
   {
-    $this->appEngineRoutingOverride = $appEngineRoutingOverride;
+    $this->policy = $policy;
   }
   /**
-   * @return Google_Service_CloudTasks_AppEngineRouting
+   * @return Google_Service_Dataproc_Policy
    */
-  public function getAppEngineRoutingOverride()
+  public function getPolicy()
   {
-    return $this->appEngineRoutingOverride;
+    return $this->policy;
   }
 }

@@ -26,9 +26,8 @@
 class Google_Service_DoubleClickBidManager_Resource_Reports extends Google_Service_Resource
 {
   /**
-   * Retrieves stored reports. (reports.listreports)
+   *  (reports.listreports)
    *
-   * @param string $queryId Query ID with which the reports are associated.
    * @param array $optParams Optional parameters.
    * @return Google_Service_DoubleClickBidManager_ListReportsResponse
    */

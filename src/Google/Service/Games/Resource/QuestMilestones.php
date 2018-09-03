@@ -26,16 +26,10 @@
 class Google_Service_Games_Resource_QuestMilestones extends Google_Service_Resource
 {
   /**
-   * Report that a reward for the milestone corresponding to milestoneId for the
-   * quest corresponding to questId has been claimed by the currently authorized
-   * user. (questMilestones.claim)
+   *  (questMilestones.claim)
    *
-   * @param string $questId The ID of the quest.
-   * @param string $milestoneId The ID of the milestone.
-   * @param string $requestId A numeric ID to ensure that the request is handled
-   * correctly across retries. Your client application must generate this ID
-   * randomly.
    * @param array $optParams Optional parameters.
+
    */
   public function claim($questId, $milestoneId, $requestId, $optParams = array())
   {

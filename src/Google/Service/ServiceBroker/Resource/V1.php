@@ -26,12 +26,8 @@
 class Google_Service_ServiceBroker_Resource_V1 extends Google_Service_Resource
 {
   /**
-   * Gets the access control policy for a resource. Returns an empty policy if the
-   * resource exists and does not have a policy set. (v1.getIamPolicy)
+   *  (v1.getIamPolicy)
    *
-   * @param string $resource REQUIRED: The resource for which the policy is being
-   * requested. See the operation documentation for the appropriate value for this
-   * field.
    * @param array $optParams Optional parameters.
    * @return Google_Service_ServiceBroker_GoogleIamV1Policy
    */
@@ -42,41 +38,28 @@ class Google_Service_ServiceBroker_Resource_V1 extends Google_Service_Resource
     return $this->call('getIamPolicy', array($params), "Google_Service_ServiceBroker_GoogleIamV1Policy");
   }
   /**
-   * Sets the access control policy on the specified resource. Replaces any
-   * existing policy. (v1.setIamPolicy)
+   *  (v1.setIamPolicy)
    *
-   * @param string $resource REQUIRED: The resource for which the policy is being
-   * specified. See the operation documentation for the appropriate value for this
-   * field.
    * @param Google_Service_ServiceBroker_GoogleIamV1SetIamPolicyRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_ServiceBroker_GoogleIamV1Policy
    */
   public function setIamPolicy($resource, Google_Service_ServiceBroker_GoogleIamV1SetIamPolicyRequest $postBody, $optParams = array())
   {
-    $params = array('resource' => $resource, 'postBody' => $postBody);
+    $params = array('resource' => $resource ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('setIamPolicy', array($params), "Google_Service_ServiceBroker_GoogleIamV1Policy");
   }
   /**
-   * Returns permissions that a caller has on the specified resource. If the
-   * resource does not exist, this will return an empty set of permissions, not a
-   * NOT_FOUND error.
+   *  (v1.testIamPermissions)
    *
-   * Note: This operation is designed to be used for building permission-aware UIs
-   * and command-line tools, not for authorization checking. This operation may
-   * "fail open" without warning. (v1.testIamPermissions)
-   *
-   * @param string $resource REQUIRED: The resource for which the policy detail is
-   * being requested. See the operation documentation for the appropriate value
-   * for this field.
    * @param Google_Service_ServiceBroker_GoogleIamV1TestIamPermissionsRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_ServiceBroker_GoogleIamV1TestIamPermissionsResponse
    */
   public function testIamPermissions($resource, Google_Service_ServiceBroker_GoogleIamV1TestIamPermissionsRequest $postBody, $optParams = array())
   {
-    $params = array('resource' => $resource, 'postBody' => $postBody);
+    $params = array('resource' => $resource ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('testIamPermissions', array($params), "Google_Service_ServiceBroker_GoogleIamV1TestIamPermissionsResponse");
   }

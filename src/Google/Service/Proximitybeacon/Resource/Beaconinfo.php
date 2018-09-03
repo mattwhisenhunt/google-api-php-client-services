@@ -26,11 +26,7 @@
 class Google_Service_Proximitybeacon_Resource_Beaconinfo extends Google_Service_Resource
 {
   /**
-   * Given one or more beacon observations, returns any beacon information and
-   * attachments accessible to your application. Authorize by using the [API
-   * key](https://developers.google.com/beacons/proximity/get-
-   * started#request_a_browser_api_key) for the application.
-   * (beaconinfo.getforobserved)
+   *  (beaconinfo.getforobserved)
    *
    * @param Google_Service_Proximitybeacon_GetInfoForObservedBeaconsRequest $postBody
    * @param array $optParams Optional parameters.

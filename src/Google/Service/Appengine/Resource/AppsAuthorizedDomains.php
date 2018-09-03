@@ -26,16 +26,10 @@
 class Google_Service_Appengine_Resource_AppsAuthorizedDomains extends Google_Service_Resource
 {
   /**
-   * Lists all domains the user is authorized to administer.
-   * (authorizedDomains.listAppsAuthorizedDomains)
+   *  (authorizedDomains.listAppsAuthorizedDomains)
    *
-   * @param string $appsId Part of `parent`. Name of the parent Application
-   * resource. Example: apps/myapp.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int pageSize Maximum results to return per page.
-   * @opt_param string pageToken Continuation token for fetching the next page of
-   * results.
    * @return Google_Service_Appengine_ListAuthorizedDomainsResponse
    */
   public function listAppsAuthorizedDomains($appsId, $optParams = array())

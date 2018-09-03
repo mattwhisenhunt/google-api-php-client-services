@@ -26,11 +26,8 @@
 class Google_Service_GamesManagement_Resource_Scores extends Google_Service_Resource
 {
   /**
-   * Resets scores for the leaderboard with the given ID for the currently
-   * authenticated player. This method is only accessible to whitelisted tester
-   * accounts for your application. (scores.reset)
+   *  (scores.reset)
    *
-   * @param string $leaderboardId The ID of the leaderboard.
    * @param array $optParams Optional parameters.
    * @return Google_Service_GamesManagement_PlayerScoreResetResponse
    */
@@ -41,9 +38,7 @@ class Google_Service_GamesManagement_Resource_Scores extends Google_Service_Reso
     return $this->call('reset', array($params), "Google_Service_GamesManagement_PlayerScoreResetResponse");
   }
   /**
-   * Resets all scores for all leaderboards for the currently authenticated
-   * players. This method is only accessible to whitelisted tester accounts for
-   * your application. (scores.resetAll)
+   *  (scores.resetAll)
    *
    * @param array $optParams Optional parameters.
    * @return Google_Service_GamesManagement_PlayerScoreResetAllResponse
@@ -55,11 +50,10 @@ class Google_Service_GamesManagement_Resource_Scores extends Google_Service_Reso
     return $this->call('resetAll', array($params), "Google_Service_GamesManagement_PlayerScoreResetAllResponse");
   }
   /**
-   * Resets scores for all draft leaderboards for all players. This method is only
-   * available to user accounts for your developer console.
-   * (scores.resetAllForAllPlayers)
+   *  (scores.resetAllForAllPlayers)
    *
    * @param array $optParams Optional parameters.
+
    */
   public function resetAllForAllPlayers($optParams = array())
   {
@@ -68,12 +62,10 @@ class Google_Service_GamesManagement_Resource_Scores extends Google_Service_Reso
     return $this->call('resetAllForAllPlayers', array($params));
   }
   /**
-   * Resets scores for the leaderboard with the given ID for all players. This
-   * method is only available to user accounts for your developer console. Only
-   * draft leaderboards can be reset. (scores.resetForAllPlayers)
+   *  (scores.resetForAllPlayers)
    *
-   * @param string $leaderboardId The ID of the leaderboard.
    * @param array $optParams Optional parameters.
+
    */
   public function resetForAllPlayers($leaderboardId, $optParams = array())
   {
@@ -82,12 +74,11 @@ class Google_Service_GamesManagement_Resource_Scores extends Google_Service_Reso
     return $this->call('resetForAllPlayers', array($params));
   }
   /**
-   * Resets scores for the leaderboards with the given IDs for all players. This
-   * method is only available to user accounts for your developer console. Only
-   * draft leaderboards may be reset. (scores.resetMultipleForAllPlayers)
+   *  (scores.resetMultipleForAllPlayers)
    *
    * @param Google_Service_GamesManagement_ScoresResetMultipleForAllRequest $postBody
    * @param array $optParams Optional parameters.
+
    */
   public function resetMultipleForAllPlayers(Google_Service_GamesManagement_ScoresResetMultipleForAllRequest $postBody, $optParams = array())
   {

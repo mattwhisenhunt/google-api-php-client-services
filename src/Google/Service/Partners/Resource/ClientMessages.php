@@ -26,9 +26,7 @@
 class Google_Service_Partners_Resource_ClientMessages extends Google_Service_Resource
 {
   /**
-   * Logs a generic message from the client, such as `Failed to render component`,
-   * `Profile page is running slow`, `More than 500 users have accessed this
-   * result.`, etc. (clientMessages.log)
+   *  (clientMessages.log)
    *
    * @param Google_Service_Partners_LogMessageRequest $postBody
    * @param array $optParams Optional parameters.

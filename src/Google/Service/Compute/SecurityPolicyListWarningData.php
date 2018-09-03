@@ -15,24 +15,25 @@
  * the License.
  */
 
-class Google_Service_CloudTasks_LeaseTasksResponse extends Google_Collection
+class Google_Service_Compute_SecurityPolicyListWarningData extends Google_Model
 {
-  protected $collection_key = 'tasks';
-  protected $tasksType = 'Google_Service_CloudTasks_Task';
-  protected $tasksDataType = 'array';
+  public $key;
+  public $value;
 
-  /**
-   * @param Google_Service_CloudTasks_Task
-   */
-  public function setTasks($tasks)
+  public function setKey($key)
   {
-    $this->tasks = $tasks;
+    $this->key = $key;
   }
-  /**
-   * @return Google_Service_CloudTasks_Task
-   */
-  public function getTasks()
+  public function getKey()
   {
-    return $this->tasks;
+    return $this->key;
+  }
+  public function setValue($value)
+  {
+    $this->value = $value;
+  }
+  public function getValue()
+  {
+    return $this->value;
   }
 }

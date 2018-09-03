@@ -120,7 +120,7 @@ class Google_Service_Oauth2 extends Google_Service
     );
   }
   /**
-   * (getCertForOpenIdConnect)
+   * (oauth2.getCertForOpenIdConnect)
    *
    * @param array $optParams Optional parameters.
    * @return Google_Service_Oauth2_Jwk
@@ -132,7 +132,7 @@ class Google_Service_Oauth2 extends Google_Service
     return $this->base_methods->call('getCertForOpenIdConnect', array($params), "Google_Service_Oauth2_Jwk");
   }
   /**
-   * (tokeninfo)
+   * (oauth2.tokeninfo)
    *
    * @param array $optParams Optional parameters.
    *

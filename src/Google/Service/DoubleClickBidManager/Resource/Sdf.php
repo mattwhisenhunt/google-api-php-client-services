@@ -26,7 +26,7 @@
 class Google_Service_DoubleClickBidManager_Resource_Sdf extends Google_Service_Resource
 {
   /**
-   * Retrieves entities in SDF format. (sdf.download)
+   *  (sdf.download)
    *
    * @param Google_Service_DoubleClickBidManager_DownloadRequest $postBody
    * @param array $optParams Optional parameters.

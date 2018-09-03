@@ -26,11 +26,8 @@
 class Google_Service_Dfareporting_Resource_AccountActiveAdSummaries extends Google_Service_Resource
 {
   /**
-   * Gets the account's active ad summary by account ID.
-   * (accountActiveAdSummaries.get)
+   *  (accountActiveAdSummaries.get)
    *
-   * @param string $profileId User profile ID associated with this request.
-   * @param string $summaryAccountId Account ID.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Dfareporting_AccountActiveAdSummary
    */

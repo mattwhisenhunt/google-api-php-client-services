@@ -15,25 +15,25 @@
  * the License.
  */
 
-class Google_Service_CloudTasks_CancelLeaseRequest extends Google_Model
+class Google_Service_IAMCredentials_GenerateIdentityBindingAccessTokenResponse extends Google_Model
 {
-  public $responseView;
-  public $scheduleTime;
+  public $accessToken;
+  public $expireTime;
 
-  public function setResponseView($responseView)
+  public function setAccessToken($accessToken)
   {
-    $this->responseView = $responseView;
+    $this->accessToken = $accessToken;
   }
-  public function getResponseView()
+  public function getAccessToken()
   {
-    return $this->responseView;
+    return $this->accessToken;
   }
-  public function setScheduleTime($scheduleTime)
+  public function setExpireTime($expireTime)
   {
-    $this->scheduleTime = $scheduleTime;
+    $this->expireTime = $expireTime;
   }
-  public function getScheduleTime()
+  public function getExpireTime()
   {
-    return $this->scheduleTime;
+    return $this->expireTime;
   }
 }

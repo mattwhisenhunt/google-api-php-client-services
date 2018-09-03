@@ -26,7 +26,7 @@
 class Google_Service_Translate_Resource_Detections extends Google_Service_Resource
 {
   /**
-   * Detects the language of text within a request. (detections.detect)
+   *  (detections.detect)
    *
    * @param Google_Service_Translate_DetectLanguageRequest $postBody
    * @param array $optParams Optional parameters.
@@ -39,11 +39,8 @@ class Google_Service_Translate_Resource_Detections extends Google_Service_Resour
     return $this->call('detect', array($params), "Google_Service_Translate_DetectionsListResponse");
   }
   /**
-   * Detects the language of text within a request. (detections.listDetections)
+   *  (detections.listDetections)
    *
-   * @param string|array $q The input text upon which to perform language
-   * detection. Repeat this parameter to perform language detection on multiple
-   * text inputs.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Translate_DetectionsListResponse
    */

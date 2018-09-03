@@ -26,20 +26,10 @@
 class Google_Service_ShoppingContent_Resource_Orderreports extends Google_Service_Resource
 {
   /**
-   * Retrieves a report for disbursements from your Merchant Center account.
-   * (orderreports.listdisbursements)
+   *  (orderreports.listdisbursements)
    *
-   * @param string $merchantId The ID of the account that manages the order. This
-   * cannot be a multi-client account.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string disbursementEndDate The last date which disbursements
-   * occurred. In ISO 8601 format. Default: current date.
-   * @opt_param string disbursementStartDate The first date which disbursements
-   * occurred. In ISO 8601 format.
-   * @opt_param string maxResults The maximum number of disbursements to return in
-   * the response, used for paging.
-   * @opt_param string pageToken The token returned by the previous request.
    * @return Google_Service_ShoppingContent_OrderreportsListDisbursementsResponse
    */
   public function listdisbursements($merchantId, $optParams = array())
@@ -49,22 +39,10 @@ class Google_Service_ShoppingContent_Resource_Orderreports extends Google_Servic
     return $this->call('listdisbursements', array($params), "Google_Service_ShoppingContent_OrderreportsListDisbursementsResponse");
   }
   /**
-   * Retrieves a list of transactions for an disbursement from your Merchant
-   * Center account. (orderreports.listtransactions)
+   *  (orderreports.listtransactions)
    *
-   * @param string $merchantId The ID of the account that manages the order. This
-   * cannot be a multi-client account.
-   * @param string $disbursementId The Google-provided ID of the disbursement
-   * (found in Wallet).
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string disbursementEndDate The last date in which disbursements
-   * occurred. In ISO 8601 format. Default: current date.
-   * @opt_param string disbursementStartDate The first date in which disbursements
-   * occurred. In ISO 8601 format.
-   * @opt_param string maxResults The maximum number of disbursements to return in
-   * the response, used for paging.
-   * @opt_param string pageToken The token returned by the previous request.
    * @return Google_Service_ShoppingContent_OrderreportsListTransactionsResponse
    */
   public function listtransactions($merchantId, $disbursementId, $optParams = array())

@@ -26,10 +26,11 @@
 class Google_Service_Calendar_Resource_Channels extends Google_Service_Resource
 {
   /**
-   * Stop watching resources through this channel (channels.stop)
+   *  (channels.stop)
    *
    * @param Google_Service_Calendar_Channel $postBody
    * @param array $optParams Optional parameters.
+
    */
   public function stop(Google_Service_Calendar_Channel $postBody, $optParams = array())
   {

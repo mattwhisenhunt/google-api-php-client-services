@@ -26,12 +26,11 @@
 class Google_Service_ShoppingContent_Resource_Pos extends Google_Service_Resource
 {
   /**
-   * Batches multiple POS-related calls in a single request. (pos.custombatch)
+   *  (pos.custombatch)
    *
    * @param Google_Service_ShoppingContent_PosCustomBatchRequest $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param bool dryRun Flag to run the request in dry-run mode.
    * @return Google_Service_ShoppingContent_PosCustomBatchResponse
    */
   public function custombatch(Google_Service_ShoppingContent_PosCustomBatchRequest $postBody, $optParams = array())
@@ -41,14 +40,11 @@ class Google_Service_ShoppingContent_Resource_Pos extends Google_Service_Resourc
     return $this->call('custombatch', array($params), "Google_Service_ShoppingContent_PosCustomBatchResponse");
   }
   /**
-   * Deletes a store for the given merchant. (pos.delete)
+   *  (pos.delete)
    *
-   * @param string $merchantId The ID of the POS or inventory data provider.
-   * @param string $targetMerchantId The ID of the target merchant.
-   * @param string $storeCode A store code that is unique per merchant.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param bool dryRun Flag to run the request in dry-run mode.
+
    */
   public function delete($merchantId, $targetMerchantId, $storeCode, $optParams = array())
   {
@@ -57,11 +53,8 @@ class Google_Service_ShoppingContent_Resource_Pos extends Google_Service_Resourc
     return $this->call('delete', array($params));
   }
   /**
-   * Retrieves information about the given store. (pos.get)
+   *  (pos.get)
    *
-   * @param string $merchantId The ID of the POS or inventory data provider.
-   * @param string $targetMerchantId The ID of the target merchant.
-   * @param string $storeCode A store code that is unique per merchant.
    * @param array $optParams Optional parameters.
    * @return Google_Service_ShoppingContent_PosStore
    */
@@ -72,44 +65,36 @@ class Google_Service_ShoppingContent_Resource_Pos extends Google_Service_Resourc
     return $this->call('get', array($params), "Google_Service_ShoppingContent_PosStore");
   }
   /**
-   * Creates a store for the given merchant. (pos.insert)
+   *  (pos.insert)
    *
-   * @param string $merchantId The ID of the POS or inventory data provider.
-   * @param string $targetMerchantId The ID of the target merchant.
    * @param Google_Service_ShoppingContent_PosStore $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param bool dryRun Flag to run the request in dry-run mode.
    * @return Google_Service_ShoppingContent_PosStore
    */
   public function insert($merchantId, $targetMerchantId, Google_Service_ShoppingContent_PosStore $postBody, $optParams = array())
   {
-    $params = array('merchantId' => $merchantId, 'targetMerchantId' => $targetMerchantId, 'postBody' => $postBody);
+    $params = array('merchantId' => $merchantId, 'targetMerchantId' => $targetMerchantId ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('insert', array($params), "Google_Service_ShoppingContent_PosStore");
   }
   /**
-   * Submit inventory for the given merchant. (pos.inventory)
+   *  (pos.inventory)
    *
-   * @param string $merchantId The ID of the POS or inventory data provider.
-   * @param string $targetMerchantId The ID of the target merchant.
    * @param Google_Service_ShoppingContent_PosInventoryRequest $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param bool dryRun Flag to run the request in dry-run mode.
    * @return Google_Service_ShoppingContent_PosInventoryResponse
    */
   public function inventory($merchantId, $targetMerchantId, Google_Service_ShoppingContent_PosInventoryRequest $postBody, $optParams = array())
   {
-    $params = array('merchantId' => $merchantId, 'targetMerchantId' => $targetMerchantId, 'postBody' => $postBody);
+    $params = array('merchantId' => $merchantId, 'targetMerchantId' => $targetMerchantId ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('inventory', array($params), "Google_Service_ShoppingContent_PosInventoryResponse");
   }
   /**
-   * Lists the stores of the target merchant. (pos.listPos)
+   *  (pos.listPos)
    *
-   * @param string $merchantId The ID of the POS or inventory data provider.
-   * @param string $targetMerchantId The ID of the target merchant.
    * @param array $optParams Optional parameters.
    * @return Google_Service_ShoppingContent_PosListResponse
    */
@@ -120,19 +105,16 @@ class Google_Service_ShoppingContent_Resource_Pos extends Google_Service_Resourc
     return $this->call('list', array($params), "Google_Service_ShoppingContent_PosListResponse");
   }
   /**
-   * Submit a sale event for the given merchant. (pos.sale)
+   *  (pos.sale)
    *
-   * @param string $merchantId The ID of the POS or inventory data provider.
-   * @param string $targetMerchantId The ID of the target merchant.
    * @param Google_Service_ShoppingContent_PosSaleRequest $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param bool dryRun Flag to run the request in dry-run mode.
    * @return Google_Service_ShoppingContent_PosSaleResponse
    */
   public function sale($merchantId, $targetMerchantId, Google_Service_ShoppingContent_PosSaleRequest $postBody, $optParams = array())
   {
-    $params = array('merchantId' => $merchantId, 'targetMerchantId' => $targetMerchantId, 'postBody' => $postBody);
+    $params = array('merchantId' => $merchantId, 'targetMerchantId' => $targetMerchantId ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('sale', array($params), "Google_Service_ShoppingContent_PosSaleResponse");
   }

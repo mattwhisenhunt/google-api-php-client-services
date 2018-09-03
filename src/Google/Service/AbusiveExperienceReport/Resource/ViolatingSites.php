@@ -26,8 +26,7 @@
 class Google_Service_AbusiveExperienceReport_Resource_ViolatingSites extends Google_Service_Resource
 {
   /**
-   * Lists sites with Abusive Experience Report statuses of "Failing".
-   * (violatingSites.listViolatingSites)
+   *  (violatingSites.listViolatingSites)
    *
    * @param array $optParams Optional parameters.
    * @return Google_Service_AbusiveExperienceReport_ViolatingSitesResponse

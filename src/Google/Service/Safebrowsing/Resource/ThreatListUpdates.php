@@ -26,8 +26,7 @@
 class Google_Service_Safebrowsing_Resource_ThreatListUpdates extends Google_Service_Resource
 {
   /**
-   * Fetches the most recent threat list updates. A client can request updates for
-   * multiple lists at once. (threatListUpdates.fetch)
+   *  (threatListUpdates.fetch)
    *
    * @param Google_Service_Safebrowsing_FetchThreatListUpdatesRequest $postBody
    * @param array $optParams Optional parameters.

@@ -26,10 +26,8 @@
 class Google_Service_Dfareporting_Resource_Countries extends Google_Service_Resource
 {
   /**
-   * Gets one country by ID. (countries.get)
+   *  (countries.get)
    *
-   * @param string $profileId User profile ID associated with this request.
-   * @param string $dartId Country DART ID.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Dfareporting_Country
    */
@@ -40,9 +38,8 @@ class Google_Service_Dfareporting_Resource_Countries extends Google_Service_Reso
     return $this->call('get', array($params), "Google_Service_Dfareporting_Country");
   }
   /**
-   * Retrieves a list of countries. (countries.listCountries)
+   *  (countries.listCountries)
    *
-   * @param string $profileId User profile ID associated with this request.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Dfareporting_CountriesListResponse
    */

@@ -26,8 +26,7 @@
 class Google_Service_Logging_Resource_Entries extends Google_Service_Resource
 {
   /**
-   * Lists log entries. Use this method to retrieve log entries from Logging. For
-   * ways to export log entries, see Exporting Logs. (entries.listEntries)
+   *  (entries.listEntries)
    *
    * @param Google_Service_Logging_ListLogEntriesRequest $postBody
    * @param array $optParams Optional parameters.
@@ -40,12 +39,7 @@ class Google_Service_Logging_Resource_Entries extends Google_Service_Resource
     return $this->call('list', array($params), "Google_Service_Logging_ListLogEntriesResponse");
   }
   /**
-   * Writes log entries to Logging. This API method is the only way to send log
-   * entries to Logging. This method is used, directly or indirectly, by the
-   * Logging agent (fluentd) and all logging libraries configured to use Logging.
-   * A single request may contain log entries for a maximum of 1000 different
-   * resources (projects, organizations, billing accounts or folders)
-   * (entries.write)
+   *  (entries.write)
    *
    * @param Google_Service_Logging_WriteLogEntriesRequest $postBody
    * @param array $optParams Optional parameters.

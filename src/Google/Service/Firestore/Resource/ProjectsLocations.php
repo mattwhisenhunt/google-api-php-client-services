@@ -26,9 +26,8 @@
 class Google_Service_Firestore_Resource_ProjectsLocations extends Google_Service_Resource
 {
   /**
-   * Gets information about a location. (locations.get)
+   *  (locations.get)
    *
-   * @param string $name Resource name for the location.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Firestore_Location
    */
@@ -39,16 +38,10 @@ class Google_Service_Firestore_Resource_ProjectsLocations extends Google_Service
     return $this->call('get', array($params), "Google_Service_Firestore_Location");
   }
   /**
-   * Lists information about the supported locations for this service.
-   * (locations.listProjectsLocations)
+   *  (locations.listProjectsLocations)
    *
-   * @param string $name The resource that owns the locations collection, if
-   * applicable.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string filter The standard list filter.
-   * @opt_param string pageToken The standard list page token.
-   * @opt_param int pageSize The standard list page size.
    * @return Google_Service_Firestore_ListLocationsResponse
    */
   public function listProjectsLocations($name, $optParams = array())
