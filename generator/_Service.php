@@ -13,12 +13,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+$output = [];
 if ($all_resources) {
   foreach ($all_resources as $class_name => $keys) {
     $node = getResourceReference($keys);
 
     ksort($node['methods']);
-    foreach ($node['methods'] as $method_name => &$method) {
+    foreach ($node['methods'] as &$method) {
       if ($method['parameters']) {
         ksort($method['parameters']);
       }
@@ -34,8 +35,9 @@ if ($all_resources) {
     }
     $output[$class_name] = [render_resource_name($keys), &$keys[count($keys)-1], &$node['methods']];
   }
+  unset($method);
 }
-// print_r($output);
+
 echo '<?php';
 ?>
 
@@ -102,8 +104,7 @@ class Google_Service_<?=$CapCan?> extends Google_Service
     $this->version = '<?=$doc['version']?>';
     $this->serviceName = '<?=$doc['name']?>';
 
-<? if ($all_resources)
-   foreach ($output as $member_name => list($class_name, $literal_name, $methods)): // resource ?>
+<? foreach ($output as $member_name => list($class_name, $literal_name, $methods)): // resource ?>
     $this-><?=lcfirst($member_name)?> = new Google_Service_<?=$CapCan?>_Resource_<?=$class_name?>(
         $this,
         $this->serviceName,
