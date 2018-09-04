@@ -13,6 +13,29 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+if ($all_resources) {
+  foreach ($all_resources as $class_name => $keys) {
+    $node = getResourceReference($keys);
+
+    ksort($node['methods']);
+    foreach ($node['methods'] as $method_name => &$method) {
+      if ($method['parameters']) {
+        ksort($method['parameters']);
+      }
+
+      if ($method['parameterOrder']) {
+        $parameters = [];
+        foreach ($method['parameterOrder'] as $movedKey) {
+          $parameters[$movedKey] = $method['parameters'][$movedKey];
+          unset($method['parameters'][$movedKey]);
+        }
+        $method['parameters'] = array_merge($parameters, $method['parameters']);
+      }
+    }
+    $output[$class_name] = [render_resource_name($keys), &$keys[count($keys)-1], &$node['methods']];
+  }
+}
+// print_r($output);
 echo '<?php';
 ?>
 
@@ -80,31 +103,18 @@ class Google_Service_<?=$CapCan?> extends Google_Service
     $this->serviceName = '<?=$doc['name']?>';
 
 <? if ($all_resources)
-   foreach ($all_resources as $class_name => $keys): // resource
-     $node = getResourceReference($keys);
-     $res_class_name = render_resource_name($keys);
-     ksort($node['methods']); ?>
-    $this-><?=lcfirst($class_name)?> = new Google_Service_<?=$CapCan?>_Resource_<?=$res_class_name?>(
+   foreach ($output as $member_name => list($class_name, $literal_name, $methods)): // resource ?>
+    $this-><?=lcfirst($member_name)?> = new Google_Service_<?=$CapCan?>_Resource_<?=$class_name?>(
         $this,
         $this->serviceName,
-        '<?=$keys[count($keys)-1]?>',
+        '<?=$literal_name?>',
         array(
           'methods' => array(
-            <? foreach ($node['methods'] as $method_name => $method): // resource,method ?>
+            <? foreach ($methods as $method_name => $method): // resource,method ?>
 '<?=$method_name?>' => array(
               'path' => '<?=$method['path']?>',
               'httpMethod' => '<?=$method['httpMethod']?>',
-<?php
-   if ($method['parameterOrder']) {
-     $parameters = [];
-     foreach ($method['parameterOrder'] as $movedKey) {
-       $parameters[$movedKey] = $method['parameters'][$movedKey];
-       unset($method['parameters'][$movedKey]);
-     }
-     ksort($method['parameters']);
-     $method['parameters'] = array_merge($parameters, $method['parameters']);
-   }
-   if ($method['parameters']): ?>
+<? if ($method['parameters']): ?>
               'parameters' => array(<?foreach ($method['parameters'] as $pname => $pval): // resource,method,parameter?>
 
                 '<?=$pname?>' => array(
