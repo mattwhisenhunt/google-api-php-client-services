@@ -145,10 +145,10 @@ class Google_Service_Surveys extends Google_Service
                 ),
               ),
             ),'update' => array(
-              'path' => 'surveys/{surveyUrlId}',
-              'httpMethod' => 'PUT',
+              'path' => 'surveys/{resourceId}/stop',
+              'httpMethod' => 'POST',
               'parameters' => array(
-                'surveyUrlId' => array(
+                'resourceId' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,

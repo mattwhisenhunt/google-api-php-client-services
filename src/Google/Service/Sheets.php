@@ -339,7 +339,7 @@ class Google_Service_Sheets extends Google_Service
               ),
             ),'update' => array(
               'path' => 'v4/spreadsheets/{spreadsheetId}/values/{range}',
-              'httpMethod' => 'PUT',
+              'httpMethod' => 'GET',
               'parameters' => array(
                 'spreadsheetId' => array(
                   'location' => 'path',
@@ -351,19 +351,15 @@ class Google_Service_Sheets extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'includeValuesInResponse' => array(
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ),
-                'responseDateTimeRenderOption' => array(
+                'dateTimeRenderOption' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'responseValueRenderOption' => array(
+                'majorDimension' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'valueInputOption' => array(
+                'valueRenderOption' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),

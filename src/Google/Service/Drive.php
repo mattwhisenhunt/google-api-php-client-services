@@ -929,13 +929,20 @@ class Google_Service_Drive extends Google_Service
                 ),
               ),
             ),'update' => array(
-              'path' => 'teamdrives/{teamDriveId}',
-              'httpMethod' => 'PATCH',
+              'path' => 'teamdrives',
+              'httpMethod' => 'GET',
               'parameters' => array(
-                'teamDriveId' => array(
-                  'location' => 'path',
+                'pageSize' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
+                ),
+                'pageToken' => array(
+                  'location' => 'query',
                   'type' => 'string',
-                  'required' => true,
+                ),
+                'q' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
                 'useDomainAdminAccess' => array(
                   'location' => 'query',

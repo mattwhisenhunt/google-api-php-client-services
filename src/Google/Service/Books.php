@@ -1528,34 +1528,26 @@ class Google_Service_Books extends Google_Service
         array(
           'methods' => array(
             'list' => array(
-              'path' => 'volumes/useruploaded',
-              'httpMethod' => 'GET',
+              'path' => 'volumes/recommended/rate',
+              'httpMethod' => 'POST',
               'parameters' => array(
-                'locale' => array(
+                'rating' => array(
                   'location' => 'query',
                   'type' => 'string',
-                ),
-                'maxResults' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
-                'processingState' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                  'repeated' => true,
-                ),
-                'source' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'startIndex' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
+                  'required' => true,
                 ),
                 'volumeId' => array(
                   'location' => 'query',
                   'type' => 'string',
-                  'repeated' => true,
+                  'required' => true,
+                ),
+                'locale' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'source' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),

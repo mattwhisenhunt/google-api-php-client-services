@@ -220,20 +220,9 @@ class Google_Service_Doubleclicksearch extends Google_Service
         array(
           'methods' => array(
             'list' => array(
-              'path' => 'agency/{agencyId}/advertiser/{advertiserId}/savedcolumns',
-              'httpMethod' => 'GET',
-              'parameters' => array(
-                'agencyId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-                'advertiserId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-              ),
+              'path' => 'reports',
+              'httpMethod' => 'POST',
+              'parameters' => array(),
             ),
           )
         )

@@ -324,7 +324,7 @@ class Google_Service_GamesManagement extends Google_Service
               'httpMethod' => 'POST',
               'parameters' => array(),
             ),'resetForAllPlayers' => array(
-              'path' => 'turnbasedmatches/resetForAllPlayers',
+              'path' => 'turnbasedmatches/reset',
               'httpMethod' => 'POST',
               'parameters' => array(),
             ),

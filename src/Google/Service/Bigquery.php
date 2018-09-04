@@ -532,7 +532,7 @@ class Google_Service_Bigquery extends Google_Service
               ),
             ),'update' => array(
               'path' => 'projects/{projectId}/datasets/{datasetId}/tables/{tableId}',
-              'httpMethod' => 'PUT',
+              'httpMethod' => 'PATCH',
               'parameters' => array(
                 'projectId' => array(
                   'location' => 'path',

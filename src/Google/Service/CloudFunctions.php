@@ -79,13 +79,13 @@ class Google_Service_CloudFunctions extends Google_Service
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'pageToken' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
                 'pageSize' => array(
                   'location' => 'query',
                   'type' => 'integer',
+                ),
+                'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),
@@ -209,15 +209,19 @@ class Google_Service_CloudFunctions extends Google_Service
                 ),
               ),
             ),'patch' => array(
-              'path' => 'v1/{+name}',
-              'httpMethod' => 'PATCH',
+              'path' => 'v1/{+parent}/functions',
+              'httpMethod' => 'GET',
               'parameters' => array(
-                'name' => array(
+                'parent' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
                 ),
-                'updateMask' => array(
+                'pageSize' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
+                ),
+                'pageToken' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),

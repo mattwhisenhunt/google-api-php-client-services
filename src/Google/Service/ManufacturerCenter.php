@@ -114,18 +114,26 @@ class Google_Service_ManufacturerCenter extends Google_Service
                 ),
               ),
             ),'update' => array(
-              'path' => 'v1/{+parent}/products/{+name}',
-              'httpMethod' => 'PUT',
+              'path' => 'v1/{+parent}/products',
+              'httpMethod' => 'GET',
               'parameters' => array(
                 'parent' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
                 ),
-                'name' => array(
-                  'location' => 'path',
+                'include' => array(
+                  'location' => 'query',
                   'type' => 'string',
-                  'required' => true,
+                  'repeated' => true,
+                ),
+                'pageSize' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
+                ),
+                'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),

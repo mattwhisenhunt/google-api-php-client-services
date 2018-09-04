@@ -459,10 +459,15 @@ class Google_Service_DeploymentManager extends Google_Service
         array(
           'methods' => array(
             'list' => array(
-              'path' => '{project}/global/types',
+              'path' => '{project}/global/deployments/{deployment}/resources',
               'httpMethod' => 'GET',
               'parameters' => array(
                 'project' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'deployment' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,

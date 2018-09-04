@@ -103,21 +103,21 @@ class Google_Service_YouTubeReporting extends Google_Service
               'path' => 'v1/jobs',
               'httpMethod' => 'GET',
               'parameters' => array(
-                'onBehalfOfContentOwner' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'pageToken' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
                 'includeSystemManaged' => array(
                   'location' => 'query',
                   'type' => 'boolean',
                 ),
+                'onBehalfOfContentOwner' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
                 'pageSize' => array(
                   'location' => 'query',
                   'type' => 'integer',
+                ),
+                'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),
@@ -214,24 +214,13 @@ class Google_Service_YouTubeReporting extends Google_Service
         array(
           'methods' => array(
             'list' => array(
-              'path' => 'v1/reportTypes',
+              'path' => 'v1/media/{+resourceName}',
               'httpMethod' => 'GET',
               'parameters' => array(
-                'pageToken' => array(
-                  'location' => 'query',
+                'resourceName' => array(
+                  'location' => 'path',
                   'type' => 'string',
-                ),
-                'includeSystemManaged' => array(
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ),
-                'pageSize' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
-                'onBehalfOfContentOwner' => array(
-                  'location' => 'query',
-                  'type' => 'string',
+                  'required' => true,
                 ),
               ),
             ),

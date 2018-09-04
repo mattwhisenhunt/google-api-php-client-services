@@ -67,13 +67,13 @@ class Google_Service_AndroidProvisioningPartner extends Google_Service
               'path' => 'v1/customers',
               'httpMethod' => 'GET',
               'parameters' => array(
-                'pageToken' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
                 'pageSize' => array(
                   'location' => 'query',
                   'type' => 'integer',
+                ),
+                'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),
@@ -422,7 +422,7 @@ class Google_Service_AndroidProvisioningPartner extends Google_Service
         array(
           'methods' => array(
             'list' => array(
-              'path' => 'v1/{+parent}/customers',
+              'path' => 'v1/{+parent}/vendors',
               'httpMethod' => 'GET',
               'parameters' => array(
                 'parent' => array(

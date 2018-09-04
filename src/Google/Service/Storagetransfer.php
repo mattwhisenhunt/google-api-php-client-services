@@ -104,13 +104,13 @@ class Google_Service_Storagetransfer extends Google_Service
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'pageToken' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
                 'pageSize' => array(
                   'location' => 'query',
                   'type' => 'integer',
+                ),
+                'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),'patch' => array(
@@ -196,7 +196,7 @@ class Google_Service_Storagetransfer extends Google_Service
                 ),
               ),
             ),'resume' => array(
-              'path' => 'v1/{+name}:resume',
+              'path' => 'v1/{+name}:pause',
               'httpMethod' => 'POST',
               'parameters' => array(
                 'name' => array(

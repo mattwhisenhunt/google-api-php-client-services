@@ -426,7 +426,7 @@ class Google_Service_Dns extends Google_Service
         array(
           'methods' => array(
             'list' => array(
-              'path' => '{project}/managedZones/{managedZone}/rrsets',
+              'path' => '{project}',
               'httpMethod' => 'GET',
               'parameters' => array(
                 'project' => array(
@@ -434,24 +434,7 @@ class Google_Service_Dns extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'managedZone' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-                'maxResults' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
-                'name' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'pageToken' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'type' => array(
+                'clientOperationId' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),

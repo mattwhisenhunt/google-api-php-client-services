@@ -104,7 +104,7 @@ class Google_Service_FirebaseDynamicLinks extends Google_Service
               'httpMethod' => 'POST',
               'parameters' => array(),
             ),'reopenAttribution' => array(
-              'path' => 'v1/reopenAttribution',
+              'path' => 'v1/installAttribution',
               'httpMethod' => 'POST',
               'parameters' => array(),
             ),

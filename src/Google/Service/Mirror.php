@@ -363,7 +363,7 @@ class Google_Service_Mirror extends Google_Service
               ),
             ),'list' => array(
               'path' => 'timeline/{itemId}/attachments',
-              'httpMethod' => 'GET',
+              'httpMethod' => 'POST',
               'parameters' => array(
                 'itemId' => array(
                   'location' => 'path',

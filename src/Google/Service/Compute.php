@@ -8706,7 +8706,7 @@ class Google_Service_Compute extends Google_Service
                 ),
               ),
             ),'list' => array(
-              'path' => '{project}/zones',
+              'path' => '{project}/zones/{zone}',
               'httpMethod' => 'GET',
               'parameters' => array(
                 'project' => array(
@@ -8714,21 +8714,10 @@ class Google_Service_Compute extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'filter' => array(
-                  'location' => 'query',
+                'zone' => array(
+                  'location' => 'path',
                   'type' => 'string',
-                ),
-                'maxResults' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
-                'orderBy' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'pageToken' => array(
-                  'location' => 'query',
-                  'type' => 'string',
+                  'required' => true,
                 ),
               ),
             ),

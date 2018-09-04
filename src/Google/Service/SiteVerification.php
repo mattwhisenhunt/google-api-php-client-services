@@ -108,7 +108,7 @@ class Google_Service_SiteVerification extends Google_Service
               ),
             ),'update' => array(
               'path' => 'webResource/{id}',
-              'httpMethod' => 'PUT',
+              'httpMethod' => 'PATCH',
               'parameters' => array(
                 'id' => array(
                   'location' => 'path',

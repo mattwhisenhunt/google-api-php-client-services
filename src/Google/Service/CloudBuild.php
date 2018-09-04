@@ -262,8 +262,8 @@ class Google_Service_CloudBuild extends Google_Service
                 ),
               ),
             ),'run' => array(
-              'path' => 'v1/projects/{projectId}/triggers/{triggerId}:run',
-              'httpMethod' => 'POST',
+              'path' => 'v1/projects/{projectId}/triggers/{triggerId}',
+              'httpMethod' => 'PATCH',
               'parameters' => array(
                 'projectId' => array(
                   'location' => 'path',

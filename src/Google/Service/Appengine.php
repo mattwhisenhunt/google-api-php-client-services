@@ -805,7 +805,7 @@ class Google_Service_Appengine extends Google_Service
                 ),
               ),
             ),'list' => array(
-              'path' => 'v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances',
+              'path' => 'v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}',
               'httpMethod' => 'GET',
               'parameters' => array(
                 'appsId' => array(
@@ -823,13 +823,10 @@ class Google_Service_Appengine extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'pageSize' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
-                'pageToken' => array(
-                  'location' => 'query',
+                'instancesId' => array(
+                  'location' => 'path',
                   'type' => 'string',
+                  'required' => true,
                 ),
               ),
             ),

@@ -220,7 +220,7 @@ class Google_Service_GamesConfiguration extends Google_Service
               ),
             ),'update' => array(
               'path' => 'leaderboards/{leaderboardId}',
-              'httpMethod' => 'PUT',
+              'httpMethod' => 'PATCH',
               'parameters' => array(
                 'leaderboardId' => array(
                   'location' => 'path',

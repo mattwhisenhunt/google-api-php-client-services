@@ -136,16 +136,12 @@ class Google_Service_CloudOSLogin extends Google_Service
               ),
             ),'patch' => array(
               'path' => 'v1/{+name}',
-              'httpMethod' => 'PATCH',
+              'httpMethod' => 'GET',
               'parameters' => array(
                 'name' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
-                ),
-                'updateMask' => array(
-                  'location' => 'query',
-                  'type' => 'string',
                 ),
               ),
             ),

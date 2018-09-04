@@ -632,13 +632,13 @@ class Google_Service_Logging extends Google_Service
               'path' => 'v2/monitoredResourceDescriptors',
               'httpMethod' => 'GET',
               'parameters' => array(
-                'pageToken' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
                 'pageSize' => array(
                   'location' => 'query',
                   'type' => 'integer',
+                ),
+                'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),
@@ -1188,19 +1188,19 @@ class Google_Service_Logging extends Google_Service
                 ),
               ),
             ),'update' => array(
-              'path' => 'v2/{+sinkName}',
-              'httpMethod' => 'PUT',
+              'path' => 'v2/{+parent}/sinks',
+              'httpMethod' => 'GET',
               'parameters' => array(
-                'sinkName' => array(
+                'parent' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
                 ),
-                'uniqueWriterIdentity' => array(
+                'pageSize' => array(
                   'location' => 'query',
-                  'type' => 'boolean',
+                  'type' => 'integer',
                 ),
-                'updateMask' => array(
+                'pageToken' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),

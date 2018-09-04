@@ -81,7 +81,7 @@ class Google_Service_Speech extends Google_Service
               'httpMethod' => 'POST',
               'parameters' => array(),
             ),'recognize' => array(
-              'path' => 'v1/speech:recognize',
+              'path' => 'v1/speech:longrunningrecognize',
               'httpMethod' => 'POST',
               'parameters' => array(),
             ),

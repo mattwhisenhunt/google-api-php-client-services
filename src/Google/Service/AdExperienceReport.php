@@ -78,9 +78,15 @@ class Google_Service_AdExperienceReport extends Google_Service
         array(
           'methods' => array(
             'list' => array(
-              'path' => 'v1/violatingSites',
+              'path' => 'v1/{+name}',
               'httpMethod' => 'GET',
-              'parameters' => array(),
+              'parameters' => array(
+                'name' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
             ),
           )
         )

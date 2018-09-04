@@ -1050,14 +1050,9 @@ class Google_Service_AdSense extends Google_Service
         array(
           'methods' => array(
             'list' => array(
-              'path' => 'adclients/{adClientId}/urlchannels',
+              'path' => 'savedadstyles',
               'httpMethod' => 'GET',
               'parameters' => array(
-                'adClientId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
                 'maxResults' => array(
                   'location' => 'query',
                   'type' => 'integer',

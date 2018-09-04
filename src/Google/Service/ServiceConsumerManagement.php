@@ -206,13 +206,25 @@ class Google_Service_ServiceConsumerManagement extends Google_Service
                 ),
               ),
             ),'removeProject' => array(
-              'path' => 'v1/{+name}:removeProject',
-              'httpMethod' => 'POST',
+              'path' => 'v1/{+parent}/tenancyUnits',
+              'httpMethod' => 'GET',
               'parameters' => array(
-                'name' => array(
+                'parent' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ),
+                'filter' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'pageSize' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
+                ),
+                'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),

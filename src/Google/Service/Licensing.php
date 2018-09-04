@@ -183,7 +183,7 @@ class Google_Service_Licensing extends Google_Service
               ),
             ),'update' => array(
               'path' => '{productId}/sku/{skuId}/user/{userId}',
-              'httpMethod' => 'PUT',
+              'httpMethod' => 'PATCH',
               'parameters' => array(
                 'productId' => array(
                   'location' => 'path',

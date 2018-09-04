@@ -1894,7 +1894,7 @@ class Google_Service_YouTube extends Google_Service
                 ),
               ),
             ),'unset' => array(
-              'path' => 'watermarks/unset',
+              'path' => 'watermarks/set',
               'httpMethod' => 'POST',
               'parameters' => array(
                 'channelId' => array(

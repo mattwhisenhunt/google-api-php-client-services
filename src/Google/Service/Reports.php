@@ -264,10 +264,15 @@ class Google_Service_Reports extends Google_Service
         array(
           'methods' => array(
             'get' => array(
-              'path' => 'usage/users/{userKey}/dates/{date}',
+              'path' => 'usage/{entityType}/{entityKey}/dates/{date}',
               'httpMethod' => 'GET',
               'parameters' => array(
-                'userKey' => array(
+                'entityType' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'entityKey' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,

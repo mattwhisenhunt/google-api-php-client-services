@@ -132,17 +132,17 @@ class Google_Service_PeopleService extends Google_Service
               'path' => 'v1/contactGroups',
               'httpMethod' => 'GET',
               'parameters' => array(
-                'syncToken' => array(
+                'pageSize' => array(
                   'location' => 'query',
-                  'type' => 'string',
+                  'type' => 'integer',
                 ),
                 'pageToken' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'pageSize' => array(
+                'syncToken' => array(
                   'location' => 'query',
-                  'type' => 'integer',
+                  'type' => 'string',
                 ),
               ),
             ),'update' => array(
@@ -265,39 +265,15 @@ class Google_Service_PeopleService extends Google_Service
         array(
           'methods' => array(
             'list' => array(
-              'path' => 'v1/{+resourceName}/connections',
-              'httpMethod' => 'GET',
+              'path' => 'v1/{+resourceName}:updateContact',
+              'httpMethod' => 'PATCH',
               'parameters' => array(
                 'resourceName' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
                 ),
-                'pageSize' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
-                'pageToken' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'personFields' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'requestMask.includeField' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'requestSyncToken' => array(
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ),
-                'sortOrder' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'syncToken' => array(
+                'updatePersonFields' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),

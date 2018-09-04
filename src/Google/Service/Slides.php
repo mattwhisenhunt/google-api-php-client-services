@@ -124,7 +124,7 @@ class Google_Service_Slides extends Google_Service
                 ),
               ),
             ),'getThumbnail' => array(
-              'path' => 'v1/presentations/{presentationId}/pages/{pageObjectId}/thumbnail',
+              'path' => 'v1/presentations/{presentationId}/pages/{pageObjectId}',
               'httpMethod' => 'GET',
               'parameters' => array(
                 'presentationId' => array(
@@ -136,14 +136,6 @@ class Google_Service_Slides extends Google_Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
-                ),
-                'thumbnailProperties.mimeType' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'thumbnailProperties.thumbnailSize' => array(
-                  'location' => 'query',
-                  'type' => 'string',
                 ),
               ),
             ),

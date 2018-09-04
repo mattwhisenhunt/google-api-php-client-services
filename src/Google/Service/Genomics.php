@@ -277,13 +277,13 @@ class Google_Service_Genomics extends Google_Service
               'path' => 'v1/datasets',
               'httpMethod' => 'GET',
               'parameters' => array(
-                'pageToken' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
                 'pageSize' => array(
                   'location' => 'query',
                   'type' => 'integer',
+                ),
+                'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
                 'projectId' => array(
                   'location' => 'query',
@@ -709,9 +709,19 @@ class Google_Service_Genomics extends Google_Service
                 ),
               ),
             ),'search' => array(
-              'path' => 'v1/variantsets/search',
-              'httpMethod' => 'POST',
-              'parameters' => array(),
+              'path' => 'v1/variantsets/{variantSetId}',
+              'httpMethod' => 'PATCH',
+              'parameters' => array(
+                'variantSetId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'updateMask' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+              ),
             ),
           )
         )

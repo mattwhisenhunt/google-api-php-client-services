@@ -77,7 +77,7 @@ class Google_Service_Groupssettings extends Google_Service
               ),
             ),'update' => array(
               'path' => '{groupUniqueId}',
-              'httpMethod' => 'PUT',
+              'httpMethod' => 'PATCH',
               'parameters' => array(
                 'groupUniqueId' => array(
                   'location' => 'path',

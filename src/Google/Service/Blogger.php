@@ -913,13 +913,38 @@ class Google_Service_Blogger extends Google_Service
         array(
           'methods' => array(
             'get' => array(
-              'path' => 'users/{userId}',
-              'httpMethod' => 'GET',
+              'path' => 'blogs/{blogId}/posts/{postId}',
+              'httpMethod' => 'PUT',
               'parameters' => array(
-                'userId' => array(
+                'blogId' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ),
+                'postId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'fetchBody' => array(
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ),
+                'fetchImages' => array(
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ),
+                'maxComments' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
+                ),
+                'publish' => array(
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ),
+                'revert' => array(
+                  'location' => 'query',
+                  'type' => 'boolean',
                 ),
               ),
             ),

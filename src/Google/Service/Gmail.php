@@ -1175,7 +1175,7 @@ class Google_Service_Gmail extends Google_Service
                 ),
               ),
             ),'untrash' => array(
-              'path' => '{userId}/threads/{id}/untrash',
+              'path' => '{userId}/threads/{id}/trash',
               'httpMethod' => 'POST',
               'parameters' => array(
                 'userId' => array(

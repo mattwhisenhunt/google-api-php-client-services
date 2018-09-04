@@ -72,14 +72,9 @@ class Google_Service_Texttospeech extends Google_Service
         array(
           'methods' => array(
             'list' => array(
-              'path' => 'v1/voices',
-              'httpMethod' => 'GET',
-              'parameters' => array(
-                'languageCode' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-              ),
+              'path' => 'v1/text:synthesize',
+              'httpMethod' => 'POST',
+              'parameters' => array(),
             ),
           )
         )

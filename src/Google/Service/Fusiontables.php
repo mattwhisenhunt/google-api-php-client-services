@@ -619,7 +619,7 @@ class Google_Service_Fusiontables extends Google_Service
               ),
             ),'update' => array(
               'path' => 'tables/{tableId}/templates/{templateId}',
-              'httpMethod' => 'PUT',
+              'httpMethod' => 'PATCH',
               'parameters' => array(
                 'tableId' => array(
                   'location' => 'path',

@@ -158,7 +158,7 @@ class Google_Service_CloudIAP extends Google_Service
                 ),
               ),
             ),'testIamPermissions' => array(
-              'path' => 'v1beta1/{+resource}:testIamPermissions',
+              'path' => 'v1beta1/{+resource}:setIamPolicy',
               'httpMethod' => 'POST',
               'parameters' => array(
                 'resource' => array(

@@ -106,13 +106,13 @@ class Google_Service_ServiceUsage extends Google_Service
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'pageToken' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
                 'pageSize' => array(
                   'location' => 'query',
                   'type' => 'integer',
+                ),
+                'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),
@@ -166,25 +166,13 @@ class Google_Service_ServiceUsage extends Google_Service
                 ),
               ),
             ),'list' => array(
-              'path' => 'v1/{+parent}/services',
+              'path' => 'v1/{+name}',
               'httpMethod' => 'GET',
               'parameters' => array(
-                'parent' => array(
+                'name' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
-                ),
-                'filter' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'pageSize' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
-                'pageToken' => array(
-                  'location' => 'query',
-                  'type' => 'string',
                 ),
               ),
             ),

@@ -1723,7 +1723,7 @@ class Google_Service_ShoppingContent extends Google_Service
               ),
             ),'update' => array(
               'path' => '{merchantId}/shippingsettings/{accountId}',
-              'httpMethod' => 'PUT',
+              'httpMethod' => 'PATCH',
               'parameters' => array(
                 'merchantId' => array(
                   'location' => 'path',

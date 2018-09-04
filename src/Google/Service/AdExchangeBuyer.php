@@ -662,12 +662,22 @@ class Google_Service_AdExchangeBuyer extends Google_Service
         array(
           'methods' => array(
             'list' => array(
-              'path' => 'publisher/{accountId}/profiles',
-              'httpMethod' => 'GET',
+              'path' => 'proposals/{proposalId}/{revisionNumber}/{updateAction}',
+              'httpMethod' => 'PUT',
               'parameters' => array(
-                'accountId' => array(
+                'proposalId' => array(
                   'location' => 'path',
-                  'type' => 'integer',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'revisionNumber' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'updateAction' => array(
+                  'location' => 'path',
+                  'type' => 'string',
                   'required' => true,
                 ),
               ),

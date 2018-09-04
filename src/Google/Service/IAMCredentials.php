@@ -96,7 +96,7 @@ class Google_Service_IAMCredentials extends Google_Service
                 ),
               ),
             ),'signJwt' => array(
-              'path' => 'v1/{+name}:signJwt',
+              'path' => 'v1/{+name}:signBlob',
               'httpMethod' => 'POST',
               'parameters' => array(
                 'name' => array(

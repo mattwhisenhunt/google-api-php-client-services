@@ -71,11 +71,11 @@ class Google_Service_AndroidManagement extends Google_Service
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'signupUrlName' => array(
+                'projectId' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'projectId' => array(
+                'signupUrlName' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -390,16 +390,13 @@ class Google_Service_AndroidManagement extends Google_Service
         array(
           'methods' => array(
             'create' => array(
-              'path' => 'v1/signupUrls',
+              'path' => 'v1/{+parent}/webTokens',
               'httpMethod' => 'POST',
               'parameters' => array(
-                'callbackUrl' => array(
-                  'location' => 'query',
+                'parent' => array(
+                  'location' => 'path',
                   'type' => 'string',
-                ),
-                'projectId' => array(
-                  'location' => 'query',
-                  'type' => 'string',
+                  'required' => true,
                 ),
               ),
             ),

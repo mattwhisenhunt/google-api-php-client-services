@@ -792,8 +792,8 @@ class Google_Service_Dataflow extends Google_Service
                 ),
               ),
             ),'launch' => array(
-              'path' => 'v1b3/projects/{projectId}/templates:launch',
-              'httpMethod' => 'POST',
+              'path' => 'v1b3/projects/{projectId}/templates:get',
+              'httpMethod' => 'GET',
               'parameters' => array(
                 'projectId' => array(
                   'location' => 'path',
@@ -808,9 +808,9 @@ class Google_Service_Dataflow extends Google_Service
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'validateOnly' => array(
+                'view' => array(
                   'location' => 'query',
-                  'type' => 'boolean',
+                  'type' => 'string',
                 ),
               ),
             ),

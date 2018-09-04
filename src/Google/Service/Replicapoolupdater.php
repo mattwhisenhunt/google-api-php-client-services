@@ -272,7 +272,7 @@ class Google_Service_Replicapoolupdater extends Google_Service
                 ),
               ),
             ),'list' => array(
-              'path' => '{project}/zones/{zone}/operations',
+              'path' => '{project}/zones/{zone}/operations/{operation}',
               'httpMethod' => 'GET',
               'parameters' => array(
                 'project' => array(
@@ -285,17 +285,10 @@ class Google_Service_Replicapoolupdater extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'filter' => array(
-                  'location' => 'query',
+                'operation' => array(
+                  'location' => 'path',
                   'type' => 'string',
-                ),
-                'maxResults' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
-                'pageToken' => array(
-                  'location' => 'query',
-                  'type' => 'string',
+                  'required' => true,
                 ),
               ),
             ),

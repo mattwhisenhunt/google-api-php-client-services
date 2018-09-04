@@ -71,11 +71,11 @@ class Google_Service_DLP extends Google_Service
               'path' => 'v2/infoTypes',
               'httpMethod' => 'GET',
               'parameters' => array(
-                'languageCode' => array(
+                'filter' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'filter' => array(
+                'languageCode' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -687,13 +687,21 @@ class Google_Service_DLP extends Google_Service
                 ),
               ),
             ),'patch' => array(
-              'path' => 'v2/{+name}',
-              'httpMethod' => 'PATCH',
+              'path' => 'v2/{+parent}/storedInfoTypes',
+              'httpMethod' => 'GET',
               'parameters' => array(
-                'name' => array(
+                'parent' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ),
+                'pageSize' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
+                ),
+                'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),

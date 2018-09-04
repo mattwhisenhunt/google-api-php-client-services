@@ -413,13 +413,17 @@ class Google_Service_CloudKMS extends Google_Service
                 ),
               ),
             ),'restore' => array(
-              'path' => 'v1/{+name}:restore',
-              'httpMethod' => 'POST',
+              'path' => 'v1/{+name}',
+              'httpMethod' => 'PATCH',
               'parameters' => array(
                 'name' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ),
+                'updateMask' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),

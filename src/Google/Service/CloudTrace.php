@@ -84,7 +84,7 @@ class Google_Service_CloudTrace extends Google_Service
         array(
           'methods' => array(
             'createSpan' => array(
-              'path' => 'v2/{+name}',
+              'path' => 'v2/{+name}/traces:batchWrite',
               'httpMethod' => 'POST',
               'parameters' => array(
                 'name' => array(

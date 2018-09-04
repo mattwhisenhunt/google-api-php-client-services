@@ -110,7 +110,7 @@ class Google_Service_ServiceControl extends Google_Service
                 ),
               ),
             ),'startReconciliation' => array(
-              'path' => 'v1/services/{serviceName}:startReconciliation',
+              'path' => 'v1/services/{serviceName}:report',
               'httpMethod' => 'POST',
               'parameters' => array(
                 'serviceName' => array(

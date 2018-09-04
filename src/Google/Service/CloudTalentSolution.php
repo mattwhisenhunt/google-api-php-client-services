@@ -264,7 +264,7 @@ class Google_Service_CloudTalentSolution extends Google_Service
                 ),
               ),
             ),'searchForAlert' => array(
-              'path' => 'v3/{+parent}/jobs:searchForAlert',
+              'path' => 'v3/{+parent}/jobs:search',
               'httpMethod' => 'POST',
               'parameters' => array(
                 'parent' => array(

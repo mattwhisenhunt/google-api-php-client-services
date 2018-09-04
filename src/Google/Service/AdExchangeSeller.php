@@ -398,15 +398,10 @@ class Google_Service_AdExchangeSeller extends Google_Service
         array(
           'methods' => array(
             'list' => array(
-              'path' => 'accounts/{accountId}/adclients/{adClientId}/urlchannels',
+              'path' => 'accounts/{accountId}/reports/saved',
               'httpMethod' => 'GET',
               'parameters' => array(
                 'accountId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-                'adClientId' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,

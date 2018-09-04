@@ -207,25 +207,13 @@ class Google_Service_CloudRedis extends Google_Service
                 ),
               ),
             ),'list' => array(
-              'path' => 'v1beta1/{+name}/operations',
+              'path' => 'v1beta1/{+name}',
               'httpMethod' => 'GET',
               'parameters' => array(
                 'name' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
-                ),
-                'filter' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'pageSize' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
-                'pageToken' => array(
-                  'location' => 'query',
-                  'type' => 'string',
                 ),
               ),
             ),

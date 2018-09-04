@@ -1070,13 +1070,17 @@ class Google_Service_TagManager extends Google_Service
                 ),
               ),
             ),'update' => array(
-              'path' => '{+path}',
-              'httpMethod' => 'PUT',
+              'path' => '{+parent}/user_permissions',
+              'httpMethod' => 'GET',
               'parameters' => array(
-                'path' => array(
+                'parent' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ),
+                'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),

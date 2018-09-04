@@ -219,15 +219,35 @@ class Google_Service_CloudDebugger extends Google_Service
                 ),
               ),
             ),'set' => array(
-              'path' => 'v2/debugger/debuggees/{debuggeeId}/breakpoints/set',
-              'httpMethod' => 'POST',
+              'path' => 'v2/debugger/debuggees/{debuggeeId}/breakpoints',
+              'httpMethod' => 'GET',
               'parameters' => array(
                 'debuggeeId' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
                 ),
+                'action.value' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
                 'clientVersion' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'includeAllUsers' => array(
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ),
+                'includeInactive' => array(
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ),
+                'stripResults' => array(
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ),
+                'waitToken' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),

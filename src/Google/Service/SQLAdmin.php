@@ -840,7 +840,7 @@ class Google_Service_SQLAdmin extends Google_Service
               ),
             ),'update' => array(
               'path' => 'projects/{project}/instances/{instance}/users',
-              'httpMethod' => 'PUT',
+              'httpMethod' => 'GET',
               'parameters' => array(
                 'project' => array(
                   'location' => 'path',
@@ -849,16 +849,6 @@ class Google_Service_SQLAdmin extends Google_Service
                 ),
                 'instance' => array(
                   'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-                'host' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-                'name' => array(
-                  'location' => 'query',
                   'type' => 'string',
                   'required' => true,
                 ),

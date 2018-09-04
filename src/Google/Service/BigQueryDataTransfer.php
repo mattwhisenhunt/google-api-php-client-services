@@ -546,18 +546,13 @@ class Google_Service_BigQueryDataTransfer extends Google_Service
         array(
           'methods' => array(
             'list' => array(
-              'path' => 'v1/{+parent}/transferLogs',
+              'path' => 'v1/{+parent}/runs',
               'httpMethod' => 'GET',
               'parameters' => array(
                 'parent' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
-                ),
-                'messageTypes' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                  'repeated' => true,
                 ),
                 'pageSize' => array(
                   'location' => 'query',
@@ -566,6 +561,15 @@ class Google_Service_BigQueryDataTransfer extends Google_Service
                 'pageToken' => array(
                   'location' => 'query',
                   'type' => 'string',
+                ),
+                'runAttempt' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'states' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                  'repeated' => true,
                 ),
               ),
             ),

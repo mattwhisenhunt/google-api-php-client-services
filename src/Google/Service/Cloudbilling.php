@@ -93,13 +93,13 @@ class Google_Service_Cloudbilling extends Google_Service
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'pageToken' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
                 'pageSize' => array(
                   'location' => 'query',
                   'type' => 'integer',
+                ),
+                'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),'patch' => array(
@@ -208,13 +208,13 @@ class Google_Service_Cloudbilling extends Google_Service
               'path' => 'v1/services',
               'httpMethod' => 'GET',
               'parameters' => array(
-                'pageToken' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
                 'pageSize' => array(
                   'location' => 'query',
                   'type' => 'integer',
+                ),
+                'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),
@@ -228,31 +228,14 @@ class Google_Service_Cloudbilling extends Google_Service
         array(
           'methods' => array(
             'list' => array(
-              'path' => 'v1/{+parent}/skus',
+              'path' => 'v1/services',
               'httpMethod' => 'GET',
               'parameters' => array(
-                'parent' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-                'currencyCode' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'endTime' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
                 'pageSize' => array(
                   'location' => 'query',
                   'type' => 'integer',
                 ),
                 'pageToken' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'startTime' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),

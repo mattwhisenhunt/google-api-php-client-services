@@ -137,26 +137,9 @@ class Google_Service_StreetViewPublish extends Google_Service
               'httpMethod' => 'POST',
               'parameters' => array(),
             ),'list' => array(
-              'path' => 'v1/photos',
-              'httpMethod' => 'GET',
-              'parameters' => array(
-                'pageSize' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
-                'view' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'filter' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'pageToken' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-              ),
+              'path' => 'v1/photos:batchUpdate',
+              'httpMethod' => 'POST',
+              'parameters' => array(),
             ),
           )
         )

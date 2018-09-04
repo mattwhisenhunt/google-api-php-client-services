@@ -72,15 +72,7 @@ class Google_Service_PolyService extends Google_Service
               'path' => 'v1/assets',
               'httpMethod' => 'GET',
               'parameters' => array(
-                'keywords' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'orderBy' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'format' => array(
+                'category' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -88,7 +80,11 @@ class Google_Service_PolyService extends Google_Service
                   'location' => 'query',
                   'type' => 'boolean',
                 ),
-                'category' => array(
+                'format' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'keywords' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -96,13 +92,17 @@ class Google_Service_PolyService extends Google_Service
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'pageToken' => array(
+                'orderBy' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
                 'pageSize' => array(
                   'location' => 'query',
                   'type' => 'integer',
+                ),
+                'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),
@@ -156,7 +156,7 @@ class Google_Service_PolyService extends Google_Service
         array(
           'methods' => array(
             'list' => array(
-              'path' => 'v1/{+name}/likedassets',
+              'path' => 'v1/{+name}/assets',
               'httpMethod' => 'GET',
               'parameters' => array(
                 'name' => array(
@@ -177,6 +177,10 @@ class Google_Service_PolyService extends Google_Service
                   'type' => 'integer',
                 ),
                 'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'visibility' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
