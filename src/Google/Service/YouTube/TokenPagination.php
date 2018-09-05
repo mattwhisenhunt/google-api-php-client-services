@@ -1,7 +1,7 @@
 
-Warning: ksort() expects parameter 1 to be array, null given in /Users/googler/php/generator/generator/_Model.php on line 3
+Warning: ksort() expects parameter 1 to be array, null given in /Users/googler/php/generator/generator/_Model.php on line 16
 
-Warning: Invalid argument supplied for foreach() in /Users/googler/php/generator/generator/_Model.php on line 4
+Warning: Invalid argument supplied for foreach() in /Users/googler/php/generator/generator/_Model.php on line 17
 <?php
 /*
  * Copyright 2014 Google Inc.
