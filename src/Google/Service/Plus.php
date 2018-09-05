@@ -238,18 +238,17 @@ class Google_Service_Plus extends Google_Service
                 ),
               ),
             ),'search' => array(
-              'path' => 'activities/{activityId}/people/{collection}',
+              'path' => 'people',
               'httpMethod' => 'GET',
               'parameters' => array(
-                'activityId' => array(
-                  'location' => 'path',
+                'query' => array(
+                  'location' => 'query',
                   'type' => 'string',
                   'required' => true,
                 ),
-                'collection' => array(
-                  'location' => 'path',
+                'language' => array(
+                  'location' => 'query',
                   'type' => 'string',
-                  'required' => true,
                 ),
                 'maxResults' => array(
                   'location' => 'query',

@@ -156,7 +156,7 @@ class Google_Service_PolyService extends Google_Service
         array(
           'methods' => array(
             'list' => array(
-              'path' => 'v1/{+name}/assets',
+              'path' => 'v1/{+name}/likedassets',
               'httpMethod' => 'GET',
               'parameters' => array(
                 'name' => array(
@@ -177,10 +177,6 @@ class Google_Service_PolyService extends Google_Service
                   'type' => 'integer',
                 ),
                 'pageToken' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'visibility' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),

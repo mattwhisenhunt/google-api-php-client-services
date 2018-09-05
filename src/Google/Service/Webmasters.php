@@ -273,10 +273,15 @@ class Google_Service_Webmasters extends Google_Service
                 ),
               ),
             ),'markAsFixed' => array(
-              'path' => 'sites/{siteUrl}/urlCrawlErrorsSamples',
-              'httpMethod' => 'GET',
+              'path' => 'sites/{siteUrl}/urlCrawlErrorsSamples/{url}',
+              'httpMethod' => 'DELETE',
               'parameters' => array(
                 'siteUrl' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'url' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,

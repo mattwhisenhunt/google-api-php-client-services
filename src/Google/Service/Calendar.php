@@ -892,8 +892,8 @@ class Google_Service_Calendar extends Google_Service
                 ),
               ),
             ),'watch' => array(
-              'path' => 'users/me/settings',
-              'httpMethod' => 'GET',
+              'path' => 'users/me/settings/watch',
+              'httpMethod' => 'POST',
               'parameters' => array(
                 'maxResults' => array(
                   'location' => 'query',

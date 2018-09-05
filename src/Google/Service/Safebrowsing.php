@@ -173,8 +173,8 @@ class Google_Service_Safebrowsing extends Google_Service
         array(
           'methods' => array(
             'find' => array(
-              'path' => 'v4/threatLists',
-              'httpMethod' => 'GET',
+              'path' => 'v4/threatMatches:find',
+              'httpMethod' => 'POST',
               'parameters' => array(),
             ),
           )

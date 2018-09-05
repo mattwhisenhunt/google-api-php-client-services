@@ -214,13 +214,24 @@ class Google_Service_YouTubeReporting extends Google_Service
         array(
           'methods' => array(
             'list' => array(
-              'path' => 'v1/media/{+resourceName}',
+              'path' => 'v1/reportTypes',
               'httpMethod' => 'GET',
               'parameters' => array(
-                'resourceName' => array(
-                  'location' => 'path',
+                'includeSystemManaged' => array(
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ),
+                'onBehalfOfContentOwner' => array(
+                  'location' => 'query',
                   'type' => 'string',
-                  'required' => true,
+                ),
+                'pageSize' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
+                ),
+                'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),

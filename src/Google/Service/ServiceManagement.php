@@ -381,7 +381,7 @@ class Google_Service_ServiceManagement extends Google_Service
                 ),
               ),
             ),'list' => array(
-              'path' => 'v1/services/{serviceName}/rollouts/{rolloutId}',
+              'path' => 'v1/services/{serviceName}/rollouts',
               'httpMethod' => 'GET',
               'parameters' => array(
                 'serviceName' => array(
@@ -389,10 +389,17 @@ class Google_Service_ServiceManagement extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'rolloutId' => array(
-                  'location' => 'path',
+                'filter' => array(
+                  'location' => 'query',
                   'type' => 'string',
-                  'required' => true,
+                ),
+                'pageSize' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
+                ),
+                'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),

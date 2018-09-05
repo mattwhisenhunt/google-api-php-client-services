@@ -283,8 +283,8 @@ class Google_Service_Replicapool extends Google_Service
                 ),
               ),
             ),'restart' => array(
-              'path' => '{projectName}/zones/{zone}/pools/{poolName}/replicas',
-              'httpMethod' => 'GET',
+              'path' => '{projectName}/zones/{zone}/pools/{poolName}/replicas/{replicaName}/restart',
+              'httpMethod' => 'POST',
               'parameters' => array(
                 'projectName' => array(
                   'location' => 'path',
@@ -301,13 +301,10 @@ class Google_Service_Replicapool extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'maxResults' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
-                'pageToken' => array(
-                  'location' => 'query',
+                'replicaName' => array(
+                  'location' => 'path',
                   'type' => 'string',
+                  'required' => true,
                 ),
               ),
             ),

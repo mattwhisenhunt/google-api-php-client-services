@@ -1204,29 +1204,18 @@ class Google_Service_AndroidPublisher extends Google_Service
                 ),
               ),
             ),'reply' => array(
-              'path' => '{packageName}/reviews',
-              'httpMethod' => 'GET',
+              'path' => '{packageName}/reviews/{reviewId}:reply',
+              'httpMethod' => 'POST',
               'parameters' => array(
                 'packageName' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
                 ),
-                'maxResults' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
-                'startIndex' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
-                'token' => array(
-                  'location' => 'query',
+                'reviewId' => array(
+                  'location' => 'path',
                   'type' => 'string',
-                ),
-                'translationLanguage' => array(
-                  'location' => 'query',
-                  'type' => 'string',
+                  'required' => true,
                 ),
               ),
             ),

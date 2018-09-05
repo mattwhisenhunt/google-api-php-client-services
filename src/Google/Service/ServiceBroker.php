@@ -80,7 +80,7 @@ class Google_Service_ServiceBroker extends Google_Service
                 ),
               ),
             ),'testIamPermissions' => array(
-              'path' => 'v1/{+resource}:setIamPolicy',
+              'path' => 'v1/{+resource}:testIamPermissions',
               'httpMethod' => 'POST',
               'parameters' => array(
                 'resource' => array(

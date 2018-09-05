@@ -1146,7 +1146,7 @@ class Google_Service_AdExchangeBuyerII extends Google_Service
         array(
           'methods' => array(
             'list' => array(
-              'path' => 'v2beta1/{+filterSetName}/losingBids',
+              'path' => 'v2beta1/{+filterSetName}/nonBillableWinningBids',
               'httpMethod' => 'GET',
               'parameters' => array(
                 'filterSetName' => array(

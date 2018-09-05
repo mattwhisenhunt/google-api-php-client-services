@@ -405,21 +405,13 @@ class Google_Service_Script extends Google_Service
         array(
           'methods' => array(
             'run' => array(
-              'path' => 'v1/projects/{scriptId}/versions',
-              'httpMethod' => 'GET',
+              'path' => 'v1/scripts/{scriptId}:run',
+              'httpMethod' => 'POST',
               'parameters' => array(
                 'scriptId' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
-                ),
-                'pageSize' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
-                'pageToken' => array(
-                  'location' => 'query',
-                  'type' => 'string',
                 ),
               ),
             ),

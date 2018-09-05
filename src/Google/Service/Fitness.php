@@ -394,27 +394,20 @@ class Google_Service_Fitness extends Google_Service
                 ),
               ),
             ),'update' => array(
-              'path' => '{userId}/sessions',
-              'httpMethod' => 'GET',
+              'path' => '{userId}/sessions/{sessionId}',
+              'httpMethod' => 'PUT',
               'parameters' => array(
                 'userId' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
                 ),
-                'endTime' => array(
-                  'location' => 'query',
+                'sessionId' => array(
+                  'location' => 'path',
                   'type' => 'string',
+                  'required' => true,
                 ),
-                'includeDeleted' => array(
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ),
-                'pageToken' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'startTime' => array(
+                'currentTimeMillis' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),

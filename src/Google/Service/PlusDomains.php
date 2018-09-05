@@ -428,15 +428,10 @@ class Google_Service_PlusDomains extends Google_Service
                 ),
               ),
             ),'listByCircle' => array(
-              'path' => 'activities/{activityId}/people/{collection}',
+              'path' => 'circles/{circleId}/people',
               'httpMethod' => 'GET',
               'parameters' => array(
-                'activityId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-                'collection' => array(
+                'circleId' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,

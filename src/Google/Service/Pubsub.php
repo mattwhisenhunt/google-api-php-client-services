@@ -445,7 +445,7 @@ class Google_Service_Pubsub extends Google_Service
         array(
           'methods' => array(
             'list' => array(
-              'path' => 'v1/{+topic}/snapshots',
+              'path' => 'v1/{+topic}/subscriptions',
               'httpMethod' => 'GET',
               'parameters' => array(
                 'topic' => array(

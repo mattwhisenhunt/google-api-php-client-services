@@ -64,14 +64,9 @@ class Google_Service_Indexing extends Google_Service
                 ),
               ),
             ),'publish' => array(
-              'path' => 'v3/urlNotifications/metadata',
-              'httpMethod' => 'GET',
-              'parameters' => array(
-                'url' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-              ),
+              'path' => 'v3/urlNotifications:publish',
+              'httpMethod' => 'POST',
+              'parameters' => array(),
             ),
           )
         )

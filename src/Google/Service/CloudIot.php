@@ -461,7 +461,7 @@ class Google_Service_CloudIot extends Google_Service
         array(
           'methods' => array(
             'list' => array(
-              'path' => 'v1/{+name}/configVersions',
+              'path' => 'v1/{+name}/states',
               'httpMethod' => 'GET',
               'parameters' => array(
                 'name' => array(
@@ -469,7 +469,7 @@ class Google_Service_CloudIot extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'numVersions' => array(
+                'numStates' => array(
                   'location' => 'query',
                   'type' => 'integer',
                 ),

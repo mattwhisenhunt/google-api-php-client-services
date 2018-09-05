@@ -189,8 +189,8 @@ class Google_Service_CloudResourceManager extends Google_Service
         array(
           'methods' => array(
             'get' => array(
-              'path' => 'v2/{+name}:undelete',
-              'httpMethod' => 'POST',
+              'path' => 'v1/{+name}',
+              'httpMethod' => 'GET',
               'parameters' => array(
                 'name' => array(
                   'location' => 'path',

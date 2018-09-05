@@ -390,13 +390,16 @@ class Google_Service_AndroidManagement extends Google_Service
         array(
           'methods' => array(
             'create' => array(
-              'path' => 'v1/{+parent}/webTokens',
+              'path' => 'v1/signupUrls',
               'httpMethod' => 'POST',
               'parameters' => array(
-                'parent' => array(
-                  'location' => 'path',
+                'callbackUrl' => array(
+                  'location' => 'query',
                   'type' => 'string',
-                  'required' => true,
+                ),
+                'projectId' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),

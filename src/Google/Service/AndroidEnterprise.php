@@ -1521,7 +1521,7 @@ class Google_Service_AndroidEnterprise extends Google_Service
                 ),
               ),
             ),'update' => array(
-              'path' => 'enterprises/{enterpriseId}/users/{userId}/availableProductSet',
+              'path' => 'enterprises/{enterpriseId}/users/{userId}',
               'httpMethod' => 'PUT',
               'parameters' => array(
                 'enterpriseId' => array(

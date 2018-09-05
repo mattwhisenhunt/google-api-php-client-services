@@ -196,7 +196,7 @@ class Google_Service_Storagetransfer extends Google_Service
                 ),
               ),
             ),'resume' => array(
-              'path' => 'v1/{+name}:pause',
+              'path' => 'v1/{+name}:resume',
               'httpMethod' => 'POST',
               'parameters' => array(
                 'name' => array(

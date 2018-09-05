@@ -405,8 +405,8 @@ class Google_Service_Vault extends Google_Service
                 ),
               ),
             ),'list' => array(
-              'path' => 'v1/matters/{matterId}/holds/{holdId}/accounts/{accountId}',
-              'httpMethod' => 'DELETE',
+              'path' => 'v1/matters/{matterId}/holds/{holdId}/accounts',
+              'httpMethod' => 'GET',
               'parameters' => array(
                 'matterId' => array(
                   'location' => 'path',
@@ -414,11 +414,6 @@ class Google_Service_Vault extends Google_Service
                   'required' => true,
                 ),
                 'holdId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-                'accountId' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,

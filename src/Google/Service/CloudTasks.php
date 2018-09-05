@@ -292,25 +292,13 @@ class Google_Service_CloudTasks extends Google_Service
                 ),
               ),
             ),'run' => array(
-              'path' => 'v2beta3/{+parent}/tasks',
-              'httpMethod' => 'GET',
+              'path' => 'v2beta3/{+name}:run',
+              'httpMethod' => 'POST',
               'parameters' => array(
-                'parent' => array(
+                'name' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
-                ),
-                'pageSize' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
-                'pageToken' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'responseView' => array(
-                  'location' => 'query',
-                  'type' => 'string',
                 ),
               ),
             ),

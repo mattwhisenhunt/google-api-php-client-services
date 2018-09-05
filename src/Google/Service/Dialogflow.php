@@ -600,16 +600,12 @@ class Google_Service_Dialogflow extends Google_Service
           'methods' => array(
             'get' => array(
               'path' => 'v2/{+name}',
-              'httpMethod' => 'PATCH',
+              'httpMethod' => 'GET',
               'parameters' => array(
                 'name' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
-                ),
-                'updateMask' => array(
-                  'location' => 'query',
-                  'type' => 'string',
                 ),
               ),
             ),

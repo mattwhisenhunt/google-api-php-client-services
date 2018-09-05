@@ -422,7 +422,7 @@ class Google_Service_AndroidProvisioningPartner extends Google_Service
         array(
           'methods' => array(
             'list' => array(
-              'path' => 'v1/{+parent}/vendors',
+              'path' => 'v1/{+parent}/customers',
               'httpMethod' => 'GET',
               'parameters' => array(
                 'parent' => array(

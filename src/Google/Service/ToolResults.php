@@ -680,7 +680,7 @@ class Google_Service_ToolResults extends Google_Service
         array(
           'methods' => array(
             'list' => array(
-              'path' => '{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries/{sampleSeriesId}/samples',
+              'path' => '{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/thumbnails',
               'httpMethod' => 'GET',
               'parameters' => array(
                 'projectId' => array(
@@ -699,11 +699,6 @@ class Google_Service_ToolResults extends Google_Service
                   'required' => true,
                 ),
                 'stepId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-                'sampleSeriesId' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,

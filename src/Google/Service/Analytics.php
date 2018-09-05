@@ -2149,7 +2149,7 @@ class Google_Service_Analytics extends Google_Service
         array(
           'methods' => array(
             'upsert' => array(
-              'path' => 'provisioning/createAccountTree',
+              'path' => 'userDeletion/userDeletionRequests:upsert',
               'httpMethod' => 'POST',
               'parameters' => array(),
             ),

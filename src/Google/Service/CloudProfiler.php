@@ -82,13 +82,17 @@ class Google_Service_CloudProfiler extends Google_Service
                 ),
               ),
             ),'patch' => array(
-              'path' => 'v2/{+parent}/profiles:createOffline',
-              'httpMethod' => 'POST',
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'PATCH',
               'parameters' => array(
-                'parent' => array(
+                'name' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ),
+                'updateMask' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),

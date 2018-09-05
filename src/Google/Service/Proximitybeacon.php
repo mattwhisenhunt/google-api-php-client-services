@@ -342,19 +342,9 @@ class Google_Service_Proximitybeacon extends Google_Service
         array(
           'methods' => array(
             'getEidparams' => array(
-              'path' => 'v1beta1/{+namespaceName}',
-              'httpMethod' => 'PUT',
-              'parameters' => array(
-                'namespaceName' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-                'projectId' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-              ),
+              'path' => 'v1beta1/eidparams',
+              'httpMethod' => 'GET',
+              'parameters' => array(),
             ),
           )
         )

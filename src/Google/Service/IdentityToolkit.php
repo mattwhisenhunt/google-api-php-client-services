@@ -144,7 +144,7 @@ class Google_Service_IdentityToolkit extends Google_Service
               'httpMethod' => 'POST',
               'parameters' => array(),
             ),'verifyPhoneNumber' => array(
-              'path' => 'verifyPassword',
+              'path' => 'verifyPhoneNumber',
               'httpMethod' => 'POST',
               'parameters' => array(),
             ),

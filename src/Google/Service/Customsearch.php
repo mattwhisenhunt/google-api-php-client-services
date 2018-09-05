@@ -195,7 +195,7 @@ class Google_Service_Customsearch extends Google_Service
         array(
           'methods' => array(
             'list' => array(
-              'path' => 'v1',
+              'path' => 'v1/siterestrict',
               'httpMethod' => 'GET',
               'parameters' => array(
                 'q' => array(

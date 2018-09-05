@@ -274,7 +274,7 @@ class Google_Service_Tasks extends Google_Service
               ),
             ),'update' => array(
               'path' => 'lists/{tasklist}/tasks/{task}',
-              'httpMethod' => 'PATCH',
+              'httpMethod' => 'PUT',
               'parameters' => array(
                 'tasklist' => array(
                   'location' => 'path',

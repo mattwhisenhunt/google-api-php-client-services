@@ -708,15 +708,14 @@ class Google_Service_Monitoring extends Google_Service
         array(
           'methods' => array(
             'list' => array(
-              'path' => 'v3/{+name}',
-              'httpMethod' => 'PATCH',
+              'path' => 'v3/uptimeCheckIps',
+              'httpMethod' => 'GET',
               'parameters' => array(
-                'name' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
+                'pageSize' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
                 ),
-                'updateMask' => array(
+                'pageToken' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),

@@ -687,21 +687,13 @@ class Google_Service_DLP extends Google_Service
                 ),
               ),
             ),'patch' => array(
-              'path' => 'v2/{+parent}/storedInfoTypes',
-              'httpMethod' => 'GET',
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'PATCH',
               'parameters' => array(
-                'parent' => array(
+                'name' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
-                ),
-                'pageSize' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
-                'pageToken' => array(
-                  'location' => 'query',
-                  'type' => 'string',
                 ),
               ),
             ),

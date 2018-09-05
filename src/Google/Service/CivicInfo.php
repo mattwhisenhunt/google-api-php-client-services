@@ -135,21 +135,22 @@ class Google_Service_CivicInfo extends Google_Service
                 ),
               ),
             ),'representativeInfoByDivision' => array(
-              'path' => 'representatives',
+              'path' => 'representatives/{ocdId}',
               'httpMethod' => 'GET',
               'parameters' => array(
-                'address' => array(
-                  'location' => 'query',
+                'ocdId' => array(
+                  'location' => 'path',
                   'type' => 'string',
-                ),
-                'includeOffices' => array(
-                  'location' => 'query',
-                  'type' => 'boolean',
+                  'required' => true,
                 ),
                 'levels' => array(
                   'location' => 'query',
                   'type' => 'string',
                   'repeated' => true,
+                ),
+                'recursive' => array(
+                  'location' => 'query',
+                  'type' => 'boolean',
                 ),
                 'roles' => array(
                   'location' => 'query',

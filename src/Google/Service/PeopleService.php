@@ -265,15 +265,39 @@ class Google_Service_PeopleService extends Google_Service
         array(
           'methods' => array(
             'list' => array(
-              'path' => 'v1/{+resourceName}:updateContact',
-              'httpMethod' => 'PATCH',
+              'path' => 'v1/{+resourceName}/connections',
+              'httpMethod' => 'GET',
               'parameters' => array(
                 'resourceName' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
                 ),
-                'updatePersonFields' => array(
+                'pageSize' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
+                ),
+                'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'personFields' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'requestMask.includeField' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'requestSyncToken' => array(
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ),
+                'sortOrder' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'syncToken' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),

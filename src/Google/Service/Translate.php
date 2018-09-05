@@ -145,37 +145,8 @@ class Google_Service_Translate extends Google_Service
               ),
             ),'translate' => array(
               'path' => 'v2',
-              'httpMethod' => 'GET',
-              'parameters' => array(
-                'q' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                  'repeated' => true,
-                  'required' => true,
-                ),
-                'target' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-                'cid' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                  'repeated' => true,
-                ),
-                'format' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'model' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'source' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-              ),
+              'httpMethod' => 'POST',
+              'parameters' => array(),
             ),
           )
         )

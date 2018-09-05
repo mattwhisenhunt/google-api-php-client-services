@@ -80,7 +80,7 @@ class Google_Service_Oauth2 extends Google_Service
         array(
           'methods' => array(
             'get' => array(
-              'path' => 'oauth2/v2/userinfo',
+              'path' => 'userinfo/v2/me',
               'httpMethod' => 'GET',
               'parameters' => array(),
             ),

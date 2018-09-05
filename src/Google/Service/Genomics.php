@@ -709,19 +709,9 @@ class Google_Service_Genomics extends Google_Service
                 ),
               ),
             ),'search' => array(
-              'path' => 'v1/variantsets/{variantSetId}',
-              'httpMethod' => 'PATCH',
-              'parameters' => array(
-                'variantSetId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-                'updateMask' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-              ),
+              'path' => 'v1/variantsets/search',
+              'httpMethod' => 'POST',
+              'parameters' => array(),
             ),
           )
         )

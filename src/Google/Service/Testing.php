@@ -130,18 +130,17 @@ class Google_Service_Testing extends Google_Service
         array(
           'methods' => array(
             'get' => array(
-              'path' => 'v1/projects/{projectId}/testMatrices/{testMatrixId}',
+              'path' => 'v1/testEnvironmentCatalog/{environmentType}',
               'httpMethod' => 'GET',
               'parameters' => array(
-                'projectId' => array(
+                'environmentType' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
                 ),
-                'testMatrixId' => array(
-                  'location' => 'path',
+                'projectId' => array(
+                  'location' => 'query',
                   'type' => 'string',
-                  'required' => true,
                 ),
               ),
             ),

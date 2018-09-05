@@ -1040,26 +1040,15 @@ class Google_Service_Games extends Google_Service
                 ),
               ),
             ),'takeTurn' => array(
-              'path' => 'turnbasedmatches/sync',
-              'httpMethod' => 'GET',
+              'path' => 'turnbasedmatches/{matchId}/turn',
+              'httpMethod' => 'PUT',
               'parameters' => array(
-                'includeMatchData' => array(
-                  'location' => 'query',
-                  'type' => 'boolean',
+                'matchId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
                 ),
                 'language' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'maxCompletedMatches' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
-                'maxResults' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
-                'pageToken' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),

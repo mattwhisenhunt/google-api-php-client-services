@@ -4850,17 +4850,12 @@ class Google_Service_Dfareporting extends Google_Service
                 ),
               ),
             ),'list' => array(
-              'path' => 'userprofiles/{profileId}/videoFormats/{id}',
+              'path' => 'userprofiles/{profileId}/videoFormats',
               'httpMethod' => 'GET',
               'parameters' => array(
                 'profileId' => array(
                   'location' => 'path',
                   'type' => 'string',
-                  'required' => true,
-                ),
-                'id' => array(
-                  'location' => 'path',
-                  'type' => 'integer',
                   'required' => true,
                 ),
               ),

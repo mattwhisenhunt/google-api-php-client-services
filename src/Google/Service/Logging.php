@@ -1188,19 +1188,19 @@ class Google_Service_Logging extends Google_Service
                 ),
               ),
             ),'update' => array(
-              'path' => 'v2/{+parent}/sinks',
-              'httpMethod' => 'GET',
+              'path' => 'v2/{+sinkName}',
+              'httpMethod' => 'PUT',
               'parameters' => array(
-                'parent' => array(
+                'sinkName' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
                 ),
-                'pageSize' => array(
+                'uniqueWriterIdentity' => array(
                   'location' => 'query',
-                  'type' => 'integer',
+                  'type' => 'boolean',
                 ),
-                'pageToken' => array(
+                'updateMask' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),

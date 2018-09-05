@@ -291,7 +291,7 @@ class Google_Service_Reseller extends Google_Service
                 ),
               ),
             ),'suspend' => array(
-              'path' => 'customers/{customerId}/subscriptions/{subscriptionId}/startPaidService',
+              'path' => 'customers/{customerId}/subscriptions/{subscriptionId}/suspend',
               'httpMethod' => 'POST',
               'parameters' => array(
                 'customerId' => array(

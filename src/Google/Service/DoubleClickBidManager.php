@@ -146,15 +146,9 @@ class Google_Service_DoubleClickBidManager extends Google_Service
         array(
           'methods' => array(
             'download' => array(
-              'path' => 'queries/{queryId}/reports',
-              'httpMethod' => 'GET',
-              'parameters' => array(
-                'queryId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-              ),
+              'path' => 'sdf/download',
+              'httpMethod' => 'POST',
+              'parameters' => array(),
             ),
           )
         )

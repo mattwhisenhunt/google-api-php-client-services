@@ -99,12 +99,17 @@ class Google_Service_AppState extends Google_Service
                 ),
               ),
             ),'update' => array(
-              'path' => 'states',
-              'httpMethod' => 'GET',
+              'path' => 'states/{stateKey}',
+              'httpMethod' => 'PUT',
               'parameters' => array(
-                'includeData' => array(
+                'stateKey' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+                'currentStateVersion' => array(
                   'location' => 'query',
-                  'type' => 'boolean',
+                  'type' => 'string',
                 ),
               ),
             ),

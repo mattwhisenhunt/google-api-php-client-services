@@ -214,10 +214,10 @@ class Google_Service_Clouderrorreporting extends Google_Service
                 ),
               ),
             ),'update' => array(
-              'path' => 'v1beta1/{+groupName}',
-              'httpMethod' => 'GET',
+              'path' => 'v1beta1/{+name}',
+              'httpMethod' => 'PUT',
               'parameters' => array(
-                'groupName' => array(
+                'name' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,

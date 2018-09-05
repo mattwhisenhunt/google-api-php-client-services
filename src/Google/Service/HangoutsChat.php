@@ -162,12 +162,16 @@ class Google_Service_HangoutsChat extends Google_Service
               ),
             ),'update' => array(
               'path' => 'v1/{+name}',
-              'httpMethod' => 'GET',
+              'httpMethod' => 'PUT',
               'parameters' => array(
                 'name' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ),
+                'updateMask' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),

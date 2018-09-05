@@ -113,14 +113,9 @@ class Google_Service_ServiceUser extends Google_Service
         array(
           'methods' => array(
             'search' => array(
-              'path' => 'v1/{+parent}/services',
+              'path' => 'v1/services:search',
               'httpMethod' => 'GET',
               'parameters' => array(
-                'parent' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
                 'pageSize' => array(
                   'location' => 'query',
                   'type' => 'integer',

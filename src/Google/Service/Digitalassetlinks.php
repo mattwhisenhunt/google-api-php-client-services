@@ -99,7 +99,7 @@ class Google_Service_Digitalassetlinks extends Google_Service
         array(
           'methods' => array(
             'list' => array(
-              'path' => 'v1/assetlinks:check',
+              'path' => 'v1/statements:list',
               'httpMethod' => 'GET',
               'parameters' => array(
                 'relation' => array(
@@ -115,18 +115,6 @@ class Google_Service_Digitalassetlinks extends Google_Service
                   'type' => 'string',
                 ),
                 'source.web.site' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'target.androidApp.certificate.sha256Fingerprint' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'target.androidApp.packageName' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'target.web.site' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),

@@ -1170,7 +1170,7 @@ class Google_Service_Container extends Google_Service
                 ),
               ),
             ),'list' => array(
-              'path' => 'v1/projects/{projectId}/zones/{zone}/operations/{operationId}',
+              'path' => 'v1/projects/{projectId}/zones/{zone}/operations',
               'httpMethod' => 'GET',
               'parameters' => array(
                 'projectId' => array(
@@ -1183,12 +1183,7 @@ class Google_Service_Container extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'operationId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-                'name' => array(
+                'parent' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),

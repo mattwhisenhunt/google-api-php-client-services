@@ -209,19 +209,15 @@ class Google_Service_CloudFunctions extends Google_Service
                 ),
               ),
             ),'patch' => array(
-              'path' => 'v1/{+parent}/functions',
-              'httpMethod' => 'GET',
+              'path' => 'v1/{+name}',
+              'httpMethod' => 'PATCH',
               'parameters' => array(
-                'parent' => array(
+                'name' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
                 ),
-                'pageSize' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
-                'pageToken' => array(
+                'updateMask' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),

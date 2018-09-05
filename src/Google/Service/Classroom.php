@@ -1007,7 +1007,7 @@ class Google_Service_Classroom extends Google_Service
                 ),
               ),
             ),'list' => array(
-              'path' => 'v1/userProfiles/{studentId}/guardians/{guardianId}',
+              'path' => 'v1/userProfiles/{studentId}/guardians',
               'httpMethod' => 'GET',
               'parameters' => array(
                 'studentId' => array(
@@ -1015,10 +1015,17 @@ class Google_Service_Classroom extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'guardianId' => array(
-                  'location' => 'path',
+                'invitedEmailAddress' => array(
+                  'location' => 'query',
                   'type' => 'string',
-                  'required' => true,
+                ),
+                'pageSize' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
+                ),
+                'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),

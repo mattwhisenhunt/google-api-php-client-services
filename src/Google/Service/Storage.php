@@ -1406,45 +1406,17 @@ class Google_Service_Storage extends Google_Service
         array(
           'methods' => array(
             'get' => array(
-              'path' => 'b/{bucket}/o/watch',
-              'httpMethod' => 'POST',
+              'path' => 'projects/{projectId}/serviceAccount',
+              'httpMethod' => 'GET',
               'parameters' => array(
-                'bucket' => array(
+                'projectId' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
                 ),
-                'delimiter' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'includeTrailingDelimiter' => array(
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ),
-                'maxResults' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
-                'pageToken' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'prefix' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'projection' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
                 'userProject' => array(
                   'location' => 'query',
                   'type' => 'string',
-                ),
-                'versions' => array(
-                  'location' => 'query',
-                  'type' => 'boolean',
                 ),
               ),
             ),

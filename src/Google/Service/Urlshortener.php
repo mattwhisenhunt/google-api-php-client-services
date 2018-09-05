@@ -74,9 +74,18 @@ class Google_Service_Urlshortener extends Google_Service
               'httpMethod' => 'POST',
               'parameters' => array(),
             ),'list' => array(
-              'path' => 'url',
-              'httpMethod' => 'POST',
-              'parameters' => array(),
+              'path' => 'url/history',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'projection' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'start-token' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+              ),
             ),
           )
         )

@@ -782,7 +782,7 @@ class Google_Service_Partners extends Google_Service
                 ),
               ),
             ),'updateLeads' => array(
-              'path' => 'v2/companies',
+              'path' => 'v2/leads',
               'httpMethod' => 'PATCH',
               'parameters' => array(
                 'requestMetadata.experimentIds' => array(

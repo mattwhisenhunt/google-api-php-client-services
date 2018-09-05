@@ -228,14 +228,31 @@ class Google_Service_Cloudbilling extends Google_Service
         array(
           'methods' => array(
             'list' => array(
-              'path' => 'v1/services',
+              'path' => 'v1/{+parent}/skus',
               'httpMethod' => 'GET',
               'parameters' => array(
+                'parent' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'currencyCode' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'endTime' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
                 'pageSize' => array(
                   'location' => 'query',
                   'type' => 'integer',
                 ),
                 'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'startTime' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),

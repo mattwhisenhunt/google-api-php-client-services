@@ -606,12 +606,20 @@ class Google_Service_AdSenseHost extends Google_Service
               ),
             ),'list' => array(
               'path' => 'adclients/{adClientId}/urlchannels',
-              'httpMethod' => 'POST',
+              'httpMethod' => 'GET',
               'parameters' => array(
                 'adClientId' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ),
+                'maxResults' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
+                ),
+                'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),
