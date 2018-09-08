@@ -15,6 +15,6 @@
  * the License.
  */
 
-class Google_Service_CloudRedis_GoogleCloudRedisV1beta1ZoneMetadata extends Google_Model
+class Google_Service_Genomics_RunPipelineResponse extends Google_Model
 {
 }

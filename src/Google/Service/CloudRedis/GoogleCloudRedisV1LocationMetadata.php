@@ -15,20 +15,20 @@
  * the License.
  */
 
-class Google_Service_CloudRedis_GoogleCloudRedisV1beta1LocationMetadata extends Google_Model
+class Google_Service_CloudRedis_GoogleCloudRedisV1LocationMetadata extends Google_Model
 {
-  protected $availableZonesType = 'Google_Service_CloudRedis_GoogleCloudRedisV1beta1ZoneMetadata';
+  protected $availableZonesType = 'Google_Service_CloudRedis_GoogleCloudRedisV1ZoneMetadata';
   protected $availableZonesDataType = 'map';
 
   /**
-   * @param Google_Service_CloudRedis_GoogleCloudRedisV1beta1ZoneMetadata
+   * @param Google_Service_CloudRedis_GoogleCloudRedisV1ZoneMetadata
    */
   public function setAvailableZones($availableZones)
   {
     $this->availableZones = $availableZones;
   }
   /**
-   * @return Google_Service_CloudRedis_GoogleCloudRedisV1beta1ZoneMetadata
+   * @return Google_Service_CloudRedis_GoogleCloudRedisV1ZoneMetadata
    */
   public function getAvailableZones()
   {
