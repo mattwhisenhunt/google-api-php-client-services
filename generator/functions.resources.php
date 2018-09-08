@@ -116,8 +116,5 @@ function getResourceReference($keys) {
 function render_resource_name($keys) {
   $fn = implode("", array_map('ucfirst', $keys));
 
-  $fn = str_replace('_', ' ', $fn);
-  $fn = ucwords($fn);
-  $fn = str_replace(' ', '', $fn);
-  return $fn;
+  return ucStrip($fn);
 }

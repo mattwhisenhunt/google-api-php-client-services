@@ -29,7 +29,7 @@ define("DEST", "../src/Google/Service/");
 if (!$doc['canonicalName']) {
   $doc['canonicalName'] = $doc['name'];
 }
-$CapCan = ucfirst(str_replace(' ', '', $doc['canonicalName']));
+$CapCan = ucStrip($doc['canonicalName']);
 
 foreach ($doc['parameters'] as $k => $v) {
   $parameter_types[$v['type']] += 1;
