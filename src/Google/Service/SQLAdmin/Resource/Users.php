@@ -67,11 +67,12 @@ class Google_Service_SQLAdmin_Resource_Users extends Google_Service_Resource
    *
    * @param Google_Service_SQLAdmin_User $postBody
    * @param array $optParams Optional parameters.
+   *
    * @return Google_Service_SQLAdmin_Operation
    */
-  public function update($project, $instance, $host, $name, Google_Service_SQLAdmin_User $postBody, $optParams = array())
+  public function update($project, $instance, $name, Google_Service_SQLAdmin_User $postBody, $optParams = array())
   {
-    $params = array('project' => $project, 'instance' => $instance, 'host' => $host, 'name' => $name ,'postBody' => $postBody);
+    $params = array('project' => $project, 'instance' => $instance, 'name' => $name ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('update', array($params), "Google_Service_SQLAdmin_Operation");
   }

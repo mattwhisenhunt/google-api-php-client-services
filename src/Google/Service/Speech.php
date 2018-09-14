@@ -66,6 +66,27 @@ class Google_Service_Speech extends Google_Service
                   'required' => true,
                 ),
               ),
+            ),'list' => array(
+              'path' => 'v1/operations',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'filter' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'name' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'pageSize' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
+                ),
+                'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+              ),
             ),
           )
         )

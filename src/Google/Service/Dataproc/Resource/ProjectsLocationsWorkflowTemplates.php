@@ -26,6 +26,45 @@
 class Google_Service_Dataproc_Resource_ProjectsLocationsWorkflowTemplates extends Google_Service_Resource
 {
   /**
+   *  (workflowTemplates.create)
+   *
+   * @param Google_Service_Dataproc_WorkflowTemplate $postBody
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_Dataproc_WorkflowTemplate
+   */
+  public function create($parent, Google_Service_Dataproc_WorkflowTemplate $postBody, $optParams = array())
+  {
+    $params = array('parent' => $parent ,'postBody' => $postBody);
+    $params = array_merge($params, $optParams);
+    return $this->call('create', array($params), "Google_Service_Dataproc_WorkflowTemplate");
+  }
+  /**
+   *  (workflowTemplates.delete)
+   *
+   * @param array $optParams Optional parameters.
+   *
+   * @return Google_Service_Dataproc_DataprocEmpty
+   */
+  public function delete($name, $optParams = array())
+  {
+    $params = array('name' => $name);
+    $params = array_merge($params, $optParams);
+    return $this->call('delete', array($params), "Google_Service_Dataproc_DataprocEmpty");
+  }
+  /**
+   *  (workflowTemplates.get)
+   *
+   * @param array $optParams Optional parameters.
+   *
+   * @return Google_Service_Dataproc_WorkflowTemplate
+   */
+  public function get($name, $optParams = array())
+  {
+    $params = array('name' => $name);
+    $params = array_merge($params, $optParams);
+    return $this->call('get', array($params), "Google_Service_Dataproc_WorkflowTemplate");
+  }
+  /**
    *  (workflowTemplates.getIamPolicy)
    *
    * @param Google_Service_Dataproc_GetIamPolicyRequest $postBody
@@ -37,6 +76,46 @@ class Google_Service_Dataproc_Resource_ProjectsLocationsWorkflowTemplates extend
     $params = array('resource' => $resource ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('getIamPolicy', array($params), "Google_Service_Dataproc_Policy");
+  }
+  /**
+   *  (workflowTemplates.instantiate)
+   *
+   * @param Google_Service_Dataproc_InstantiateWorkflowTemplateRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_Dataproc_Operation
+   */
+  public function instantiate($name, Google_Service_Dataproc_InstantiateWorkflowTemplateRequest $postBody, $optParams = array())
+  {
+    $params = array('name' => $name ,'postBody' => $postBody);
+    $params = array_merge($params, $optParams);
+    return $this->call('instantiate', array($params), "Google_Service_Dataproc_Operation");
+  }
+  /**
+   *  (workflowTemplates.instantiateInline)
+   *
+   * @param Google_Service_Dataproc_WorkflowTemplate $postBody
+   * @param array $optParams Optional parameters.
+   *
+   * @return Google_Service_Dataproc_Operation
+   */
+  public function instantiateInline($parent, Google_Service_Dataproc_WorkflowTemplate $postBody, $optParams = array())
+  {
+    $params = array('parent' => $parent ,'postBody' => $postBody);
+    $params = array_merge($params, $optParams);
+    return $this->call('instantiateInline', array($params), "Google_Service_Dataproc_Operation");
+  }
+  /**
+   *  (workflowTemplates.listProjectsLocationsWorkflowTemplates)
+   *
+   * @param array $optParams Optional parameters.
+   *
+   * @return Google_Service_Dataproc_ListWorkflowTemplatesResponse
+   */
+  public function listProjectsLocationsWorkflowTemplates($parent, $optParams = array())
+  {
+    $params = array('parent' => $parent);
+    $params = array_merge($params, $optParams);
+    return $this->call('list', array($params), "Google_Service_Dataproc_ListWorkflowTemplatesResponse");
   }
   /**
    *  (workflowTemplates.setIamPolicy)
@@ -63,5 +142,18 @@ class Google_Service_Dataproc_Resource_ProjectsLocationsWorkflowTemplates extend
     $params = array('resource' => $resource ,'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('testIamPermissions', array($params), "Google_Service_Dataproc_TestIamPermissionsResponse");
+  }
+  /**
+   *  (workflowTemplates.update)
+   *
+   * @param Google_Service_Dataproc_WorkflowTemplate $postBody
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_Dataproc_WorkflowTemplate
+   */
+  public function update($name, Google_Service_Dataproc_WorkflowTemplate $postBody, $optParams = array())
+  {
+    $params = array('name' => $name ,'postBody' => $postBody);
+    $params = array_merge($params, $optParams);
+    return $this->call('update', array($params), "Google_Service_Dataproc_WorkflowTemplate");
   }
 }

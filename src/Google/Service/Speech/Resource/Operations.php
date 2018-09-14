@@ -37,4 +37,17 @@ class Google_Service_Speech_Resource_Operations extends Google_Service_Resource
     $params = array_merge($params, $optParams);
     return $this->call('get', array($params), "Google_Service_Speech_Operation");
   }
+  /**
+   *  (operations.listOperations)
+   *
+   * @param array $optParams Optional parameters.
+   *
+   * @return Google_Service_Speech_ListOperationsResponse
+   */
+  public function listOperations($optParams = array())
+  {
+    $params = array();
+    $params = array_merge($params, $optParams);
+    return $this->call('list', array($params), "Google_Service_Speech_ListOperationsResponse");
+  }
 }
