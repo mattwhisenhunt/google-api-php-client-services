@@ -79,6 +79,7 @@ class Google_Service_Games_Resource_Achievements extends Google_Service_Resource
    *  (achievements.unlock)
    *
    * @param array $optParams Optional parameters.
+   *
    * @return Google_Service_Games_AchievementUnlockResponse
    */
   public function unlock($achievementId, $optParams = array())
@@ -92,6 +93,7 @@ class Google_Service_Games_Resource_Achievements extends Google_Service_Resource
    *
    * @param Google_Service_Games_AchievementUpdateMultipleRequest $postBody
    * @param array $optParams Optional parameters.
+   *
    * @return Google_Service_Games_AchievementUpdateMultipleResponse
    */
   public function updateMultiple(Google_Service_Games_AchievementUpdateMultipleRequest $postBody, $optParams = array())

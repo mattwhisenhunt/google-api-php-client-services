@@ -45,6 +45,7 @@ class Google_Service_AdExchangeBuyerII extends Google_Service
   public $accounts_products;
   public $accounts_proposals;
   public $accounts_publisherProfiles;
+  public $bidders_accounts_creatives;
   public $bidders_accounts_filterSets;
   public $bidders_accounts_filterSets_bidMetrics;
   public $bidders_accounts_filterSets_bidResponseErrors;
@@ -753,6 +754,31 @@ class Google_Service_AdExchangeBuyerII extends Google_Service
                 'pageToken' => array(
                   'location' => 'query',
                   'type' => 'string',
+                ),
+              ),
+            ),
+          )
+        )
+    );
+    $this->bidders_accounts_creatives = new Google_Service_AdExchangeBuyerII_Resource_BiddersAccountsCreatives(
+        $this,
+        $this->serviceName,
+        'creatives',
+        array(
+          'methods' => array(
+            'delete' => array(
+              'path' => 'v2beta1/{+ownerName}/creatives/{creativeId}',
+              'httpMethod' => 'DELETE',
+              'parameters' => array(
+                'ownerName' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'creativeId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
                 ),
               ),
             ),

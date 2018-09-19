@@ -103,6 +103,19 @@ class Google_Service_ShoppingContent_Resource_Orders extends Google_Service_Reso
     return $this->call('createtestorder', array($params), "Google_Service_ShoppingContent_OrdersCreateTestOrderResponse");
   }
   /**
+   *  (orders.createtestreturn)
+   *
+   * @param Google_Service_ShoppingContent_OrdersCreateTestReturnRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_ShoppingContent_OrdersCreateTestReturnResponse
+   */
+  public function createtestreturn($merchantId, $orderId, Google_Service_ShoppingContent_OrdersCreateTestReturnRequest $postBody, $optParams = array())
+  {
+    $params = array('merchantId' => $merchantId, 'orderId' => $orderId ,'postBody' => $postBody);
+    $params = array_merge($params, $optParams);
+    return $this->call('createtestreturn', array($params), "Google_Service_ShoppingContent_OrdersCreateTestReturnResponse");
+  }
+  /**
    *  (orders.custombatch)
    *
    * @param Google_Service_ShoppingContent_OrdersCustomBatchRequest $postBody
