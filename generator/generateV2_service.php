@@ -13,63 +13,79 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-require 'definitions.php';
-require 'functions.schemas.php';
-require 'functions.resources.php';
+require_once __DIR__ . '/Google/Service/Generator/Method.php';
+require_once __DIR__ . '/Google/Service/Generator/Schema.php';
+require_once __DIR__ . '/Google/Service/Generator/SchemaProperty.php';
+require_once __DIR__ . '/Google/Service/Generator/Service.php';
+require_once __DIR__ . '/Google/Service/Generator/StringUtilities.php';
+require_once __DIR__ . '/Google/Service/Generator/Resource.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
-function keyify($k) {
-  $ret = strtoupper(str_replace(".", "_", trim($k, "https:")));
-  return trim(str_replace("/", "_", $ret), "_") . "S";
+use Google\Service\Generator\Service;
+use Google\Service\Generator\StringUtilities;
+
+$TMPDIR = implode(DIRECTORY_SEPARATOR, ['tmp', 'Google', 'Service']);
+
+$data_array = json_decode(file_get_contents($argv[1]), 1);
+$service = new Service($data_array);
+
+$path = $TMPDIR.DIRECTORY_SEPARATOR. $service->canonicalName;
+if (!is_dir("$path/Resource")) {
+  mkdir("$path/Resource", 0755, true);
 }
 
-$doc = json_decode(file_get_contents($argv[1]), 1);
+$smarty = new Smarty;
+$smarty->setTemplateDir([__DIR__ . '/templates']);
 
-define("DEST", "../src/Google/Service/");
+$smarty->assign("Service", $service);
+file_put_contents("$path.php", $smarty->fetch('service.tpl'));
 
-if (!$doc['canonicalName']) {
-  $doc['canonicalName'] = $doc['name'];
-}
-$CapCan = ucfirst(str_replace(' ', '', $doc['canonicalName']));
-
-foreach ($doc['parameters'] as $k => $v) {
-  $parameter_types[$v['type']] += 1;
-  $locations[$v['location']] += 1;
+foreach ($service->getAllResources() as $resource) {
+  $smarty->assign("Resource", $resource);
+  $filename = "$path/Resource/" . $resource->getClassName() . ".php";
+  file_put_contents($filename, $smarty->fetch('resource.tpl'));
 }
 
-$schemas = $doc['schemas'];
+foreach ($service->getSchemas() as $schema) {
+  $classname = $schema->getName();
+  $smarty->assign("ClassName", $classname);
 
-foreach ($doc['schemas'] as $k => $v) {
-  rootSchema($k);
-}
+  if (!$schema->properties) {
+    // error_log("$path/$classname.php is blank!");
+    if ($classname == "JsonObject") { //TODO
+      continue;
+    }
+    file_put_contents("$path/$classname.php", $smarty->fetch('model.blank.tpl'));
 
-$scopes = [];
-$all_resources = [];
-foreach ($doc['resources'] as $k => $v) {
-  walkResource([$k]);
-}
-
-ksort($scopes);
-$real_scopes = [];
-foreach ($scopes as $k => $v) {
-  $guts = explode("/", rtrim($k,'/')); // rtrim for just domain scopes
-
-  $li = count($guts) -1;
-
-  $shortKey = strtoupper($guts[$li]);
-  $shortKey = str_replace('-', '_', $shortKey);
-  $shortKey = str_replace('.', '_', $shortKey);
-  if ($real_scopes[$shortKey]) {
-    $oldKey  = keyify($real_scopes[$shortKey][0]);
-    $longKey = keyify($k);
-    $real_scopes[$oldKey]  = $real_scopes[$shortKey];
-    $real_scopes[$longKey] = [$k, $doc['auth']['oauth2']['scopes'][$k]["description"]];
-    unset($real_scopes[$shortKey]);
   } else {
-    $real_scopes[$shortKey] = [$k, $doc['auth']['oauth2']['scopes'][$k]["description"]];
+    $properties = [];
+    $internal_gapi_mappings = [];
+    foreach ($schema->properties as $prop) {
+      $prop->isComplex = $prop->isComplex || $service->isPropertyComplex($prop);
+
+      if ($service->isPropertyComplex($schema->getSibling($prop))) {
+        $old_name = $prop->name;
+        $prop->name = "theReal" . StringUtilities::ucstrip($old_name);
+        $prop->getSetName = $old_name;
+        $internal_gapi_mappings[$old_name] = $prop->name;
+      } else {
+        $mapkey = trim(lcfirst(StringUtilities::ucstrip($prop->name)), '$');
+
+        if ($mapkey != $prop->name) {
+          $internal_gapi_mappings[$mapkey] = $prop->name;
+          $prop->name = $mapkey;
+          $prop->getSetName = $mapkey;
+        }
+      }
+
+      $prop->paramName = $service->getPropParamName($prop, $classname);
+
+      $properties[] = $prop;
+    }
+
+    $smarty->assign("Properties", $properties);
+    $smarty->assign("CollectionKey", $schema->collectionKey);
+    $smarty->assign("InternalGapiMappings", $internal_gapi_mappings);
+    file_put_contents("$path/$classname.php", $smarty->fetch('model.tpl'));
   }
 }
-ksort($all_resources);
-
-ob_start();
-include '_Service.php';
-file_put_contents(DEST. "$CapCan.php", ob_get_clean());
