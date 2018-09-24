@@ -35,7 +35,8 @@ if (!is_dir("$path/Resource")) {
 }
 
 $smarty = new Smarty;
-$smarty->setTemplateDir([__DIR__ . '/templates']);
+$smarty->setTemplateDir([__DIR__.DIRECTORY_SEPARATOR. 'templates']);
+$smarty->setCompileDir(sys_get_temp_dir().DIRECTORY_SEPARATOR.'gs_tpls');
 
 $smarty->assign("Service", $service);
 file_put_contents("$path.php", $smarty->fetch('service.tpl'));
