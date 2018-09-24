@@ -33,7 +33,6 @@ class StringUtilities {
       $dirname  = getcwd();
       $expected = implode(DIRECTORY_SEPARATOR, ['src', 'Google', 'Service']);
       while ($dirname != '/') {
-        echo $dirname.DIRECTORY_SEPARATOR.$expected."\n";
         if (file_exists($dirname.DIRECTORY_SEPARATOR.$expected)) {
           return $dirname.DIRECTORY_SEPARATOR.$expected.DIRECTORY_SEPARATOR;
         } else {
