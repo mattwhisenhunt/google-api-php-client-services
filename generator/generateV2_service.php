@@ -24,12 +24,12 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use Google\Service\Generator\Service;
 use Google\Service\Generator\StringUtilities;
 
-$TMPDIR = implode(DIRECTORY_SEPARATOR, ['tmp', 'Google', 'Service']);
-
 $data_array = json_decode(file_get_contents($argv[1]), 1);
-$service = new Service($data_array);
+$destination = StringUtilities::parseArgument($argv[2]);
 
-$path = $TMPDIR.DIRECTORY_SEPARATOR. $service->canonicalName;
+$service = new Service($data_array);
+$path = $destination. $service->canonicalName;
+
 if (!is_dir("$path/Resource")) {
   mkdir("$path/Resource", 0755, true);
 }
