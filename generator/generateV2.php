@@ -13,14 +13,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-ob_start();
-
 $s = 's';
 $longest = 86;
+$script = 'generateV2_service.php';
+if (strpos(__DIR__, getcwd().'/') === 0) {
+  $script = substr(__DIR__, strlen(getcwd())+1) . "/$script";
+}
 
 $apis = json_decode(file_get_contents("https://www.googleapis.com/discovery/v1/apis"));
 
-foreach($apis->items as $v){
+foreach ($apis->items as $v) {
   if ($v->preferred) {
     if ($v->name == 'discovery') continue;
 
@@ -29,11 +31,11 @@ foreach($apis->items as $v){
       error_log('$longest = '. "$longest;");
     }
 
-    printf("php generateV2_service.php %-$longest$s & pids[%3d]=$!\n", "'".$v->discoveryRestUrl."'", ++$i);
+    $lines .= sprintf("php $script %-$longest$s & pids[%3d]=$!\n",
+      "'".$v->discoveryRestUrl."'",
+      ++$i);
   }
 }
-
-$lines = ob_get_clean();
 ?>
 #!/bin/bash
 <?=$lines?>
