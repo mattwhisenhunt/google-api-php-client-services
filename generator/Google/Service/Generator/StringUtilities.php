@@ -24,4 +24,25 @@ class StringUtilities {
     $str = str_replace('@', '', $str);
     return $str;
   }
+
+  static function parseArgument($str) {
+    if ($str) {
+      return rtrim($str, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
+    }
+    else {
+      $dirname  = getcwd();
+      $expected = implode(DIRECTORY_SEPARATOR, ['src', 'Google', 'Service']);
+      while ($dirname != '/') {
+        echo $dirname.DIRECTORY_SEPARATOR.$expected."\n";
+        if (file_exists($dirname.DIRECTORY_SEPARATOR.$expected)) {
+          return $dirname.DIRECTORY_SEPARATOR.$expected.DIRECTORY_SEPARATOR;
+        } else {
+          $dirname = dirname($dirname);
+        }
+      }
+      error_log("fatal: src/Google/Services not found (or any of the parent directories)\n".
+        "Please specify a destination directory after the URL.");
+      exit(1);
+    }
+  }
 }
