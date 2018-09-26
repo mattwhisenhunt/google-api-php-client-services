@@ -34,6 +34,9 @@ class Google_Service_{$Service->canonicalName}_Resource_{$Resource->getClassName
   {
     $params = array({$method->getParamsArray()});
     $params = array_merge($params, $optParams);
+{if $Service->forceJson}
+    $params['alt'] = 'json';
+{/if}
     return $this->call('{$method->name}', array($params){if $method->responseRef}, "{$Service->getModelClassName($method->responseRef)}"{/if});
   }
 {/foreach}
