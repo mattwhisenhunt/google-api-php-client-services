@@ -24,6 +24,7 @@ class Service {
   public $servicePath;
   public $canonicalName;
   public $constructorDescription;
+  public $forceJson = false;
 
   public $schemas;
   public $resources;
@@ -43,6 +44,11 @@ class Service {
     }
     $this->canonicalName = ucfirst(str_replace(' ', '', $this->canonicalName));
     $this->constructorDescription = wordwrap("Constructs the internal representation of the $this->canonicalName service.", 77, "\n   * ");
+    assert($doc['parameters']['alt']);
+    if ($doc['parameters']['alt']['default'] != 'json'
+    && in_array('json', $doc['parameters']['alt']['enum'])) {
+      $this->forceJson = true;
+    }
 
     foreach ($doc['parameters'] as $k => $v) {
       $parameter_types[$v['type']] += 1;
