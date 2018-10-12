@@ -33,11 +33,17 @@ class StringUtilities {
       $dirname  = getcwd();
       $expected = implode(DIRECTORY_SEPARATOR, ['src', 'Google', 'Service']);
 
+      $vendored = implode(DIRECTORY_SEPARATOR, ['vendor', 'google', 'apiclient-services'])
+        .DIRECTORY_SEPARATOR
+        .$expected;
+      if (file_exists($dirname.DIRECTORY_SEPARATOR.$vendored)) {
+        return $dirname.DIRECTORY_SEPARATOR.$vendored.DIRECTORY_SEPARATOR;
+      }
+
       while ($dirname != '/') {
         if (file_exists($dirname.DIRECTORY_SEPARATOR.$expected)) {
           return $dirname.DIRECTORY_SEPARATOR.$expected.DIRECTORY_SEPARATOR;
         }
-        
         $dirname = dirname($dirname);
       }
 
