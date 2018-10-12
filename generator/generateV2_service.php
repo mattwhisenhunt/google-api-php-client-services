@@ -24,8 +24,15 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use Google\Service\Generator\Service;
 use Google\Service\Generator\StringUtilities;
 
-$data_array = json_decode(file_get_contents($argv[1]), 1);
-$destination = StringUtilities::parseArgument($argv[2]);
+$optind = null;
+$options = getopt("c:",[], $optind);
+list($discoveryUrl, $destination) = array_slice($argv, $optind);
+if (!$options['c']) {
+  $options['c'] = '2014';
+}
+
+$data_array = json_decode(file_get_contents($discoveryUrl), 1);
+$destination = StringUtilities::parseDestination($destination);
 
 $service = new Service($data_array);
 $path = $destination. $service->canonicalName;
@@ -39,6 +46,7 @@ $smarty->setTemplateDir([__DIR__.DIRECTORY_SEPARATOR. 'templates']);
 $smarty->setCompileDir(sys_get_temp_dir().DIRECTORY_SEPARATOR.'gs_tpls');
 
 $smarty->assign("Service", $service);
+$smarty->assign("CopyrightYear", $options['c']);
 file_put_contents("$path.php", $smarty->fetch('service.tpl'));
 
 foreach ($service->getAllResources() as $resource) {
