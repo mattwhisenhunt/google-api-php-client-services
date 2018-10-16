@@ -20,7 +20,7 @@
  * Typical usage is:
  *  <code>
  *   ${$Service->name}Service = new Google_Service_{$Service->canonicalName}(...);
- *   ${$Resource->getLiteralName()} = ${$Service->name}Service->{$Resource->getLiteralName()};
+ *   ${$Resource->getLiteralName()} = ${$Service->name}Service->{$Resource->getMemberName()};
  *  </code>
  */
 class Google_Service_{$Service->canonicalName}_Resource_{$Resource->getClassName()} extends Google_Service_Resource
