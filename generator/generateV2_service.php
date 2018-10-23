@@ -13,13 +13,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-require_once __DIR__ . '/Google/Service/Generator/Method.php';
-require_once __DIR__ . '/Google/Service/Generator/Schema.php';
-require_once __DIR__ . '/Google/Service/Generator/SchemaProperty.php';
-require_once __DIR__ . '/Google/Service/Generator/Service.php';
-require_once __DIR__ . '/Google/Service/Generator/StringUtilities.php';
-require_once __DIR__ . '/Google/Service/Generator/Resource.php';
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ .'/vendor/autoload.php';
 
 use Google\Service\Generator\Service;
 use Google\Service\Generator\StringUtilities;
