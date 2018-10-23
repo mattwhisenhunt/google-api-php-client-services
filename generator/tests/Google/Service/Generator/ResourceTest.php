@@ -38,53 +38,6 @@ class ResourceTest extends \PHPUnit\Framework\TestCase {
     $this->assertEquals('BiddersAccountsFilterSetsFilteredBidsCreatives', $rdeep->getClassName());
   }
 
-  // function getLiteralName() {
-  //   return $this->names[count($this->names)-1];
-  // }
-  //
-  // function getMemberName() {
-  //   return implode("_", $this->names);
-  // }
-  //
-  // function getScopes() {
-  //   $arr = $this->scopes;
-  //   foreach ($this->resources as $resource) {
-  //     $arr = array_merge($arr, $resource->getScopes());
-  //   }
-  //   return $arr;
-  // }
-  //
-  // function getMemberNames() {
-  //   $arr = [];
-  //   if (count($this->methods) > 0) {
-  //     $arr[] = $this->getMemberName();
-  //   }
-  //   foreach ($this->resources as $resource) {
-  //     $arr = array_merge($arr, $resource->getMemberNames());
-  //   }
-  //   return $arr;
-  // }
-  //
-  // function getMembers() {
-  //   $arr = [];
-  //   if (count($this->methods) > 0) {
-  //     $arr[] = $this;
-  //   }
-  //   foreach ($this->resources as $resource) {
-  //     $arr = array_merge($arr, $resource->getMembers());
-  //   }
-  //   return $arr;
-  // }
-  //
-  // function getAllResources() {
-  //   $arr = [$this];
-  //
-  //   foreach ($this->resources as $resource) {
-  //     $arr = array_merge($arr, $resource->getAllResources());
-  //   }
-  //   return $arr;
-  // }
-
   function testGetFnName() {
     $empty = [];
     $r = new Resource(['Photos'], $this->emptyNode);
