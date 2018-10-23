@@ -19,6 +19,10 @@ class Google_Service_{$Service->canonicalName}_{$ClassName} extends {**}
 Google_{if $CollectionKey}Collection{else}Model{/if}
 
 {
+{if $Service->dataWrapper}
+  const DATA_WRAP = true;
+
+{/if}
 {if $CollectionKey}
   protected $collection_key = '{$CollectionKey}';
 {/if}

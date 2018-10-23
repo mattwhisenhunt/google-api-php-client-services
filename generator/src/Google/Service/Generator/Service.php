@@ -25,6 +25,7 @@ class Service {
   public $canonicalName;
   public $constructorDescription;
   public $forceJson = false;
+  public $dataWrapper = false;
 
   public $schemas;
   public $resources;
@@ -85,6 +86,11 @@ class Service {
       foreach ($doc['auth']['oauth2']['scopes'] as $k => $v) {
         $this->scopeDescriptions[$k] = $v['description'];
       }
+    }
+
+    // Translation v2 is an example of this feature
+    if ($doc['features'] && in_array('dataWrapper', $doc['features'])) {
+      $this->dataWrapper = true;
     }
   }
 
