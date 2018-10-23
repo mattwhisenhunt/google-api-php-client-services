@@ -31,7 +31,11 @@ class StringUtilities {
     }
     else {
       $dirname  = getcwd();
-      $expected = implode(DIRECTORY_SEPARATOR, ['src', 'Google', 'Service']);
+
+      $expected = implode(DIRECTORY_SEPARATOR, ['..', 'src', 'Google', 'Service']);
+      if (file_exists($dirname.DIRECTORY_SEPARATOR.$expected)) {
+        return $dirname.DIRECTORY_SEPARATOR.$expected.DIRECTORY_SEPARATOR;
+      }
 
       $vendored = implode(DIRECTORY_SEPARATOR, ['vendor', 'google', 'apiclient-services'])
         .DIRECTORY_SEPARATOR
@@ -40,6 +44,7 @@ class StringUtilities {
         return $dirname.DIRECTORY_SEPARATOR.$vendored.DIRECTORY_SEPARATOR;
       }
 
+      $expected = implode(DIRECTORY_SEPARATOR, ['src', 'Google', 'Service']);
       while ($dirname != '/') {
         if (file_exists($dirname.DIRECTORY_SEPARATOR.$expected)) {
           return $dirname.DIRECTORY_SEPARATOR.$expected.DIRECTORY_SEPARATOR;
