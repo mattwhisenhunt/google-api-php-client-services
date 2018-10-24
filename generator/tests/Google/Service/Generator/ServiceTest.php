@@ -15,7 +15,9 @@
  * limitations under the License.
  */
 
-namespace Google\Service\Generator;
+namespace Google\Service\Generator\Test;
+
+use Google\Service\Generator\Service;
 
 class ServiceTest extends \PHPUnit\Framework\TestCase {
   // function getMemberNames()
