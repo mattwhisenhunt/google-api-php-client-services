@@ -36,11 +36,11 @@ class Resource {
       }
     }
 
-    if ($node['methods']) {
+    if (isset($node['methods'])) {
       $this->methods = new \SplFixedArray(count($node['methods']));
       ksort($node['methods']);
       foreach ($node['methods'] as $k => &$v) {
-        if ($v['scopes']) {
+        if (isset($v['scopes'])) {
           foreach ($v['scopes'] as $scope) {
             $this->scopes[$scope] = 1;
           }
