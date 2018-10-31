@@ -106,8 +106,12 @@ class SchemaProperty {
   function getFuncParam() {
     $longer = "$this->paramName \$$this->name";
     if ($this->isComplex) {
-      if ($this->node['properties']) return $longer;
-      if ($this->node['type'] != 'array' && $this->node['$ref']) return $longer;
+      if (isset($this->node['properties'])) return $longer;
+      if (isset($this->node['$ref'])
+      && ((!isset($this->node['type'])) || $this->node['type'] != 'array'))
+      {
+        return $longer;
+      }
     }
     return "\$$this->name";
   }

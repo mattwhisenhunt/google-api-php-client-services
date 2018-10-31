@@ -140,7 +140,7 @@ class Service {
       $shortKey = strtoupper($guts[$li]);
       $shortKey = str_replace('-', '_', $shortKey);
       $shortKey = str_replace('.', '_', $shortKey);
-      if ($real_scopes[$shortKey]) {
+      if (isset($real_scopes[$shortKey])) {
         $oldKey  = Service::keyify($real_scopes[$shortKey][0]);
         $longKey = Service::keyify($k);
         $real_scopes[$oldKey]  = $real_scopes[$shortKey];

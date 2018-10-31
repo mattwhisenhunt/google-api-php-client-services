@@ -104,7 +104,7 @@ class Resource {
   }
 
   function getFnName($name) {
-    if (Resource::PHP_WORDS[$name]) {
+    if (isset(Resource::PHP_WORDS[$name])) {
       return $name.$this->getClassName();
     }
     return $name;
