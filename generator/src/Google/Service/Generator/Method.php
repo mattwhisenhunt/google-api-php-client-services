@@ -39,11 +39,11 @@ class Method {
     $this->path = $method['path'];
     $this->httpMethod = $method['httpMethod'];
 
-    if ($method['parameters']) {
+    if (isset($method['parameters'])) {
       $this->emptyParameters = false;
 
       $parameters = [];
-      if ($method['parameterOrder']) {
+      if (isset($method['parameterOrder'])) {
         foreach ($method['parameterOrder'] as $movedKey) {
           $parameters[$movedKey] = $method['parameters'][$movedKey];
           unset($method['parameters'][$movedKey]);
@@ -53,22 +53,22 @@ class Method {
       $this->parameters = array_merge($parameters, $method['parameters']);
 
       foreach ($this->parameters as $k => $v) {
-        if (!$v['required']) {
-          $method['Optional'] = true;
-        } else {
+        if (isset($v['required'])) {
           $var_name = '$'. lcfirst(StringUtilities::ucstrip($k));
           $this->paramsP[] = $var_name;
           $this->paramsA[] = "'$k' => $var_name";
+        } else {
+          $method['Optional'] = true;
         }
       }
     }
 
-    if ($method['request'] && $method['httpMethod'] != 'GET') {
+    if (isset($method['request']) && $method['httpMethod'] != 'GET') {
       $this->requestRef = $method['request']['$ref'];
       $this->hasPostBody = true;
     }
 
-    if ($method['response']) {
+    if (isset($method['response'])) {
       $this->responseRef = $method['response']['$ref'];
     }
   }

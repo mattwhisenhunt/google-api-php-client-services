@@ -33,8 +33,12 @@ class SchemaProperty {
     $this->name = $key;
     $this->getSetName = $key;
 
-    if ($node['type'] == 'array') {
-      $this->typeName = StringUtilities::ucstrip($node['items']['$ref']);
+    if (isset($node['type']) && $node['type'] == 'array') {
+      if (isset($node['items']['$ref'])) {
+        $this->typeName = StringUtilities::ucstrip($node['items']['$ref']);
+      } else {
+        $this->typeName = '';
+      }
       $this->dataType = 'array';
 
       if (count($node['items']) > 1) {
@@ -48,24 +52,28 @@ class SchemaProperty {
       }
     }
 
-    if ($node['$ref'] && $node['type'] !== 'array') {
+    if (isset($node['$ref'])
+    && ((!isset($node['type'])) || $node['type'] !== 'array'))
+    {
       $this->typeName = StringUtilities::ucstrip($node['$ref']);
     }
   
-    if ($node['properties']) {
+    if (isset($node['properties'])) {
       $this->typeName = StringUtilities::ucstrip($key);
     }
   
-    if ($node['additionalProperties']['$ref'] || $node['additionalProperties']['properties']) {
+    if (isset($node['additionalProperties']['$ref']) || isset($node['additionalProperties']['properties'])) {
       $this->dataType = 'map';
       $this->typeName = $node['additionalProperties']['$ref'];
     }
-    if ($node['additionalProperties']['properties']) {
+    if (isset($node['additionalProperties']['properties'])) {
       $this->dataType = 'map';
       $this->typeName = StringUtilities::ucstrip($key) . "Element";
       $this->isComplex = true;
     }
-    if ($node['additionalProperties']['items'] && $node['additionalProperties']['items']['type'] != 'any') {
+    if (isset($node['additionalProperties']['items'])
+      && $node['additionalProperties']['items']['type'] != 'any')
+    {
       $this->dataType = 'map';
       $this->typeName = $node['additionalProperties']['items']['$ref'];
     }
@@ -74,17 +82,21 @@ class SchemaProperty {
   }
   
   function getTypePrefix($classname) {
-    if ($this->node['type'] == 'array' && count($this->node['items']) > 1)
-       return $classname;
-
-    if ($this->node['properties']){
+    if (isset($this->node['type'])
+    && $this->node['type'] == 'array'
+    && count($this->node['items']) > 1)
+    {
       return $classname;
     }
 
-    if ($this->node['additionalProperties']['properties'])
+    if (isset($this->node['properties'])) {
+      return $classname;
+    }
+
+    if (isset($this->node['additionalProperties']['properties']))
       return $classname;
 
-    if (Schema::PREFIXABLES[$this->typeName]) {
+    if (isset(Schema::PREFIXABLES[$this->typeName])) {
       return $this->serviceName;
     }
 

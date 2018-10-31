@@ -35,19 +35,21 @@ class Schema {
     $this->names = $key;
 
     list($this->cc, $this->suffix) = $this->appendChildren($node);
-    $properties = $node['properties'];
+    if (isset($node['properties'])) {
+      $properties = $node['properties'];
+    }
     if ($this->suffix == 'Element') {
       $properties = $node['additionalProperties']['properties'];
     }
 
-    if ($properties) {
+    if (isset($properties)) {
       $this->properties = new \SplFixedArray(count($properties));
       ksort($properties);
       foreach ($properties as $k => &$v) {
         $this->properties[$this->properties->key()] = new SchemaProperty($this->serviceName, $k, $v);
         $this->propKeys[$k] = $this->properties->key();
         $this->properties->next();
-        if ($v['type'] == 'array') {
+        if (isset($v['type']) && $v['type'] == 'array') {
           $this->collectionKey = $k; //TODO Just pick the last one that is an array??
         }
       }
@@ -58,9 +60,16 @@ class Schema {
 
   function hasFile(&$node) {
     if ($node['type'] == 'object') {
-      if (is_array($node['additionalProperties']) && 
-        count($node['additionalProperties']) == 1 || $node['additionalProperties']['type'] == 'any') {
+      if (isset($node['additionalProperties'])
+      && is_array($node['additionalProperties'])
+      && count($node['additionalProperties']) == 1)
+      {
           return false;
+      }
+      if (isset($node['additionalProperties']['type'])
+      && $node['additionalProperties']['type'] == 'any')
+      {
+        return false;
       }
       return true;
     }
@@ -69,9 +78,9 @@ class Schema {
 
   function appendChildren(&$node) {
 
-    if ($node['items']) {
+    if (isset($node['items'])) {
       assert($node['type'] == 'array');
-      if (count($node['items']) == 2 && $node['items']['format']) {
+      if (count($node['items']) == 2 && isset($node['items']['format'])) {
         return [0, ''];
       }
       $new_names = array_merge($this->names, ['items']);
@@ -79,7 +88,7 @@ class Schema {
       return [1, ''];
     }
 
-    if ($node['properties']) {
+    if (isset($node['properties'])) {
       foreach ($node['properties'] as $k => &$v) {
         $new_names = array_merge($this->names, ['properties', $k]);
         $this->schemas[] = new SubSchema($this->serviceName, $new_names, $v);
@@ -87,7 +96,7 @@ class Schema {
       return [2, '']; // count($node['properties']);
     }
 
-    if ($node['additionalProperties']['properties']) {
+    if (isset($node['additionalProperties']['properties'])) {
       foreach ($node['additionalProperties']['properties'] as $k => &$v) {
         $new_names = array_merge($this->names, ['additionalProperties', 'properties', $k]);
         $this->schemas[] = new SubSchema($this->serviceName, $new_names, $v);
@@ -121,7 +130,7 @@ class Schema {
     $name = "";
     foreach ($names as $n) {
       if ($n != 'items' && $n != 'properties' && $n != 'additionalProperties'){
-        if (Schema::PREFIXABLES[$n]) {
+        if (isset(Schema::PREFIXABLES[$n])) {
           $name .= $this->serviceName;
         }
         $name .= StringUtilities::ucstrip($n);
