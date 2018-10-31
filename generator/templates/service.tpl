@@ -78,10 +78,10 @@ class Google_Service_{$Service->canonicalName} extends Google_Service
                 '{$pname}' => array(
                   'location' => '{$pval['location']}',
                   'type' => '{$pval['type']}',
-{if $pval['repeated']}
+{if isset($pval['repeated']) }
                   'repeated' => true,
 {/if}
-{if $pval['required']}
+{if isset($pval['required']) }
                   'required' => true,
 {/if}
                 ),{/foreach}
@@ -114,10 +114,10 @@ class Google_Service_{$Service->canonicalName} extends Google_Service
                 '{$pname}' => array(
                   'location' => '{$pval['location']}',
                   'type' => '{$pval['type']}',
-{if $pval['repeated']}
+{if isset($pval['repeated']) }
                   'repeated' => true,
 {/if}
-{if $pval['required']}
+{if isset($pval['required']) }
                   'required' => true,
 {/if}
                 ),{/foreach}
@@ -137,7 +137,7 @@ class Google_Service_{$Service->canonicalName} extends Google_Service
    * ({$method->id})
    *
    * @param array $optParams Optional parameters.
-{if $method->parameters}
+{if isset($method->parameters) }
    *
 {foreach $method->parameters as $pname => $pval}
    * @opt_param string {$pname}
