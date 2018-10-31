@@ -38,7 +38,9 @@ class Service {
     $this->name = $doc['name'];
     $this->version = $doc['version'];
     $this->description = wordwrap(trim($doc['description']), 77, "\n * ");
-    $this->documentationLink = $doc['documentationLink'];
+    if (isset($doc['documentationLink'])) {
+      $this->documentationLink = $doc['documentationLink'];
+    }
     $this->rootUrl = $doc['rootUrl'];
     $this->servicePath = $doc['servicePath'];
     if (isset($doc['canonicalName'])) {
@@ -80,7 +82,7 @@ class Service {
       }
     }
 
-    if ($doc['auth']['oauth2']['scopes']) {
+    if (isset($doc['auth']['oauth2']['scopes'])) {
       foreach ($doc['auth']['oauth2']['scopes'] as $k => $v) {
         $this->scopeDescriptions[$k] = $v['description'];
       }
@@ -241,7 +243,7 @@ class Service {
       return false;
     }
 
-    if (count($items) == 1 && $items['$ref']) {
+    if (count($items) == 1 && isset($items['$ref'])) {
       for($i = 0; $i < count($this->schemas); $i++) {
         if ($this->schemas[$i]->getRefName() == $items['$ref']) {
           return $this->schemas[$i]->isComplex();

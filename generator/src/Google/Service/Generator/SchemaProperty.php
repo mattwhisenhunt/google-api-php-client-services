@@ -64,18 +64,26 @@ class SchemaProperty {
   
     if (isset($node['additionalProperties']['$ref']) || isset($node['additionalProperties']['properties'])) {
       $this->dataType = 'map';
-      $this->typeName = $node['additionalProperties']['$ref'];
+      if (isset($node['additionalProperties']['$ref'])) {
+        $this->typeName = $node['additionalProperties']['$ref'];
+      } else {
+        $this->typeName = '';
+      }
     }
     if (isset($node['additionalProperties']['properties'])) {
       $this->dataType = 'map';
       $this->typeName = StringUtilities::ucstrip($key) . "Element";
       $this->isComplex = true;
     }
-    if (isset($node['additionalProperties']['items'])
+    if (isset($node['additionalProperties']['items']['type'])
       && $node['additionalProperties']['items']['type'] != 'any')
     {
       $this->dataType = 'map';
-      $this->typeName = $node['additionalProperties']['items']['$ref'];
+      if (isset($node['additionalProperties']['items']['$ref'])) {
+        $this->typeName = $node['additionalProperties']['items']['$ref'];
+      } else {
+        $this->typeName = '';
+      }
     }
   
     $this->node = $node;
