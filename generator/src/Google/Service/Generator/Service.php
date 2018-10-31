@@ -41,8 +41,9 @@ class Service {
     $this->documentationLink = $doc['documentationLink'];
     $this->rootUrl = $doc['rootUrl'];
     $this->servicePath = $doc['servicePath'];
-    $this->canonicalName = $doc['canonicalName'];
-    if (!$doc['canonicalName']) {
+    if (isset($doc['canonicalName'])) {
+      $this->canonicalName = $doc['canonicalName'];
+    } else {
       $this->canonicalName = $this->name;
     }
     $this->canonicalName = ucfirst(str_replace(' ', '', $this->canonicalName));
@@ -53,12 +54,7 @@ class Service {
       $this->forceJson = true;
     }
 
-    foreach ($doc['parameters'] as $k => $v) {
-      $parameter_types[$v['type']] += 1;
-      $locations[$v['location']] += 1;
-    }
-
-    if ($doc['schemas']) {
+    if (isset($doc['schemas'])) {
       $this->schemas = new \SplFixedArray(count($doc['schemas']));
       foreach ($doc['schemas'] as $k => &$v) {
         $this->schemas[$this->schemas->key()] = new Schema(ucfirst($this->name), [$k], $v);
@@ -66,7 +62,7 @@ class Service {
       }
     }
 
-    if ($doc['resources']) {
+    if (isset($doc['resources'])) {
       $this->resources = new \SplFixedArray(count($doc['resources']));
       ksort($doc['resources']);
       foreach ($doc['resources'] as $k => $v) {
@@ -75,7 +71,7 @@ class Service {
       }
     }
 
-    if ($doc['methods']) {
+    if (isset($doc['methods'])) {
       $this->methods = new \SplFixedArray(count($doc['methods']));
       ksort($doc['methods']);
       foreach ($doc['methods'] as $k => $v) {
@@ -91,7 +87,7 @@ class Service {
     }
 
     // Translation v2 is an example of this feature
-    if ($doc['features'] && in_array('dataWrapper', $doc['features'])) {
+    if (isset($doc['features']) && in_array('dataWrapper', $doc['features'])) {
       $this->dataWrapper = true;
     }
   }
@@ -165,7 +161,7 @@ class Service {
     if (is_array($schema_name)){
       return "";
     }
-    if (Schema::PREFIXABLES[$schema_name]) {
+    if (isset(Schema::PREFIXABLES[$schema_name])) {
       return ucfirst($this->name) . $schema_name;
     }
     return $schema_name;
@@ -203,7 +199,7 @@ class Service {
     if (isset($prop->node['properties'])) {
       return true;
     }
-    if ($prop->node['additionalProperties']['$ref']) {
+    if (isset($prop->node['additionalProperties']['$ref'])) {
 
       if ($prop->node['additionalProperties']['$ref'] == 'JsonValue') { //TODO
         return false;
@@ -211,15 +207,15 @@ class Service {
       }
       return true;
     }
-    if ($prop->node['additionalProperties']['items']) {
+    if (isset($prop->node['additionalProperties']['items'])) {
       return $this->isItemNodeComplex($prop->node['additionalProperties']['items']);
     }
 
-    if ($prop->node['items']) {
+    if (isset($prop->node['items'])) {
       return $this->isItemNodeComplex($prop->node['items']);
     }
 
-    if ($prop->node['$ref']) {
+    if (isset($prop->node['$ref'])) {
       // return $this->isPropertyComplex($GLOBALS['doc']['schemas'][$prop->node['$ref']]); //TODO
       if ($prop->node['$ref'] == 'JsonObject') { //TODO
         return false;
@@ -227,7 +223,7 @@ class Service {
       return true;
     }
 
-    if ($prop->node['dataType'] == 'map') {
+    if (isset($prop->node['dataType']) && $prop->node['dataType'] == 'map') {
       return true;
     }
 
@@ -235,11 +231,15 @@ class Service {
   }
 
   function isItemNodeComplex(&$items) {
-    if (count($items) == 2 && $items['format']) return false;
+    if (count($items) == 2 && isset($items['format'])) return false;
 
-    if ($items['enum']) return false;
+    if (isset($items['enum'])) return false;
 
-    if (count($items) == 1 && $items['type'] == 'string') return false;
+    if (count($items) == 1 && isset($items['type'])
+    && $items['type'] == 'string')
+    {
+      return false;
+    }
 
     if (count($items) == 1 && $items['$ref']) {
       for($i = 0; $i < count($this->schemas); $i++) {
@@ -250,9 +250,17 @@ class Service {
     }
 
     if (count($items) == 1 && $items['type'] == 'any') return false;
-    if ($items['items'] && count($items['items']) == 1 && $items['items']['type'] == 'any') return false;
-    if ($items['additionalProperties']['type'] == 'any') return false;
-    if ($items['items']) {
+    if (isset($items['items']) && count($items['items']) == 1
+    && $items['items']['type'] == 'any')
+    {
+      return false;
+    }
+    if (isset($items['additionalProperties']['type'])
+    && $items['additionalProperties']['type'] == 'any')
+    {
+      return false;
+    }
+    if (isset($items['items'])) {
       return $this->isItemNodeComplex($items['items']);
     }
     return true;

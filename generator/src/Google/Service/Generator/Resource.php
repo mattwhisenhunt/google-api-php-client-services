@@ -27,7 +27,7 @@ class Resource {
   function __construct($keys, &$node) {
     $this->names = $keys;
 
-    if ($node['resources']) {
+    if (isset($node['resources'])) {
       $this->resources = new \SplFixedArray(count($node['resources']));
       ksort($node['resources']);
       foreach ($node['resources'] as $k => &$v) {

@@ -23,7 +23,7 @@ use Google\Service\Generator\StringUtilities;
 $optind = null;
 $options = getopt("c:",[], $optind);
 list($discoveryUrl, $destination) = array_slice($argv, $optind);
-if (!$options['c']) {
+if (!isset($options['c'])) {
   $options['c'] = '2014';
 }
 
