@@ -29,4 +29,28 @@ class StringUtilitiesTest extends \PHPUnit\Framework\TestCase {
     $this->assertEquals('LabelWithOp', StringUtilities::ucstrip('label_with_op'));
     $this->assertEquals('StartDate', StringUtilities::ucstrip('start-date'));
   }
+
+  /**
+   * @dataProvider docBlockProvider
+   */
+  function testCommentWordwrap($str, $expected) {
+    $this->assertEquals($expected, StringUtilities::commentWordwrap($str));
+  }
+
+  function docBlockProvider() {
+    return [
+      ["\n\n"
+      ,"   *\n   *\n   *"],
+
+      ["\nA lone line.\n"
+      ,"   *\n   * A lone line.\n   *"],
+
+      ['*/'
+      ,'   * {@*}'],
+
+      ['projects/*/locations/*/other/*'
+      ,'   * projects/{@*}locations/{@*}other/*'],
+
+    ];
+  }
 }

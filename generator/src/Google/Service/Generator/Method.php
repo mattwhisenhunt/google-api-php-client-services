@@ -22,6 +22,9 @@ class Method {
   public $name;
   public $path;
   public $httpMethod;
+  public $description = '';
+  public $phpdocParams = [];
+  public $phpdocOptParams = [];
   public $scopes = [];
   public $parameters = [];
   public $emptyParameters = true;
@@ -31,13 +34,16 @@ class Method {
 
   private $paramsP = [];
   private $paramsA = [];
-  private $hasPostBody = false;
+  public $hasPostBody = false;
   
   function __construct($key, &$method) {
     $this->id = $method['id'];
     $this->name = $key;
     $this->path = $method['path'];
     $this->httpMethod = $method['httpMethod'];
+    if (isset($method['description'])) {
+      $this->description = $method['description'];
+    }
 
     if (isset($method['parameters'])) {
       $this->emptyParameters = false;
@@ -57,8 +63,10 @@ class Method {
           $var_name = '$'. lcfirst(StringUtilities::ucstrip($k));
           $this->paramsP[] = $var_name;
           $this->paramsA[] = "'$k' => $var_name";
+          $this->phpdocParams[] = Method::getPhpDocParam($var_name, $v);
         } else {
-          $method['Optional'] = true;
+          $var_name = lcfirst(StringUtilities::ucstrip($k));
+          $this->phpdocOptParams[] = Method::getPhpDocParam($var_name, $v);
         }
       }
     }
@@ -89,4 +97,56 @@ class Method {
     }
     return implode(", ", $params);
   }
+
+  function getDescription() {
+    $tmparr = explode('.', $this->id);
+    array_shift($tmparr);
+    $desc = $this->description . ' ('. implode('.', $tmparr) . ')';
+    return StringUtilities::commentWordwrap($desc);
+  }
+
+  static function getPhpDocParam($name, $node) {
+    if (isset($node['required'])) {
+      $token = '@param';
+
+      if (isset($node['repeated'])) { // TODO Why is this only for required parameters???
+        $repeatToken = '|array';
+      } else {
+        $repeatToken = '';
+      }
+    } else {
+      $token = '@opt_param';
+      $repeatToken = '';
+    }
+
+    if (isset($node['type'])) {
+      $typeToken = Method::PHP_TYPES[$node['type']];
+    }
+    if (isset($node['format'])
+    && ($node['format'] == 'uint32' || $node['format'] == 'uint64')) {
+      $typeToken = "string";
+    }
+    if (isset($node['description'])) {
+      $desc = $node['description'];
+    } else {
+      $desc = '';
+    }
+    $str = "$token $typeToken$repeatToken $name $desc";
+    return StringUtilities::commentWordwrap($str);
+  }
+
+  const PHP_TYPES =
+    ['any'     => 'array'
+    ,'boolean' => 'bool'
+    ,'integer' => 'int'
+    ,'long'    => 'string'
+    ,'number'  => 'float'
+    ,'string'  => 'string'
+    ,'uint32'  => 'string'
+    ,'uint64'  => 'string'
+    ,'int32'   => 'int'
+    ,'int64'   => 'string'
+    ,'double'  => 'double'
+    ,'float'   => 'float'
+  ];
 }

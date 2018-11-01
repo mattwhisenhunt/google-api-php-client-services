@@ -16,6 +16,8 @@
  */
 
 $s = 's';
+$i = 0;
+$lines = '';
 $longest = 86;
 $script = 'generateV2_service.php';
 if (strpos(__DIR__, getcwd().'/') === 0) {
