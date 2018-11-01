@@ -1,0 +1,60 @@
+<?php
+/*
+ * Copyright {$CopyrightYear} Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+/**
+ * The "{$Resource->getLiteralName()}" collection of methods.
+ * Typical usage is:
+ *  <code>
+ *   ${$Service->name}Service = new Google_Service_{$Service->canonicalName}(...);
+ *   ${$Resource->getLiteralName()} = ${$Service->name}Service->{$Resource->getLiteralName()};
+ *  </code>
+ */
+class Google_Service_{$Service->canonicalName}_Resource_{$Resource->getClassName()} extends Google_Service_Resource
+{
+{foreach $Resource->methods as $method}
+  /**
+{$method->getDescription()}
+   *
+{foreach $method->phpdocParams as $p}
+{$p}
+{/foreach}
+{if $method->hasPostBody}
+   * @param {$Service->getModelClassName($method->requestRef)} $postBody
+{/if}
+   * @param array $optParams Optional parameters.
+{if count($method->phpdocOptParams) > 0}
+   *
+{/if}
+{foreach $method->phpdocOptParams as $p}
+{$p}
+{foreachelse}
+{/foreach}
+{if isset($method->responseRef)}
+   * @return {$Service->getModelClassName($method->responseRef)}
+{/if}
+   */
+  public function {$Resource->getFnName($method->name)}({$method->getParamsParams($Service->getModelClassName($method->requestRef))})
+  {
+    $params = array({$method->getParamsArray()});
+    $params = array_merge($params, $optParams);
+{if $Service->forceJson}
+    $params['alt'] = 'json';
+{/if}
+    return $this->call('{$method->name}', array($params){if $method->responseRef}, "{$Service->getModelClassName($method->responseRef)}"{/if});
+  }
+{/foreach}
+}
