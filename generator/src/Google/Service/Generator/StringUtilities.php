@@ -27,6 +27,25 @@ class StringUtilities {
     return $str;
   }
 
+  static function commentWordwrap($str) {
+    $str = str_replace('*/', '{@*}', $str);
+    $lines = explode("\n", $str);
+
+    $phpdoc = '';
+    $linebreak = '';
+    foreach ($lines as $line) {
+      $space = ' ';
+      if ($line == '') {
+        $space = '';
+      }
+      $phpdoc .= "$linebreak   *$space";
+      $phpdoc .= wordwrap($line, 74, "\n   * ");
+
+      $linebreak = "\n";
+    }
+    return $phpdoc;
+  }
+
   static function parseDestination($str) {
     if ($str) {
       return rtrim($str, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;

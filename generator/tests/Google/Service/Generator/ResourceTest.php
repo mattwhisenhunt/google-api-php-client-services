@@ -193,7 +193,7 @@ class ResourceTest extends \PHPUnit\Framework\TestCase {
     return [
       [ ['accounts'], // one level deep
         ['resources' => ['containers' => [
-          'methods' => ['list' => []], 'resources' => ['workspaces' => [
+          'methods' => mthd('list'), 'resources' => ['workspaces' => [
             'resources' => ['built_in_variables' => []]]]]]],
         1,
       ],
@@ -201,11 +201,11 @@ class ResourceTest extends \PHPUnit\Framework\TestCase {
         ['resources' => ['accounts' => [
           'resources' => ['filterSets' => [
             'resources' => ['filteredBids' => [
-              'resources' => ['creatives' => [ 'methods' => ['list' => []]]]]]]]]]],
+              'resources' => ['creatives' => [ 'methods' => mthd('list')]]]]]]]]],
         1,
       ],
       [ ['projects'], // direct member
-        ['methods'=> ['create'=>[],'get'=>[],'update'=>[],'delete'=>[]]],
+        ['methods'=> mthds(['create','get','update','delete'])],
         1,
       ],
       [ ['v2'],
@@ -213,10 +213,22 @@ class ResourceTest extends \PHPUnit\Framework\TestCase {
         0,
       ],
       [ ['userinfo'], // direct member and deeper
-        ['methods' => ['list' => []], 'resources' => ['v2' => [
-          'resources' => ['me' => ['methods' => ['list' => []]]]]]],
+        ['methods' => mthd('list'), 'resources' => ['v2' => [
+          'resources' => ['me' => ['methods' => mthd('list')]]]]],
         2,
       ],
     ];
   }
+}
+
+function mthd($name) {
+  return [$name=> ['id'=>'id', 'path'=>'path', 'httpMethod'=>'GET']];
+}
+
+function mthds($names) {
+  $arr = [];
+  foreach($names as $name) {
+    $arr[$name] = ['id'=>'id', 'path'=>'path', 'httpMethod'=>'GET'];
+  }
+  return $arr;
 }

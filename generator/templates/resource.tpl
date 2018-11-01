@@ -27,8 +27,25 @@ class Google_Service_{$Service->canonicalName}_Resource_{$Resource->getClassName
 {
 {foreach $Resource->methods as $method}
   /**
-   *  ({$method->id})
+{$method->getDescription()}
    *
+{foreach $method->phpdocParams as $p}
+{$p}
+{/foreach}
+{if $method->hasPostBody}
+   * @param {$Service->getModelClassName($method->requestRef)} $postBody
+{/if}
+   * @param array $optParams Optional parameters.
+{if count($method->phpdocOptParams) > 0}
+   *
+{/if}
+{foreach $method->phpdocOptParams as $p}
+{$p}
+{foreachelse}
+{/foreach}
+{if isset($method->responseRef)}
+   * @return {$Service->getModelClassName($method->responseRef)}
+{/if}
    */
   public function {$Resource->getFnName($method->name)}({$method->getParamsParams($Service->getModelClassName($method->requestRef))})
   {
