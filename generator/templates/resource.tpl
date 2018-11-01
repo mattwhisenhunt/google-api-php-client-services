@@ -41,7 +41,6 @@ class Google_Service_{$Service->canonicalName}_Resource_{$Resource->getClassName
 {/if}
 {foreach $method->phpdocOptParams as $p}
 {$p}
-{foreachelse}
 {/foreach}
 {if isset($method->responseRef)}
    * @return {$Service->getModelClassName($method->responseRef)}

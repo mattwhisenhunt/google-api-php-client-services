@@ -20,6 +20,15 @@ require_once __DIR__ .'/vendor/autoload.php';
 use Google\Service\Generator\Service;
 use Google\Service\Generator\StringUtilities;
 
+/**
+ * Keep errors and notices out of Smarty output and always in stderr.
+ */
+function error_handler($errno, $errstr, $errfile, $errline) {
+  file_put_contents('php://stderr', "$errstr in $errfile on line $errline\n");
+  return true;
+}
+set_error_handler("error_handler");
+
 $optind = null;
 $options = getopt("c:",[], $optind);
 $pos_args = array_slice($argv, $optind);
