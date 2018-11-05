@@ -27,7 +27,7 @@ class ServiceGenerator {
 
   function __construct($path = '') {
     if ($path != '') {
-    } else {
+      $this->path = $path;
     }
   }
 
