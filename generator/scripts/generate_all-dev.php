@@ -19,10 +19,6 @@ $s = 's';
 $i = 0;
 $lines = '';
 $longest = 86;
-$script = 'generateV2_service.php';
-if (strpos(__DIR__, getcwd().'/') === 0) {
-  $script = substr(__DIR__, strlen(getcwd())+1) . "/$script";
-}
 
 $apis = json_decode(file_get_contents("https://www.googleapis.com/discovery/v1/apis"));
 
@@ -35,7 +31,7 @@ foreach ($apis->items as $v) {
       error_log('$longest = '. "$longest;");
     }
 
-    $lines .= sprintf("php $script %-$longest$s & pids[%3d]=$!\n",
+    $lines .= sprintf("bin/generate %-$longest$s build & pids[%3d]=$!\n",
       "'".$v->discoveryRestUrl."'",
       ++$i);
   }
