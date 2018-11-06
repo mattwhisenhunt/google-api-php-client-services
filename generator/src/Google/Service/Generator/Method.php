@@ -101,7 +101,10 @@ class Method {
   function getDescription() {
     $tmparr = explode('.', $this->id);
     array_shift($tmparr);
-    $desc = $this->description . ' ('. implode('.', $tmparr) . ')';
+    $desc = '('. implode('.', $tmparr) . ')';
+    if ($this->description != '') {
+      $desc = "$this->description $desc";
+    }
     return StringUtilities::commentWordwrap($desc);
   }
 

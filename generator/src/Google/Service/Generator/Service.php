@@ -160,9 +160,6 @@ class Service {
   }
 
   function getSafeSchemaName($schema_name){
-    if (is_array($schema_name)){
-      return "";
-    }
     if (isset(Schema::PREFIXABLES[$schema_name])) {
       return ucfirst($this->name) . $schema_name;
     }
@@ -171,22 +168,11 @@ class Service {
 
   function getPropParamName($prop, $classname) {
     $prefix = "Google_Service_$this->canonicalName";
-    $type = $prop->typeName;
 
     return
       $prefix . "_".
       $prop->getTypePrefix($this->getSafeSchemaName($classname)) .
       $prop->typeName;
-  }
-
-  function iterateSchemas() {
-    $values = [];
-    foreach ($this->schemas as $schema) {
-      foreach ($schema as $filename => $content) {
-        $values[$filename] = $content;
-      }
-    }
-    return $values;
   }
 
   static function keyify($k) {
@@ -195,7 +181,7 @@ class Service {
   }
 
   function isPropertyComplex($prop) {
-    if (!$prop) {
+    if (is_null($prop)) {
       return false;
     }
     if (isset($prop->node['properties'])) {
@@ -203,9 +189,8 @@ class Service {
     }
     if (isset($prop->node['additionalProperties']['$ref'])) {
 
-      if ($prop->node['additionalProperties']['$ref'] == 'JsonValue') { //TODO
+      if ($prop->node['additionalProperties']['$ref'] == 'JsonValue') {
         return false;
-        // return is_property_complex($GLOBALS['doc']['schemas'][$prop->node['additionalProperties']['$ref']]);
       }
       return true;
     }
@@ -218,8 +203,7 @@ class Service {
     }
 
     if (isset($prop->node['$ref'])) {
-      // return $this->isPropertyComplex($GLOBALS['doc']['schemas'][$prop->node['$ref']]); //TODO
-      if ($prop->node['$ref'] == 'JsonObject') { //TODO
+      if ($prop->node['$ref'] == 'JsonObject') {
         return false;
       }
       return true;
