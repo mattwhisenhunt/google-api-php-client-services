@@ -60,10 +60,6 @@ class ServiceGenerator {
       $smarty->assign("ClassName", $classname);
 
       if (!$schema->properties) {
-        // error_log("$path/$classname.php is blank!");
-        if ($classname == "JsonObject") { //TODO
-          continue;
-        }
         file_put_contents("$path/$classname.php", $smarty->fetch('model.blank.tpl'));
 
       } else {

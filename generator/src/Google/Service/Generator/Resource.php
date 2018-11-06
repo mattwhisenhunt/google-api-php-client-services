@@ -182,23 +182,3 @@ class Resource {
     ,'call'            => 1
   ];
 }
-
-function print_parameter($name, $param) {
-  $typeToken = $GLOBALS['PHP_TYPES'][$param['type']];
-  if ($param['format'] == 'uint32' || $param['format'] == 'uint64') {
-    $typeToken = "string";
-  }
-
-  if ($param['required']) {
-    echo "@param $typeToken";
-
-    if ($param['repeated']) { // TODO Why is this only for required parameters???
-      echo '|array';
-    }
-    echo ' $';
-  } else {
-    echo "@opt_param $typeToken ";
-  }
-
-  echo $name;
-}
