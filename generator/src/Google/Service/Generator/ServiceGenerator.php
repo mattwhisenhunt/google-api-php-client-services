@@ -35,63 +35,66 @@ class ServiceGenerator {
     $old_error_handler = set_error_handler([$this, 'errorHandler']);
 
     $service = new Service(json_decode(file_get_contents($discoveryURL), true));
-    $path = "$this->path/$service->canonicalName";
+    
+    if ($service->canonicalName != '') {
+      $path = "$this->path/$service->canonicalName";
 
-    if (!is_dir("$path/Resource")) {
-      mkdir("$path/Resource", 0755, true);
-    }
+      if (!is_dir("$path/Resource")) {
+        mkdir("$path/Resource", 0755, true);
+      }
 
-    $smarty = new \Smarty;
-    $smarty->setTemplateDir([__DIR__. '/../../../../templates']);
-    $smarty->setCompileDir(sys_get_temp_dir().'/gs_tpls');
+      $smarty = new \Smarty;
+      $smarty->setTemplateDir([__DIR__. '/../../../../templates']);
+      $smarty->setCompileDir(sys_get_temp_dir().'/gs_tpls');
 
-    $smarty->assign("Service", $service);
-    $smarty->assign("CopyrightYear", 2014);
-    file_put_contents("$path.php", $smarty->fetch('service.tpl'));
+      $smarty->assign("Service", $service);
+      $smarty->assign("CopyrightYear", 2014);
+      file_put_contents("$path.php", $smarty->fetch('service.tpl'));
 
-    foreach ($service->getAllResources() as $resource) {
-      $smarty->assign("Resource", $resource);
-      $filename = "$path/Resource/" . $resource->getClassName() . ".php";
-      file_put_contents($filename, $smarty->fetch('resource.tpl'));
-    }
+      foreach ($service->getAllResources() as $resource) {
+        $smarty->assign("Resource", $resource);
+        $filename = "$path/Resource/" . $resource->getClassName() . ".php";
+        file_put_contents($filename, $smarty->fetch('resource.tpl'));
+      }
 
-    foreach ($service->getSchemas() as $schema) {
-      $classname = $schema->getName();
-      $smarty->assign("ClassName", $classname);
+      foreach ($service->getSchemas() as $schema) {
+        $classname = $schema->getName();
+        $smarty->assign("ClassName", $classname);
 
-      if (!$schema->properties) {
-        file_put_contents("$path/$classname.php", $smarty->fetch('model.blank.tpl'));
+        if (count($schema->properties) == 0) {
+          file_put_contents("$path/$classname.php", $smarty->fetch('model.blank.tpl'));
 
-      } else {
-        $properties = [];
-        $internal_gapi_mappings = [];
-        foreach ($schema->properties as $prop) {
-          $prop->isComplex = $prop->isComplex || $service->isPropertyComplex($prop);
+        } else {
+          $properties = [];
+          $internal_gapi_mappings = [];
+          foreach ($schema->properties as $prop) {
+            $prop->isComplex = $prop->isComplex || $service->isPropertyComplex($prop);
 
-          if ($service->isPropertyComplex($schema->getSibling($prop))) {
-            $old_name = $prop->name;
-            $prop->name = "theReal" . StringUtilities::ucstrip($old_name);
-            $prop->getSetName = $old_name;
-            $internal_gapi_mappings[$old_name] = $prop->name;
-          } else {
-            $mapkey = trim(lcfirst(StringUtilities::ucstrip($prop->name)), '$');
+            if ($service->isPropertyComplex($schema->getSibling($prop))) {
+              $old_name = $prop->name;
+              $prop->name = "theReal" . StringUtilities::ucstrip($old_name);
+              $prop->getSetName = $old_name;
+              $internal_gapi_mappings[$old_name] = $prop->name;
+            } else {
+              $mapkey = trim(lcfirst(StringUtilities::ucstrip($prop->name)), '$');
 
-            if ($mapkey != $prop->name) {
-              $internal_gapi_mappings[$mapkey] = $prop->name;
-              $prop->name = $mapkey;
-              $prop->getSetName = $mapkey;
+              if ($mapkey != $prop->name) {
+                $internal_gapi_mappings[$mapkey] = $prop->name;
+                $prop->name = $mapkey;
+                $prop->getSetName = $mapkey;
+              }
             }
+
+            $prop->paramName = $service->getPropParamName($prop, $classname);
+
+            $properties[] = $prop;
           }
 
-          $prop->paramName = $service->getPropParamName($prop, $classname);
-
-          $properties[] = $prop;
+          $smarty->assign("Properties", $properties);
+          $smarty->assign("CollectionKey", $schema->collectionKey);
+          $smarty->assign("InternalGapiMappings", $internal_gapi_mappings);
+          file_put_contents("$path/$classname.php", $smarty->fetch('model.tpl'));
         }
-
-        $smarty->assign("Properties", $properties);
-        $smarty->assign("CollectionKey", $schema->collectionKey);
-        $smarty->assign("InternalGapiMappings", $internal_gapi_mappings);
-        file_put_contents("$path/$classname.php", $smarty->fetch('model.tpl'));
       }
     }
 

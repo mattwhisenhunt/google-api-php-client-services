@@ -65,7 +65,7 @@ class ServiceTest extends \PHPUnit\Framework\TestCase {
   }
 
   function testGetSafeSchemaName() {
-    $service = new Service(json_decode(ServiceTest::TASKS_JSON, 1));
+    $service = new Service(json_decode(ServiceTest::TASKS_JSON, true));
     
     $this->assertEquals('TasksNamespace', $service->getSafeSchemaName('Namespace'));
     $this->assertEquals('TasksEmpty', $service->getSafeSchemaName('Empty'));
@@ -82,7 +82,7 @@ class ServiceTest extends \PHPUnit\Framework\TestCase {
   }
 
   function testIsPropertyComplex() {
-    $service = new Service(json_decode(ServiceTest::TASKS_JSON, 1));
+    $service = new Service(json_decode(ServiceTest::TASKS_JSON, true));
 
     $node = ['properties'=> []];
     $prop = new SchemaProperty("", "", $node);
@@ -139,28 +139,28 @@ class ServiceTest extends \PHPUnit\Framework\TestCase {
   }
 
   function memberNamesProvider() {
-    $service = new Service(json_decode(ServiceTest::TASKS_JSON, 1));
+    $service = new Service(json_decode(ServiceTest::TASKS_JSON, true));
     return [
       [$service, ['tasklists', 'tasks']],
     ];
   }
 
   function rscCountProvider() {
-    $service = new Service(json_decode(ServiceTest::TASKS_JSON, 1));
+    $service = new Service(json_decode(ServiceTest::TASKS_JSON, true));
     return [
       [$service, 2, 2],
     ];
   }
 
   function schemaProvider() {
-    $service = new Service(json_decode(ServiceTest::TASKS_JSON, 1));
+    $service = new Service(json_decode(ServiceTest::TASKS_JSON, true));
     return [
       [$service, 5, ['Task','TaskLinks','TaskList','TaskLists','Tasks']],
     ];
   }
 
   function scopesProvider() {
-    $service = new Service(json_decode(ServiceTest::TASKS_JSON, 1));
+    $service = new Service(json_decode(ServiceTest::TASKS_JSON, true));
     return [
       [$service, 'TASKS', ['https://www.googleapis.com/auth/tasks', 'Manage your tasks']],
       [$service, 'TASKS_READONLY', ['https://www.googleapis.com/auth/tasks.readonly', 'View your tasks']]

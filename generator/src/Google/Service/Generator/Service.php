@@ -235,7 +235,7 @@ class Service {
       }
     }
 
-    if (count($items) == 1 && $items['type'] == 'any') return false;
+    if (count($items) == 1 && $items['type'] ?? '' == 'any') return false;
     if (isset($items['items']) && count($items['items']) == 1
     && $items['items']['type'] == 'any')
     {

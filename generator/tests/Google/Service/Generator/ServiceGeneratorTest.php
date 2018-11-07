@@ -18,10 +18,9 @@
 namespace Google\Service\Generator\Test;
 
 use Google\Service\Generator\ServiceGenerator;
-use Google\Service\Generator\Service;
 
 class ServiceGeneratorTest extends \PHPUnit\Framework\TestCase {
-  
+
   function testGenerateAll() {
     if (is_dir('.test/Tasks/Resource')) {
       unlink('.test/Tasks/Resource/Tasks.php');
@@ -36,10 +35,20 @@ class ServiceGeneratorTest extends \PHPUnit\Framework\TestCase {
   }
 
   function testErrorHandler() {
+    $old = [];
+    $old['error_reporting'] = ini_get('error_reporting');
+    $old['display_errors'] = ini_get('display_errors');
+    
+    ini_set('error_reporting', 'E_ALL');
+    ini_set('display_errors', '1');
+
     $generator = new ServiceGenerator();
     error_log("\n *** Expected stderr ***");
     $generator->generate('');
     error_log(" *** End of Expected ***");
     $this->assertTrue(true);
+
+    ini_set('error_reporting', $old['error_reporting']);
+    ini_set('display_errors', $old['display_errors']);
   }
 }
