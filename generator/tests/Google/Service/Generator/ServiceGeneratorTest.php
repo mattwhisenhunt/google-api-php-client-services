@@ -24,34 +24,49 @@ class ServiceGeneratorTest extends \PHPUnit\Framework\TestCase
 
     public function testGenerateAll()
     {
-        if (is_dir('.test/Tasks/Resource')) {
-            unlink('.test/Tasks/Resource/Tasks.php');
-            unlink('.test/Tasks/Resource/Tasklists.php');
-            rmdir('.test/Tasks/Resource');
+        if (getenv('GOOGLE_PHP_CLIENT_CODE_COVERAGE')) {
+            if (is_dir('.test/Tasks/Resource')) {
+                unlink('.test/Tasks/Resource/Tasks.php');
+                unlink('.test/Tasks/Resource/Tasklists.php');
+                rmdir('.test/Tasks/Resource');
+            }
+            (new ServiceGenerator('.test'))->generateAll();
+            $this->assertFileExists('.test/Drive.php');
+            $this->assertFileExists('.test/Tasks.php');
+            $this->assertFileExists('.test/Tasks/Resource/Tasks.php');
+            $this->assertFileExists('.test/Tasks/Resource/Tasklists.php');
+        } else {
+            $skip = "This test should exercise every line of this generator ".
+                "and can be enabled by setting the ".
+                "GOOGLE_PHP_CLIENT_CODE_COVERAGE environment variable.";
+            $this->markTestSkipped($skip);
         }
-        (new ServiceGenerator('.test'))->generateAll();
-        $this->assertFileExists('.test/Drive.php');
-        $this->assertFileExists('.test/Tasks.php');
-        $this->assertFileExists('.test/Tasks/Resource/Tasks.php');
-        $this->assertFileExists('.test/Tasks/Resource/Tasklists.php');
     }
 
     public function testErrorHandler()
     {
-        $old = [];
-        $old['error_reporting'] = ini_get('error_reporting');
-        $old['display_errors'] = ini_get('display_errors');
+        if (getenv('GOOGLE_PHP_CLIENT_CODE_COVERAGE')) {
+            $old = [];
+            $old['error_reporting'] = ini_get('error_reporting');
+            $old['display_errors'] = ini_get('display_errors');
 
-        ini_set('error_reporting', 'E_ALL');
-        ini_set('display_errors', '1');
+            ini_set('error_reporting', 'E_ALL');
+            ini_set('display_errors', '1');
 
-        $generator = new ServiceGenerator();
-        error_log("\n *** Expected stderr ***");
-        $generator->generate('');
-        error_log(" *** End of Expected ***");
-        $this->assertTrue(true);
+            $generator = new ServiceGenerator();
+            error_log("\n *** Expected stderr ***");
+            $generator->generate('');
+            error_log(" *** End of Expected ***");
+            $this->assertTrue(true);
 
-        ini_set('error_reporting', $old['error_reporting']);
-        ini_set('display_errors', $old['display_errors']);
+            ini_set('error_reporting', $old['error_reporting']);
+            ini_set('display_errors', $old['display_errors']);
+        } else {
+            $skip = "This tests for errors being piped to stderr instead ".
+                "of Smarty output even when display_errors is enabled ".
+                "and can be enabled by setting the ".
+                "GOOGLE_PHP_CLIENT_CODE_COVERAGE environment variable.";
+            $this->markTestSkipped($skip);
+        }
     }
 }
