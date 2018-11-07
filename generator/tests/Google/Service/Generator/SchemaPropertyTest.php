@@ -19,22 +19,24 @@ namespace Google\Service\Generator\Test;
 
 use Google\Service\Generator\SchemaProperty;
 
-class SchemaPropertyTest extends \PHPUnit\Framework\TestCase {
+class SchemaPropertyTest extends \PHPUnit\Framework\TestCase
+{
 
-  function testGetTypePrefix() {
-    $array_node = ['type'=>'array', 'items'=>['type'=>'string','enum'=>[]]];
-    $array_empty_node = ['type'=>'array', 'items'=>[]];
-    $array_single_node = ['type'=>'array', 'items'=>['$ref'=>'ComplexType']];
-    $array_single_taboo_node = ['type'=>'array', 'items'=>['$ref'=>'Namespace']];
+    public function testGetTypePrefix()
+    {
+        $array_node = ['type'=>'array', 'items'=>['type'=>'string','enum'=>[]]];
+        $array_empty_node = ['type'=>'array', 'items'=>[]];
+        $array_single_node = ['type'=>'array', 'items'=>['$ref'=>'ComplexType']];
+        $array_single_taboo_node = ['type'=>'array', 'items'=>['$ref'=>'Namespace']];
 
-    $spropA = new SchemaProperty("Classname", "", $array_node);
-    $spropB = new SchemaProperty("Classname", "", $array_empty_node);
-    $spropC = new SchemaProperty("Proximitybeacon", "namespaces", $array_single_node);
-    $spropD = new SchemaProperty("Proximitybeacon", "namespaces", $array_single_taboo_node);
+        $spropA = new SchemaProperty("Classname", "", $array_node);
+        $spropB = new SchemaProperty("Classname", "", $array_empty_node);
+        $spropC = new SchemaProperty("Proximitybeacon", "namespaces", $array_single_node);
+        $spropD = new SchemaProperty("Proximitybeacon", "namespaces", $array_single_taboo_node);
 
-    $this->assertEquals("Prefix", $spropA->getTypePrefix('Prefix'));
-    $this->assertEmpty($spropB->getTypePrefix('Prefix'));
-    $this->assertEmpty($spropC->getTypePrefix('Bucket'));
-    $this->assertEquals("Proximitybeacon", $spropD->getTypePrefix('Bucket'));
-  }
+        $this->assertEquals("Prefix", $spropA->getTypePrefix('Prefix'));
+        $this->assertEmpty($spropB->getTypePrefix('Prefix'));
+        $this->assertEmpty($spropC->getTypePrefix('Bucket'));
+        $this->assertEquals("Proximitybeacon", $spropD->getTypePrefix('Bucket'));
+    }
 }

@@ -17,110 +17,117 @@
 
 namespace Google\Service\Generator;
 
-class SchemaProperty {
-  private $serviceName;
-  public $name;
-  public $getSetName;
-  public $dataType;
-  public $typeName;
-  public $paramName;
-  public $isComplex = false;
+class SchemaProperty
+{
+    private $serviceName;
+    public $name;
+    public $getSetName;
+    public $dataType;
+    public $typeName;
+    public $paramName;
+    public $isComplex = false;
   
-  public $node;
+    public $node;
   
-  function __construct($service_name, $key, &$node) {
-    $this->serviceName = $service_name;
-    $this->name = $key;
-    $this->getSetName = $key;
+    public function __construct($service_name, $key, &$node)
+    {
+        $this->serviceName = $service_name;
+        $this->name = $key;
+        $this->getSetName = $key;
 
-    if (isset($node['type']) && $node['type'] == 'array') {
-      if (isset($node['items']['$ref'])) {
-        $this->typeName = StringUtilities::ucstrip($node['items']['$ref']);
-      } else {
-        $this->typeName = '';
-      }
-      $this->dataType = 'array';
+        if (isset($node['type']) && $node['type'] == 'array') {
+            if (isset($node['items']['$ref'])) {
+                $this->typeName = StringUtilities::ucstrip($node['items']['$ref']);
+            } else {
+                $this->typeName = '';
+            }
+            $this->dataType = 'array';
 
-      if (count($node['items']) > 1) {
-        $this->typeName = StringUtilities::ucstrip($key);
-      } else {
-        // if ($node['items']['$ref'] TODO
-        // && $doc['schemas'][$node['items']]['$ref']['type'] == 'array') {
-        if ($service_name == "Translate" && $key == 'detections') { //TODO
-          $this->typeName .= "Items";
+            if (count($node['items']) > 1) {
+                $this->typeName = StringUtilities::ucstrip($key);
+            } else {
+                // if ($node['items']['$ref'] TODO
+                // && $doc['schemas'][$node['items']]['$ref']['type'] == 'array') {
+                if ($service_name == "Translate" && $key == 'detections') { //TODO
+                    $this->typeName .= "Items";
+                }
+            }
         }
-      }
-    }
 
-    if (isset($node['$ref'])
-    && ((!isset($node['type'])) || $node['type'] !== 'array'))
+        if (isset($node['$ref'])
+            && ((!isset($node['type'])) || $node['type'] !== 'array')
+        ) {
+            $this->typeName = StringUtilities::ucstrip($node['$ref']);
+        }
+  
+        if (isset($node['properties'])) {
+            $this->typeName = StringUtilities::ucstrip($key);
+        }
+  
+        if (isset($node['additionalProperties']['$ref']) || isset($node['additionalProperties']['properties'])) {
+            $this->dataType = 'map';
+            if (isset($node['additionalProperties']['$ref'])) {
+                $this->typeName = $node['additionalProperties']['$ref'];
+            } else {
+                $this->typeName = '';
+            }
+        }
+        if (isset($node['additionalProperties']['properties'])) {
+            $this->dataType = 'map';
+            $this->typeName = StringUtilities::ucstrip($key) . "Element";
+            $this->isComplex = true;
+        }
+        if (isset($node['additionalProperties']['items']['type'])
+            && $node['additionalProperties']['items']['type'] != 'any'
+        ) {
+            $this->dataType = 'map';
+            if (isset($node['additionalProperties']['items']['$ref'])) {
+                $this->typeName = $node['additionalProperties']['items']['$ref'];
+            } else {
+                $this->typeName = '';
+            }
+        }
+  
+        $this->node = $node;
+    }
+  
+    public function getTypePrefix($classname)
     {
-      $this->typeName = StringUtilities::ucstrip($node['$ref']);
+        if (isset($this->node['type'])
+            && $this->node['type'] == 'array'
+            && count($this->node['items']) > 1
+        ) {
+            return $classname;
+        }
+
+        if (isset($this->node['properties'])) {
+            return $classname;
+        }
+
+        if (isset($this->node['additionalProperties']['properties'])) {
+            return $classname;
+        }
+
+        if (isset(Schema::PREFIXABLES[$this->typeName])) {
+            return $this->serviceName;
+        }
+
+        return "";
     }
   
-    if (isset($node['properties'])) {
-      $this->typeName = StringUtilities::ucstrip($key);
-    }
-  
-    if (isset($node['additionalProperties']['$ref']) || isset($node['additionalProperties']['properties'])) {
-      $this->dataType = 'map';
-      if (isset($node['additionalProperties']['$ref'])) {
-        $this->typeName = $node['additionalProperties']['$ref'];
-      } else {
-        $this->typeName = '';
-      }
-    }
-    if (isset($node['additionalProperties']['properties'])) {
-      $this->dataType = 'map';
-      $this->typeName = StringUtilities::ucstrip($key) . "Element";
-      $this->isComplex = true;
-    }
-    if (isset($node['additionalProperties']['items']['type'])
-      && $node['additionalProperties']['items']['type'] != 'any')
+    public function getFuncParam()
     {
-      $this->dataType = 'map';
-      if (isset($node['additionalProperties']['items']['$ref'])) {
-        $this->typeName = $node['additionalProperties']['items']['$ref'];
-      } else {
-        $this->typeName = '';
-      }
+        $longer = "$this->paramName \$$this->name";
+        if ($this->isComplex) {
+            if (isset($this->node['properties'])) {
+                return $longer;
+            }
+            if (isset($this->node['$ref'])
+                && ((!isset($this->node['type'])) || $this->node['type'] != 'array')
+            ) {
+                return $longer;
+            }
+        }
+        return "\$$this->name";
     }
-  
-    $this->node = $node;
-  }
-  
-  function getTypePrefix($classname) {
-    if (isset($this->node['type'])
-    && $this->node['type'] == 'array'
-    && count($this->node['items']) > 1)
-    {
-      return $classname;
-    }
-
-    if (isset($this->node['properties'])) {
-      return $classname;
-    }
-
-    if (isset($this->node['additionalProperties']['properties']))
-      return $classname;
-
-    if (isset(Schema::PREFIXABLES[$this->typeName])) {
-      return $this->serviceName;
-    }
-
-    return "";
-  }
-  
-  function getFuncParam() {
-    $longer = "$this->paramName \$$this->name";
-    if ($this->isComplex) {
-      if (isset($this->node['properties'])) return $longer;
-      if (isset($this->node['$ref'])
-      && ((!isset($this->node['type'])) || $this->node['type'] != 'array'))
-      {
-        return $longer;
-      }
-    }
-    return "\$$this->name";
-  }
 }

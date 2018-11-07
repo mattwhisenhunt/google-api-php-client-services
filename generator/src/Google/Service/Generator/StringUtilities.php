@@ -17,32 +17,35 @@
 
 namespace Google\Service\Generator;
 
-class StringUtilities {
-  static function ucstrip($str) {
-    $str = str_replace('-', ' ', $str);
-    $str = str_replace('_', ' ', $str);
-    $str = ucwords($str);
-    $str = str_replace(' ', '', $str);
-    $str = str_replace('@', '', $str);
-    return $str;
-  }
-
-  static function commentWordwrap($str) {
-    $str = str_replace('*/', '{@*}', $str);
-    $lines = explode("\n", $str);
-
-    $phpdoc = '';
-    $linebreak = '';
-    foreach ($lines as $line) {
-      $space = ' ';
-      if ($line == '') {
-        $space = '';
-      }
-      $phpdoc .= "$linebreak   *$space";
-      $phpdoc .= wordwrap($line, 74, "\n   * ");
-
-      $linebreak = "\n";
+class StringUtilities
+{
+    public static function ucstrip($str)
+    {
+        $str = str_replace('-', ' ', $str);
+        $str = str_replace('_', ' ', $str);
+        $str = ucwords($str);
+        $str = str_replace(' ', '', $str);
+        $str = str_replace('@', '', $str);
+        return $str;
     }
-    return $phpdoc;
-  }
+
+    public static function commentWordwrap($str)
+    {
+        $str = str_replace('*/', '{@*}', $str);
+        $lines = explode("\n", $str);
+
+        $phpdoc = '';
+        $linebreak = '';
+        foreach ($lines as $line) {
+            $space = ' ';
+            if ($line == '') {
+                $space = '';
+            }
+            $phpdoc .= "$linebreak   *$space";
+            $phpdoc .= wordwrap($line, 74, "\n   * ");
+
+            $linebreak = "\n";
+        }
+        return $phpdoc;
+    }
 }

@@ -17,104 +17,114 @@
 
 namespace Google\Service\Generator;
 
-class Resource {
-  public $methods;
+class Resource
+{
+    public $methods;
 
-  protected $names;
-  protected $resources;
-  protected $scopes    = [];
+    protected $names;
+    protected $resources;
+    protected $scopes    = [];
   
-  function __construct($keys, &$node) {
-    $this->names = $keys;
+    public function __construct($keys, &$node)
+    {
+        $this->names = $keys;
 
-    if (isset($node['resources'])) {
-      $this->resources = new \SplFixedArray(count($node['resources']));
-      ksort($node['resources']);
-      foreach ($node['resources'] as $k => &$v) {
-        $this->resources[$this->resources->key()] = new Resource(array_merge($keys, [$k]), $v);
-        $this->resources->next();
-      }
-    } else {
-      $this->resources = new \SplFixedArray(0);
-    }
-
-    if (isset($node['methods'])) {
-      $this->methods = new \SplFixedArray(count($node['methods']));
-      ksort($node['methods']);
-      foreach ($node['methods'] as $k => &$v) {
-        if (isset($v['scopes'])) {
-          foreach ($v['scopes'] as $scope) {
-            $this->scopes[$scope] = 1;
-          }
+        if (isset($node['resources'])) {
+            $this->resources = new \SplFixedArray(count($node['resources']));
+            ksort($node['resources']);
+            foreach ($node['resources'] as $k => &$v) {
+                $this->resources[$this->resources->key()] = new Resource(array_merge($keys, [$k]), $v);
+                $this->resources->next();
+            }
+        } else {
+            $this->resources = new \SplFixedArray(0);
         }
-        $this->methods[$this->methods->key()] = new Method($k, $v);
-        $this->methods->next();
-      }
-    } else {
-      $this->methods = new \SplFixedArray(0);
+
+        if (isset($node['methods'])) {
+            $this->methods = new \SplFixedArray(count($node['methods']));
+            ksort($node['methods']);
+            foreach ($node['methods'] as $k => &$v) {
+                if (isset($v['scopes'])) {
+                    foreach ($v['scopes'] as $scope) {
+                        $this->scopes[$scope] = 1;
+                    }
+                }
+                $this->methods[$this->methods->key()] = new Method($k, $v);
+                $this->methods->next();
+            }
+        } else {
+            $this->methods = new \SplFixedArray(0);
+        }
     }
-  }
 
-  function getClassName() {
-    $str = implode("", array_map('ucfirst', $this->names));
-    return StringUtilities::ucstrip($str);
-  }
-
-  function getLiteralName() {
-    return $this->names[count($this->names)-1];
-  }
-
-  function getMemberName() {
-    return implode("_", $this->names);
-  }
-
-  function getScopes() {
-    $arr = $this->scopes;
-    foreach ($this->resources as $resource) {
-      $arr = array_merge($arr, $resource->getScopes());
+    public function getClassName()
+    {
+        $str = implode("", array_map('ucfirst', $this->names));
+        return StringUtilities::ucstrip($str);
     }
-    return $arr;
-  }
 
-  function getMemberNames() {
-    $arr = [];
-    if (count($this->methods) > 0) {
-      $arr[] = $this->getMemberName();
+    public function getLiteralName()
+    {
+        return $this->names[count($this->names)-1];
     }
-    foreach ($this->resources as $resource) {
-      $arr = array_merge($arr, $resource->getMemberNames());
-    }
-    return $arr;
-  }
 
-  function getMembers() {
-    $arr = [];
-    if (count($this->methods) > 0) {
-      $arr[] = $this;
+    public function getMemberName()
+    {
+        return implode("_", $this->names);
     }
-    foreach ($this->resources as $resource) {
-      $arr = array_merge($arr, $resource->getMembers());
+
+    public function getScopes()
+    {
+        $arr = $this->scopes;
+        foreach ($this->resources as $resource) {
+            $arr = array_merge($arr, $resource->getScopes());
+        }
+        return $arr;
     }
-    return $arr;
-  }
 
-  function getAllResources() {
-    $arr = [$this];
-
-    foreach ($this->resources as $resource) {
-      $arr = array_merge($arr, $resource->getAllResources());
+    public function getMemberNames()
+    {
+        $arr = [];
+        if (count($this->methods) > 0) {
+            $arr[] = $this->getMemberName();
+        }
+        foreach ($this->resources as $resource) {
+            $arr = array_merge($arr, $resource->getMemberNames());
+        }
+        return $arr;
     }
-    return $arr;
-  }
 
-  function getFnName($name) {
-    if (isset(Resource::PHP_WORDS[$name])) {
-      return $name.$this->getClassName();
+    public function getMembers()
+    {
+        $arr = [];
+        if (count($this->methods) > 0) {
+            $arr[] = $this;
+        }
+        foreach ($this->resources as $resource) {
+            $arr = array_merge($arr, $resource->getMembers());
+        }
+        return $arr;
     }
-    return $name;
-  }
 
-  const PHP_WORDS =
+    public function getAllResources()
+    {
+        $arr = [$this];
+
+        foreach ($this->resources as $resource) {
+            $arr = array_merge($arr, $resource->getAllResources());
+        }
+        return $arr;
+    }
+
+    public function getFnName($name)
+    {
+        if (isset(Resource::PHP_WORDS[$name])) {
+            return $name.$this->getClassName();
+        }
+        return $name;
+    }
+
+    const PHP_WORDS =
     ['__halt_compiler' => 1
     ,'abstract'        => 1
     ,'and'             => 1
@@ -184,5 +194,5 @@ class Resource {
     ,'yield'           => 1
     // BONUS
     ,'call'            => 1
-  ];
+    ];
 }

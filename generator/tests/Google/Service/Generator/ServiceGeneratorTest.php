@@ -19,36 +19,39 @@ namespace Google\Service\Generator\Test;
 
 use Google\Service\Generator\ServiceGenerator;
 
-class ServiceGeneratorTest extends \PHPUnit\Framework\TestCase {
+class ServiceGeneratorTest extends \PHPUnit\Framework\TestCase
+{
 
-  function testGenerateAll() {
-    if (is_dir('.test/Tasks/Resource')) {
-      unlink('.test/Tasks/Resource/Tasks.php');
-      unlink('.test/Tasks/Resource/Tasklists.php');
-      rmdir('.test/Tasks/Resource');
+    public function testGenerateAll()
+    {
+        if (is_dir('.test/Tasks/Resource')) {
+            unlink('.test/Tasks/Resource/Tasks.php');
+            unlink('.test/Tasks/Resource/Tasklists.php');
+            rmdir('.test/Tasks/Resource');
+        }
+        (new ServiceGenerator('.test'))->generateAll();
+        $this->assertFileExists('.test/Drive.php');
+        $this->assertFileExists('.test/Tasks.php');
+        $this->assertFileExists('.test/Tasks/Resource/Tasks.php');
+        $this->assertFileExists('.test/Tasks/Resource/Tasklists.php');
     }
-    (new ServiceGenerator('.test'))->generateAll();
-    $this->assertFileExists('.test/Drive.php');
-    $this->assertFileExists('.test/Tasks.php');
-    $this->assertFileExists('.test/Tasks/Resource/Tasks.php');
-    $this->assertFileExists('.test/Tasks/Resource/Tasklists.php');
-  }
 
-  function testErrorHandler() {
-    $old = [];
-    $old['error_reporting'] = ini_get('error_reporting');
-    $old['display_errors'] = ini_get('display_errors');
-    
-    ini_set('error_reporting', 'E_ALL');
-    ini_set('display_errors', '1');
+    public function testErrorHandler()
+    {
+        $old = [];
+        $old['error_reporting'] = ini_get('error_reporting');
+        $old['display_errors'] = ini_get('display_errors');
 
-    $generator = new ServiceGenerator();
-    error_log("\n *** Expected stderr ***");
-    $generator->generate('');
-    error_log(" *** End of Expected ***");
-    $this->assertTrue(true);
+        ini_set('error_reporting', 'E_ALL');
+        ini_set('display_errors', '1');
 
-    ini_set('error_reporting', $old['error_reporting']);
-    ini_set('display_errors', $old['display_errors']);
-  }
+        $generator = new ServiceGenerator();
+        error_log("\n *** Expected stderr ***");
+        $generator->generate('');
+        error_log(" *** End of Expected ***");
+        $this->assertTrue(true);
+
+        ini_set('error_reporting', $old['error_reporting']);
+        ini_set('display_errors', $old['display_errors']);
+    }
 }

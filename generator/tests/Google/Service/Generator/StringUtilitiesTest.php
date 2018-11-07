@@ -19,38 +19,42 @@ namespace Google\Service\Generator\Test;
 
 use Google\Service\Generator\StringUtilities;
 
-class StringUtilitiesTest extends \PHPUnit\Framework\TestCase {
+class StringUtilitiesTest extends \PHPUnit\Framework\TestCase
+{
 
-  function testUcstrip() {
-    $this->assertEquals('Id', StringUtilities::ucstrip('id'));
-    $this->assertEquals('GoogleCloudMlV1Location', StringUtilities::ucstrip('GoogleCloudMlV1__Location'));
-    $this->assertEquals('Ipv4Enabled', StringUtilities::ucstrip('ipv4Enabled'));
-    $this->assertEquals('context', StringUtilities::ucstrip('@context'));
-    $this->assertEquals('LabelWithOp', StringUtilities::ucstrip('label_with_op'));
-    $this->assertEquals('StartDate', StringUtilities::ucstrip('start-date'));
-  }
+    public function testUcstrip()
+    {
+        $this->assertEquals('Id', StringUtilities::ucstrip('id'));
+        $this->assertEquals('GoogleCloudMlV1Location', StringUtilities::ucstrip('GoogleCloudMlV1__Location'));
+        $this->assertEquals('Ipv4Enabled', StringUtilities::ucstrip('ipv4Enabled'));
+        $this->assertEquals('context', StringUtilities::ucstrip('@context'));
+        $this->assertEquals('LabelWithOp', StringUtilities::ucstrip('label_with_op'));
+        $this->assertEquals('StartDate', StringUtilities::ucstrip('start-date'));
+    }
 
-  /**
-   * @dataProvider docBlockProvider
-   */
-  function testCommentWordwrap($str, $expected) {
-    $this->assertEquals($expected, StringUtilities::commentWordwrap($str));
-  }
+    /**
+     * @dataProvider docBlockProvider
+     */
+    public function testCommentWordwrap($str, $expected)
+    {
+        $this->assertEquals($expected, StringUtilities::commentWordwrap($str));
+    }
 
-  function docBlockProvider() {
-    return [
-      ["\n\n"
-      ,"   *\n   *\n   *"],
+    public function docBlockProvider()
+    {
+        return [
+        ["\n\n"
+        ,"   *\n   *\n   *"],
 
-      ["\nA lone line.\n"
-      ,"   *\n   * A lone line.\n   *"],
+        ["\nA lone line.\n"
+        ,"   *\n   * A lone line.\n   *"],
 
-      ['*/'
-      ,'   * {@*}'],
+        ['*/'
+        ,'   * {@*}'],
 
-      ['projects/*/locations/*/other/*'
-      ,'   * projects/{@*}locations/{@*}other/*'],
+        ['projects/*/locations/*/other/*'
+        ,'   * projects/{@*}locations/{@*}other/*'],
 
-    ];
-  }
+        ];
+    }
 }
