@@ -25,7 +25,7 @@ class Schema {
   protected $write;
   protected $cc;
   protected $suffix;
-  public $properties = [];
+  public $properties;
   public $collectionKey;
   public $propKeys = [];
   protected $schemas = [];
@@ -53,6 +53,8 @@ class Schema {
           $this->collectionKey = $k; //TODO Just pick the last one that is an array??
         }
       }
+    } else {
+      $this->properties = new \SplFixedArray;
     }
 
     $this->write = $this->hasFile($node);
@@ -182,10 +184,6 @@ class SubSchema extends Schema {
       $i = count($this->names) - 1;
 
       return true;
-
-      if ($this->suffix == 'Element') {
-        $value = $value['additionalProperties'];
-      }
     }
     return false;
   }

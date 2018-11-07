@@ -41,8 +41,8 @@ class Service {
     if (isset($doc['documentationLink'])) {
       $this->documentationLink = $doc['documentationLink'];
     }
-    $this->rootUrl = $doc['rootUrl'];
-    $this->servicePath = $doc['servicePath'];
+    $this->rootUrl = $doc['rootUrl'] ?? '';
+    $this->servicePath = $doc['servicePath'] ?? '';
     if (isset($doc['canonicalName'])) {
       $this->canonicalName = $doc['canonicalName'];
     } else {
@@ -50,9 +50,9 @@ class Service {
     }
     $this->canonicalName = ucfirst(str_replace(' ', '', $this->canonicalName));
     $this->constructorDescription = wordwrap("Constructs the internal representation of the $this->canonicalName service.", 77, "\n   * ");
-    assert($doc['parameters']['alt']);
-    if ($doc['parameters']['alt']['default'] != 'json'
-    && in_array('json', $doc['parameters']['alt']['enum'])) {
+
+    if ($doc['parameters']['alt']['default'] ?? '' != 'json'
+    && in_array('json', $doc['parameters']['alt']['enum'] ?? [])) {
       $this->forceJson = true;
     }
 

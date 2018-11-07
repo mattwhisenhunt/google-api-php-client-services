@@ -18,10 +18,10 @@
 namespace Google\Service\Generator;
 
 class Resource {
-  public $methods = [];
+  public $methods;
 
   protected $names;
-  protected $resources = [];
+  protected $resources;
   protected $scopes    = [];
   
   function __construct($keys, &$node) {
@@ -34,6 +34,8 @@ class Resource {
         $this->resources[$this->resources->key()] = new Resource(array_merge($keys, [$k]), $v);
         $this->resources->next();
       }
+    } else {
+      $this->resources = new \SplFixedArray(0);
     }
 
     if (isset($node['methods'])) {
@@ -48,6 +50,8 @@ class Resource {
         $this->methods[$this->methods->key()] = new Method($k, $v);
         $this->methods->next();
       }
+    } else {
+      $this->methods = new \SplFixedArray(0);
     }
   }
 

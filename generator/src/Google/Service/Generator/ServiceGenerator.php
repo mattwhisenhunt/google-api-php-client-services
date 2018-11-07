@@ -34,7 +34,7 @@ class ServiceGenerator {
   function generate($discoveryURL) {
     $old_error_handler = set_error_handler([$this, 'errorHandler']);
 
-    $service = new Service(json_decode(file_get_contents($discoveryURL), 1));
+    $service = new Service(json_decode(file_get_contents($discoveryURL), true));
     $path = "$this->path/$service->canonicalName";
 
     if (!is_dir("$path/Resource")) {
