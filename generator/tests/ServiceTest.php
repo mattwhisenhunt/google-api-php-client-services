@@ -15,8 +15,6 @@
  * limitations under the License.
  */
 
-namespace Google\Service\Generator\Test;
-
 use Google\Service\Generator\Service;
 use Google\Service\Generator\SchemaProperty;
 

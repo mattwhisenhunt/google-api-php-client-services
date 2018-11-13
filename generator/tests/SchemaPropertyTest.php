@@ -15,8 +15,6 @@
  * limitations under the License.
  */
 
-namespace Google\Service\Generator\Test;
-
 use Google\Service\Generator\SchemaProperty;
 
 class SchemaPropertyTest extends \PHPUnit\Framework\TestCase

@@ -15,8 +15,6 @@
  * limitations under the License.
  */
 
-namespace Google\Service\Generator\Test;
-
 use Google\Service\Generator\ServiceGenerator;
 
 class ServiceGeneratorTest extends \PHPUnit\Framework\TestCase

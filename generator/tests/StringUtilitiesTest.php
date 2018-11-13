@@ -15,8 +15,6 @@
  * limitations under the License.
  */
 
-namespace Google\Service\Generator\Test;
-
 use Google\Service\Generator\StringUtilities;
 
 class StringUtilitiesTest extends \PHPUnit\Framework\TestCase
