@@ -130,32 +130,21 @@ class Method
 
     public static function getPhpDocParam($name, $node)
     {
-        if (isset($node['required'])) {
-            $token = '@param';
+        $token = isset($node['required']) ? '@param' : '@opt_param';
+        $repeatToken = isset($node['required']) && isset($node['repeated']) ?
+            '|array' : '';
 
-            if (isset($node['repeated'])) { // TODO Why is this only for required parameters???
-                $repeatToken = '|array';
-            } else {
-                $repeatToken = '';
-            }
-        } else {
-            $token = '@opt_param';
-            $repeatToken = '';
-        }
+        $typeToken = isset($node['type']) ?
+            Method::PHP_TYPES[$node['type']] : '';
 
-        if (isset($node['type'])) {
-            $typeToken = Method::PHP_TYPES[$node['type']];
-        }
         if (isset($node['format'])
             && ($node['format'] == 'uint32' || $node['format'] == 'uint64')
         ) {
             $typeToken = "string";
         }
-        if (isset($node['description'])) {
-            $desc = $node['description'];
-        } else {
-            $desc = '';
-        }
+
+        $desc = $node['description'] ?? '';
+
         $str = "$token $typeToken$repeatToken $name $desc";
         return StringUtilities::commentWordwrap($str);
     }
