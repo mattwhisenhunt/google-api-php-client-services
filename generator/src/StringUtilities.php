@@ -42,9 +42,9 @@ class StringUtilities
                 $space = '';
             }
             $phpdoc .= "$linebreak   *$space";
-            $phpdoc .= wordwrap($line, 74, "\n   * ");
+            $phpdoc .= wordwrap($line, 74, PHP_EOL . '   * ');
 
-            $linebreak = "\n";
+            $linebreak = PHP_EOL;
         }
         return $phpdoc;
     }

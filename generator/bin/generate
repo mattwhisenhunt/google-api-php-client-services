@@ -8,6 +8,11 @@ use Google\Service\Generator\ServiceGenerator;
 if (count($argv) == 3) {
     (new ServiceGenerator($argv[2]))->generate($argv[1]);
 } else {
-    error_log("\nPlease specify a discovery URL and a destination directory. For example:\n
-  bin/generate 'https://www.googleapis.com/discovery/v1/apis/drive/v2/rest' DriveV2\n");
+    error_log(<<<'EOD'
+
+Please specify a discovery URL and a destination directory. For example:
+
+  bin/generate 'https://www.googleapis.com/discovery/v1/apis/drive/v2/rest' DriveV2
+EOD
+    );
 }

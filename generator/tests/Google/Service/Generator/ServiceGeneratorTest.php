@@ -54,9 +54,9 @@ class ServiceGeneratorTest extends \PHPUnit\Framework\TestCase
             ini_set('display_errors', '1');
 
             $generator = new ServiceGenerator();
-            error_log("\n *** Expected stderr ***");
+            error_log(PHP_EOL . ' *** Expected stderr ***');
             $generator->generate('');
-            error_log(" *** End of Expected ***");
+            error_log(' *** End of Expected ***');
             $this->assertTrue(true);
 
             ini_set('error_reporting', $old['error_reporting']);

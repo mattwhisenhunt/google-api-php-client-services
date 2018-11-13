@@ -44,10 +44,10 @@ class StringUtilitiesTest extends \PHPUnit\Framework\TestCase
     {
         return [
         ["\n\n"
-        ,"   *\n   *\n   *"],
+        ,'   *'. PHP_EOL .'   *'. PHP_EOL .'   *'],
 
         ["\nA lone line.\n"
-        ,"   *\n   * A lone line.\n   *"],
+        ,'   *'. PHP_EOL .'   * A lone line.'. PHP_EOL .'   *'],
 
         ['*/'
         ,'   * {@*}'],

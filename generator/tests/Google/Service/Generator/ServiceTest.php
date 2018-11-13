@@ -769,7 +769,7 @@ EOD;
     public function testGetSafeSchemaName()
     {
         $service = new Service(json_decode(ServiceTest::TASKS_JSON, true));
-    
+
         $this->assertEquals('TasksNamespace', $service->getSafeSchemaName('Namespace'));
         $this->assertEquals('TasksEmpty', $service->getSafeSchemaName('Empty'));
         $this->assertEquals('TasksObject', $service->getSafeSchemaName('Object'));

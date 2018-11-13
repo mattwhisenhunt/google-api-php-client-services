@@ -39,7 +39,10 @@ class Service
     {
         $this->name = $doc['name'];
         $this->version = $doc['version'];
-        $this->description = wordwrap(trim($doc['description']), 77, "\n * ");
+        $this->description = wordwrap(
+            trim($doc['description']),
+            77,
+            PHP_EOL . ' * ');
         if (isset($doc['documentationLink'])) {
             $this->documentationLink = $doc['documentationLink'];
         }
@@ -50,11 +53,13 @@ class Service
         } else {
             $this->canonicalName = $this->name;
         }
-        $this->canonicalName = ucfirst(str_replace(' ', '', $this->canonicalName));
+        $this->canonicalName = ucfirst(
+            str_replace(' ', '', $this->canonicalName));
         $this->constructorDescription = wordwrap(
-            "Constructs the internal representation of the $this->canonicalName service.",
+            'Constructs the internal representation of the '.
+                "$this->canonicalName service .",
             77,
-            "\n   * "
+            PHP_EOL . '   * '
         );
 
         if ($doc['parameters']['alt']['default'] ?? '' != 'json'
