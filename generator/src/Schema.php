@@ -30,7 +30,7 @@ class Schema
     public $collectionKey;
     public $propKeys = [];
     protected $schemas = [];
-  
+
     public function __construct($service_name, $key, &$node)
     {
         $this->serviceName = $service_name;

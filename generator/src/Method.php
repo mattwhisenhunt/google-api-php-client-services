@@ -19,6 +19,21 @@ namespace Google\Service\Generator;
 
 class Method
 {
+    const PHP_TYPES =
+    ['any'     => 'array'
+    ,'boolean' => 'bool'
+    ,'integer' => 'int'
+    ,'long'    => 'string'
+    ,'number'  => 'float'
+    ,'string'  => 'string'
+    ,'uint32'  => 'string'
+    ,'uint64'  => 'string'
+    ,'int32'   => 'int'
+    ,'int64'   => 'string'
+    ,'double'  => 'double'
+    ,'float'   => 'float'
+    ];
+
     public $id;
     public $name;
     public $path;
@@ -144,19 +159,4 @@ class Method
         $str = "$token $typeToken$repeatToken $name $desc";
         return StringUtilities::commentWordwrap($str);
     }
-
-    const PHP_TYPES =
-    ['any'     => 'array'
-    ,'boolean' => 'bool'
-    ,'integer' => 'int'
-    ,'long'    => 'string'
-    ,'number'  => 'float'
-    ,'string'  => 'string'
-    ,'uint32'  => 'string'
-    ,'uint64'  => 'string'
-    ,'int32'   => 'int'
-    ,'int64'   => 'string'
-    ,'double'  => 'double'
-    ,'float'   => 'float'
-    ];
 }

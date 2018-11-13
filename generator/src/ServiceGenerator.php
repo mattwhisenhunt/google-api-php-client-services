@@ -24,6 +24,7 @@ class ServiceGenerator
     'admin:directory_v1' => true,
     'discovery:v1' => false,
     ];
+
     public $path = __DIR__ . "/../../../../../src/Google/Service";
 
     public function __construct($path = '')

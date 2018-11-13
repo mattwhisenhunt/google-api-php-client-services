@@ -22,163 +22,6 @@ use Google\Service\Generator\SchemaProperty;
 
 class ServiceTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * @dataProvider memberNamesProvider
-     */
-    public function testGetMemberNames($service, $subset)
-    {
-        $this->assertArraySubset($service->getMemberNames(), $subset);
-    }
-
-    /**
-     * @dataProvider rscCountProvider
-     */
-    public function testResourceGetters($service, $toplevel, $allresources)
-    {
-        foreach ($service->getMembers() as $resource) {
-            $this->assertTrue(is_a($resource, 'Google\Service\Generator\Resource'));
-        }
-        foreach ($service->getAllResources() as $resource) {
-            $this->assertTrue(is_a($resource, 'Google\Service\Generator\Resource'));
-        }
-        $this->assertCount($toplevel, $service->getMembers());
-        $this->assertCount($allresources, $service->getAllResources());
-    }
-
-    /**
-     * @dataProvider schemaProvider
-     */
-    public function testGetSchemas($service, $schema_count, $names)
-    {
-        foreach ($service->getSchemas() as $schema) {
-            $this->assertTrue(is_a($schema, 'Google\Service\Generator\Schema'));
-            $this->assertContains($schema->getName(), $names);
-        }
-        $this->assertCount($schema_count, $service->getSchemas());
-        $this->assertCount(count($names), $service->getSchemas());
-    }
-
-    /**
-     * @dataProvider scopesProvider
-     */
-    public function testGetScopes($service, $key, $urlDesc)
-    {
-        $scopes = $service->getScopes();
-
-        $this->assertArraySubset($scopes[$key], $urlDesc);
-        $this->assertCount(2, $scopes[$key]);
-    }
-
-    public function testGetSafeSchemaName()
-    {
-        $service = new Service(json_decode(ServiceTest::TASKS_JSON, true));
-    
-        $this->assertEquals('TasksNamespace', $service->getSafeSchemaName('Namespace'));
-        $this->assertEquals('TasksEmpty', $service->getSafeSchemaName('Empty'));
-        $this->assertEquals('TasksObject', $service->getSafeSchemaName('Object'));
-
-        $this->assertEquals('Objects', $service->getSafeSchemaName('Objects'));
-        $this->assertEquals('Task', $service->getSafeSchemaName('Task'));
-        $this->assertEquals('TaskLinks', $service->getSafeSchemaName('TaskLinks'));
-    }
-
-    public function testKeyify()
-    {
-        $this->assertEquals('WWW_GOOGLE_COM_CALENDAR_FEEDS', Service::keyify('https://www.google.com/calendar/feeds'));
-        $this->assertEquals('WWW_GOOGLE_COM_M8_FEEDS', Service::keyify('https://www.google.com/m8/feeds'));
-    }
-
-    public function testIsPropertyComplex()
-    {
-        $service = new Service(json_decode(ServiceTest::TASKS_JSON, true));
-
-        $node = ['properties'=> []];
-        $prop = new SchemaProperty("", "", $node);
-        $this->assertTrue($service->isPropertyComplex($prop));
-
-        $node = ['additionalProperties'=> ['$ref'=>'Task']];
-        $prop = new SchemaProperty("", "", $node);
-        $this->assertTrue($service->isPropertyComplex($prop));
-
-        $node = ['$ref'=>'Task'];
-        $prop = new SchemaProperty("", "", $node);
-        $this->assertTrue($service->isPropertyComplex($prop));
-
-        $node = ['dataType'=>'map'];
-        $prop = new SchemaProperty("", "", $node);
-        $this->assertTrue($service->isPropertyComplex($prop));
-
-        // tests isItemNodeComplex too
-        $node = ['items'=>['type' => 'VpnTunnel']];
-        $prop = new SchemaProperty("", "", $node);
-        $this->assertTrue($service->isPropertyComplex($prop));
-
-        // tests isItemNodeComplex too
-        $node = ['additionalProperties'=>['items'=>['type' => 'Query']]];
-        $prop = new SchemaProperty("", "", $node);
-        $this->assertTrue($service->isPropertyComplex($prop));
-
-        $this->assertFalse($service->isPropertyComplex(null));
-
-        $node = ['additionalProperties'=> ['$ref'=>'JsonValue']];
-        $prop = new SchemaProperty("", "", $node);
-        $this->assertFalse($service->isPropertyComplex($prop));
-
-        $node = ['$ref'=>'JsonObject'];
-        $prop = new SchemaProperty("", "", $node);
-        $this->assertFalse($service->isPropertyComplex($prop));
-
-        // tests isItemNodeComplex too
-        $node = ['items'=>['type' => 'string']];
-        $prop = new SchemaProperty("", "", $node);
-        $this->assertFalse($service->isPropertyComplex($prop));
-
-        // tests isItemNodeComplex too
-        $node = ['additionalProperties'=>['items'=>['type' => 'any']]];
-        $prop = new SchemaProperty("", "", $node);
-        $this->assertFalse($service->isPropertyComplex($prop));
-
-        // tests isItemNodeComplex too
-        $node = ['additionalProperties'=>[
-        'type' => 'object',
-        'additionalProperties' => ['type' => 'any']]];
-        $prop = new SchemaProperty("", "", $node);
-        $this->assertFalse($service->isPropertyComplex($prop));
-    }
-
-    public function memberNamesProvider()
-    {
-        $service = new Service(json_decode(ServiceTest::TASKS_JSON, true));
-        return [
-        [$service, ['tasklists', 'tasks']],
-        ];
-    }
-
-    public function rscCountProvider()
-    {
-        $service = new Service(json_decode(ServiceTest::TASKS_JSON, true));
-        return [
-        [$service, 2, 2],
-        ];
-    }
-
-    public function schemaProvider()
-    {
-        $service = new Service(json_decode(ServiceTest::TASKS_JSON, true));
-        return [
-        [$service, 5, ['Task','TaskLinks','TaskList','TaskLists','Tasks']],
-        ];
-    }
-
-    public function scopesProvider()
-    {
-        $service = new Service(json_decode(ServiceTest::TASKS_JSON, true));
-        return [
-        [$service, 'TASKS', ['https://www.googleapis.com/auth/tasks', 'Manage your tasks']],
-        [$service, 'TASKS_READONLY', ['https://www.googleapis.com/auth/tasks.readonly', 'View your tasks']]
-        ];
-    }
-
     const TASKS_JSON = <<<'EOD'
 {
  "kind": "discovery#restDescription",
@@ -876,4 +719,160 @@ class ServiceTest extends \PHPUnit\Framework\TestCase
  }
 }
 EOD;
+    /**
+     * @dataProvider memberNamesProvider
+     */
+    public function testGetMemberNames($service, $subset)
+    {
+        $this->assertArraySubset($service->getMemberNames(), $subset);
+    }
+
+    /**
+     * @dataProvider rscCountProvider
+     */
+    public function testResourceGetters($service, $toplevel, $allresources)
+    {
+        foreach ($service->getMembers() as $resource) {
+            $this->assertTrue(is_a($resource, 'Google\Service\Generator\Resource'));
+        }
+        foreach ($service->getAllResources() as $resource) {
+            $this->assertTrue(is_a($resource, 'Google\Service\Generator\Resource'));
+        }
+        $this->assertCount($toplevel, $service->getMembers());
+        $this->assertCount($allresources, $service->getAllResources());
+    }
+
+    /**
+     * @dataProvider schemaProvider
+     */
+    public function testGetSchemas($service, $schema_count, $names)
+    {
+        foreach ($service->getSchemas() as $schema) {
+            $this->assertTrue(is_a($schema, 'Google\Service\Generator\Schema'));
+            $this->assertContains($schema->getName(), $names);
+        }
+        $this->assertCount($schema_count, $service->getSchemas());
+        $this->assertCount(count($names), $service->getSchemas());
+    }
+
+    /**
+     * @dataProvider scopesProvider
+     */
+    public function testGetScopes($service, $key, $urlDesc)
+    {
+        $scopes = $service->getScopes();
+
+        $this->assertArraySubset($scopes[$key], $urlDesc);
+        $this->assertCount(2, $scopes[$key]);
+    }
+
+    public function testGetSafeSchemaName()
+    {
+        $service = new Service(json_decode(ServiceTest::TASKS_JSON, true));
+    
+        $this->assertEquals('TasksNamespace', $service->getSafeSchemaName('Namespace'));
+        $this->assertEquals('TasksEmpty', $service->getSafeSchemaName('Empty'));
+        $this->assertEquals('TasksObject', $service->getSafeSchemaName('Object'));
+
+        $this->assertEquals('Objects', $service->getSafeSchemaName('Objects'));
+        $this->assertEquals('Task', $service->getSafeSchemaName('Task'));
+        $this->assertEquals('TaskLinks', $service->getSafeSchemaName('TaskLinks'));
+    }
+
+    public function testKeyify()
+    {
+        $this->assertEquals('WWW_GOOGLE_COM_CALENDAR_FEEDS', Service::keyify('https://www.google.com/calendar/feeds'));
+        $this->assertEquals('WWW_GOOGLE_COM_M8_FEEDS', Service::keyify('https://www.google.com/m8/feeds'));
+    }
+
+    public function testIsPropertyComplex()
+    {
+        $service = new Service(json_decode(ServiceTest::TASKS_JSON, true));
+
+        $node = ['properties'=> []];
+        $prop = new SchemaProperty("", "", $node);
+        $this->assertTrue($service->isPropertyComplex($prop));
+
+        $node = ['additionalProperties'=> ['$ref'=>'Task']];
+        $prop = new SchemaProperty("", "", $node);
+        $this->assertTrue($service->isPropertyComplex($prop));
+
+        $node = ['$ref'=>'Task'];
+        $prop = new SchemaProperty("", "", $node);
+        $this->assertTrue($service->isPropertyComplex($prop));
+
+        $node = ['dataType'=>'map'];
+        $prop = new SchemaProperty("", "", $node);
+        $this->assertTrue($service->isPropertyComplex($prop));
+
+        // tests isItemNodeComplex too
+        $node = ['items'=>['type' => 'VpnTunnel']];
+        $prop = new SchemaProperty("", "", $node);
+        $this->assertTrue($service->isPropertyComplex($prop));
+
+        // tests isItemNodeComplex too
+        $node = ['additionalProperties'=>['items'=>['type' => 'Query']]];
+        $prop = new SchemaProperty("", "", $node);
+        $this->assertTrue($service->isPropertyComplex($prop));
+
+        $this->assertFalse($service->isPropertyComplex(null));
+
+        $node = ['additionalProperties'=> ['$ref'=>'JsonValue']];
+        $prop = new SchemaProperty("", "", $node);
+        $this->assertFalse($service->isPropertyComplex($prop));
+
+        $node = ['$ref'=>'JsonObject'];
+        $prop = new SchemaProperty("", "", $node);
+        $this->assertFalse($service->isPropertyComplex($prop));
+
+        // tests isItemNodeComplex too
+        $node = ['items'=>['type' => 'string']];
+        $prop = new SchemaProperty("", "", $node);
+        $this->assertFalse($service->isPropertyComplex($prop));
+
+        // tests isItemNodeComplex too
+        $node = ['additionalProperties'=>['items'=>['type' => 'any']]];
+        $prop = new SchemaProperty("", "", $node);
+        $this->assertFalse($service->isPropertyComplex($prop));
+
+        // tests isItemNodeComplex too
+        $node = ['additionalProperties'=>[
+        'type' => 'object',
+        'additionalProperties' => ['type' => 'any']]];
+        $prop = new SchemaProperty("", "", $node);
+        $this->assertFalse($service->isPropertyComplex($prop));
+    }
+
+    public function memberNamesProvider()
+    {
+        $service = new Service(json_decode(ServiceTest::TASKS_JSON, true));
+        return [
+        [$service, ['tasklists', 'tasks']],
+        ];
+    }
+
+    public function rscCountProvider()
+    {
+        $service = new Service(json_decode(ServiceTest::TASKS_JSON, true));
+        return [
+        [$service, 2, 2],
+        ];
+    }
+
+    public function schemaProvider()
+    {
+        $service = new Service(json_decode(ServiceTest::TASKS_JSON, true));
+        return [
+        [$service, 5, ['Task','TaskLinks','TaskList','TaskLists','Tasks']],
+        ];
+    }
+
+    public function scopesProvider()
+    {
+        $service = new Service(json_decode(ServiceTest::TASKS_JSON, true));
+        return [
+        [$service, 'TASKS', ['https://www.googleapis.com/auth/tasks', 'Manage your tasks']],
+        [$service, 'TASKS_READONLY', ['https://www.googleapis.com/auth/tasks.readonly', 'View your tasks']]
+        ];
+    }
 }
