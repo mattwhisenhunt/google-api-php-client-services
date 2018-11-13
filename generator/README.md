@@ -1,4 +1,4 @@
-You can generate a client service not preferred in the [directory list](https://www.googleapis.com/discovery/v1/apis) with the generate script:
+You can generate a client service not preferred in the [directory list](https://www.googleapis.com/discovery/v1/apis) with the generate script, specify a discovery URL and a destination directory `bin/generate <URL> <path>`. For example:
 
 ```
 bin/generate 'https://www.googleapis.com/discovery/v1/apis/drive/v2/rest' DriveV2
