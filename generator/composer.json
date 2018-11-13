@@ -5,7 +5,7 @@
         "smarty/smarty": "^3.1"
     },
     "autoload": {
-        "psr-4": { "Google\\": "src/Google" }
+        "psr-4": { "Google\\Service\\Generator\\": "src" }
     },
     "license": "Apache-2.0"
 }

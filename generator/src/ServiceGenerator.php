@@ -47,7 +47,7 @@ class ServiceGenerator
             }
 
             $smarty = new \Smarty;
-            $smarty->setTemplateDir([__DIR__. '/../../../../templates']);
+            $smarty->setTemplateDir([__DIR__. '/../templates']);
             $smarty->setCompileDir(sys_get_temp_dir().'/gs_tpls');
 
             $smarty->assign("Service", $service);
