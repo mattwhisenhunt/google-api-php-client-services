@@ -26,6 +26,7 @@ class ServiceGenerator
     ];
 
     private $path = __DIR__ . "/../../src/Google/Service";
+    private $ok = true;
 
     public function __construct($path = '')
     {
@@ -39,6 +40,7 @@ class ServiceGenerator
     public function generate($discoveryURL)
     {
         $old_error_handler = set_error_handler([$this, 'errorHandler']);
+        $this->ok = true;
 
         $service = new Service(json_decode(file_get_contents($discoveryURL), true));
 
@@ -104,6 +106,7 @@ class ServiceGenerator
         }
 
         set_error_handler($old_error_handler);
+        return $this->ok;
     }
   
     public function generateAll()
@@ -117,8 +120,9 @@ class ServiceGenerator
         }
     }
   
-    public static function errorHandler($errno, $errstr, $errfile, $errline)
+    public function errorHandler($errno, $errstr, $errfile, $errline)
     {
+        $this->ok = false;
         file_put_contents(
             'php://stderr',
             "$errstr in $errfile on line $errline" . PHP_EOL

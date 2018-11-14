@@ -21,6 +21,14 @@ use Google\Service\Generator\ServiceGenerator;
 
 class ServiceGeneratorTest extends \PHPUnit\Framework\TestCase
 {
+    public function testDefaultServiceGeneratorPath()
+    {
+        $generator = new ServiceGenerator();
+        $result = $generator->generate(
+            'https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest'
+        );
+        $this->assertTrue($result);
+    }
 
     public function testGenerateAll()
     {
