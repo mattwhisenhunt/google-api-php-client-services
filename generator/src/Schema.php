@@ -26,9 +26,9 @@ class Schema
     protected $write;
     protected $cc;
     protected $suffix;
-    public $properties;
-    public $collectionKey;
-    public $propKeys = [];
+    private $properties;
+    private $collectionKey;
+    private $propKeys = [];
     protected $schemas = [];
 
     public function __construct($service_name, $key, &$node)
@@ -168,9 +168,9 @@ class Schema
   
     public function getSibling($prop)
     {
-        $type_pos = strpos($prop->name, "Type");
-        if ($type_pos === strlen($prop->name) - 4 && isset($this->propKeys[substr($prop->name, 0, $type_pos)])) {
-            return $this->properties[$this->propKeys[substr($prop->name, 0, $type_pos)]];
+        $type_pos = strpos($prop->getName(), "Type");
+        if ($type_pos === strlen($prop->getName()) - 4 && isset($this->propKeys[substr($prop->getName(), 0, $type_pos)])) {
+            return $this->properties[$this->propKeys[substr($prop->getName(), 0, $type_pos)]];
         }
     }
   
@@ -183,5 +183,14 @@ class Schema
             return $this->schemas[0]->isComplex();
         }
         return false;
+    }
+
+    public function getProperties()
+    {
+        return $this->properties;
+    }
+    public function getCollectionKey()
+    {
+        return $this->collectionKey;
     }
 }

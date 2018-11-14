@@ -15,11 +15,11 @@
  * the License.
  */
 
-class Google_Service_{$Service->canonicalName}_{$ClassName} extends {**}
+class Google_Service_{$Service->getCanonicalName()}_{$ClassName} extends {**}
 Google_{if $CollectionKey}Collection{else}Model{/if}
 
 {
-{if $Service->dataWrapper}
+{if $Service->hasDataWrapper()}
   const DATA_WRAP = true;
 
 {/if}
@@ -34,32 +34,32 @@ Google_{if $CollectionKey}Collection{else}Model{/if}
   );
 {/if}
 {foreach $Properties as $prop}
-{if $prop->isComplex}
-  protected ${$prop->name}Type = '{$prop->paramName}';
-  protected ${$prop->name}DataType = '{$prop->dataType}';
+{if $prop->isComplex()}
+  protected ${$prop->getName()}Type = '{$prop->getParamName()}';
+  protected ${$prop->getName()}DataType = '{$prop->getDataType()}';
 {else}
-  public ${$prop->name};
+  public ${$prop->getName()};
 {/if}
 {/foreach}
 
 {foreach $Properties as $prop}
-{if $prop->isComplex}
+{if $prop->isComplex()}
   /**
-   * @param {$prop->paramName}
+   * @param {$prop->getParamName()}
    */
 {/if}
-  public function set{$prop->getSetName|ucfirst}({$prop->getFuncParam()})
+  public function set{$prop->getGetSetName()|ucfirst}({$prop->getFuncParam()})
   {
-    $this->{$prop->name} = ${$prop->name};
+    $this->{$prop->getName()} = ${$prop->getName()};
   }
-{if $prop->isComplex}
+{if $prop->isComplex()}
   /**
-   * @return {$prop->paramName}
+   * @return {$prop->getParamName()}
    */
 {/if}
-  public function get{$prop->getSetName|ucfirst}()
+  public function get{$prop->getGetSetName()|ucfirst}()
   {
-    return $this->{$prop->name};
+    return $this->{$prop->getName()};
   }
 {/foreach}
 }

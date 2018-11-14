@@ -19,20 +19,20 @@ namespace Google\Service\Generator;
 
 class Service
 {
-    public $name;
-    public $version;
-    public $description;
-    public $documentationLink;
-    public $rootUrl;
-    public $servicePath;
-    public $canonicalName;
-    public $constructorDescription;
-    public $forceJson = false;
-    public $dataWrapper = false;
+    private $name;
+    private $version;
+    private $description;
+    private $documentationLink;
+    private $rootUrl;
+    private $servicePath;
+    private $canonicalName;
+    private $constructorDescription;
+    private $_forceJson = false;
+    private $dataWrapper = false;
 
-    public $schemas;
-    public $resources;
-    public $methods;
+    private $schemas;
+    private $resources;
+    private $methods;
     private $scopeDescriptions = [];
 
     public function __construct($doc)
@@ -64,7 +64,7 @@ class Service
 
         if ($doc['parameters']['alt']['default'] ?? '' != 'json'
         && in_array('json', $doc['parameters']['alt']['enum'] ?? [])) {
-            $this->forceJson = true;
+            $this->_forceJson = true;
         }
 
         if (isset($doc['schemas'])) {
@@ -140,6 +140,11 @@ class Service
         }
         return $arr;
     }
+    
+    public function getMethods()
+    {
+        return $this->methods;
+    }
 
     public function getScopes()
     {
@@ -189,10 +194,9 @@ class Service
     {
         $prefix = "Google_Service_$this->canonicalName";
 
-        return
-        $prefix . "_".
-        $prop->getTypePrefix($this->getSafeSchemaName($classname)) .
-        $prop->typeName;
+        return $prefix . "_" .
+            $prop->getTypePrefix($this->getSafeSchemaName($classname)) .
+            $prop->getTypeName();
     }
 
     public static function keyify($k)
@@ -206,31 +210,31 @@ class Service
         if (is_null($prop)) {
             return false;
         }
-        if (isset($prop->node['properties'])) {
+        if (isset($prop->getNode()['properties'])) {
             return true;
         }
-        if (isset($prop->node['additionalProperties']['$ref'])) {
-            if ($prop->node['additionalProperties']['$ref'] == 'JsonValue') {
+        if (isset($prop->getNode()['additionalProperties']['$ref'])) {
+            if ($prop->getNode()['additionalProperties']['$ref'] == 'JsonValue') {
                 return false;
             }
             return true;
         }
-        if (isset($prop->node['additionalProperties']['items'])) {
-            return $this->isItemNodeComplex($prop->node['additionalProperties']['items']);
+        if (isset($prop->getNode()['additionalProperties']['items'])) {
+            return $this->isItemNodeComplex($prop->getNode()['additionalProperties']['items']);
         }
 
-        if (isset($prop->node['items'])) {
-            return $this->isItemNodeComplex($prop->node['items']);
+        if (isset($prop->getNode()['items'])) {
+            return $this->isItemNodeComplex($prop->getNode()['items']);
         }
 
-        if (isset($prop->node['$ref'])) {
-            if ($prop->node['$ref'] == 'JsonObject') {
+        if (isset($prop->getNode()['$ref'])) {
+            if ($prop->getNode()['$ref'] == 'JsonObject') {
                 return false;
             }
             return true;
         }
 
-        if (isset($prop->node['dataType']) && $prop->node['dataType'] == 'map') {
+        if (isset($prop->getNode()['dataType']) && $prop->getNode()['dataType'] == 'map') {
             return true;
         }
 
@@ -275,5 +279,47 @@ class Service
             return $this->isItemNodeComplex($items['items']);
         }
         return true;
+    }
+
+    public function getCanonicalName()
+    {
+        return $this->canonicalName;
+    }
+    public function getName()
+    {
+        return $this->name;
+    }
+    public function getVersion()
+    {
+        return $this->version;
+    }
+    public function getDescription()
+    {
+        return $this->description;
+    }
+    public function getDocumentationLink()
+    {
+        return $this->documentationLink;
+    }
+    public function getRootUrl()
+    {
+        return $this->rootUrl;
+    }
+    public function getServicePath()
+    {
+        return $this->servicePath;
+    }
+    public function getConstructorDescription()
+    {
+        return $this->constructorDescription;
+    }
+
+    public function hasDataWrapper()
+    {
+        return $this->dataWrapper;
+    }
+    public function forceJson()
+    {
+        return $this->_forceJson;
     }
 }

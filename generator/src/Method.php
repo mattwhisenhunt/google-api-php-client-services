@@ -34,23 +34,22 @@ class Method
     ,'float'   => 'float'
     ];
 
-    public $id;
-    public $name;
-    public $path;
-    public $httpMethod;
-    public $description = '';
-    public $phpdocParams = [];
-    public $phpdocOptParams = [];
-    public $scopes = [];
-    public $parameters = [];
-    public $emptyParameters = true;
+    private $id;
+    private $name;
+    private $path;
+    private $httpMethod;
+    private $description = '';
+    private $phpdocParams = [];
+    private $phpdocOptParams = [];
+    private $parameters = [];
+    private $emptyParameters = true;
 
-    public $requestRef;
-    public $responseRef;
+    private $requestRef;
+    private $responseRef;
 
     private $paramsP = [];
     private $paramsA = [];
-    public $hasPostBody = false;
+    private $hasPostBody = false;
   
     public function __construct($key, &$method)
     {
@@ -66,11 +65,9 @@ class Method
             $this->emptyParameters = false;
 
             $parameters = [];
-            if (isset($method['parameterOrder'])) {
-                foreach ($method['parameterOrder'] as $movedKey) {
-                    $parameters[$movedKey] = $method['parameters'][$movedKey];
-                    unset($method['parameters'][$movedKey]);
-                }
+            foreach ($method['parameterOrder'] ?? [] as $movedKey) {
+                $parameters[$movedKey] = $method['parameters'][$movedKey];
+                unset($method['parameters'][$movedKey]);
             }
             ksort($method['parameters']);
             $this->parameters = array_merge($parameters, $method['parameters']);
@@ -147,5 +144,50 @@ class Method
 
         $str = "$token $typeToken$repeatToken $name $desc";
         return StringUtilities::commentWordwrap($str);
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+    public function getName()
+    {
+        return $this->name;
+    }
+    public function getPath()
+    {
+        return $this->path;
+    }
+    public function getHttpMethod()
+    {
+        return $this->httpMethod;
+    }
+    public function getPhpdocParams()
+    {
+        return $this->phpdocParams;
+    }
+    public function getPhpdocOptParams()
+    {
+        return $this->phpdocOptParams;
+    }
+    public function getParameters()
+    {
+        return $this->parameters;
+    }
+    public function getEmptyParameters()
+    {
+        return $this->emptyParameters;
+    }
+    public function getRequestRef()
+    {
+        return $this->requestRef;
+    }
+    public function getResponseRef()
+    {
+        return $this->responseRef;
+    }
+    public function getHasPostBody()
+    {
+        return $this->hasPostBody;
     }
 }

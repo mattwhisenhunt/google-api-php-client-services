@@ -25,12 +25,14 @@ class ServiceGenerator
     'discovery:v1' => false,
     ];
 
-    public $path = __DIR__ . "/../../../../../src/Google/Service";
+    private $path = __DIR__ . "/../../src/Google/Service";
 
     public function __construct($path = '')
     {
         if ($path != '') {
             $this->path = $path;
+        } else {
+            assert(is_dir($this->path));
         }
     }
 
@@ -39,9 +41,9 @@ class ServiceGenerator
         $old_error_handler = set_error_handler([$this, 'errorHandler']);
 
         $service = new Service(json_decode(file_get_contents($discoveryURL), true));
-    
-        if ($service->canonicalName != '') {
-            $path = "$this->path/$service->canonicalName";
+
+        if ($service->getCanonicalName() != '') {
+            $path = "$this->path/".$service->getCanonicalName();
 
             if (!is_dir("$path/Resource")) {
                 mkdir("$path/Resource", 0755, true);
@@ -65,36 +67,36 @@ class ServiceGenerator
                 $classname = $schema->getName();
                 $smarty->assign("ClassName", $classname);
 
-                if (count($schema->properties) == 0) {
+                if (count($schema->getProperties()) == 0) {
                     file_put_contents("$path/$classname.php", $smarty->fetch('model.blank.tpl'));
                 } else {
                     $properties = [];
                     $internal_gapi_mappings = [];
-                    foreach ($schema->properties as $prop) {
-                        $prop->isComplex = $prop->isComplex || $service->isPropertyComplex($prop);
+                    foreach ($schema->getProperties() as $prop) {
+                        $prop->setComplexity($prop->isComplex() || $service->isPropertyComplex($prop));
 
                         if ($service->isPropertyComplex($schema->getSibling($prop))) {
-                              $old_name = $prop->name;
-                              $prop->name = "theReal" . StringUtilities::ucstrip($old_name);
-                              $prop->getSetName = $old_name;
-                              $internal_gapi_mappings[$old_name] = $prop->name;
+                              $old_name = $prop->getName();
+                              $prop->setName("theReal" . StringUtilities::ucstrip($old_name));
+                              $prop->setGetSetName($old_name);
+                              $internal_gapi_mappings[$old_name] = $prop->getName();
                         } else {
-                            $mapkey = trim(lcfirst(StringUtilities::ucstrip($prop->name)), '$');
+                            $mapkey = trim(lcfirst(StringUtilities::ucstrip($prop->getName())), '$');
 
-                            if ($mapkey != $prop->name) {
-                                $internal_gapi_mappings[$mapkey] = $prop->name;
-                                $prop->name = $mapkey;
-                                $prop->getSetName = $mapkey;
+                            if ($mapkey != $prop->getName()) {
+                                $internal_gapi_mappings[$mapkey] = $prop->getName();
+                                $prop->setName($mapkey);
+                                $prop->setGetSetName($mapkey);
                             }
                         }
 
-                        $prop->paramName = $service->getPropParamName($prop, $classname);
+                        $prop->setParamName($service->getPropParamName($prop, $classname));
 
                         $properties[] = $prop;
                     }
 
                     $smarty->assign("Properties", $properties);
-                    $smarty->assign("CollectionKey", $schema->collectionKey);
+                    $smarty->assign("CollectionKey", $schema->getCollectionKey());
                     $smarty->assign("InternalGapiMappings", $internal_gapi_mappings);
                     file_put_contents("$path/$classname.php", $smarty->fetch('model.tpl'));
                 }

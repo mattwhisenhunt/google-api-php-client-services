@@ -15,6 +15,6 @@
  * the License.
  */
 
-class Google_Service_{$Service->canonicalName}_{$ClassName} extends Google_Model
+class Google_Service_{$Service->getCanonicalName()}_{$ClassName} extends Google_Model
 {
 }

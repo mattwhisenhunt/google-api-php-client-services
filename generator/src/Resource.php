@@ -91,7 +91,7 @@ class Resource
     ,'call'            => 1
     ];
 
-    public $methods;
+    private $methods;
 
     protected $names;
     protected $resources;
@@ -194,5 +194,10 @@ class Resource
             return $name.$this->getClassName();
         }
         return $name;
+    }
+
+    public function getMethods()
+    {
+        return $this->methods;
     }
 }

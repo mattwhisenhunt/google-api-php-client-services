@@ -16,19 +16,19 @@
  */
 
 /**
- * Service definition for {$Service->canonicalName} ({$Service->version}).
+ * Service definition for {$Service->getCanonicalName()} ({$Service->getVersion()}).
  *
  * <p>
- * {$Service->description}</p>
+ * {$Service->getDescription()}</p>
  *
  * <p>
  * For more information about this service, see the API
- * <a href="{$Service->documentationLink}" target="_blank">Documentation</a>
+ * <a href="{$Service->getDocumentationLink()}" target="_blank">Documentation</a>
  * </p>
  *
  * @author Google, Inc.
  */
-class Google_Service_{$Service->canonicalName} extends Google_Service
+class Google_Service_{$Service->getCanonicalName()} extends Google_Service
 {
 {foreach $Service->getScopes() as $k=>$v}
   /** {$v[1]}. */
@@ -41,39 +41,39 @@ class Google_Service_{$Service->canonicalName} extends Google_Service
 {foreach $Service->getMemberNames() as $_}
   public ${$_};
 {/foreach}
-{if $Service->methods}
+{if $Service->getMethods()}
   private $base_methods;
 {else}
   
 {/if}
   /**
-   * {$Service->constructorDescription}
+   * {$Service->getConstructorDescription()}
    *
    * @param Google_Client $client
    */
   public function __construct(Google_Client $client)
   {
     parent::__construct($client);
-    $this->rootUrl = '{$Service->rootUrl}';
-    $this->servicePath = '{$Service->servicePath}';
-    $this->version = '{$Service->version}';
-    $this->serviceName = '{$Service->name}';
+    $this->rootUrl = '{$Service->getRootUrl()}';
+    $this->servicePath = '{$Service->getServicePath()}';
+    $this->version = '{$Service->getVersion()}';
+    $this->serviceName = '{$Service->getName()}';
 
 {foreach $Service->getMembers() as $resource}
-    $this->{$resource->getMemberName()} = new Google_Service_{$Service->canonicalName}_Resource_{$resource->getClassName()}(
+    $this->{$resource->getMemberName()} = new Google_Service_{$Service->getCanonicalName()}_Resource_{$resource->getClassName()}(
         $this,
         $this->serviceName,
         '{$resource->getLiteralName()}',
         array(
           'methods' => array(
-            {foreach $resource->methods as $method}{* Resource -> Method *}
-'{$method->name}' => array(
-              'path' => '{$method->path}',
-              'httpMethod' => '{$method->httpMethod}',
-{if $method->emptyParameters}
+            {foreach $resource->getMethods() as $method}{* Resource -> Method *}
+'{$method->getName()}' => array(
+              'path' => '{$method->getPath()}',
+              'httpMethod' => '{$method->getHttpMethod()}',
+{if $method->getEmptyParameters()}
               'parameters' => array(),
 {else}
-              'parameters' => array({foreach $method->parameters as $pname => $pval}
+              'parameters' => array({foreach $method->getParameters() as $pname => $pval}
 
                 '{$pname}' => array(
                   'location' => '{$pval['location']}',
@@ -95,21 +95,21 @@ class Google_Service_{$Service->canonicalName} extends Google_Service
         )
     );
 {/foreach}
-{if $Service->methods}
+{if $Service->getMethods()}
     $this->base_methods = new Google_Service_Resource(
         $this,
         $this->serviceName,
         '',
         array(
           'methods' => array(
-            {foreach $Service->methods as $method}{* Resource -> Method *}
-'{$method->name}' => array(
-              'path' => '{$method->path}',
-              'httpMethod' => '{$method->httpMethod}',
-{if $method->emptyParameters}
+            {foreach $Service->getMethods() as $method}{* Resource -> Method *}
+'{$method->getName()}' => array(
+              'path' => '{$method->getPath()}',
+              'httpMethod' => '{$method->getHttpMethod()}',
+{if $method->getEmptyParameters()}
               'parameters' => array(),
 {else}
-              'parameters' => array({foreach $method->parameters as $pname => $pval}
+              'parameters' => array({foreach $method->getParameters() as $pname => $pval}
 
                 '{$pname}' => array(
                   'location' => '{$pval['location']}',
@@ -132,24 +132,24 @@ class Google_Service_{$Service->canonicalName} extends Google_Service
     );
 {/if}
   }
-{foreach $Service->methods as $method}
+{foreach $Service->getMethods() as $method}
   /**
-   * ({$method->id})
+   * ({$method->getId()})
    *
    * @param array $optParams Optional parameters.
-{if isset($method->parameters) }
+{if isset($method->getParameters()) }
    *
-{foreach $method->parameters as $pname => $pval}
+{foreach $method->getParameters() as $pname => $pval}
    * @opt_param string {$pname}
 {/foreach}
 {/if}
-   * @return Google_Service_{$Service->canonicalName}_{$method->responseRef}
+   * @return Google_Service_{$Service->getCanonicalName()}_{$method->getResponseRef()}
    */
-  public function {$method->name}($optParams = array())
+  public function {$method->getName()}($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->base_methods->call('{$method->name}', array($params), "Google_Service_{$Service->canonicalName}_{$method->responseRef}");
+    return $this->base_methods->call('{$method->getName()}', array($params), "Google_Service_{$Service->getCanonicalName()}_{$method->getResponseRef()}");
   }
 {/foreach}
 }

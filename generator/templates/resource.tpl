@@ -19,41 +19,42 @@
  * The "{$Resource->getLiteralName()}" collection of methods.
  * Typical usage is:
  *  <code>
- *   ${$Service->name}Service = new Google_Service_{$Service->canonicalName}(...);
- *   ${$Resource->getLiteralName()} = ${$Service->name}Service->{$Resource->getLiteralName()};
+ *   ${$Service->getName()}Service = new Google_Service_{$Service->getCanonicalName()}(...);
+ *   ${$Resource->getLiteralName()} = ${$Service->getName()}Service->{$Resource->getLiteralName()};
  *  </code>
  */
-class Google_Service_{$Service->canonicalName}_Resource_{$Resource->getClassName()} extends Google_Service_Resource
+class Google_Service_{$Service->getCanonicalName()}_Resource_{$Resource->getClassName()} extends Google_Service_Resource
 {
-{foreach $Resource->methods as $method}
+{foreach $Resource->getMethods() as $method}
   /**
 {$method->getDescription()}
    *
-{foreach $method->phpdocParams as $p}
+{foreach $method->getPhpdocParams() as $p}
 {$p}
 {/foreach}
-{if $method->hasPostBody}
-   * @param {$Service->getModelClassName($method->requestRef)} $postBody
+{if $method->getHasPostBody()}
+   * @param {$Service->getModelClassName($method->getRequestRef())} $postBody
 {/if}
    * @param array $optParams Optional parameters.
-{if count($method->phpdocOptParams) > 0}
+{if count($method->getPhpdocOptParams()) > 0}
    *
 {/if}
-{foreach $method->phpdocOptParams as $p}
+{foreach $method->getPhpdocOptParams() as $p}
 {$p}
 {/foreach}
-{if isset($method->responseRef)}
-   * @return {$Service->getModelClassName($method->responseRef)}
+{if isset($method->getResponseRef())}
+   * @return {$Service->getModelClassName($method->getResponseRef())}
 {/if}
    */
-  public function {$Resource->getFnName($method->name)}({$method->getParamsParams($Service->getModelClassName($method->requestRef))})
+  public function {$Resource->getFnName($method->getName())}{*
+    *}({$method->getParamsParams($Service->getModelClassName($method->getRequestRef()))})
   {
     $params = array({$method->getParamsArray()});
     $params = array_merge($params, $optParams);
-{if $Service->forceJson}
+{if $Service->forceJson()}
     $params['alt'] = 'json';
 {/if}
-    return $this->call('{$method->name}', array($params){if $method->responseRef}, "{$Service->getModelClassName($method->responseRef)}"{/if});
+    return $this->call('{$method->getName()}', array($params){if $method->getResponseRef()}, "{$Service->getModelClassName($method->getResponseRef())}"{/if});
   }
 {/foreach}
 }
