@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-namespace Google\Service\Generator\Test;
+namespace Google\Service\Generator\Tests;
 
 use Google\Service\Generator\StringUtilities;
 

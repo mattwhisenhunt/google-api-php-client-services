@@ -10,5 +10,8 @@
     "autoload": {
         "psr-4": { "Google\\Service\\Generator\\": "src" }
     },
+    "autoload-dev": {
+        "psr-4": { "Google\\Service\\Generator\\Tests\\": "tests" }
+    },
     "license": "Apache-2.0"
 }
