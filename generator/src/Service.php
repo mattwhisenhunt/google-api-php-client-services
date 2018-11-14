@@ -42,7 +42,8 @@ class Service
         $this->description = wordwrap(
             trim($doc['description']),
             77,
-            PHP_EOL . ' * ');
+            PHP_EOL . ' * '
+        );
         if (isset($doc['documentationLink'])) {
             $this->documentationLink = $doc['documentationLink'];
         }
@@ -54,7 +55,8 @@ class Service
             $this->canonicalName = $this->name;
         }
         $this->canonicalName = ucfirst(
-            str_replace(' ', '', $this->canonicalName));
+            str_replace(' ', '', $this->canonicalName)
+        );
         $this->constructorDescription = wordwrap(
             'Constructs the internal representation of the '.
                 "$this->canonicalName service .",

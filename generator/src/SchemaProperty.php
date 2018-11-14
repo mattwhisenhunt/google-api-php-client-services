@@ -161,16 +161,20 @@ class SchemaProperty
         return $this->_isComplex;
     }
 
-    public function setName($str) {
+    public function setName($str)
+    {
         $this->name = $str;
     }
-    public function setGetSetName($str) {
+    public function setGetSetName($str)
+    {
         $this->getSetName = $str;
     }
-    public function setParamName($str) {
+    public function setParamName($str)
+    {
         $this->paramName = $str;
     }
-    public function setComplexity($complexity) {
+    public function setComplexity($complexity)
+    {
         $this->_isComplex = $complexity;
     }
 }

@@ -119,8 +119,10 @@ class ServiceGenerator
   
     public static function errorHandler($errno, $errstr, $errfile, $errline)
     {
-        file_put_contents('php://stderr',
-            "$errstr in $errfile on line $errline" . PHP_EOL);
+        file_put_contents(
+            'php://stderr',
+            "$errstr in $errfile on line $errline" . PHP_EOL
+        );
         return true;
     }
 }
