@@ -27,6 +27,7 @@ class ServiceGenerator
 
     private $path = __DIR__ . "/../../src/Google/Service";
     private $ok = true;
+    private $api_id;
 
     public function __construct($path = '')
     {
@@ -43,6 +44,7 @@ class ServiceGenerator
         $this->ok = true;
 
         $service = new Service(json_decode(file_get_contents($discoveryURL), true));
+        $this->api_id = $service->getName() . ':' . $service->getVersion();
 
         if ($service->getCanonicalName() != '') {
             $path = "$this->path/".$service->getCanonicalName();
@@ -125,7 +127,8 @@ class ServiceGenerator
         $this->ok = false;
         file_put_contents(
             'php://stderr',
-            "$errstr in $errfile on line $errline" . PHP_EOL
+            $this->api_id .
+            " $errstr in $errfile on line $errline" . PHP_EOL
         );
         return true;
     }

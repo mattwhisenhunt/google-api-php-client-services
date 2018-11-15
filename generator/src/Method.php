@@ -66,6 +66,8 @@ class Method
 
             $parameters = [];
             foreach ($method['parameterOrder'] ?? [] as $movedKey) {
+                assert(ini_get('error_reporting') == E_ALL);
+                assert(isset($method['parameters'][$movedKey]));
                 $parameters[$movedKey] = $method['parameters'][$movedKey];
                 unset($method['parameters'][$movedKey]);
             }
