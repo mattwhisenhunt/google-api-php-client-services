@@ -66,8 +66,10 @@ class Method
 
             $parameters = [];
             foreach ($method['parameterOrder'] ?? [] as $movedKey) {
-                $parameters[$movedKey] = $method['parameters'][$movedKey];
-                unset($method['parameters'][$movedKey]);
+                if (isset($method['parameters'][$movedKey]) {
+                    $parameters[$movedKey] = $method['parameters'][$movedKey];
+                    unset($method['parameters'][$movedKey]);
+                }
             }
             ksort($method['parameters']);
             $this->parameters = array_merge($parameters, $method['parameters']);
