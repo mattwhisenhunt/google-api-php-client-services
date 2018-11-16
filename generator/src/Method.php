@@ -66,7 +66,7 @@ class Method
 
             $parameters = [];
             foreach ($method['parameterOrder'] ?? [] as $movedKey) {
-                if (isset($method['parameters'][$movedKey]) {
+                if (isset($method['parameters'][$movedKey])) {
                     $parameters[$movedKey] = $method['parameters'][$movedKey];
                     unset($method['parameters'][$movedKey]);
                 }
