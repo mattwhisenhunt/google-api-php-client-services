@@ -68,6 +68,8 @@ class Service
                 $this->schemas[$this->schemas->key()] = new Schema(ucfirst($this->name), [$k], $v);
                 $this->schemas->next();
             }
+        } else {
+            $this->schemas = new \SplFixedArray(0);
         }
 
         if (isset($doc['resources'])) {

@@ -81,7 +81,7 @@ class Method
                     $this->paramsA[] = "'$k' => $var_name";
                     $this->phpdocParams[] = Method::getPhpDocParam($var_name, $v);
                 } else {
-                    $var_name = lcfirst(StringUtilities::ucstrip($k));
+                    $var_name = lcfirst($k);
                     $this->phpdocOptParams[] = Method::getPhpDocParam($var_name, $v);
                 }
             }

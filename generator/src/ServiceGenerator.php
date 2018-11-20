@@ -20,7 +20,6 @@ namespace Google\Service\Generator;
 class ServiceGenerator
 {
     private $path = __DIR__ . "/../../src/Google/Service";
-    private $isGenerationSuccessful = true;
 
     public function __construct($path = '')
     {
@@ -34,7 +33,6 @@ class ServiceGenerator
     public function generate($discoveryURL)
     {
         $previous_error_handler = set_error_handler([$this, 'errorHandler']);
-        $this->isGenerationSuccessful = true;
 
         $service = new Service(json_decode(file_get_contents($discoveryURL), true));
 
@@ -100,12 +98,10 @@ class ServiceGenerator
         }
 
         set_error_handler($previous_error_handler);
-        return $this->isGenerationSuccessful;
     }
 
-    private function errorHandler($errno, $errstr, $errfile, $errline)
+    static public function errorHandler($errno, $errstr, $errfile, $errline)
     {
-        $this->isGenerationSuccessful = false;
         file_put_contents(
             'php://stderr',
             "$errstr in $errfile on line $errline" . PHP_EOL

@@ -82,9 +82,6 @@ class SchemaProperty
             && $node['additionalProperties']['items']['type'] != 'any'
         ) {
             $this->dataType = 'map';
-            $this->typeName = isset($node['additionalProperties']['items']['$ref'])
-                ? $node['additionalProperties']['items']['$ref']
-                : '';
         }
   
         $this->node = $node;

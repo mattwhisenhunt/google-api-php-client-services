@@ -21,13 +21,31 @@ use Google\Service\Generator\ServiceGenerator;
 
 class ServiceGeneratorTest extends \PHPUnit\Framework\TestCase
 {
-    public function testDefaultServiceGeneratorPath()
+    public function testGenerate()
     {
-        $generator = new ServiceGenerator();
-        $result = $generator->generate(
-            'https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest'
-        );
-        $this->assertTrue($result);
+        if (getenv('GOOGLE_PHP_CLIENT_CODE_COVERAGE')) {
+            $apis = json_decode(file_get_contents("https://www.googleapis.com/discovery/v1/apis"));
+            $neerdowells = [
+                'compute:alpha',
+                'cloudbuild:v1alpha1',
+                'cloudiot:v1beta1',
+                'cloudscheduler:v1beta1',
+                'cloudtrace:v2alpha1',
+                'partners:v2',
+                'websecurityscanner:v1beta'];
+
+            foreach ($apis->items as $v) {
+                if (in_array($v->id, $neerdowells)) continue;
+                $generator = new ServiceGenerator(".tests/$v->id");
+                $generator->generate($v->discoveryRestUrl);
+                $this->assertTrue(count(scandir(".tests/$v->id")) > 2);
+            }
+        } else {
+            $generator = new ServiceGenerator('.tests/gmail:v1');
+            $result = $generator->generate(
+                'https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest'
+            );
+        }
     }
 
     public function testErrorHandler()
