@@ -30,27 +30,6 @@ class ServiceGeneratorTest extends \PHPUnit\Framework\TestCase
         $this->assertTrue($result);
     }
 
-    public function testGenerateAll()
-    {
-        if (getenv('GOOGLE_PHP_CLIENT_CODE_COVERAGE')) {
-            if (is_dir('.test/Tasks/Resource')) {
-                unlink('.test/Tasks/Resource/Tasks.php');
-                unlink('.test/Tasks/Resource/Tasklists.php');
-                rmdir('.test/Tasks/Resource');
-            }
-            (new ServiceGenerator('.test'))->generateAll();
-            $this->assertFileExists('.test/Drive.php');
-            $this->assertFileExists('.test/Tasks.php');
-            $this->assertFileExists('.test/Tasks/Resource/Tasks.php');
-            $this->assertFileExists('.test/Tasks/Resource/Tasklists.php');
-        } else {
-            $skip = "This test should exercise every line of this generator ".
-                "and can be enabled by setting the ".
-                "GOOGLE_PHP_CLIENT_CODE_COVERAGE environment variable.";
-            $this->markTestSkipped($skip);
-        }
-    }
-
     public function testErrorHandler()
     {
         if (getenv('GOOGLE_PHP_CLIENT_CODE_COVERAGE')) {

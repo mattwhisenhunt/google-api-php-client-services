@@ -19,19 +19,19 @@ namespace Google\Service\Generator;
 
 class Method
 {
-    const PHP_TYPES =
-    ['any'     => 'array'
-    ,'boolean' => 'bool'
-    ,'integer' => 'int'
-    ,'long'    => 'string'
-    ,'number'  => 'float'
-    ,'string'  => 'string'
-    ,'uint32'  => 'string'
-    ,'uint64'  => 'string'
-    ,'int32'   => 'int'
-    ,'int64'   => 'string'
-    ,'double'  => 'double'
-    ,'float'   => 'float'
+    const PHP_TYPES = [
+        'any'     => 'array',
+        'boolean' => 'bool',
+        'integer' => 'int',
+        'long'    => 'string',
+        'number'  => 'float',
+        'string'  => 'string',
+        'uint32'  => 'string',
+        'uint64'  => 'string',
+        'int32'   => 'int',
+        'int64'   => 'string',
+        'double'  => 'double',
+        'float'   => 'float',
     ];
 
     private $id;
@@ -49,9 +49,9 @@ class Method
 
     private $paramsP = [];
     private $paramsA = [];
-    private $hasPostBody = false;
+    private $doesHavePostBody = false;
   
-    public function __construct($key, &$method)
+    public function __construct($key, $method)
     {
         $this->id = $method['id'];
         $this->name = $key;
@@ -89,7 +89,7 @@ class Method
 
         if (isset($method['request']) && $method['httpMethod'] != 'GET') {
             $this->requestRef = $method['request']['$ref'];
-            $this->hasPostBody = true;
+            $this->doesHavePostBody = true;
         }
 
         if (isset($method['response'])) {
@@ -100,7 +100,7 @@ class Method
     public function getParamsParams($modelclassname)
     {
         $params = $this->paramsP;
-        if ($this->hasPostBody) {
+        if ($this->doesHavePostBody) {
             $params[] = "$modelclassname \$postBody";
         }
         $params[] = '$optParams = array()';
@@ -110,7 +110,7 @@ class Method
     public function getParamsArray()
     {
         $params = $this->paramsA;
-        if ($this->hasPostBody) {
+        if ($this->doesHavePostBody) {
             $params[] = "'postBody' => \$postBody";
         }
         return implode(", ", $params);
@@ -129,17 +129,20 @@ class Method
 
     public static function getPhpDocParam($name, $node)
     {
-        $token = isset($node['required']) ? '@param' : '@opt_param';
-        $repeatToken = isset($node['required']) && isset($node['repeated']) ?
-            '|array' : '';
-
-        $typeToken = isset($node['type']) ?
-            Method::PHP_TYPES[$node['type']] : '';
+        $token = isset($node['required'])
+            ? '@param'
+            : '@opt_param';
+        $repeatToken = isset($node['required']) && isset($node['repeated'])
+            ? '|array'
+            : '';
+        $typeToken = isset($node['type'])
+            ? Method::PHP_TYPES[$node['type']]
+            : '';
 
         if (isset($node['format'])
             && ($node['format'] == 'uint32' || $node['format'] == 'uint64')
         ) {
-            $typeToken = "string";
+            $typeToken = 'string';
         }
 
         $desc = $node['description'] ?? '';
@@ -152,44 +155,54 @@ class Method
     {
         return $this->id;
     }
+
     public function getName()
     {
         return $this->name;
     }
+
     public function getPath()
     {
         return $this->path;
     }
+
     public function getHttpMethod()
     {
         return $this->httpMethod;
     }
+
     public function getPhpdocParams()
     {
         return $this->phpdocParams;
     }
+
     public function getPhpdocOptParams()
     {
         return $this->phpdocOptParams;
     }
+
     public function getParameters()
     {
         return $this->parameters;
     }
+
     public function getEmptyParameters()
     {
         return $this->emptyParameters;
     }
+
     public function getRequestRef()
     {
         return $this->requestRef;
     }
+
     public function getResponseRef()
     {
         return $this->responseRef;
     }
-    public function getHasPostBody()
+
+    public function hasPostBody()
     {
-        return $this->hasPostBody;
+        return $this->doesHavePostBody;
     }
 }

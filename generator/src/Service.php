@@ -19,6 +19,8 @@ namespace Google\Service\Generator;
 
 class Service
 {
+    const CONSTRUCTOR_DESCRIPTION =
+        'Constructs the internal representation of the %s service.';
     private $name;
     private $version;
     private $description;
@@ -27,7 +29,7 @@ class Service
     private $servicePath;
     private $canonicalName;
     private $constructorDescription;
-    private $_forceJson = false;
+    private $forceJson = false;
     private $dataWrapper = false;
 
     private $schemas;
@@ -44,34 +46,25 @@ class Service
             77,
             PHP_EOL . ' * '
         );
-        if (isset($doc['documentationLink'])) {
-            $this->documentationLink = $doc['documentationLink'];
-        }
+        $this->documentationLink = $doc['documentationLink'] ?? '';
         $this->rootUrl = $doc['rootUrl'] ?? '';
         $this->servicePath = $doc['servicePath'] ?? '';
-        if (isset($doc['canonicalName'])) {
-            $this->canonicalName = $doc['canonicalName'];
-        } else {
-            $this->canonicalName = $this->name;
-        }
         $this->canonicalName = ucfirst(
-            str_replace(' ', '', $this->canonicalName)
-        );
-        $this->constructorDescription = wordwrap(
-            'Constructs the internal representation of the '.
-                "$this->canonicalName service .",
-            77,
-            PHP_EOL . '   * '
+            str_replace(' ', '', $doc['canonicalName'] ?? $this->name)
         );
 
+        $desc = sprintf(Service::CONSTRUCTOR_DESCRIPTION, $this->canonicalName);
+        $this->constructorDescription = wordwrap($desc, 77, PHP_EOL . '   * ');
+
         if ($doc['parameters']['alt']['default'] ?? '' != 'json'
-        && in_array('json', $doc['parameters']['alt']['enum'] ?? [])) {
-            $this->_forceJson = true;
+            && in_array('json', $doc['parameters']['alt']['enum'] ?? [])
+        ) {
+            $this->forceJson = true;
         }
 
         if (isset($doc['schemas'])) {
             $this->schemas = new \SplFixedArray(count($doc['schemas']));
-            foreach ($doc['schemas'] as $k => &$v) {
+            foreach ($doc['schemas'] as $k => $v) {
                 $this->schemas[$this->schemas->key()] = new Schema(ucfirst($this->name), [$k], $v);
                 $this->schemas->next();
             }
@@ -101,7 +94,7 @@ class Service
             }
         }
 
-      // Translation v2 is an example of this feature
+        // Translation v2 is an example of this feature
         if (isset($doc['features']) && in_array('dataWrapper', $doc['features'])) {
             $this->dataWrapper = true;
         }
@@ -158,11 +151,12 @@ class Service
         ksort($scopes);
         $real_scopes = [];
         foreach ($scopes as $k => $v) {
-            $guts = explode("/", rtrim($k, '/')); // rtrim for just domain scopes
+            // rtrim for just domain scopes
+            $parts = explode("/", rtrim($k, '/'));
 
-            $li = count($guts) -1;
+            $li = count($parts) - 1;
 
-            $shortKey = strtoupper($guts[$li]);
+            $shortKey = strtoupper($parts[$li]);
             $shortKey = str_replace('-', '_', $shortKey);
             $shortKey = str_replace('.', '_', $shortKey);
             if (isset($real_scopes[$shortKey])) {
@@ -207,6 +201,16 @@ class Service
         return trim(str_replace("/", "_", $ret), "_") . "S";
     }
 
+    /**
+     * Helper method that encapsulates access to isItemNodeComplex. Complex
+     * properties render more code in the generated class.
+     * @see Service::isItemNodeComplex()
+     * @see SchemaProperty::$complexity
+     *
+     * @param SchemaProperty $prop
+     *
+     * @return boolean
+     */
     public function isPropertyComplex($prop)
     {
         if (is_null($prop)) {
@@ -243,7 +247,14 @@ class Service
         return false;
     }
 
-    public function isItemNodeComplex(&$items)
+    /**
+     * Helper method to access schemas not referenced in properties.
+     *
+     * @param array $items
+     *
+     * @return boolean
+     */
+    public function isItemNodeComplex($items)
     {
         if (count($items) == 2 && isset($items['format'])) {
             return false;
@@ -287,30 +298,37 @@ class Service
     {
         return $this->canonicalName;
     }
+
     public function getName()
     {
         return $this->name;
     }
+
     public function getVersion()
     {
         return $this->version;
     }
+
     public function getDescription()
     {
         return $this->description;
     }
+
     public function getDocumentationLink()
     {
         return $this->documentationLink;
     }
+
     public function getRootUrl()
     {
         return $this->rootUrl;
     }
+
     public function getServicePath()
     {
         return $this->servicePath;
     }
+
     public function getConstructorDescription()
     {
         return $this->constructorDescription;
@@ -320,8 +338,9 @@ class Service
     {
         return $this->dataWrapper;
     }
-    public function forceJson()
+
+    public function shouldForceJson()
     {
-        return $this->_forceJson;
+        return $this->forceJson;
     }
 }

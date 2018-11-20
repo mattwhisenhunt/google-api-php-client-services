@@ -19,76 +19,77 @@ namespace Google\Service\Generator;
 
 class Resource
 {
-    const PHP_WORDS =
-    ['__halt_compiler' => 1
-    ,'abstract'        => 1
-    ,'and'             => 1
-    ,'array'           => 1
-    ,'as'              => 1
-    ,'break'           => 1
-    ,'callable'        => 1
-    ,'case'            => 1
-    ,'catch'           => 1
-    ,'class'           => 1
-    ,'clone'           => 1
-    ,'const'           => 1
-    ,'continue'        => 1
-    ,'declare'         => 1
-    ,'default'         => 1
-    ,'die'             => 1
-    ,'do'              => 1
-    ,'echo'            => 1
-    ,'else'            => 1
-    ,'elseif'          => 1
-    ,'empty'           => 1
-    ,'enddeclare'      => 1
-    ,'endfor'          => 1
-    ,'endforeach'      => 1
-    ,'endif'           => 1
-    ,'endswitch'       => 1
-    ,'endwhile'        => 1
-    ,'eval'            => 1
-    ,'exit'            => 1
-    ,'extends'         => 1
-    ,'final'           => 1
-    ,'finally'         => 1
-    ,'for'             => 1
-    ,'foreach'         => 1
-    ,'function'        => 1
-    ,'global'          => 1
-    ,'goto'            => 1
-    ,'if'              => 1
-    ,'implements'      => 1
-    ,'include'         => 1
-    ,'include_once'    => 1
-    ,'instanceof'      => 1
-    ,'insteadof'       => 1
-    ,'interface'       => 1
-    ,'isset'           => 1
-    ,'list'            => 1
-    ,'namespace'       => 1
-    ,'new'             => 1
-    ,'or'              => 1
-    ,'print'           => 1
-    ,'private'         => 1
-    ,'protected'       => 1
-    ,'public'          => 1
-    ,'require'         => 1
-    ,'require_once'    => 1
-    ,'return'          => 1
-    ,'static'          => 1
-    ,'switch'          => 1
-    ,'throw'           => 1
-    ,'trait'           => 1
-    ,'try'             => 1
-    ,'unset'           => 1
-    ,'use'             => 1
-    ,'var'             => 1
-    ,'while'           => 1
-    ,'xor'             => 1
-    ,'yield'           => 1
-    // BONUS
-    ,'call'            => 1
+    const PHP_WORDS = [
+        '__halt_compiler' => true,
+        'abstract'        => true,
+        'and'             => true,
+        'array'           => true,
+        'as'              => true,
+        'break'           => true,
+        'callable'        => true,
+        'case'            => true,
+        'catch'           => true,
+        'class'           => true,
+        'clone'           => true,
+        'const'           => true,
+        'continue'        => true,
+        'declare'         => true,
+        'default'         => true,
+        'die'             => true,
+        'do'              => true,
+        'echo'            => true,
+        'else'            => true,
+        'elseif'          => true,
+        'empty'           => true,
+        'enddeclare'      => true,
+        'endfor'          => true,
+        'endforeach'      => true,
+        'endif'           => true,
+        'endswitch'       => true,
+        'endwhile'        => true,
+        'eval'            => true,
+        'exit'            => true,
+        'extends'         => true,
+        'final'           => true,
+        'finally'         => true,
+        'for'             => true,
+        'foreach'         => true,
+        'function'        => true,
+        'global'          => true,
+        'goto'            => true,
+        'if'              => true,
+        'implements'      => true,
+        'include'         => true,
+        'include_once'    => true,
+        'instanceof'      => true,
+        'insteadof'       => true,
+        'interface'       => true,
+        'isset'           => true,
+        'list'            => true,
+        'namespace'       => true,
+        'new'             => true,
+        'or'              => true,
+        'print'           => true,
+        'private'         => true,
+        'protected'       => true,
+        'public'          => true,
+        'require'         => true,
+        'require_once'    => true,
+        'return'          => true,
+        'static'          => true,
+        'switch'          => true,
+        'throw'           => true,
+        'trait'           => true,
+        'try'             => true,
+        'unset'           => true,
+        'use'             => true,
+        'var'             => true,
+        'while'           => true,
+        'xor'             => true,
+        'yield'           => true,
+        // not a reserved word in PHP but method name inherited from
+        // Google_Service_Resource
+        'call'            => true,
     ];
 
     private $methods;
@@ -97,14 +98,14 @@ class Resource
     protected $resources;
     protected $scopes    = [];
   
-    public function __construct($keys, &$node)
+    public function __construct($keys, $node)
     {
         $this->names = $keys;
 
         if (isset($node['resources'])) {
             $this->resources = new \SplFixedArray(count($node['resources']));
             ksort($node['resources']);
-            foreach ($node['resources'] as $k => &$v) {
+            foreach ($node['resources'] as $k => $v) {
                 $this->resources[$this->resources->key()] = new Resource(array_merge($keys, [$k]), $v);
                 $this->resources->next();
             }
@@ -115,7 +116,7 @@ class Resource
         if (isset($node['methods'])) {
             $this->methods = new \SplFixedArray(count($node['methods']));
             ksort($node['methods']);
-            foreach ($node['methods'] as $k => &$v) {
+            foreach ($node['methods'] as $k => $v) {
                 if (isset($v['scopes'])) {
                     foreach ($v['scopes'] as $scope) {
                         $this->scopes[$scope] = 1;

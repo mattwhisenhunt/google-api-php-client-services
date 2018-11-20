@@ -15,17 +15,12 @@
  * limitations under the License.
  */
 
-namespace Google\Service\Generator;
+namespace Google\Service\Generator\Tests;
 
-class SubSchema extends Schema
+class Fixtures
 {
-    public function hasFile($node)
+    public static function COMPLETE_DOC_FIXTURE()
     {
-        if ($this->childCount > 1 || $this->suffix !== '') {
-            $i = count($this->names) - 1;
-
-            return true;
-        }
-        return false;
+        return __DIR__ . '/fixtures/complete-doc-fixture.json';
     }
 }

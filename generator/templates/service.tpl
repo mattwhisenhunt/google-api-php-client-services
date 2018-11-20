@@ -26,7 +26,7 @@
  * <a href="{$Service->getDocumentationLink()}" target="_blank">Documentation</a>
  * </p>
  *
- * @author Google, Inc.
+ * @author Google LLC
  */
 class Google_Service_{$Service->getCanonicalName()} extends Google_Service
 {

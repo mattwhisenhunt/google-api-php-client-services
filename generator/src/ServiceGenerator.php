@@ -19,14 +19,8 @@ namespace Google\Service\Generator;
 
 class ServiceGenerator
 {
-    const PREFERRED = [
-    'admin:datatransfer_v1' => true,
-    'admin:directory_v1' => true,
-    'discovery:v1' => false,
-    ];
-
     private $path = __DIR__ . "/../../src/Google/Service";
-    private $ok = true;
+    private $isGenerationSuccessful = true;
 
     public function __construct($path = '')
     {
@@ -39,21 +33,21 @@ class ServiceGenerator
 
     public function generate($discoveryURL)
     {
-        $old_error_handler = set_error_handler([$this, 'errorHandler']);
-        $this->ok = true;
+        $previous_error_handler = set_error_handler([$this, 'errorHandler']);
+        $this->isGenerationSuccessful = true;
 
         $service = new Service(json_decode(file_get_contents($discoveryURL), true));
 
         if ($service->getCanonicalName() != '') {
-            $path = "$this->path/".$service->getCanonicalName();
+            $path = "$this->path/" . $service->getCanonicalName();
 
             if (!is_dir("$path/Resource")) {
                 mkdir("$path/Resource", 0755, true);
             }
 
             $smarty = new \Smarty;
-            $smarty->setTemplateDir([__DIR__. '/../templates']);
-            $smarty->setCompileDir(sys_get_temp_dir().'/gs_tpls');
+            $smarty->setTemplateDir([__DIR__ . '/../templates']);
+            $smarty->setCompileDir(sys_get_temp_dir() . '/gs_tpls');
 
             $smarty->assign("Service", $service);
             $smarty->assign("CopyrightYear", 2014);
@@ -78,10 +72,10 @@ class ServiceGenerator
                         $prop->setComplexity($prop->isComplex() || $service->isPropertyComplex($prop));
 
                         if ($service->isPropertyComplex($schema->getSibling($prop))) {
-                              $old_name = $prop->getName();
-                              $prop->setName("theReal" . StringUtilities::ucstrip($old_name));
-                              $prop->setGetSetName($old_name);
-                              $internal_gapi_mappings[$old_name] = $prop->getName();
+                              $previous_name = $prop->getName();
+                              $prop->setName("theReal" . StringUtilities::ucstrip($previous_name));
+                              $prop->setGetSetName($previous_name);
+                              $internal_gapi_mappings[$previous_name] = $prop->getName();
                         } else {
                             $mapkey = trim(lcfirst(StringUtilities::ucstrip($prop->getName())), '$');
 
@@ -105,24 +99,13 @@ class ServiceGenerator
             }
         }
 
-        set_error_handler($old_error_handler);
-        return $this->ok;
+        set_error_handler($previous_error_handler);
+        return $this->isGenerationSuccessful;
     }
-  
-    public function generateAll()
-    {
-        $apis = json_decode(file_get_contents("https://www.googleapis.com/discovery/v1/apis"));
 
-        foreach ($apis->items as $v) {
-            if (ServiceGenerator::PREFERRED[$v->id] ?? $v->preferred) {
-                $this->generate($v->discoveryRestUrl);
-            }
-        }
-    }
-  
-    public function errorHandler($errno, $errstr, $errfile, $errline)
+    private function errorHandler($errno, $errstr, $errfile, $errline)
     {
-        $this->ok = false;
+        $this->isGenerationSuccessful = false;
         file_put_contents(
             'php://stderr',
             "$errstr in $errfile on line $errline" . PHP_EOL

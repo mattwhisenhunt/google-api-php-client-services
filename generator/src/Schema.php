@@ -19,24 +19,32 @@ namespace Google\Service\Generator;
 
 class Schema
 {
-    const PREFIXABLES =
-    ["Empty"=>1, "File"=>1, "List"=>1, "Namespace"=>1, "Object"=>1, "Parent"=>1, "Resource"=>1];
-    protected $serviceName;
+    const PREFIXABLES = [
+        "Empty"     => true,
+        "File"      => true,
+        "List"      => true,
+        "Namespace" => true,
+        "Object"    => true,
+        "Parent"    => true,
+        "Resource"  => true,
+    ];
+
     protected $names;
-    protected $write;
-    protected $cc;
+    protected $childCount;
     protected $suffix;
+    private $serviceName;
+    private $write;
     private $properties;
     private $collectionKey;
     private $propKeys = [];
-    protected $schemas = [];
+    private $schemas = [];
 
-    public function __construct($service_name, $key, &$node)
+    public function __construct($service_name, $key, $node)
     {
         $this->serviceName = $service_name;
         $this->names = $key;
 
-        list($this->cc, $this->suffix) = $this->appendChildren($node);
+        list($this->childCount, $this->suffix) = $this->appendChildren($node);
         if (isset($node['properties'])) {
             $properties = $node['properties'];
         }
@@ -47,12 +55,13 @@ class Schema
         if (isset($properties)) {
             $this->properties = new \SplFixedArray(count($properties));
             ksort($properties);
-            foreach ($properties as $k => &$v) {
+            foreach ($properties as $k => $v) {
                 $this->properties[$this->properties->key()] = new SchemaProperty($this->serviceName, $k, $v);
                 $this->propKeys[$k] = $this->properties->key();
                 $this->properties->next();
                 if (isset($v['type']) && $v['type'] == 'array') {
-                    $this->collectionKey = $k; //TODO Just pick the last one that is an array??
+                    // Choose the last property with type array.
+                    $this->collectionKey = $k;
                 }
             }
         } else {
@@ -62,7 +71,7 @@ class Schema
         $this->write = $this->hasFile($node);
     }
 
-    public function hasFile(&$node)
+    public function hasFile($node)
     {
         if ($node['type'] == 'object') {
             if (isset($node['additionalProperties'])
@@ -81,9 +90,8 @@ class Schema
         return false;
     }
 
-    public function appendChildren(&$node)
+    public function appendChildren($node)
     {
-
         if (isset($node['items'])) {
             assert($node['type'] == 'array');
             if (count($node['items']) == 2 && isset($node['items']['format'])) {
@@ -95,7 +103,7 @@ class Schema
         }
 
         if (isset($node['properties'])) {
-            foreach ($node['properties'] as $k => &$v) {
+            foreach ($node['properties'] as $k => $v) {
                 $new_names = array_merge($this->names, ['properties', $k]);
                 $this->schemas[] = new SubSchema($this->serviceName, $new_names, $v);
             }
@@ -103,7 +111,7 @@ class Schema
         }
 
         if (isset($node['additionalProperties']['properties'])) {
-            foreach ($node['additionalProperties']['properties'] as $k => &$v) {
+            foreach ($node['additionalProperties']['properties'] as $k => $v) {
                 $new_names = array_merge($this->names, ['additionalProperties', 'properties', $k]);
                 $this->schemas[] = new SubSchema($this->serviceName, $new_names, $v);
             }
@@ -168,9 +176,10 @@ class Schema
   
     public function getSibling($prop)
     {
-        $type_pos = strpos($prop->getName(), "Type");
-        if ($type_pos === strlen($prop->getName()) - 4 && isset($this->propKeys[substr($prop->getName(), 0, $type_pos)])) {
-            return $this->properties[$this->propKeys[substr($prop->getName(), 0, $type_pos)]];
+        $name = $prop->getName();
+        $type_pos = strpos($name, "Type");
+        if ($type_pos === strlen($name) - 4 && isset($this->propKeys[substr($name, 0, $type_pos)])) {
+            return $this->properties[$this->propKeys[substr($name, 0, $type_pos)]];
         }
     }
   
@@ -189,6 +198,7 @@ class Schema
     {
         return $this->properties;
     }
+
     public function getCollectionKey()
     {
         return $this->collectionKey;

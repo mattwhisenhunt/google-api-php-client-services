@@ -32,7 +32,7 @@ class Google_Service_{$Service->getCanonicalName()}_Resource_{$Resource->getClas
 {foreach $method->getPhpdocParams() as $p}
 {$p}
 {/foreach}
-{if $method->getHasPostBody()}
+{if $method->hasPostBody()}
    * @param {$Service->getModelClassName($method->getRequestRef())} $postBody
 {/if}
    * @param array $optParams Optional parameters.
@@ -51,7 +51,7 @@ class Google_Service_{$Service->getCanonicalName()}_Resource_{$Resource->getClas
   {
     $params = array({$method->getParamsArray()});
     $params = array_merge($params, $optParams);
-{if $Service->forceJson()}
+{if $Service->shouldForceJson()}
     $params['alt'] = 'json';
 {/if}
     return $this->call('{$method->getName()}', array($params){if $method->getResponseRef()}, "{$Service->getModelClassName($method->getResponseRef())}"{/if});

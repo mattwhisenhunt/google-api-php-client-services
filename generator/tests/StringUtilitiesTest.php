@@ -21,7 +21,6 @@ use Google\Service\Generator\StringUtilities;
 
 class StringUtilitiesTest extends \PHPUnit\Framework\TestCase
 {
-
     public function testUcstrip()
     {
         $this->assertEquals('Id', StringUtilities::ucstrip('id'));

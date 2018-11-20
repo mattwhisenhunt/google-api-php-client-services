@@ -25,30 +25,33 @@ class SchemaProperty
     private $dataType;
     private $typeName;
     private $paramName;
-    private $_isComplex = false;
+
+    /**
+     * @var boolean $complexity Complex schema/model properties are rendered as
+     * two class members in the generated PHP classes: <Prop>Type and
+     * <Prop>DataType. Their getter and setter methods require phpdoc
+     * definitions as well.
+     */
+    private $complexity = false;
   
     private $node;
   
-    public function __construct($service_name, $key, &$node)
+    public function __construct($service_name, $key, $node)
     {
         $this->serviceName = $service_name;
         $this->name = $key;
         $this->getSetName = $key;
 
         if (isset($node['type']) && $node['type'] == 'array') {
-            if (isset($node['items']['$ref'])) {
-                $this->typeName = StringUtilities::ucstrip($node['items']['$ref']);
-            } else {
-                $this->typeName = '';
-            }
+            $this->typeName = isset($node['items']['$ref'])
+                ? StringUtilities::ucstrip($node['items']['$ref'])
+                : '';
             $this->dataType = 'array';
 
             if (count($node['items']) > 1) {
                 $this->typeName = StringUtilities::ucstrip($key);
             } else {
-                // if ($node['items']['$ref'] TODO
-                // && $doc['schemas'][$node['items']]['$ref']['type'] == 'array') {
-                if ($service_name == "Translate" && $key == 'detections') { //TODO
+                if ($service_name == "Translate" && $key == 'detections') {
                     $this->typeName .= "Items";
                 }
             }
@@ -66,26 +69,22 @@ class SchemaProperty
   
         if (isset($node['additionalProperties']['$ref']) || isset($node['additionalProperties']['properties'])) {
             $this->dataType = 'map';
-            if (isset($node['additionalProperties']['$ref'])) {
-                $this->typeName = $node['additionalProperties']['$ref'];
-            } else {
-                $this->typeName = '';
-            }
+            $this->typeName = isset($node['additionalProperties']['$ref'])
+                ? $node['additionalProperties']['$ref']
+                : '';
         }
         if (isset($node['additionalProperties']['properties'])) {
             $this->dataType = 'map';
             $this->typeName = StringUtilities::ucstrip($key) . "Element";
-            $this->_isComplex = true;
+            $this->complexity = true;
         }
         if (isset($node['additionalProperties']['items']['type'])
             && $node['additionalProperties']['items']['type'] != 'any'
         ) {
             $this->dataType = 'map';
-            if (isset($node['additionalProperties']['items']['$ref'])) {
-                $this->typeName = $node['additionalProperties']['items']['$ref'];
-            } else {
-                $this->typeName = '';
-            }
+            $this->typeName = isset($node['additionalProperties']['items']['$ref'])
+                ? $node['additionalProperties']['items']['$ref']
+                : '';
         }
   
         $this->node = $node;
@@ -118,7 +117,7 @@ class SchemaProperty
     public function getFuncParam()
     {
         $longer = "$this->paramName \$$this->name";
-        if ($this->_isComplex) {
+        if ($this->complexity) {
             if (isset($this->node['properties'])) {
                 return $longer;
             }
@@ -135,22 +134,27 @@ class SchemaProperty
     {
         return $this->name;
     }
+
     public function getGetSetName()
     {
         return $this->getSetName;
     }
+
     public function getDataType()
     {
         return $this->dataType;
     }
+
     public function getTypeName()
     {
         return $this->typeName;
     }
+
     public function getParamName()
     {
         return $this->paramName;
     }
+
     public function getNode()
     {
         return $this->node;
@@ -158,23 +162,26 @@ class SchemaProperty
 
     public function isComplex()
     {
-        return $this->_isComplex;
+        return $this->complexity;
     }
 
     public function setName($str)
     {
         $this->name = $str;
     }
+
     public function setGetSetName($str)
     {
         $this->getSetName = $str;
     }
+
     public function setParamName($str)
     {
         $this->paramName = $str;
     }
+
     public function setComplexity($complexity)
     {
-        $this->_isComplex = $complexity;
+        $this->complexity = $complexity;
     }
 }
