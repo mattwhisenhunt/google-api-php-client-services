@@ -27,12 +27,12 @@ class SchemaProperty
     private $paramName;
 
     /**
-     * @var boolean $complexity Complex schema/model properties are rendered as
+     * @var boolean $isComplex Complex schema/model properties are rendered as
      * two class members in the generated PHP classes: <Prop>Type and
      * <Prop>DataType. Their getter and setter methods require phpdoc
      * definitions as well.
      */
-    private $complexity = false;
+    private $isComplex = false;
   
     private $node;
   
@@ -76,7 +76,7 @@ class SchemaProperty
         if (isset($node['additionalProperties']['properties'])) {
             $this->dataType = 'map';
             $this->typeName = StringUtilities::ucstrip($key) . "Element";
-            $this->complexity = true;
+            $this->isComplex = true;
         }
         if (isset($node['additionalProperties']['items']['type'])
             && $node['additionalProperties']['items']['type'] != 'any'
@@ -114,7 +114,7 @@ class SchemaProperty
     public function getFuncParam()
     {
         $longer = "$this->paramName \$$this->name";
-        if ($this->complexity) {
+        if ($this->isComplex) {
             if (isset($this->node['properties'])) {
                 return $longer;
             }
@@ -159,7 +159,7 @@ class SchemaProperty
 
     public function isComplex()
     {
-        return $this->complexity;
+        return $this->isComplex;
     }
 
     public function setName($str)
@@ -177,8 +177,8 @@ class SchemaProperty
         $this->paramName = $str;
     }
 
-    public function setComplexity($complexity)
+    public function setIsComplex($isComplex)
     {
-        $this->complexity = $complexity;
+        $this->isComplex = $isComplex;
     }
 }

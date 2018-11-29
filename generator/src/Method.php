@@ -49,7 +49,7 @@ class Method
 
     private $paramsP = [];
     private $paramsA = [];
-    private $doesHavePostBody = false;
+    private $hasPostBody = false;
   
     public function __construct($key, $method)
     {
@@ -76,20 +76,20 @@ class Method
 
             foreach ($this->parameters as $k => $v) {
                 if (isset($v['required'])) {
-                    $var_name = '$'. lcfirst(StringUtilities::ucstrip($k));
-                    $this->paramsP[] = $var_name;
-                    $this->paramsA[] = "'$k' => $var_name";
-                    $this->phpdocParams[] = Method::getPhpDocParam($var_name, $v);
+                    $varName = '$'. lcfirst(StringUtilities::ucstrip($k));
+                    $this->paramsP[] = $varName;
+                    $this->paramsA[] = "'$k' => $varName";
+                    $this->phpdocParams[] = Method::getPhpDocParam($varName, $v);
                 } else {
-                    $var_name = lcfirst($k);
-                    $this->phpdocOptParams[] = Method::getPhpDocParam($var_name, $v);
+                    $varName = lcfirst($k);
+                    $this->phpdocOptParams[] = Method::getPhpDocParam($varName, $v);
                 }
             }
         }
 
         if (isset($method['request']) && $method['httpMethod'] != 'GET') {
             $this->requestRef = $method['request']['$ref'];
-            $this->doesHavePostBody = true;
+            $this->hasPostBody = true;
         }
 
         if (isset($method['response'])) {
@@ -97,11 +97,11 @@ class Method
         }
     }
 
-    public function getParamsParams($modelclassname)
+    public function getParamsParams($modelClassName)
     {
         $params = $this->paramsP;
-        if ($this->doesHavePostBody) {
-            $params[] = "$modelclassname \$postBody";
+        if ($this->hasPostBody) {
+            $params[] = "$modelClassName \$postBody";
         }
         $params[] = '$optParams = array()';
         return implode(", ", $params);
@@ -110,7 +110,7 @@ class Method
     public function getParamsArray()
     {
         $params = $this->paramsA;
-        if ($this->doesHavePostBody) {
+        if ($this->hasPostBody) {
             $params[] = "'postBody' => \$postBody";
         }
         return implode(", ", $params);
@@ -203,6 +203,6 @@ class Method
 
     public function hasPostBody()
     {
-        return $this->doesHavePostBody;
+        return $this->hasPostBody;
     }
 }

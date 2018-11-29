@@ -39,9 +39,9 @@ class Schema
     private $propKeys = [];
     private $schemas = [];
 
-    public function __construct($service_name, $key, $node)
+    public function __construct($serviceName, $key, $node)
     {
-        $this->serviceName = $service_name;
+        $this->serviceName = $serviceName;
         $this->names = $key;
 
         list($this->childCount, $this->suffix) = $this->appendChildren($node);
@@ -97,23 +97,23 @@ class Schema
             if (count($node['items']) == 2 && isset($node['items']['format'])) {
                 return [0, ''];
             }
-            $new_names = array_merge($this->names, ['items']);
-            $this->schemas[] = new SubSchema($this->serviceName, $new_names, $node['items']);
+            $newNames = array_merge($this->names, ['items']);
+            $this->schemas[] = new SubSchema($this->serviceName, $newNames, $node['items']);
             return [1, ''];
         }
 
         if (isset($node['properties'])) {
             foreach ($node['properties'] as $k => $v) {
-                $new_names = array_merge($this->names, ['properties', $k]);
-                $this->schemas[] = new SubSchema($this->serviceName, $new_names, $v);
+                $newNames = array_merge($this->names, ['properties', $k]);
+                $this->schemas[] = new SubSchema($this->serviceName, $newNames, $v);
             }
             return [2, '']; // count($node['properties']);
         }
 
         if (isset($node['additionalProperties']['properties'])) {
             foreach ($node['additionalProperties']['properties'] as $k => $v) {
-                $new_names = array_merge($this->names, ['additionalProperties', 'properties', $k]);
-                $this->schemas[] = new SubSchema($this->serviceName, $new_names, $v);
+                $newNames = array_merge($this->names, ['additionalProperties', 'properties', $k]);
+                $this->schemas[] = new SubSchema($this->serviceName, $newNames, $v);
             }
             return [count($node['additionalProperties']['properties']), 'Element'];
         }
@@ -177,9 +177,9 @@ class Schema
     public function getSibling($prop)
     {
         $name = $prop->getName();
-        $type_pos = strpos($name, "Type");
-        if ($type_pos === strlen($name) - 4 && isset($this->propKeys[substr($name, 0, $type_pos)])) {
-            return $this->properties[$this->propKeys[substr($name, 0, $type_pos)]];
+        $typePos = strpos($name, "Type");
+        if ($typePos === strlen($name) - 4 && isset($this->propKeys[substr($name, 0, $typePos)])) {
+            return $this->properties[$this->propKeys[substr($name, 0, $typePos)]];
         }
     }
   

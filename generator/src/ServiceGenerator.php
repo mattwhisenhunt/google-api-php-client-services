@@ -32,7 +32,7 @@ class ServiceGenerator
 
     public function generate($discoveryURL)
     {
-        $previous_error_handler = set_error_handler([$this, 'errorHandler']);
+        $previousErrorHandler = set_error_handler([$this, 'errorHandler']);
 
         $service = new Service(json_decode(file_get_contents($discoveryURL), true));
 
@@ -58,46 +58,46 @@ class ServiceGenerator
             }
 
             foreach ($service->getSchemas() as $schema) {
-                $classname = $schema->getName();
-                $smarty->assign("ClassName", $classname);
+                $className = $schema->getName();
+                $smarty->assign("ClassName", $className);
 
                 if (count($schema->getProperties()) == 0) {
-                    file_put_contents("$path/$classname.php", $smarty->fetch('model.blank.tpl'));
+                    file_put_contents("$path/$className.php", $smarty->fetch('model.blank.tpl'));
                 } else {
                     $properties = [];
-                    $internal_gapi_mappings = [];
+                    $internalGapiMappings = [];
                     foreach ($schema->getProperties() as $prop) {
-                        $prop->setComplexity($prop->isComplex() || $service->isPropertyComplex($prop));
+                        $prop->setIsComplex($prop->isComplex() || $service->isPropertyComplex($prop));
 
                         if ($service->isPropertyComplex($schema->getSibling($prop))) {
-                              $previous_name = $prop->getName();
-                              $prop->setName("theReal" . StringUtilities::ucstrip($previous_name));
-                              $prop->setGetSetName($previous_name);
-                              $internal_gapi_mappings[$previous_name] = $prop->getName();
+                              $previousName = $prop->getName();
+                              $prop->setName("theReal" . StringUtilities::ucstrip($previousName));
+                              $prop->setGetSetName($previousName);
+                              $internalGapiMappings[$previousName] = $prop->getName();
                         } else {
                             $mapkey = trim(lcfirst(StringUtilities::ucstrip($prop->getName())), '$');
 
                             if ($mapkey != $prop->getName()) {
-                                $internal_gapi_mappings[$mapkey] = $prop->getName();
+                                $internalGapiMappings[$mapkey] = $prop->getName();
                                 $prop->setName($mapkey);
                                 $prop->setGetSetName($mapkey);
                             }
                         }
 
-                        $prop->setParamName($service->getPropParamName($prop, $classname));
+                        $prop->setParamName($service->getPropParamName($prop, $className));
 
                         $properties[] = $prop;
                     }
 
                     $smarty->assign("Properties", $properties);
                     $smarty->assign("CollectionKey", $schema->getCollectionKey());
-                    $smarty->assign("InternalGapiMappings", $internal_gapi_mappings);
-                    file_put_contents("$path/$classname.php", $smarty->fetch('model.tpl'));
+                    $smarty->assign("InternalGapiMappings", $internalGapiMappings);
+                    file_put_contents("$path/$className.php", $smarty->fetch('model.tpl'));
                 }
             }
         }
 
-        set_error_handler($previous_error_handler);
+        set_error_handler($previousErrorHandler);
     }
 
     static public function errorHandler($errno, $errstr, $errfile, $errline)

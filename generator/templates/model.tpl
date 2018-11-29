@@ -29,7 +29,7 @@ Google_{if $CollectionKey}Collection{else}Model{/if}
 {if $InternalGapiMappings}
   protected $internal_gapi_mappings = array(
 {foreach $InternalGapiMappings as $k => $v}
-        "{$k}" => "{$v}",
+        '{$k}' => '{$v}',
 {/foreach}
   );
 {/if}

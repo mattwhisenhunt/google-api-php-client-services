@@ -22,8 +22,6 @@ class SubSchema extends Schema
     public function hasFile($node)
     {
         if ($this->childCount > 1 || $this->suffix !== '') {
-            $i = count($this->names) - 1;
-
             return true;
         }
         return false;

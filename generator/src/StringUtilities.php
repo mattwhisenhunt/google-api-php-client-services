@@ -35,16 +35,16 @@ class StringUtilities
         $lines = explode("\n", $str);
 
         $phpdoc = '';
-        $linebreak = '';
+        $lineBreak = '';
         foreach ($lines as $line) {
             $space = ' ';
             if ($line == '') {
                 $space = '';
             }
-            $phpdoc .= "$linebreak   *$space";
+            $phpdoc .= "$lineBreak   *$space";
             $phpdoc .= wordwrap($line, 74, PHP_EOL . '   * ');
 
-            $linebreak = PHP_EOL;
+            $lineBreak = PHP_EOL;
         }
         return $phpdoc;
     }

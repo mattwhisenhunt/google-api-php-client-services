@@ -151,7 +151,7 @@ class Service
         }
 
         ksort($scopes);
-        $real_scopes = [];
+        $realScopes = [];
         foreach ($scopes as $k => $v) {
             // rtrim for just domain scopes
             $parts = explode("/", rtrim($k, '/'));
@@ -161,39 +161,39 @@ class Service
             $shortKey = strtoupper($parts[$li]);
             $shortKey = str_replace('-', '_', $shortKey);
             $shortKey = str_replace('.', '_', $shortKey);
-            if (isset($real_scopes[$shortKey])) {
-                $oldKey  = Service::keyify($real_scopes[$shortKey][0]);
+            if (isset($realScopes[$shortKey])) {
+                $oldKey  = Service::keyify($realScopes[$shortKey][0]);
                 $longKey = Service::keyify($k);
-                $real_scopes[$oldKey]  = $real_scopes[$shortKey];
-                $real_scopes[$longKey] = [$k, $this->scopeDescriptions[$k]];
-                unset($real_scopes[$shortKey]);
+                $realScopes[$oldKey]  = $realScopes[$shortKey];
+                $realScopes[$longKey] = [$k, $this->scopeDescriptions[$k]];
+                unset($realScopes[$shortKey]);
             } else {
-                $real_scopes[$shortKey] = [$k, $this->scopeDescriptions[$k]];
+                $realScopes[$shortKey] = [$k, $this->scopeDescriptions[$k]];
             }
         }
-        return $real_scopes;
+        return $realScopes;
     }
 
-    public function getModelClassName($schema_name)
+    public function getModelClassName($schemaName)
     {
         return "Google_Service_". $this->canonicalName
-          . "_" . $this->getSafeSchemaName(StringUtilities::ucstrip($schema_name));
+          . "_" . $this->getSafeSchemaName(StringUtilities::ucstrip($schemaName));
     }
 
-    public function getSafeSchemaName($schema_name)
+    public function getSafeSchemaName($schemaName)
     {
-        if (isset(Schema::PREFIXABLES[$schema_name])) {
-            return ucfirst($this->name) . $schema_name;
+        if (isset(Schema::PREFIXABLES[$schemaName])) {
+            return ucfirst($this->name) . $schemaName;
         }
-        return $schema_name;
+        return $schemaName;
     }
 
-    public function getPropParamName($prop, $classname)
+    public function getPropParamName($prop, $className)
     {
         $prefix = "Google_Service_$this->canonicalName";
 
         return $prefix . "_" .
-            $prop->getTypePrefix($this->getSafeSchemaName($classname)) .
+            $prop->getTypePrefix($this->getSafeSchemaName($className)) .
             $prop->getTypeName();
     }
 

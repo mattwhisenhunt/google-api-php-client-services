@@ -36,15 +36,16 @@ class ServiceGeneratorTest extends \PHPUnit\Framework\TestCase
 
             foreach ($apis->items as $v) {
                 if (in_array($v->id, $neerdowells)) continue;
-                $generator = new ServiceGenerator(".tests/$v->id");
+                $generator = new ServiceGenerator(".tests/$v->name-$v->version");
                 $generator->generate($v->discoveryRestUrl);
-                $this->assertTrue(count(scandir(".tests/$v->id")) > 2);
+                $this->assertTrue(count(scandir(".tests/$v->name-$v->version")) > 2);
             }
         } else {
-            $generator = new ServiceGenerator('.tests/gmail:v1');
+            $generator = new ServiceGenerator('.tests/gmail-v1');
             $result = $generator->generate(
                 'https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest'
             );
+            $this->assertTrue(count(scandir(".tests/gmail-v1")) > 2);
         }
     }
 
