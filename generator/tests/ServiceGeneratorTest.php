@@ -15,46 +15,56 @@
  * limitations under the License.
  */
 
-namespace Google\Service\Generator\Tests;
+namespace {
+    class Google_Model {}
+    class Google_Service {}
+    class Google_Collection {}
+    class Google_Service_Resource{}
+};
 
-use Google\Service\Generator\ServiceGenerator;
+namespace Google\Service\Generator\Tests {
 
-class ServiceGeneratorTest extends \PHPUnit\Framework\TestCase
-{
-    public function testGenerate()
+    use Google\Service\Generator\ServiceGenerator;
+
+    class ServiceGeneratorTest extends \PHPUnit\Framework\TestCase
     {
-        if (getenv('GOOGLE_PHP_CLIENT_CODE_COVERAGE')) {
-            $apis = json_decode(file_get_contents("https://www.googleapis.com/discovery/v1/apis"));
-            $neerdowells = [
-                'compute:alpha',
-                'cloudbuild:v1alpha1',
-                'cloudiot:v1beta1',
-                'cloudscheduler:v1beta1',
-                'cloudtrace:v2alpha1',
-                'partners:v2',
-                'websecurityscanner:v1beta'];
+        const NEER_DO_WELLS = [
+            'compute:alpha',
+            'cloudbuild:v1alpha1',
+            'cloudiot:v1beta1',
+            'cloudscheduler:v1beta1',
+            'cloudtrace:v2alpha1',
+            'partners:v2',
+            'websecurityscanner:v1beta',
+        ];
 
-            foreach ($apis->items as $v) {
-                if (in_array($v->id, $neerdowells)) continue;
-                $generator = new ServiceGenerator(".tests/$v->name-$v->version");
-                $generator->generate($v->discoveryRestUrl);
-                $this->assertTrue(count(scandir(".tests/$v->name-$v->version")) > 2);
+        /**
+         * @dataProvider apiProvider
+         */
+        public function testGenerate($id, $discoveryRestUrl)
+        {
+            $path = sys_get_temp_dir() . '/gs_tests/t' . rand() . "/$id";
+            $generator = new ServiceGenerator($path);
+            $generator->generate($discoveryRestUrl);
+
+            $it = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($path));
+
+            $it->rewind();
+            while($it->valid()) {
+
+                if ($it->isFile() && $it->getExtension() == 'php') {
+                    $this->assertTrue( 1 === (include $it->getPathname()) );
+                }
+
+                $it->next();
             }
-        } else {
-            $generator = new ServiceGenerator('.tests/gmail-v1');
-            $result = $generator->generate(
-                'https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest'
-            );
-            $this->assertTrue(count(scandir(".tests/gmail-v1")) > 2);
         }
-    }
 
-    public function testErrorHandler()
-    {
-        if (getenv('GOOGLE_PHP_CLIENT_CODE_COVERAGE')) {
-            $old = [];
-            $old['error_reporting'] = ini_get('error_reporting');
-            $old['display_errors'] = ini_get('display_errors');
+        public function testErrorHandler()
+        {
+            $previous = [];
+            $previous['error_reporting'] = ini_get('error_reporting');
+            $previous['display_errors'] = ini_get('display_errors');
 
             ini_set('error_reporting', 'E_ALL');
             ini_set('display_errors', '1');
@@ -65,14 +75,23 @@ class ServiceGeneratorTest extends \PHPUnit\Framework\TestCase
             error_log(' *** End of Expected ***');
             $this->assertTrue(true);
 
-            ini_set('error_reporting', $old['error_reporting']);
-            ini_set('display_errors', $old['display_errors']);
-        } else {
-            $skip = "This tests for errors being piped to stderr instead ".
-                "of Smarty output even when display_errors is enabled ".
-                "and can be enabled by setting the ".
-                "GOOGLE_PHP_CLIENT_CODE_COVERAGE environment variable.";
-            $this->markTestSkipped($skip);
+            ini_set('error_reporting', $previous['error_reporting']);
+            ini_set('display_errors', $previous['display_errors']);
+        }
+
+        public function apiProvider() {
+            $apis = json_decode(file_get_contents("https://www.googleapis.com/discovery/v1/apis"));
+
+            $data = [
+                ['admin:datatransfer_v1', 'https://www.googleapis.com/discovery/v1/apis/admin/datatransfer_v1/rest'],
+                ['admin:directory_v1', 'https://www.googleapis.com/discovery/v1/apis/admin/directory_v1/rest'],
+            ];
+            foreach ($apis->items as $v) {
+                if (in_array($v->id, ServiceGeneratorTest::NEER_DO_WELLS)) continue;
+                if (!$v->preferred) continue;
+                $data[] = ["$v->name-$v->version", $v->discoveryRestUrl];
+            }
+            return $data;
         }
     }
 }
