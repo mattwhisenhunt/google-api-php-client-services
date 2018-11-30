@@ -21,13 +21,9 @@ class ServiceGenerator
 {
     private $path = __DIR__ . "/../../src/Google/Service";
 
-    public function __construct($path = '')
+    public function __construct($path)
     {
-        if ($path != '') {
-            $this->path = $path;
-        } else {
-            assert(is_dir($this->path));
-        }
+        $this->path = $path;
     }
 
     public function generate($discoveryURL)

@@ -15,47 +15,29 @@
  * limitations under the License.
  */
 
-namespace {
-    class Google_Model {}
-    class Google_Service {}
-    class Google_Collection {}
-    class Google_Service_Resource{}
-};
-
 namespace Google\Service\Generator\Tests {
 
     use Google\Service\Generator\ServiceGenerator;
 
     class ServiceGeneratorTest extends \PHPUnit\Framework\TestCase
     {
-        const NEER_DO_WELLS = [
-            'compute:alpha',
-            'cloudbuild:v1alpha1',
-            'cloudiot:v1beta1',
-            'cloudscheduler:v1beta1',
-            'cloudtrace:v2alpha1',
-            'partners:v2',
-            'websecurityscanner:v1beta',
-        ];
-
         /**
          * @dataProvider apiProvider
          */
-        public function testGenerate($id, $discoveryRestUrl)
+        public function testGenerate($outputDir, $id)
         {
-            $path = sys_get_temp_dir() . '/gs_tests/t' . rand() . "/$id";
-            $generator = new ServiceGenerator($path);
-            $generator->generate($discoveryRestUrl);
+            $generator = new ServiceGenerator($outputDir);
+            $generator->generate(__DIR__ . "/baselines/$id.json");
 
-            $it = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($path));
-
+            $it = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($outputDir));
             $it->rewind();
             while($it->valid()) {
-
-                if ($it->isFile() && $it->getExtension() == 'php') {
-                    $this->assertTrue( 1 === (include $it->getPathname()) );
+                if ($it->isFile() && file_exists(__DIR__ . '/baselines/' . $it->getSubPathName())) {
+                    $this->assertTrue(
+                        file_get_contents($it->getPathname()) == 
+                        file_get_contents(__DIR__ . '/baselines/' . $it->getSubPathName())
+                    );
                 }
-
                 $it->next();
             }
         }
@@ -69,7 +51,7 @@ namespace Google\Service\Generator\Tests {
             ini_set('error_reporting', 'E_ALL');
             ini_set('display_errors', '1');
 
-            $generator = new ServiceGenerator();
+            $generator = new ServiceGenerator('bad_path');
             error_log(PHP_EOL . ' *** Expected stderr ***');
             $generator->generate('');
             error_log(' *** End of Expected ***');
@@ -80,17 +62,19 @@ namespace Google\Service\Generator\Tests {
         }
 
         public function apiProvider() {
-            $apis = json_decode(file_get_contents("https://www.googleapis.com/discovery/v1/apis"));
+            $tmpPath = sys_get_temp_dir() . '/gs_tests/t' . rand();
 
             $data = [
-                ['admin:datatransfer_v1', 'https://www.googleapis.com/discovery/v1/apis/admin/datatransfer_v1/rest'],
-                ['admin:directory_v1', 'https://www.googleapis.com/discovery/v1/apis/admin/directory_v1/rest'],
+                [$tmpPath, 'admin-directory_v1'],
+                [$tmpPath, 'pagespeedonline-v5'],
+                [$tmpPath, 'script-v1'],
+                [$tmpPath, 'books-v1'],
+                [$tmpPath, 'oauth-v2'],
+                [$tmpPath, 'safebrowsing-v4'],
+                [$tmpPath, 'translate-v2'],
+                [$tmpPath, 'doubleclicksearch-v2'],
+                [$tmpPath, 'fusiontables-v2'],
             ];
-            foreach ($apis->items as $v) {
-                if (in_array($v->id, ServiceGeneratorTest::NEER_DO_WELLS)) continue;
-                if (!$v->preferred) continue;
-                $data[] = ["$v->name-$v->version", $v->discoveryRestUrl];
-            }
             return $data;
         }
     }
